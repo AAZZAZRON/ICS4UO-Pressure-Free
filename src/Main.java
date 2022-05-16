@@ -11,16 +11,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        // set default stage settings
-        stage.setTitle("Parallel Studios - Pressure-Free");
-        stage.setHeight(600);
-        stage.setWidth(800);
-        stage.setResizable(false);
-
-        // add logo
-        Image logo = new Image("assets/logo.png");
-        stage.getIcons().add(logo);
-
-        MainMenu.mainMenu(stage);
+        Game game = new Game(stage);
+        game.screenSetup();
+        game.splashScreen();
+        game.play();
     }
 }

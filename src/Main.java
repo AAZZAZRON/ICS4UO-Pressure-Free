@@ -12,6 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         Game game = new Game(stage);
+        stage.show();
         game.screenSetup();
         game.splashScreen();
         game.play();

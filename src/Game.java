@@ -17,7 +17,7 @@ public class Game {
         stage.setResizable(false);
 
         // add logo
-        Image logo = new Image("assets/logo.png");
+        Image logo = new Image("Assets/logo.png");
         stage.getIcons().add(logo);
     }
 

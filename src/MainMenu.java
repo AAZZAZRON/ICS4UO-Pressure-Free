@@ -1,3 +1,13 @@
+/**
+ * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
+ * MainMenu.java
+ * <h2>Course Info:</h2>
+ * ICS4U0 with Krasteva, V.
+ *
+ * @version 1.0
+ * @author Aaron Zhu, Sion Gang
+ */
+
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -7,7 +17,21 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class MainMenu {
-    public void mainMenu(Stage stage) {
+    /** The primary stage for this application. Passed by reference. */
+    private final Stage stage;
+
+    /**
+     * Constructor for MainMenu.
+     * @param stage The primary stage for this application. Passed by reference.
+     */
+    public MainMenu(Stage stage) {
+        this.stage = stage;
+    }
+
+    /**
+     * sets up the GUI for the main menu.
+     */
+    public void mainMenu() {
         // https://www.tutorialspoint.com/javafx/javafx_images.htm#:~:text=You%20can%20load%20an%20image%20in%20JavaFX%20by,object%20of%20the%20image%20to%20be%20loaded%20or%2C
         ImageView image = new ImageView("Assets/MainMenu/mainMenu.png");
         image.setPreserveRatio(true);
@@ -29,8 +53,8 @@ public class MainMenu {
         });
 
         insBtn.setOnAction(e -> {
-            Instructions instructions = new Instructions();
-            instructions.instructions(stage);
+            Instructions instructions = new Instructions(stage);
+            instructions.instructions();
         });
 
         exitBtn.setOnAction(e -> {

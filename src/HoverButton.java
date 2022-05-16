@@ -24,7 +24,6 @@ public class HoverButton {
      * @return The button object so events can be added to it.
      */
     public static Button createButton(Group root, String path, int x, int y, int sz) {
-        // https://www.demo2s.com/java/javafx-button-setbackground-background-value.html
         // get images
         ImageView buttonImg = new ImageView(new Image("Assets/MainMenu/" + path + "Button.png"));
         ImageView buttonImgHover = new ImageView(new Image("Assets/MainMenu/" + path + "ButtonHover.png"));

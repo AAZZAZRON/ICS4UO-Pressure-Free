@@ -38,9 +38,9 @@ public class Instructions {
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
-        Button backButton = HoverButton.createButton(root, "x", 650, 170, 40);
+        ImageView backButton = HoverButton.createButton(root, "x", 650, 170, 40);
 
-        backButton.setOnAction(e -> {
+        backButton.setOnMouseClicked(e -> {
             MainMenu mainMenu = new MainMenu(stage);
             mainMenu.mainMenu();
         });

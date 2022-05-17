@@ -43,22 +43,22 @@ public class MainMenu {
         stage.setScene(scene);
 
         // add buttons
-        Button playBtn = HoverButton.createButton(root, "mm", 150, 150, 484);
-        Button insBtn = HoverButton.createButton(root, "mm", 150, 275, 484);
-        Button exitBtn = HoverButton.createButton(root, "mm", 150, 400, 484);
+        ImageView playBtn = HoverButton.createButton(root, "mm", 150, 150, 484);
+        ImageView insBtn = HoverButton.createButton(root, "mm", 150, 275, 484);
+        ImageView exitBtn = HoverButton.createButton(root, "mm", 150, 400, 484);
 
         // add onclick
-        playBtn.setOnAction(e -> {
+        playBtn.setOnMouseClicked(e -> {
             System.out.println("Play");
         });
 
-        insBtn.setOnAction(e -> {
+        insBtn.setOnMouseClicked(e -> {
             System.out.println("Instructions");
             Instructions instructions = new Instructions(stage);
             instructions.instructions();
         });
 
-        exitBtn.setOnAction(e -> {
+        exitBtn.setOnMouseClicked(e -> {
             System.out.println("Exit");
             Platform.exit();
         });

@@ -1,3 +1,5 @@
+import javafx.stage.Stage;
+
 /**
  * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
  * SplashScreen.java
@@ -9,5 +11,21 @@
  */
 
 public class SplashScreen {
+    /** The primary stage for this application. Passed by reference. */
+    private final Stage stage;
 
+    /**
+     * Constructor for SplashScreen.
+     * @param stage The primary stage for this application. Passed by reference.
+     */
+    public SplashScreen(Stage stage) {
+        this.stage = stage;
+    }
+
+    /**
+     * sets up the GUI for the splash screen.
+     */
+    public void splashScreen() {
+
+    }
 }

@@ -9,9 +9,6 @@
  */
 
 import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -25,14 +22,17 @@ public class Main extends Application {
 
     /**
      * Overrides the start method of the Application class.
+     * Overall game flow logic.
      * @param stage The primary stage for this application.
      */
     @Override
     public void start(Stage stage) {
-        Game game = new Game(stage);
+        GameSetup game = new GameSetup(stage);
+        SplashScreen splash = new SplashScreen(stage);
+        MainMenu mainMenu = new MainMenu(stage);
         stage.show();
         game.screenSetup();
-        game.splashScreen();
-        game.play();
+        splash.splashScreen();
+        mainMenu.mainMenu();
     }
 }

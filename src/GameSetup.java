@@ -1,6 +1,6 @@
 /**
  * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
- * Game.java
+ * GameSetup.java
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
@@ -11,7 +11,7 @@
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class Game {
+public class GameSetup {
     /** main menu object */
     MainMenu mainMenu;
 
@@ -19,10 +19,10 @@ public class Game {
     private final Stage stage;
 
     /**
-     * Constructor for Game. Initializes a splash screen and main menu.
+     * Constructor for GameSetup. Initializes a splash screen and main menu.
      * @param stage The primary stage for this application. Passed by reference.
      */
-    public Game(Stage stage) {
+    public GameSetup(Stage stage) {
         mainMenu = new MainMenu(stage);
         this.stage = stage;
     }
@@ -40,19 +40,5 @@ public class Game {
         // add logo
         Image logo = new Image("Assets/logo.png");
         stage.getIcons().add(logo);
-    }
-
-    /**
-     * Shows the splash screen.
-     */
-    public void splashScreen() {
-        System.out.println("Splash Screen");
-    }
-
-    /**
-     * Shows the main menu.
-     */
-    public void play() {
-        mainMenu.mainMenu();
     }
 }

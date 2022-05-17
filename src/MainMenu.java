@@ -30,6 +30,7 @@ public class MainMenu {
 
     /**
      * sets up the GUI for the main menu.
+     * sets up main menu logic flow
      */
     public void mainMenu() {
         ImageView image = new ImageView("Assets/MainMenu/mainMenu.png");
@@ -52,11 +53,13 @@ public class MainMenu {
         });
 
         insBtn.setOnAction(e -> {
+            System.out.println("Instructions");
             Instructions instructions = new Instructions(stage);
             instructions.instructions();
         });
 
         exitBtn.setOnAction(e -> {
+            System.out.println("Exit");
             Platform.exit();
         });
     }

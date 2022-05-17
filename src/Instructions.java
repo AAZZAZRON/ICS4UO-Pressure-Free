@@ -10,6 +10,7 @@
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -26,13 +27,22 @@ public class Instructions {
     }
 
     /**
-     * sets up the GUI for the instructions screen.
+     * sets up the GUI for the instructions` screen.
      */
     public void instructions() {
         ImageView image = new ImageView("Assets/MainMenu/Instructions.png");
         image.setPreserveRatio(true);
         image.setFitWidth(786);
 
-        stage.setScene(new Scene(new Group(image)));
+        Group root = new Group(image);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+        Button backButton = HoverButton.createButton(root, "x", 650, 170, 40);
+
+        backButton.setOnAction(e -> {
+            MainMenu mainMenu = new MainMenu(stage);
+            mainMenu.mainMenu();
+        });
     }
 }

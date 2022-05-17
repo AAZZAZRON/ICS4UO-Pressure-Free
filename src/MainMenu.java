@@ -62,5 +62,8 @@ public class MainMenu {
             System.out.println("Exit");
             Platform.exit();
         });
+
+        Character character = new Character(stage);
+        character.build(root, scene);
     }
 }

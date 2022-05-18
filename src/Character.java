@@ -11,7 +11,7 @@ public class Character {
     private ImageView character;
     private final Stage stage;
     private final int speed = 5;
-    boolean N, E, W, S;
+    private boolean N, E, W, S;
 
     public Character(Stage stage) {
         this.stage = stage;
@@ -22,47 +22,41 @@ public class Character {
         character.setPreserveRatio(true);
         root.getChildren().add(character);
 
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP:
-                        N = true;
-                        changeCharacterDirection("Up");
-                        break;
-                    case DOWN:
-                        S = true;
-                        changeCharacterDirection("Down");
-                        break;
-                    case LEFT:
-                        W = true;
-                        changeCharacterDirection("Left");
-                        break;
-                    case RIGHT:
-                        E = true;
-                        changeCharacterDirection("Right");
-                        break;
-                }
+        scene.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case UP:
+                    N = true;
+                    changeCharacterDirection("Up");
+                    break;
+                case DOWN:
+                    S = true;
+                    changeCharacterDirection("Down");
+                    break;
+                case LEFT:
+                    W = true;
+                    changeCharacterDirection("Left");
+                    break;
+                case RIGHT:
+                    E = true;
+                    changeCharacterDirection("Right");
+                    break;
             }
         });
 
-        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP:
-                        N = false;
-                        break;
-                    case DOWN:
-                        S = false;
-                        break;
-                    case LEFT:
-                        W = false;
-                        break;
-                    case RIGHT:
-                        E = false;
-                        break;
-                }
+        scene.setOnKeyReleased(event -> {
+            switch (event.getCode()) {
+                case UP:
+                    N = false;
+                    break;
+                case DOWN:
+                    S = false;
+                    break;
+                case LEFT:
+                    W = false;
+                    break;
+                case RIGHT:
+                    E = false;
+                    break;
             }
         });
 

@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class GameSetup {
     /** main menu object */
-    MainMenu mainMenu;
+    private MainMenu mainMenu;
 
     /** The primary stage for this application. Passed by reference. */
     private final Stage stage;

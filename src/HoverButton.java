@@ -36,8 +36,14 @@ public class HoverButton {
         // create button
         btn.setLayoutX(x);
         btn.setLayoutY(y);
-        btn.setOnMouseEntered(e -> btn.setImage(buttonImgHover));
-        btn.setOnMouseExited(e -> btn.setImage(buttonImg));
+        btn.setOnMouseEntered(e -> {
+            btn.setImage(buttonImgHover);
+            root.setCursor(javafx.scene.Cursor.HAND);
+        });
+        btn.setOnMouseExited(e -> {
+            btn.setImage(buttonImg);
+            root.setCursor(javafx.scene.Cursor.DEFAULT);
+        });
 
         root.getChildren().add(btn);
 

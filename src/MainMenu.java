@@ -33,9 +33,7 @@ public class MainMenu {
      * sets up main menu logic flow
      */
     public void mainMenu() {
-        ImageView image = new ImageView("Assets/MainMenu/mainMenu.png");
-        image.setPreserveRatio(true);
-        image.setFitWidth(786);
+        ImageView image = Tools.createBackgroundImage("MainMenu/MainMenu.png");
 
         // set scene
         Group root = new Group(image);
@@ -43,9 +41,9 @@ public class MainMenu {
         stage.setScene(scene);
 
         // add buttons
-        ImageView playBtn = HoverButton.createButton(root, "mm", 150, 150, 484);
-        ImageView insBtn = HoverButton.createButton(root, "mm", 150, 275, 484);
-        ImageView exitBtn = HoverButton.createButton(root, "mm", 150, 400, 484);
+        ImageView playBtn = Tools.createButton(root, "MainMenu/Buttons/", "play", 150, 150, 484);
+        ImageView insBtn = Tools.createButton(root, "MainMenu/Buttons/", "ins", 150, 275, 484);
+        ImageView exitBtn = Tools.createButton(root, "MainMenu/Buttons/", "exit", 150, 400, 484);
 
         // add onclick
         playBtn.setOnMouseClicked(e -> {

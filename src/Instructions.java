@@ -30,15 +30,13 @@ public class Instructions {
      * sets up the GUI for the instructions` screen.
      */
     public void instructions() {
-        ImageView image = new ImageView("Assets/MainMenu/Instructions.png");
-        image.setPreserveRatio(true);
-        image.setFitWidth(786);
+        ImageView image = Tools.createBackgroundImage("MainMenu/Instructions.png");
 
         Group root = new Group(image);
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
-        ImageView backButton = HoverButton.createButton(root, "x", 650, 170, 40);
+        ImageView backButton = Tools.createButton(root, "MainMenu/Buttons/", "x", 650, 170, 40);
 
         backButton.setOnMouseClicked(e -> {
             MainMenu mainMenu = new MainMenu(stage);

@@ -25,16 +25,16 @@ public class Character {
 
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
-                case UP:
+                case W:
                     N = true;
                     break;
-                case DOWN:
+                case S:
                     S = true;
                     break;
-                case LEFT:
+                case A:
                     W = true;
                     break;
-                case RIGHT:
+                case D:
                     E = true;
                     break;
             }
@@ -42,16 +42,16 @@ public class Character {
 
         scene.setOnKeyReleased(event -> {
             switch (event.getCode()) {
-                case UP:
+                case W:
                     N = false;
                     break;
-                case DOWN:
+                case S:
                     S = false;
                     break;
-                case LEFT:
+                case A:
                     W = false;
                     break;
-                case RIGHT:
+                case D:
                     E = false;
                     break;
             }
@@ -62,19 +62,19 @@ public class Character {
             public void handle(long now) {
                 if (N) {
                     character.setY(character.getY() - speed);
-                    character.setImage(new Image("Assets/Character/characterUp.png"));
+                    changeCharacterDirection("Up");
                 }
                 if (S) {
                     character.setY(character.getY() + speed);
-                    character.setImage(new Image("Assets/Character/characterDown.png"));
+                    changeCharacterDirection("Down");
                 }
                 if (W) {
                     character.setX(character.getX() - speed);
-                    character.setImage(new Image("Assets/Character/characterLeft.png"));
+                    changeCharacterDirection("Left");
                 }
                 if (E) {
                     character.setX(character.getX() + speed);
-                    character.setImage(new Image("Assets/Character/characterRight.png"));
+                    changeCharacterDirection("Right");
                 }
             }
         };

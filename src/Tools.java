@@ -1,6 +1,6 @@
 /**
  * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
- * HoverButton.java
+ * Tools.java
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
@@ -9,12 +9,10 @@
  */
 
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class HoverButton {
+public class Tools {
     /**
      * Template to create a hoverable button.
      * @param root The root of the scene.
@@ -24,10 +22,10 @@ public class HoverButton {
      * @param sz The width of the button (ratio is preserved)
      * @return The button object so events can be added to it.
      */
-    public static ImageView createButton(Group root, String path, int x, int y, int sz) {
+    public static ImageView createButton(Group root, String path, String fileName, int x, int y, int sz) {
         // get images
-        Image buttonImg = new Image("Assets/MainMenu/" + path + "Button.png");
-        Image buttonImgHover = new Image("Assets/MainMenu/" + path + "ButtonHover.png");
+        Image buttonImg = new Image("Assets/" + path + fileName + "Button.png");
+        Image buttonImgHover = new Image("Assets/" + path + fileName + "ButtonHover.png");
 
         ImageView btn = new ImageView(buttonImg);
         btn.setPreserveRatio(true);
@@ -48,5 +46,12 @@ public class HoverButton {
         root.getChildren().add(btn);
 
         return btn;
+    }
+
+    public static ImageView createBackgroundImage(String path) {
+        ImageView image = new ImageView("Assets/" + path);
+        image.setPreserveRatio(true);
+        image.setFitWidth(786);
+        return image;
     }
 }

@@ -20,25 +20,22 @@ public class Character {
     public void build(Group root, Scene scene) {
         character = new ImageView("Assets/Character/characterDown.png");
         character.setPreserveRatio(true);
+        character.setFitWidth(100);
         root.getChildren().add(character);
 
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case UP:
                     N = true;
-                    changeCharacterDirection("Up");
                     break;
                 case DOWN:
                     S = true;
-                    changeCharacterDirection("Down");
                     break;
                 case LEFT:
                     W = true;
-                    changeCharacterDirection("Left");
                     break;
                 case RIGHT:
                     E = true;
-                    changeCharacterDirection("Right");
                     break;
             }
         });
@@ -63,10 +60,22 @@ public class Character {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (N) character.setY(character.getY() - speed);
-                if (S) character.setY(character.getY() + speed);
-                if (W) character.setX(character.getX() - speed);
-                if (E) character.setX(character.getX() + speed);
+                if (N) {
+                    character.setY(character.getY() - speed);
+                    character.setImage(new Image("Assets/Character/characterUp.png"));
+                }
+                if (S) {
+                    character.setY(character.getY() + speed);
+                    character.setImage(new Image("Assets/Character/characterDown.png"));
+                }
+                if (W) {
+                    character.setX(character.getX() - speed);
+                    character.setImage(new Image("Assets/Character/characterLeft.png"));
+                }
+                if (E) {
+                    character.setX(character.getX() + speed);
+                    character.setImage(new Image("Assets/Character/characterRight.png"));
+                }
             }
         };
         timer.start();

@@ -7,10 +7,13 @@
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1
+ * Version 1 (Aaron)
  * - set up main menu with buttons
  * - set up incomplete background image
- * - set up button onClick events
+ * - set up button isntructions and exit onClick events
+ *
+ * Version 1 (Sion)
+ * - set up play button onClick event
  */
 
 import javafx.application.Platform;

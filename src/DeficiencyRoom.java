@@ -22,9 +22,9 @@ import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 
 public class DeficiencyRoom extends Room {
-    /** The primary stage for this application. Passed by reference. */
-    private final Stage stage;
+
     private FadeTransition fade = new FadeTransition();
+
 
     public static int counter = 1;
     Room[] defRooms = new DeficiencyRoom[4];
@@ -34,7 +34,7 @@ public class DeficiencyRoom extends Room {
      * @param stage The primary stage for this application. Passed by reference.
      */
     public DeficiencyRoom(Stage stage) {
-        this.stage = stage;
+        super(stage);
     }
 
     /**

@@ -50,8 +50,9 @@ public class Tools {
 
     public static ImageView createBackgroundImage(String path) {
         ImageView image = new ImageView("Assets/" + path);
-        image.setPreserveRatio(true);
-        image.setFitWidth(786);
+        //image.setPreserveRatio(true);
+        image.setFitWidth(800);
+        image.setFitHeight(600);
         return image;
     }
 }

@@ -33,8 +33,8 @@ public class GameSetup {
      */
     public void screenSetup() {
         stage.setTitle("Parallel Studios - Pressure-Free");
-        stage.setHeight(600);
-        stage.setWidth(800);
+        stage.setHeight(636);
+        stage.setWidth(814);
         stage.setResizable(false);
 
         // add logo

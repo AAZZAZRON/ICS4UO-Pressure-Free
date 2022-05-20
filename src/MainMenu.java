@@ -6,6 +6,11 @@
  *
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
+ *
+ * Version 1
+ * - set up main menu with buttons
+ * - set up incomplete background image
+ * - set up button onClick events
  */
 
 import javafx.application.Platform;

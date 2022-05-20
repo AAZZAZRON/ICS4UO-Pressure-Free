@@ -6,6 +6,10 @@
  *
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
+ *
+ * Version 1
+ * - Starts the game
+ * - Maintains starting game logic (splash, main menu)
  */
 
 import javafx.application.Application;

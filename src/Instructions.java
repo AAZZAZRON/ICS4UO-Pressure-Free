@@ -6,6 +6,9 @@
  *
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
+ *
+ * Version 1
+ * - Added incomplete instructions page
  */
 
 import javafx.scene.Group;

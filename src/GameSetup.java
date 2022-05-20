@@ -6,6 +6,9 @@
  *
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
+ *
+ * Version 1
+ * - set up the GUI stage for the game
  */
 
 import javafx.scene.image.Image;

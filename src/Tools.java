@@ -6,6 +6,10 @@
  *
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
+ *
+ * Version 1
+ * - added template to create hoverable button
+ * - added template to create background image
  */
 
 import javafx.scene.Group;
@@ -48,6 +52,11 @@ public class Tools {
         return btn;
     }
 
+    /**
+     * Template to create a background image.
+     * @param path The path to the background image.
+     * @return The background image object.
+     */
     public static ImageView createBackgroundImage(String path) {
         ImageView image = new ImageView("Assets/" + path);
         //image.setPreserveRatio(true);

@@ -87,6 +87,24 @@ public class School {
         fillCollisions(0, 592, 800, 600, 2);
         fillCollisions(792, 0, 800, 600, 2);
 
+        // door entrances
+        fillCollisions(200, 217, 263, 218, 3);
+        //fillCollisions(60, 28, 67, 28, 3);
+       // fillCollisions(89, 28, 96, 28, 3);
+
+
+      //  fillCollisions(38, 40, 38, 48, 3);
+       // fillCollisions(62, 28, 38, 70, 3);
+
+
+    //    fillCollisions(53, 36, 60, 36, 3);
+     //   fillCollisions(79, 36, 86, 36, 3);
+
+       // fillCollisions(26, 28, 33, 28, 3);
+      //  fillCollisions(26, 28, 33, 28, 3);
+
+
+
         // create character
         Character character = new Character(stage, 100, 300, 300, grid);
         character.build(root, scene);

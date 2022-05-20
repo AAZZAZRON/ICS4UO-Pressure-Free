@@ -76,13 +76,13 @@ public class MainMenu {
         playBtn.setOnMouseClicked(e -> {
             System.out.println("Play");
             // loads deficiency room
-
-
             DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
-            deficiencyRoom.deficiencyRoom();
-//            School school = new School(stage);
-//            school.build();
 
+<<<<<<< Updated upstream
+=======
+            School school = new School(stage);
+            school.buildDeficienciesRoom();
+>>>>>>> Stashed changes
 
         });
 
@@ -96,6 +96,9 @@ public class MainMenu {
             System.out.println("Exit");
             Platform.exit();
         });
+
+
+
 
 //        Character character = new Character(stage, 100, new int[600][800]);
 //        character.build(root, scene);

@@ -148,13 +148,13 @@ public class Character {
 
         setupCharacterMovement(scene);
 
-        // testing code
-//        scene.onMouseClickedProperty().set(new EventHandler<javafx.scene.input.MouseEvent>() {
-//            @Override
-//            public void handle(javafx.scene.input.MouseEvent event) {
-//                System.out.println("Mouse clicked at: " + event.getX() + ", " + event.getY());
-//            }
-//        });
+
+        scene.onMouseClickedProperty().set(new EventHandler<javafx.scene.input.MouseEvent>() {
+            @Override
+             public void handle(javafx.scene.input.MouseEvent event) {
+                 System.out.println("Mouse clicked at: " + event.getX() + ", " + event.getY());
+            }
+       });
     }
 
     /**
@@ -220,12 +220,15 @@ public class Character {
                     if (maxInstruction() != 0) posX -= speed;
                     else changeCharacterDirection("Right");
                 }
-                // set character position
+
                 character.setX(posX);
                 character.setY(posY);
+
             }
         };
+
         timer.start();
+
     }
 
     /**
@@ -239,9 +242,17 @@ public class Character {
                 maxDetect = Math.max(maxDetect, grid[i][j]);
             }
         }
-//        System.out.println(posX + ", " + posY + ": " + maxDetect);
-//        System.out.println((posX) + " " + (posY + footOffsetY) + ", " + (posX + sizeX) + " " + (posY + sizeY) + " " + maxDetect);
+      //  System.out.println(posX + ", " + posY + ": " + maxDetect);
+      // System.out.println((posX) + " " + (posY + footOffsetY) + ", " + (posX + sizeX) + " " + (posY + sizeY) + " " + maxDetect);
+
+        if (maxDetect == 3) {
+            DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
+            System.out.println(3);
+            deficiencyRoom.deficiencyRoom();
+        }
+
         return maxDetect;
+
     }
 
     /**
@@ -251,4 +262,6 @@ public class Character {
     private void changeCharacterDirection(String direction) {
         character.setImage(new Image("Assets/Character/character" + direction + ".png"));
     }
+
+
 }

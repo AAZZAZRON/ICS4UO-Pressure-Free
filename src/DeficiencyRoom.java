@@ -26,8 +26,6 @@ import javafx.util.Duration;
 public class DeficiencyRoom extends Room {
 
     private FadeTransition fade = new FadeTransition();
-
-
     public static int counter = 1;
     Room[] defRooms = new DeficiencyRoom[4];
 

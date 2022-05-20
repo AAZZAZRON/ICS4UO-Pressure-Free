@@ -51,6 +51,8 @@ public class MainMenu {
             // loads deficiency room
             DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
             deficiencyRoom.deficiencyRoom();
+//            School school = new School(stage);
+//            school.build();
         });
 
         insBtn.setOnMouseClicked(e -> {
@@ -64,7 +66,7 @@ public class MainMenu {
             Platform.exit();
         });
 
-        Character character = new Character(stage);
+        Character character = new Character(stage, 100);
         character.build(root, scene);
     }
 }

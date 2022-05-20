@@ -7,7 +7,7 @@ public class DeficiencyRoom extends Room {
     private final Stage stage;
 
     public static int counter = 1;
-    Room defRooms [] = new DeficiencyRoom[5];
+    Room[] defRooms = new DeficiencyRoom[5];
 
     /**
      * Constructor for DeficiencyRoom.

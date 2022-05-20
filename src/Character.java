@@ -9,18 +9,20 @@ import javafx.stage.Stage;
 
 public class Character {
     private ImageView character;
+    private int size;
     private final Stage stage;
     private final int speed = 5;
     private boolean N, E, W, S;
 
-    public Character(Stage stage) {
+    public Character(Stage stage, int size) {
         this.stage = stage;
+        this.size = size;
     }
 
     public void build(Group root, Scene scene) {
         character = new ImageView("Assets/Character/characterDown.png");
         character.setPreserveRatio(true);
-        character.setFitWidth(100);
+        character.setFitHeight(size);
         root.getChildren().add(character);
 
         scene.setOnKeyPressed(event -> {

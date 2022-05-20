@@ -7,7 +7,7 @@
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1 (Aaron)
+ * Version 1 (Sion)
  * - Added incomplete instructions page
  */
 

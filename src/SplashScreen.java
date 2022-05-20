@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1
+ * Version 1 (Sion)
  * - does nothing
  */
 

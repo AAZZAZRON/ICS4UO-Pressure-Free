@@ -42,12 +42,7 @@ public class DeficiencyRoom extends Room {
      * @param path
      */
     public ImageView displayLesson (String path) {
-<<<<<<< Updated upstream
-
-        ImageView image = new ImageView("Assets/Room/Lessons/"+path+".png");
-=======
         ImageView image = new ImageView("Assets/Rooms/Lessons/" +path+".png");
->>>>>>> Stashed changes
         image.setPreserveRatio(true);
         image.setFitWidth(786);
 

@@ -16,7 +16,7 @@
  * @author Aaron Zhu
  * @date May 16th, 2022
  * @version 1.0
- * @time 1 minute
+ * @time 5 minutes
  * Move createButton() to HoverButton.java
  * static method that would return button
  */

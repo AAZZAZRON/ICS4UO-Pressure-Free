@@ -27,7 +27,7 @@
  * @author Aaron Zhu
  * @date May 20th, 2022
  * @version 1.0
- * @time 3 minutes
+ * @time 5 minutes
  * fillCollisions()
  * - fill the collision grid with a number
  * create buildDeficienciesRoom(), which just sets a background image

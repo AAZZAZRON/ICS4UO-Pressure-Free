@@ -7,7 +7,7 @@
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1
+ * Version 1 (Aaron)
  * - set up the GUI stage for the game
  */
 

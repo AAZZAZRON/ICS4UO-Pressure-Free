@@ -7,10 +7,12 @@
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1
- * - set up 800 by 600 collision grid for the character
+ * Version 1 (Aaron)
+ * - set up 800 by 600 collision grid for the character + helper methods
+ *
+ * Version 1 (Sion)
  * - set up collision detection for the rooms and border (not for doors)
- * - builds character using collision grid
+ * - build character using collision grid
  */
 
 import javafx.scene.Group;

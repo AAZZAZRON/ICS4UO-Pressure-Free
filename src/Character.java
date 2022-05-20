@@ -7,7 +7,7 @@
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1
+ * Version 1 (Aaron)
  * - create the character on the screen (size, position, image)
  * - set up character movement
  * - set up character collision detection

@@ -61,10 +61,6 @@ public class MainMenu {
 //            School school = new School(stage);
 //            school.build();
 
-//            DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
-//            deficiencyRoom.deficiencyRoom();
-            School school = new School(stage);
-            school.buildDeficienciesRoom();
 
         });
 

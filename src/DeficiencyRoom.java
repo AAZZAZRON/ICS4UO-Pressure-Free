@@ -7,8 +7,10 @@
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1
+ * Version 1 (Sion)
  * - Deficiency Room that displays the different lessons
+ * - create classroom background and deficiency room lessons (pixel art)
+ * - fade in lessons
  * - mostly framework at this point
  */
 

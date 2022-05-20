@@ -78,11 +78,8 @@ public class MainMenu {
             // loads deficiency room
             DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
 
-<<<<<<< Updated upstream
-=======
-            School school = new School(stage);
-            school.buildDeficienciesRoom();
->>>>>>> Stashed changes
+//            School school = new School(stage);
+//            school.buildDeficienciesRoom();
 
         });
 

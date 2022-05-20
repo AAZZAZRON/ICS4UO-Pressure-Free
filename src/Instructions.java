@@ -11,6 +11,23 @@
  * - Added incomplete instructions page
  */
 
+/**
+ * @author Sion Gang
+ * @date May 16th, 2022
+ * @version 1.0
+ * @time 5 minutes
+ * create instructions(), which would display an image
+ * - show that event listeners in main menu worked
+ */
+
+/**
+ * @author Sion Gang
+ * @date May 17th, 2022
+ * @version 1.0
+ * @time 30 minutes
+ * Design and integrate X button to exit instructions page
+ */
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

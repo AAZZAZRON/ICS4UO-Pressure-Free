@@ -15,6 +15,24 @@
  * - build character using collision grid
  */
 
+/**
+ * @author Aaron Zhu
+ * @date May 17th, 2022
+ * @version 1.0
+ * @time 5 minutes
+ * Create School.java
+ */
+
+/**
+ * @author Aaron Zhu
+ * @date May 20th, 2022
+ * @version 1.0
+ * @time 3 minutes
+ * fillCollisions()
+ * - fill the collision grid with a number
+ * create buildDeficienciesRoom(), which just sets a background image
+ */
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;

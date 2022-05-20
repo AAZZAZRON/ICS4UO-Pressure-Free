@@ -12,6 +12,25 @@
  * - added template to create background image
  */
 
+/**
+ * @author Aaron Zhu
+ * @date May 16th, 2022
+ * @version 1.0
+ * @time 1 minute
+ * Move createButton() to HoverButton.java
+ * static method that would return button
+ */
+
+/**
+ * @author Aaron Zhu
+ * @date May 17th, 2022
+ * @version 1.0
+ * @time 15 minutes
+ * Rename HoverButton.java to Tools.java
+ * createBackgroundImage()
+ * - creates a background image for the scene (with the correct size)
+ */
+
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

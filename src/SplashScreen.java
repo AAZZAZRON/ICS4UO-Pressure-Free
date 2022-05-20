@@ -13,6 +13,14 @@ import javafx.stage.Stage;
  * - does nothing
  */
 
+/**
+ * @author Sion Gang
+ * @date May 16th, 2022
+ * @version 1.0
+ * @time 10 minutes
+ * Create template for splash screen
+ */
+
 public class SplashScreen {
     /** The primary stage for this application. Passed by reference. */
     private final Stage stage;

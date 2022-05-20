@@ -13,6 +13,42 @@
  * - set up character collision detection
  */
 
+/**
+ * @author Aaron Zhu
+ * @date May 17th, 2022
+ * @version 1.0
+ * @time 1 hour
+ * Create Character.java
+ * - add a filler image as character
+ *
+ * build()
+ * - add user input and move the character accordingly
+ * - change direction character is facing based on user input
+ *
+ * changeCharacterDirection()
+ * - helper method
+ * - change the direction the character is facing given the direction
+ */
+
+/**
+ * @author Sion Gang
+ * @date May 17th, 2022
+ * @version 1.0
+ * @time 10 minutes
+ * Change user input keys from arrow keys to WASD
+ */
+
+/**
+ * @author Aaron Zhu
+ * @date May 20th, 2022
+ * @version 1.0
+ * @time 2 hours
+ * Set up collision detection using grid[][]
+ *
+ * maxInstruction()
+ * - returns the largest number in the character's "feet" area [i.e. where the character is standing]
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -212,7 +248,7 @@ public class Character {
      * changes the image of the character based on the direction that the character is facing
      * @param direction the direction that the character is facing
      */
-    public void changeCharacterDirection(String direction) {
+    private void changeCharacterDirection(String direction) {
         character.setImage(new Image("Assets/Character/character" + direction + ".png"));
     }
 }

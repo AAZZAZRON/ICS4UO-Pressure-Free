@@ -16,6 +16,25 @@
  * - set up play button onClick event
  */
 
+/**
+ * @author Aaron Zhu
+ * @date May 16th, 2022
+ * @version 1.0
+ * @time 30 minutes
+ * createButton() was a template to make a button
+ * mainMenu() added 3 buttons to the main menu
+ * - on click, buttons would print what they do
+ */
+
+/**
+ * @author Aaron Zhu
+ * @date May 17th, 2022
+ * @version 1.0
+ * @time 15 minutes
+ * fix buttons so that they do not have a border around them
+ * - use ImageView instead of Button
+ */
+
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;

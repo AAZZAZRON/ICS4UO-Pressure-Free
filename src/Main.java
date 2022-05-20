@@ -12,6 +12,22 @@
  * - Maintains starting game logic (splash, main menu)
  */
 
+/**
+ * @author Aaron Zhu
+ * @date May 16th, 2022
+ * @version 1.0
+ * @time 10 minutes
+ * create the setup of the game GUI, including stage title, size, company logo
+ */
+
+/**
+ * @author Aaron Zhu
+ * @date May 16th, 2022
+ * @version 1.0
+ * @time 10 minutes
+ * Call screenSetup()
+ */
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 

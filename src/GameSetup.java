@@ -11,6 +11,14 @@
  * - set up the GUI stage for the game
  */
 
+/**
+ * @author Aaron Zhu
+ * @date May 17th, 2022
+ * @version 1.0
+ * @time 5 minutes
+ * Move GUI "stage" setup to screenSetup() in GameSetup.java
+ */
+
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 

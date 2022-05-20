@@ -48,6 +48,9 @@ public class MainMenu {
         // add onclick
         playBtn.setOnMouseClicked(e -> {
             System.out.println("Play");
+            // loads deficiency room
+            DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
+            deficiencyRoom.deficiencyRoom();
         });
 
         insBtn.setOnMouseClicked(e -> {

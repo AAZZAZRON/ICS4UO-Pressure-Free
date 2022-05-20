@@ -3,9 +3,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 public class DeficiencyRoom extends Room {
-    /** The primary stage for this application. Passed by reference. */
-    private final Stage stage;
-
     public static int counter = 1;
     Room[] defRooms = new DeficiencyRoom[5];
 
@@ -14,7 +11,7 @@ public class DeficiencyRoom extends Room {
      * @param stage The primary stage for this application. Passed by reference.
      */
     public DeficiencyRoom(Stage stage) {
-        this.stage = stage;
+        super(stage);
     }
 
     /**

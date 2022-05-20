@@ -41,18 +41,18 @@ public class MainMenu {
         stage.setScene(scene);
 
         // add buttons
-        ImageView playBtn = Tools.createButton(root, "MainMenu/Buttons/", "play", 150, 150, 484);
-        ImageView insBtn = Tools.createButton(root, "MainMenu/Buttons/", "ins", 150, 275, 484);
-        ImageView exitBtn = Tools.createButton(root, "MainMenu/Buttons/", "exit", 150, 400, 484);
+        ImageView playBtn = Tools.createButton(root, "MainMenu/Buttons/", "play", 150, 150, 500);
+        ImageView insBtn = Tools.createButton(root, "MainMenu/Buttons/", "ins", 150, 275, 500);
+        ImageView exitBtn = Tools.createButton(root, "MainMenu/Buttons/", "exit", 150, 400, 500);
 
         // add onclick
         playBtn.setOnMouseClicked(e -> {
             System.out.println("Play");
             // loads deficiency room
-            DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
-            deficiencyRoom.deficiencyRoom();
-//            School school = new School(stage);
-//            school.build();
+//            DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
+//            deficiencyRoom.deficiencyRoom();
+            School school = new School(stage);
+            school.buildDeficienciesRoom();
         });
 
         insBtn.setOnMouseClicked(e -> {
@@ -66,7 +66,7 @@ public class MainMenu {
             Platform.exit();
         });
 
-        Character character = new Character(stage, 100);
-        character.build(root, scene);
+//        Character character = new Character(stage, 100, new int[600][800]);
+//        character.build(root, scene);
     }
 }

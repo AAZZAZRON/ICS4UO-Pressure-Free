@@ -15,9 +15,9 @@
 
 /**
  * @author Aaron Zhu
- * @date May 17th, 2022
+ * May 17th, 2022
  * @version 1.0
- * @time 1 hour
+ * Time: 1 hour
  * Create Character.java
  * - add a filler image as character
  *
@@ -32,17 +32,17 @@
 
 /**
  * @author Sion Gang
- * @date May 17th, 2022
+ * May 17th, 2022
  * @version 1.0
- * @time 10 minutes
+ * Time: 10 minutes
  * Change user input keys from arrow keys to WASD
  */
 
 /**
  * @author Aaron Zhu
- * @date May 20th, 2022
+ * May 20th, 2022
  * @version 1.0
- * @time 2 hours
+ * Time: 2 hours
  * Set up collision detection using grid[][]
  *
  * maxInstruction()

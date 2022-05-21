@@ -61,7 +61,7 @@ public class DeficiencyRoom extends Room {
 
     /**
      * @return ImageView of the selected image
-     * @param path
+     * @param path The path to the image
      */
     public ImageView displayLesson (String path) {
         ImageView image = new ImageView("Assets/Rooms/Lessons/" +path+".png");

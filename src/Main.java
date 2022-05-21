@@ -34,7 +34,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     /**
      * The main method, entry point for all JavaFX applications.
-     * @param args
+     * @param args The command line arguments
      */
     public static void main(String[] args) {
         launch(args);

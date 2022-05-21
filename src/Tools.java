@@ -40,6 +40,7 @@ public class Tools {
      * Template to create a hoverable button.
      * @param root The root of the scene.
      * @param path The path to the normal and hover button images.
+     * @param fileName The name of the image files.
      * @param x The x coordinate to place the button
      * @param y The y coordinate to place the button
      * @param sz The width of the button (ratio is preserved)

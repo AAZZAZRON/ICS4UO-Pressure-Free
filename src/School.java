@@ -33,6 +33,16 @@
  * create buildDeficienciesRoom(), which just sets a background image
  */
 
+/**
+ * @author Sion Gang
+ * @date May 20th, 2022
+ * @version 1.0
+ * @time 40 minutes
+ * buildDeficienciesRoom()
+ * - add coordinates of the door
+ * - test deficiency implementation into school
+ */
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;

@@ -14,7 +14,19 @@
  * - mostly framework at this point
  */
 
-
+/**
+ * @author Sion Gang
+ * @date May 20th, 2022
+ * @version 1.0
+ * @time 1.5 hour
+ *
+ * displayLesson()
+ * - add images to deficiency room
+ * - add fade transition to the blackboard
+ *
+ * deficiencyRoom()
+ * - implement fade transition
+ */
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -25,9 +37,14 @@ import javafx.util.Duration;
 
 public class DeficiencyRoom extends Room {
 
+    /** Stores transition */
     private FadeTransition fade = new FadeTransition();
-    public static int counter = 1;
-    Room[] defRooms = new DeficiencyRoom[4];
+
+    /** Stores counter for the lesson */
+    private static int counter = 1;
+
+    /** Stores array of deficiency rooms */
+    private Room[] defRooms = new DeficiencyRoom[4];
 
     /**
      * Constructor for DeficiencyRoom.
@@ -87,12 +104,5 @@ public class DeficiencyRoom extends Room {
             MainMenu mainMenu = new MainMenu(stage);
             mainMenu.mainMenu();
         });
-    }
-
-
-
-    public void exit() {
-
-
     }
 }

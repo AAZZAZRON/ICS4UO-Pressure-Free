@@ -57,6 +57,14 @@
  * moved the door collision into promptGrid
  */
 
+/**
+ * @author Aaron Zhu
+ * May 21st, 2022
+ * @version 2.0
+ * Time: 30 minutes
+ * build all the doors for deficiencies room in buildDeficienciesRoom()
+ */
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -127,23 +135,14 @@ public class School {
         fillCollisionGrid(792, 0, 800, 600);
 
         // door entrances
-        fillPromptGrid(200, 218, 263, 230, 1);
-
-        //fillCollisions(60, 28, 67, 28, 3);
-       // fillCollisions(89, 28, 96, 28, 3);
-
-
-      //  fillCollisions(38, 40, 38, 48, 3);
-       // fillCollisions(62, 28, 38, 70, 3);
-
-
-    //    fillCollisions(53, 36, 60, 36, 3);
-     //   fillCollisions(79, 36, 86, 36, 3);
-
-       // fillCollisions(26, 28, 33, 28, 3);
-      //  fillCollisions(26, 28, 33, 28, 3);
-
-
+        fillPromptGrid(200, 216, 264, 232, 1); // room 1
+        fillPromptGrid(472, 216, 536, 232, 2); // washroom 1
+        fillPromptGrid(704, 216, 768, 232, 3); // washroom 2
+        fillPromptGrid(296, 320, 312, 384, 4); // room 2
+        fillPromptGrid(296, 496, 312, 560, 5); // library
+        fillPromptGrid(488, 504, 552, 520, 6); // room 3
+        fillPromptGrid(688, 504, 752, 520, 7); // room 4
+        fillPromptGrid(0, 88, 24, 184, 8); // exit
 
         // create character
         Character character = new Character(stage, root, scene, 100, 300, 300, collisionGrid, promptGrid);

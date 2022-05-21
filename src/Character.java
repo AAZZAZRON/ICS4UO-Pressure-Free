@@ -297,7 +297,7 @@ public class Character {
         }
 
         // temporary - will move
-        if (maxDetect == 1 && !textBoxExists) {
+        if (maxDetect != 0 && !textBoxExists) {
             textBoxExists = true;
             ImageView textBox = new ImageView("Assets/textBox.png");
             textBox.setPreserveRatio(true);
@@ -310,7 +310,7 @@ public class Character {
 //            DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
 //            System.out.println(3);
 //            deficiencyRoom.deficiencyRoom();
-        } else if (maxDetect != 1 && textBoxExists) {
+        } else if (maxDetect == 0 && textBoxExists) {
             root.getChildren().remove(root.getChildren().size() - 1);
             textBoxExists = false;
         }

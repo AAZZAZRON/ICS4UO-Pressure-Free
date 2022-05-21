@@ -16,9 +16,9 @@
 
 /**
  * @author Sion Gang
- * @date May 20th, 2022
+ * May 20th, 2022
  * @version 1.0
- * @time 1.5 hour
+ * Time: 1.5 hour
  *
  * displayLesson()
  * - add images to deficiency room
@@ -52,6 +52,11 @@ public class DeficiencyRoom extends Room {
      */
     public DeficiencyRoom(Stage stage) {
         super(stage);
+    }
+
+    @Override
+    void exit() {
+
     }
 
     /**

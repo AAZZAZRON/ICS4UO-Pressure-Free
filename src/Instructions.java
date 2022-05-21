@@ -13,18 +13,18 @@
 
 /**
  * @author Sion Gang
- * @date May 16th, 2022
+ * May 16th, 2022
  * @version 1.0
- * @time 5 minutes
+ * Time: 5 minutes
  * create instructions(), which would display an image
  * - show that event listeners in main menu worked
  */
 
 /**
  * @author Sion Gang
- * @date May 17th, 2022
+ * May 17th, 2022
  * @version 1.0
- * @time 30 minutes
+ * Time: 30 minutes
  * Design and integrate X button to exit instructions page
  */
 

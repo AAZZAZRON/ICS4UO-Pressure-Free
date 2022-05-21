@@ -17,17 +17,17 @@
 
 /**
  * @author Aaron Zhu
- * @date May 17th, 2022
+ * May 17th, 2022
  * @version 1.0
- * @time 5 minutes
+ * Time: 5 minutes
  * Create School.java
  */
 
 /**
  * @author Aaron Zhu
- * @date May 20th, 2022
+ * May 20th, 2022
  * @version 1.0
- * @time 5 minutes
+ * Time: 5 minutes
  * fillCollisions()
  * - fill the collision grid with a number
  * create buildDeficienciesRoom(), which just sets a background image
@@ -35,9 +35,9 @@
 
 /**
  * @author Sion Gang
- * @date May 20th, 2022
+ * May 20th, 2022
  * @version 1.0
- * @time 40 minutes
+ * Time: 40 minutes
  * buildDeficienciesRoom()
  * - add coordinates of the door
  * - test deficiency implementation into school

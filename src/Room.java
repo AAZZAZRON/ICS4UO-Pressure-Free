@@ -13,6 +13,13 @@
  * - 
  */
 
+/**
+ * @author Sion Gang
+ * May 17th, 2022
+ * @version 1.0
+ * Time: 10 minutes
+ * abstract class for rooms
+ */
 
 import javafx.stage.Stage;
 

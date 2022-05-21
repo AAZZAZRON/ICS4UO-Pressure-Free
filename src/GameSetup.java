@@ -13,9 +13,9 @@
 
 /**
  * @author Aaron Zhu
- * @date May 17th, 2022
+ * May 17th, 2022
  * @version 1.0
- * @time 10 minutes
+ * Time: 10 minutes
  * Move GUI "stage" setup to screenSetup() in GameSetup.java
  */
 

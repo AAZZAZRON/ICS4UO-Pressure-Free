@@ -14,18 +14,18 @@
 
 /**
  * @author Aaron Zhu
- * @date May 16th, 2022
+ * May 16th, 2022
  * @version 1.0
- * @time 5 minutes
+ * Time: 5 minutes
  * Move createButton() to HoverButton.java
  * static method that would return button
  */
 
 /**
  * @author Aaron Zhu
- * @date May 17th, 2022
+ * May 17th, 2022
  * @version 1.0
- * @time 15 minutes
+ * Time: 15 minutes
  * Rename HoverButton.java to Tools.java
  * createBackgroundImage()
  * - creates a background image for the scene (with the correct size)

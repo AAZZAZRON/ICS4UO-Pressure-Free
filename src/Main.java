@@ -14,17 +14,17 @@
 
 /**
  * @author Aaron Zhu
- * @date May 16th, 2022
+ * May 16th, 2022
  * @version 1.0
- * @time 10 minutes
+ * Time: 10 minutes
  * create the setup of the game GUI, including stage title, size, company logo
  */
 
 /**
  * @author Aaron Zhu
- * @date May 16th, 2022
+ * May 16th, 2022
  * @version 1.0
- * @time 10 minutes
+ * Time: 10 minutes
  * Call screenSetup()
  */
 

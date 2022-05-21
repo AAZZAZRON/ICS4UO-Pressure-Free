@@ -65,6 +65,15 @@
  * build all the doors for deficiencies room in buildDeficienciesRoom()
  */
 
+/**
+ * @author Aaron Zhu
+ * May 21st, 2022
+ * @version 2.0
+ * Time: 5 minutes
+ * buildDeficienciesRoom()
+ * - create textBoxes
+ */
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -80,6 +89,9 @@ public class School {
     /** prompt grid for the GUI layout */
     private int[][] promptGrid;
 
+    /** what the textbox will display given the prompt */
+    private TextBox[] textBoxes;
+
     /**
      * Constructor for School.
      * @param stage The primary stage for this application. Passed by reference.
@@ -88,6 +100,7 @@ public class School {
         this.stage = stage;
         collisionGrid = new boolean[800][600];
         promptGrid = new int[800][600];
+        textBoxes = new TextBox[10];
     }
 
     /**
@@ -144,8 +157,18 @@ public class School {
         fillPromptGrid(688, 504, 752, 520, 7); // room 4
         fillPromptGrid(0, 88, 24, 184, 8); // exit
 
+        // textbox messages
+        textBoxes[1] = new TextBox(stage, root, scene, "Press e to enter room 101");
+        textBoxes[2] = new TextBox(stage, root, scene, "Press e to enter the washroom");
+        textBoxes[3] = new TextBox(stage, root, scene, "Press e to enter the washroom");
+        textBoxes[4] = new TextBox(stage, root, scene, "Press e to enter room 102");
+        textBoxes[5] = new TextBox(stage, root, scene, "Press e to enter the library");
+        textBoxes[6] = new TextBox(stage, root, scene, "Press e to enter room 103");
+        textBoxes[7] = new TextBox(stage, root, scene, "Press e to enter room 104");
+        textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school");
+
         // create character
-        Character character = new Character(stage, root, scene, 100, 300, 300, collisionGrid, promptGrid);
+        Character character = new Character(stage, root, scene, 100, 300, 300, collisionGrid, promptGrid, textBoxes);
         character.build();
     }
 }

@@ -64,6 +64,16 @@
  * - contains temporary textbox code (will move to a separate class later)
  */
 
+/**
+ * @author Aaron Zhu
+ * May 21st, 2022
+ * @version 2.0
+ * Time: 30 minutes
+ * - changed user input method to get all displayable keys
+ * - moved TextBox to TextBox.java
+ * - toggle textBoxes on and off in setUpCharacterMovement()
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -77,7 +87,7 @@ public class Character {
     private ImageView character;
 
     /** Stores the character's width (sizeX) and height (sizeY) */
-    private int sizeX, sizeY;
+    private final int sizeX, sizeY;
 
     /** stores the stage that the character is on. Passed by reference */
     private final Stage stage;
@@ -91,11 +101,8 @@ public class Character {
     /** stores how fast the character moves (in pixels) */
     private final int speed = 5;
 
-    /**
-     * stores if the user is clicking the keys corresponding to
-     * north, south, east, and west
-     */
-    private boolean N, E, W, S;
+    /** stores which keys are being pressed */
+    private boolean[] keyPressed;
 
     /**
      * stores the current x and y coordinates of the character
@@ -106,10 +113,10 @@ public class Character {
     /**
      * stores the offset of the character's foot (Y) from the top of the character
      */
-    private int footOffsetY;
+    private final int footOffsetY;
 
-    /** stores if there is already a textBox on the screen */
-    private boolean textBoxExists;
+    /** stores the textbox that is being displayed, if any */
+    private int textBoxOpen = 0;
 
     /**
      * stores a grid of the map that the character is on (for collision detection)
@@ -130,6 +137,11 @@ public class Character {
     private int[][] promptGrid;
 
     /**
+     * stores the textbox messages that will be displayed to the user
+     */
+    private TextBox[] textBoxes;
+
+    /**
      * constructor for Character
      * @param stage the stage that the character is on. Passed by reference
      * @param root the root of the scene that the character is on. Passed by reference
@@ -137,19 +149,21 @@ public class Character {
      * @param sizeY the size of the character (height)
      * @param collisionGrid collision grid for character
      * @param promptGrid prompt grid for character
+     * @param textBoxes textbox messages for character
      */
-    public Character(Stage stage, Group root, Scene scene, int sizeY, boolean[][] collisionGrid, int[][] promptGrid) {
+    public Character(Stage stage, Group root, Scene scene, int sizeY, boolean[][] collisionGrid, int[][] promptGrid, TextBox[] textBoxes) {
         this.stage = stage;
         this.sizeY = sizeY;
         this.root = root;
         this.scene = scene;
-        textBoxExists = false;
         posX = 0;
         posY = 0;
         footOffsetY = (int) (sizeY * 10 / 11.0);
         sizeX = (int) (sizeY * 3 / 7.0);
         this.collisionGrid = collisionGrid;
         this.promptGrid = promptGrid;
+        this.textBoxes = textBoxes;
+        keyPressed = new boolean[300];
     }
 
     /**
@@ -163,9 +177,10 @@ public class Character {
      *             sets character position to (posX, posY)
      * @param collisionGrid collision grid for character
      * @param promptGrid prompt grid for character
+     * @param textBoxes textbox messages for character
      */
-    public Character(Stage stage, Group root, Scene scene, int sizeY, int posX, int posY, boolean[][] collisionGrid, int[][] promptGrid) {
-        this(stage, root, scene, sizeY, collisionGrid, promptGrid);
+    public Character(Stage stage, Group root, Scene scene, int sizeY, int posX, int posY, boolean[][] collisionGrid, int[][] promptGrid, TextBox[] textBoxes) {
+        this(stage, root, scene, sizeY, collisionGrid, promptGrid, textBoxes);
         this.posX = posX;
         this.posY = posY;
     }
@@ -200,36 +215,18 @@ public class Character {
      */
     private void setupCharacterMovement() {
         scene.setOnKeyPressed(event -> { // when a key is pressed
-            switch (event.getCode()) {
-                case W:
-                    N = true;
-                    break;
-                case S:
-                    S = true;
-                    break;
-                case A:
-                    W = true;
-                    break;
-                case D:
-                    E = true;
-                    break;
+            if (event.getText().length() == 1) { // if the key is displayable
+                keyPressed[event.getText().charAt(0)] = true; // set the key to true
+            }
+            switch (event.getCode()) { // for non-displayable keys
             }
         });
 
         scene.setOnKeyReleased(event -> { // when a key is released
-            switch (event.getCode()) {
-                case W:
-                    N = false;
-                    break;
-                case S:
-                    S = false;
-                    break;
-                case A:
-                    W = false;
-                    break;
-                case D:
-                    E = false;
-                    break;
+            if (event.getText().length() == 1) { // if the key is displayable
+                keyPressed[event.getText().charAt(0)] = false; // set the key to false
+            }
+            switch (event.getCode()) { // for non-displayable keys
             }
         });
 
@@ -237,23 +234,23 @@ public class Character {
             @Override
             public void handle(long now) {
                 // handle movement
-                if (N) {
+                if (keyPressed['w']) {
                     posY -= speed;
                     // error trap so character doesn't walk on a nonzero grid space
                     if (isColliding()) posY += speed;
                     else changeCharacterDirection("Up");
                 }
-                if (S) {
+                if (keyPressed['s']) {
                     posY += speed;
                     if (isColliding()) posY -= speed;
                     else changeCharacterDirection("Down");
                 }
-                if (W) {
+                if (keyPressed['a']) {
                     posX -= speed;
                     if (isColliding()) posX += speed;
                     else changeCharacterDirection("Left");
                 }
-                if (E) {
+                if (keyPressed['d']) {
                     posX += speed;
                     if (isColliding()) posX -= speed;
                     else changeCharacterDirection("Right");
@@ -264,6 +261,20 @@ public class Character {
                 // handle prompt
                 int prompt = getPrompt();
 
+                // toggle textbox visibility
+                if (prompt != 0) {
+                    textBoxOpen = prompt; // toggle on if not already
+                    textBoxes[textBoxOpen].toggleOn();
+
+                    if (keyPressed['e']) { // if the user presses e
+                        DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage); // display deficiencies room
+                        System.out.println(3);
+                        deficiencyRoom.deficiencyRoom();
+                    }
+                } else if (textBoxOpen != 0) {
+                    textBoxes[textBoxOpen].toggleOff();
+                    textBoxOpen = 0;
+                }
             }
         };
 
@@ -295,28 +306,7 @@ public class Character {
                 maxDetect = Math.max(maxDetect, promptGrid[i][j]);
             }
         }
-
-        // temporary - will move
-        if (maxDetect != 0 && !textBoxExists) {
-            textBoxExists = true;
-            ImageView textBox = new ImageView("Assets/textBox.png");
-            textBox.setPreserveRatio(true);
-            textBox.setFitWidth(750);
-            textBox.setX(25);
-            textBox.setY(30);
-            textBox.setOpacity(0.6);
-            root.getChildren().add(textBox);
-
-//            DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
-//            System.out.println(3);
-//            deficiencyRoom.deficiencyRoom();
-        } else if (maxDetect == 0 && textBoxExists) {
-            root.getChildren().remove(root.getChildren().size() - 1);
-            textBoxExists = false;
-        }
-
         return maxDetect;
-
     }
 
     /**

@@ -168,7 +168,7 @@ public class School {
         textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school");
 
         // create character
-        Character character = new Character(stage, root, scene, 100, 60, 60, collisionGrid, promptGrid, textBoxes);
+        Character character = new Character(stage, root, scene, 100, collisionGrid, promptGrid, textBoxes);
         character.build();
     }
 }

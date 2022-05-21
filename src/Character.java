@@ -108,7 +108,7 @@ public class Character {
      * stores the current x and y coordinates of the character
      * coordinate is stored as the top left corner of the character
      */
-    private int posX, posY;
+    private static int posX = 60, posY = 60;
 
     /**
      * stores the offset of the character's foot (Y) from the top of the character
@@ -156,8 +156,6 @@ public class Character {
         this.sizeY = sizeY;
         this.root = root;
         this.scene = scene;
-        posX = 0;
-        posY = 0;
         footOffsetY = (int) (sizeY * 10 / 11.0);
         sizeX = (int) (sizeY * 3 / 7.0);
         this.collisionGrid = collisionGrid;
@@ -267,6 +265,7 @@ public class Character {
                     textBoxes[textBoxOpen].toggleOn();
 
                     if (keyPressed['e']) { // if the user presses e
+                        keyPressed['e'] = false; // set the key to false
                         DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage); // display deficiencies room
                         System.out.println(3);
                         deficiencyRoom.deficiencyRoom();

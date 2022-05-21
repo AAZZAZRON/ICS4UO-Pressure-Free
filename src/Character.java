@@ -49,6 +49,21 @@
  * - returns the largest number in the character's "feet" area [i.e. where the character is standing]
  */
 
+/**
+ * @author Aaron Zhu
+ * May 21st, 2022
+ * @version 2.0
+ * Time: 1 hour
+ * Separated collision grid from prompt grid
+ * collisionGrid --> boolean array
+ * promptGrid --> int array
+ *
+ * added global stage, root, scene variables
+ * isColliding() returns if the character collides with something on the GUI
+ * getPrompt() returns the prompt (if any) of the character's current position
+ * - contains temporary textbox code (will move to a separate class later)
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -66,6 +81,12 @@ public class Character {
 
     /** stores the stage that the character is on. Passed by reference */
     private final Stage stage;
+
+    /** stores the root of the scene that the character is on. Passed by reference */
+    private final Group root;
+
+    /** stores the scene that the character is on. Passed by reference */
+    private final Scene scene;
 
     /** stores how fast the character moves (in pixels) */
     private final int speed = 5;
@@ -87,45 +108,64 @@ public class Character {
      */
     private int footOffsetY;
 
+    /** stores if there is already a textBox on the screen */
+    private boolean textBoxExists;
+
     /**
      * stores a grid of the map that the character is on (for collision detection)
-     * 0 - empty space
-     * 1 - wall
-     * 2 - border
+     * false - no collision
+     * true - collision
      *
      * collision detection takes the highest value that the character is "standing" on
-     * does a task based on the value
      */
-    private int[][] grid;
+    private boolean[][] collisionGrid;
+
+    /**
+     * stores a grid of the map that the character is on (for user prompting)
+     * 0 - no prompt
+     * positive value - prompt
+     *
+     * prompt creates a text box that will tell the user what to do
+     */
+    private int[][] promptGrid;
 
     /**
      * constructor for Character
      * @param stage the stage that the character is on. Passed by reference
+     * @param root the root of the scene that the character is on. Passed by reference
+     * @param scene the scene that the character is on. Passed by reference
      * @param sizeY the size of the character (height)
-     * @param grid the grid that the character is on (map of screen). Passed by reference
-     * sets character position to (0, 0)
+     * @param collisionGrid collision grid for character
+     * @param promptGrid prompt grid for character
      */
-    public Character(Stage stage, int sizeY, int[][] grid) {
+    public Character(Stage stage, Group root, Scene scene, int sizeY, boolean[][] collisionGrid, int[][] promptGrid) {
         this.stage = stage;
         this.sizeY = sizeY;
+        this.root = root;
+        this.scene = scene;
+        textBoxExists = false;
         posX = 0;
         posY = 0;
         footOffsetY = (int) (sizeY * 10 / 11.0);
         sizeX = (int) (sizeY * 3 / 7.0);
-        this.grid = grid;
+        this.collisionGrid = collisionGrid;
+        this.promptGrid = promptGrid;
     }
 
     /**
      * constructor for Character
      * @param stage the stage that the character is on. Passed by reference
+     * @param root the root of the scene that the character is on. Passed by reference
+     * @param scene the scene that the character is on. Passed by reference
      * @param sizeY the size of the character (height)
-     * @param grid the grid that the character is on (map of screen). Passed by reference
      * @param posX the x coordinate of the character
      * @param posY the y coordinate of the character
-     * sets character position to (posX, posY)
+     *             sets character position to (posX, posY)
+     * @param collisionGrid collision grid for character
+     * @param promptGrid prompt grid for character
      */
-    public Character(Stage stage, int sizeY, int posX, int posY, int[][] grid) {
-        this(stage, sizeY, grid);
+    public Character(Stage stage, Group root, Scene scene, int sizeY, int posX, int posY, boolean[][] collisionGrid, int[][] promptGrid) {
+        this(stage, root, scene, sizeY, collisionGrid, promptGrid);
         this.posX = posX;
         this.posY = posY;
     }
@@ -135,10 +175,8 @@ public class Character {
      * - sets the image of the character
      * - sets the position of the character
      * - sets the size of the character
-     * @param root the root of the scene
-     * @param scene the scene that the character is on
      */
-    public void build(Group root, Scene scene) {
+    public void build() {
         character = new ImageView("Assets/Character/characterDown.png");
         character.setPreserveRatio(true);
         character.setFitHeight(sizeY);
@@ -146,9 +184,9 @@ public class Character {
         character.setY(posY);
         root.getChildren().add(character);
 
-        setupCharacterMovement(scene);
+        setupCharacterMovement();
 
-
+        // tester code to get coordinates
         scene.onMouseClickedProperty().set(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
              public void handle(javafx.scene.input.MouseEvent event) {
@@ -159,9 +197,8 @@ public class Character {
 
     /**
      * sets up the character's movement
-     * @param scene the scene that the character is on
      */
-    private void setupCharacterMovement(Scene scene) {
+    private void setupCharacterMovement() {
         scene.setOnKeyPressed(event -> { // when a key is pressed
             switch (event.getCode()) {
                 case W:
@@ -199,30 +236,33 @@ public class Character {
         AnimationTimer timer = new AnimationTimer() { // timer for character movement
             @Override
             public void handle(long now) {
+                // handle movement
                 if (N) {
                     posY -= speed;
                     // error trap so character doesn't walk on a nonzero grid space
-                    if (maxInstruction() != 0) posY += speed;
+                    if (isColliding()) posY += speed;
                     else changeCharacterDirection("Up");
                 }
                 if (S) {
                     posY += speed;
-                    if (maxInstruction() != 0) posY -= speed;
+                    if (isColliding()) posY -= speed;
                     else changeCharacterDirection("Down");
                 }
                 if (W) {
                     posX -= speed;
-                    if (maxInstruction() != 0) posX += speed;
+                    if (isColliding()) posX += speed;
                     else changeCharacterDirection("Left");
                 }
                 if (E) {
                     posX += speed;
-                    if (maxInstruction() != 0) posX -= speed;
+                    if (isColliding()) posX -= speed;
                     else changeCharacterDirection("Right");
                 }
-
                 character.setX(posX);
                 character.setY(posY);
+
+                // handle prompt
+                int prompt = getPrompt();
 
             }
         };
@@ -232,23 +272,47 @@ public class Character {
     }
 
     /**
-     * loops through the grid and returns the highest value that the character is "standing" on
-     * @return the highest value that the character is "standing" on
+     * returns if the character collides with the GUI
+     * @return true if the character collides with the GUI
      */
-    public int maxInstruction() {
+    public boolean isColliding() {
+        for (int i = posX; i < posX + sizeX; i++) {
+            for (int j = posY + footOffsetY; j < posY + sizeY; j++) {
+                if (collisionGrid[i][j]) return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * loops through the prompt grid and returns the highest value that the character is "standing" on
+     * @return the prompt (if any) to display
+     */
+    public int getPrompt() {
         int maxDetect = 0;
         for (int i = posX; i < posX + sizeX; i++) {
             for (int j = posY + footOffsetY; j < posY + sizeY; j++) {
-                maxDetect = Math.max(maxDetect, grid[i][j]);
+                maxDetect = Math.max(maxDetect, promptGrid[i][j]);
             }
         }
-      //  System.out.println(posX + ", " + posY + ": " + maxDetect);
-      // System.out.println((posX) + " " + (posY + footOffsetY) + ", " + (posX + sizeX) + " " + (posY + sizeY) + " " + maxDetect);
 
-        if (maxDetect == 3) {
-            DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
-            System.out.println(3);
-            deficiencyRoom.deficiencyRoom();
+        // temporary - will move
+        if (maxDetect == 1 && !textBoxExists) {
+            textBoxExists = true;
+            ImageView textBox = new ImageView("Assets/textBox.png");
+            textBox.setPreserveRatio(true);
+            textBox.setFitWidth(750);
+            textBox.setX(25);
+            textBox.setY(30);
+            textBox.setOpacity(0.6);
+            root.getChildren().add(textBox);
+
+//            DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
+//            System.out.println(3);
+//            deficiencyRoom.deficiencyRoom();
+        } else if (maxDetect != 1 && textBoxExists) {
+            root.getChildren().remove(root.getChildren().size() - 1);
+            textBoxExists = false;
         }
 
         return maxDetect;
@@ -262,6 +326,4 @@ public class Character {
     private void changeCharacterDirection(String direction) {
         character.setImage(new Image("Assets/Character/character" + direction + ".png"));
     }
-
-
 }

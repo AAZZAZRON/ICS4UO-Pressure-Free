@@ -43,6 +43,20 @@
  * - test deficiency implementation into school
  */
 
+/**
+ * @author Aaron Zhu
+ * May 21st, 2022
+ * @version 2.0
+ * Time: 1 hour
+ * Separated collisionGrid and promptGrid
+ * fillCollisionGrid()
+ * - fill the collision grid with true
+ * fillPromptGrid()
+ * - fill the prompt grid with integers
+ *
+ * moved the door collision into promptGrid
+ */
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -53,7 +67,10 @@ public class School {
     private final Stage stage;
 
     /** collision grid for the character */
-    private int[][] grid;
+    private boolean[][] collisionGrid;
+
+    /** prompt grid for the GUI layout */
+    private int[][] promptGrid;
 
     /**
      * Constructor for School.
@@ -61,16 +78,28 @@ public class School {
      */
     public School(Stage stage) {
         this.stage = stage;
-        grid = new int[800][600];
+        collisionGrid = new boolean[800][600];
+        promptGrid = new int[800][600];
     }
 
     /**
-     * fills the collision grid with ${val} between ${x1} and ${x2} and ${y1} and ${y2}
+     * fills the collision grid with true between ${x1} and ${x2} and ${y1} and ${y2}
      */
-    private void fillCollisions(int x1, int y1, int x2, int y2, int val) {
+    private void fillCollisionGrid(int x1, int y1, int x2, int y2) {
         for (int i = x1; i < x2; i++) {
             for (int j = y1; j < y2; j++) {
-                grid[i][j] = val;
+                collisionGrid[i][j] = true;
+            }
+        }
+    }
+
+    /**
+     * fills the prompt grid with ${val} between ${x1} and ${x2} and ${y1} and ${y2}
+     */
+    private void fillPromptGrid(int x1, int y1, int x2, int y2, int val) {
+        for (int i = x1; i < x2; i++) {
+            for (int j = y1; j < y2; j++) {
+                promptGrid[i][j] = val;
             }
         }
     }
@@ -87,18 +116,19 @@ public class School {
         stage.setScene(scene);
 
         // room collisions
-        fillCollisions(160, 0, 800, 216, 1);
-        fillCollisions(0, 296, 296, 600, 1);
-        fillCollisions(384, 296, 800, 504, 1);
+        fillCollisionGrid(160, 0, 800, 216);
+        fillCollisionGrid(0, 296, 296, 600);
+        fillCollisionGrid(384, 296, 800, 504);
 
         // borders collisions
-        fillCollisions(0, 0, 800, 100, 2);
-        fillCollisions(0, 0, 8, 600, 2);
-        fillCollisions(0, 592, 800, 600, 2);
-        fillCollisions(792, 0, 800, 600, 2);
+        fillCollisionGrid(0, 0, 800, 100);
+        fillCollisionGrid(0, 0, 8, 600);
+        fillCollisionGrid(0, 592, 800, 600);
+        fillCollisionGrid(792, 0, 800, 600);
 
         // door entrances
-        fillCollisions(200, 217, 263, 218, 3);
+        fillPromptGrid(200, 218, 263, 230, 1);
+
         //fillCollisions(60, 28, 67, 28, 3);
        // fillCollisions(89, 28, 96, 28, 3);
 
@@ -116,7 +146,7 @@ public class School {
 
 
         // create character
-        Character character = new Character(stage, 100, 300, 300, grid);
-        character.build(root, scene);
+        Character character = new Character(stage, root, scene, 100, 300, 300, collisionGrid, promptGrid);
+        character.build();
     }
 }

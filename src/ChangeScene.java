@@ -11,6 +11,14 @@
  * - centralized scene changer
  */
 
+/**
+ * @author Aaron Zhu
+ * May 24th, 2022
+ * @version 2.0
+ * Time: 30 minutes
+ * Moved scene changing to ChangeScene.java
+ */
+
 import javafx.stage.Stage;
 
 public class ChangeScene {

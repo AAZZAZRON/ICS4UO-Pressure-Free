@@ -74,6 +74,15 @@
  * - toggle textBoxes on and off in setUpCharacterMovement()
  */
 
+/**
+ * @author Aaron Zhu
+ * May 24th, 2022
+ * @version 2.0
+ * Time: 20 minutes
+ * - fixed lag problem with changing scenes
+ * - moved scene changing to ChangeScene.java
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;

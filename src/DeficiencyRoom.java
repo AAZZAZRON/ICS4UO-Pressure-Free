@@ -28,6 +28,16 @@
  * - implement fade transition
  */
 
+/**
+ * @author Sion Gang
+ * May 24th, 2022
+ * @version 2.0
+ * Time: 30 minutes
+ *
+ * deficiencyRoom()
+ * - implement multiple slide lesson
+ */
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -41,7 +51,7 @@ public class DeficiencyRoom extends Room {
     private FadeTransition fade = new FadeTransition();
 
     /** Stores counter for the lesson */
-    private static int counter = 1;
+    private static int counter = 4;
 
     /** Stores array of deficiency rooms */
     private Room[] defRooms = new DeficiencyRoom[4];
@@ -92,21 +102,23 @@ public class DeficiencyRoom extends Room {
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
-        // add button
-        ImageView backButton = Tools.createButton(root, "MainMenu/Buttons/", "x", 650, 170, 40);
-        fade.setDuration(Duration.millis(500));
-        fade.setFromValue(0);
-        fade.setToValue(1);
-        fade.setNode(backButton);
-        fade.play();
+        if (counter == 4) { //
+            ImageView nextButton = Tools.createButton(root, "MainMenu/Buttons/", "x", 650, 300, 40);
+            nextButton.setOnMouseClicked(e -> {
+                counter += 1;
+                ChangeScene.changeToDeficiencyRoom(stage);
+            });
+        } else {
+            // add button
+            ImageView backButton = Tools.createButton(root, "MainMenu/Buttons/", "x", 650, 170, 40);
+            backButton.setOnMouseClicked(e -> {
+                // increments counter for the different rooms
+                if (counter < defRooms.length + 1) counter++;
+                else counter = 1;
+                System.out.println(counter);
+                ChangeScene.changeToSchool(stage, 0);
+            });
+        }
 
-        backButton.setOnMouseClicked(e -> {
-            // increments counter for the different rooms
-            if (counter < defRooms.length) counter++;
-            else counter = 1;
-            System.out.println(counter);
-
-            ChangeScene.changeToSchool(stage, 0);
-        });
     }
 }

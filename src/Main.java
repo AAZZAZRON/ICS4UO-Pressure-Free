@@ -49,10 +49,10 @@ public class Main extends Application {
     public void start(Stage stage) {
         GameSetup game = new GameSetup(stage);
         SplashScreen splash = new SplashScreen(stage);
-        MainMenu mainMenu = new MainMenu(stage);
         stage.show();
         game.screenSetup();
         splash.splashScreen();
-        mainMenu.mainMenu();
+
+        ChangeScene.changeToMainMenu(stage);
     }
 }

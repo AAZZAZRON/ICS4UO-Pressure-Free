@@ -78,15 +78,12 @@ public class MainMenu {
             // loads deficiency room
            // DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
 
-            School school = new School(stage);
-            school.buildDeficienciesRoom();
-
+            ChangeScene.changeToSchool(stage, 0);
         });
 
         insBtn.setOnMouseClicked(e -> {
             System.out.println("Instructions");
-            Instructions instructions = new Instructions(stage);
-            instructions.instructions();
+            ChangeScene.changeToInstructions(stage);
         });
 
         exitBtn.setOnMouseClicked(e -> {

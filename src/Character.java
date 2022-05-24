@@ -266,9 +266,8 @@ public class Character {
 
                     if (keyPressed['e']) { // if the user presses e
                         keyPressed['e'] = false; // set the key to false
-                        DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage); // display deficiencies room
-                        System.out.println(3);
-                        deficiencyRoom.deficiencyRoom();
+                        stop(); // stop the timer
+                        ChangeScene.changeToDeficiencyRoom(stage); // change to deficiency room
                     }
                 } else if (textBoxOpen != 0) {
                     textBoxes[textBoxOpen].toggleOff();

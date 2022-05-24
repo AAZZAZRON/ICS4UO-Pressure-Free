@@ -106,8 +106,7 @@ public class DeficiencyRoom extends Room {
             else counter = 1;
             System.out.println(counter);
 
-            School school = new School(stage);
-            school.buildDeficienciesRoom();
+            ChangeScene.changeToSchool(stage, 0);
         });
     }
 }

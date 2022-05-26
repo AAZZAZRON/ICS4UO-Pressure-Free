@@ -129,7 +129,7 @@ public class School {
      * builds the school for the deficiencies room
      */
     public void buildDeficienciesRoom() {
-        ImageView image = Tools.createBackgroundImage("Rooms/schoolBg.png");
+        ImageView image = Tools.createBackgroundImage("School/Rooms/schoolBg.png");
 
         // set scene
         Group root = new Group(image);
@@ -158,14 +158,24 @@ public class School {
         fillPromptGrid(0, 88, 24, 184, 8); // exit
 
         // textbox messages
-        textBoxes[1] = new TextBox(stage, root, scene, "Press e to enter room 101");
-        textBoxes[2] = new TextBox(stage, root, scene, "Press e to enter the washroom");
-        textBoxes[3] = new TextBox(stage, root, scene, "Press e to enter the washroom");
-        textBoxes[4] = new TextBox(stage, root, scene, "Press e to enter room 102");
-        textBoxes[5] = new TextBox(stage, root, scene, "Press e to enter the library");
-        textBoxes[6] = new TextBox(stage, root, scene, "Press e to enter room 103");
-        textBoxes[7] = new TextBox(stage, root, scene, "Press e to enter room 104");
-        textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school");
+//        textBoxes[1] = new TextBox(stage, root, scene, "Press e to enter room 101");
+//        textBoxes[2] = new TextBox(stage, root, scene, "Press e to enter the washroom");
+//        textBoxes[3] = new TextBox(stage, root, scene, "Press e to enter the washroom");
+//        textBoxes[4] = new TextBox(stage, root, scene, "Press e to enter room 102");
+//        textBoxes[5] = new TextBox(stage, root, scene, "Press e to enter the library");
+//        textBoxes[6] = new TextBox(stage, root, scene, "Press e to enter room 103");
+//        textBoxes[7] = new TextBox(stage, root, scene, "Press e to enter room 104");
+//        textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school");
+
+        // textbox messages
+        textBoxes[1] = new TextBox(stage, root, scene, "Press e to enter the room and learn about peer pressure", "Green");
+        textBoxes[2] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
+        textBoxes[3] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
+        textBoxes[4] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
+        textBoxes[5] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
+        textBoxes[6] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
+        textBoxes[7] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
+        textBoxes[8] = new TextBox(stage, root, scene, "You cannot leave the school yet! Please finish watching all the lessons", "Red");
 
         // create character
         Character character = new Character(stage, root, scene, 100, collisionGrid, promptGrid, textBoxes);

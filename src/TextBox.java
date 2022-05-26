@@ -22,6 +22,7 @@
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -55,22 +56,23 @@ public class TextBox {
      * @param root the group for the textbox
      * @param scene the scene for the textbox
      * @param text the message displayed in the textbox
+     * @param colour the colour of the textbox
      */
-    public TextBox(Stage stage, Group root, Scene scene, String text) {
+    public TextBox(Stage stage, Group root, Scene scene, String text, String colour) {
         this.stage = stage;
         this.root = root;
         this.scene = scene;
         isVisible = false;
 
-        initialize();
+        initialize(colour);
         setMessage(text);
     }
 
     /**
      * Initialize the textbox
      */
-    private void initialize() {
-        textBox = new ImageView("Assets/textBox.png");
+    private void initialize(String colour) {
+        textBox = new ImageView("Assets/School/Textboxes/Textbox" + colour + ".png");
         textBox.setPreserveRatio(true);
         textBox.setFitWidth(750);
         textBox.setX(25);
@@ -125,5 +127,9 @@ public class TextBox {
         message.setWrappingWidth(700);
         message.setFill(Color.BLACK);
         message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+    }
+
+    public void setTextboxColour(String colour) {
+        textBox.setImage(new Image("Assets/School/Textboxes/Textbox" + colour + ".png"));
     }
 }

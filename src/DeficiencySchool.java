@@ -1,6 +1,6 @@
 /**
  * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
- * School.java
+ * DeficiencySchool.java
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
@@ -74,66 +74,42 @@
  * - create textBoxes
  */
 
+/**
+ * @author Aaron Zhu
+ * May 26th, 2022
+ * @version 2.0
+ * Time: 1 hour
+ * buildDeficienciesRoom() --> build()
+ * - move collision/prompt helper methods to parent class CollisionRoom.java
+ * - move AnimationTimer from Character.java to DeficiencySchool.java
+ * - implement the animation timer
+ */
+
+import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class School {
-    /** The primary stage for this application. Passed by reference. */
-    private final Stage stage;
-
-    /** collision grid for the character */
-    private boolean[][] collisionGrid;
-
-    /** prompt grid for the GUI layout */
-    private int[][] promptGrid;
-
-    /** what the textbox will display given the prompt */
-    private TextBox[] textBoxes;
-
+public class DeficiencySchool extends CollisionRoom {
     /**
-     * Constructor for School.
-     * @param stage The primary stage for this application. Passed by reference.
+     * constructor for Deficiencies School
+     * @param stage the primary stage for this application
      */
-    public School(Stage stage) {
-        this.stage = stage;
-        collisionGrid = new boolean[800][600];
-        promptGrid = new int[800][600];
+    public DeficiencySchool(Stage stage) {
+        super(stage);
         textBoxes = new TextBox[10];
-    }
-
-    /**
-     * fills the collision grid with true between ${x1} and ${x2} and ${y1} and ${y2}
-     */
-    private void fillCollisionGrid(int x1, int y1, int x2, int y2) {
-        for (int i = x1; i < x2; i++) {
-            for (int j = y1; j < y2; j++) {
-                collisionGrid[i][j] = true;
-            }
-        }
-    }
-
-    /**
-     * fills the prompt grid with ${val} between ${x1} and ${x2} and ${y1} and ${y2}
-     */
-    private void fillPromptGrid(int x1, int y1, int x2, int y2, int val) {
-        for (int i = x1; i < x2; i++) {
-            for (int j = y1; j < y2; j++) {
-                promptGrid[i][j] = val;
-            }
-        }
     }
 
     /**
      * builds the school for the deficiencies room
      */
-    public void buildDeficienciesRoom() {
+    public void buildRoom() {
         ImageView image = Tools.createBackgroundImage("School/Rooms/schoolBg.png");
 
         // set scene
         Group root = new Group(image);
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         stage.setScene(scene);
 
         // room collisions
@@ -177,8 +153,58 @@ public class School {
         textBoxes[7] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
         textBoxes[8] = new TextBox(stage, root, scene, "You cannot leave the school yet! Please finish watching all the lessons", "Red");
 
+
         // create character
-        Character character = new Character(stage, root, scene, 100, collisionGrid, promptGrid, textBoxes);
+        character = new Character(root, scene, 100);
         character.build();
+        setUpUserInput();
+        setUpAnimationTimer();
+    }
+
+    /**
+     * sets up the animation timer for the character in the room
+     */
+    @Override
+    public void setUpAnimationTimer() {
+        collisionTimer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                // handle movement
+                if (keyPressed['w'] && !isColliding()) {
+                    character.moveUp(true);
+                    if (isColliding()) character.moveDown(false); // if character is colliding, revert movement
+                }
+                if (keyPressed['s'] && !isColliding()) {
+                    character.moveDown(true);
+                    if (isColliding()) character.moveUp(false);
+                }
+                if (keyPressed['a'] && !isColliding()) {
+                    character.moveLeft(true);
+                    if (isColliding()) character.moveRight(false);
+                }
+                if (keyPressed['d'] && !isColliding()) {
+                    character.moveRight(true);
+                    if (isColliding()) character.moveLeft(false);
+                }
+
+                // handle prompt
+                int prompt = getPrompt();
+                // toggle textbox visibility
+                if (prompt != 0) {
+                    textBoxOpen = prompt; // toggle on if not already
+                    textBoxes[textBoxOpen].toggleOn();
+
+                    if (keyPressed['e']) { // if the user presses e
+                        keyPressed['e'] = false; // set the key to false
+                        stop(); // stop the timer
+                        ChangeScene.changeToDeficiencyRoom(stage); // change to deficiency room
+                    }
+                } else if (textBoxOpen != 0) {
+                    textBoxes[textBoxOpen].toggleOff();
+                    textBoxOpen = 0;
+                }
+            }
+        };
+        collisionTimer.start();
     }
 }

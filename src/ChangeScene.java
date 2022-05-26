@@ -37,8 +37,8 @@ public class ChangeScene {
      * @param stage The primary stage for this application. Passed by reference.
      */
     public static void changeToSchool(Stage stage, int level) {
-        School school = new School(stage);
-        if (level == 0) school.buildDeficienciesRoom(); // deficiency room
+        DeficiencySchool school = new DeficiencySchool(stage);
+        if (level == 0) school.buildRoom(); // deficiency room
     }
 
     /**

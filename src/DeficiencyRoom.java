@@ -51,7 +51,7 @@ public class DeficiencyRoom extends Room {
     private FadeTransition fade = new FadeTransition();
 
     /** Stores counter for the lesson */
-    private static int counter = 4;
+    private static int counter = 1;
 
     /** Stores array of deficiency rooms */
     private Room[] defRooms = new DeficiencyRoom[4];
@@ -92,7 +92,7 @@ public class DeficiencyRoom extends Room {
      * sets up deficiency room logic flow
      */
     public void deficiencyRoom () {
-        ImageView bg = Tools.createBackgroundImage("Rooms/ClassBg.png");
+        ImageView bg = Tools.createBackgroundImage("School/Rooms/ClassBg.png");
         // set scene
         Group root = new Group();
         // add background

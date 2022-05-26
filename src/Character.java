@@ -83,13 +83,22 @@
  * - moved scene changing to ChangeScene.java
  */
 
-import javafx.animation.AnimationTimer;
+/**
+ * @author Aaron Zhu
+ * May 26th, 2022
+ * @version 2.0
+ * Time: 1 hour
+ * Moved all collision and prompt detection to CollisionRoom.java
+ * added moveUp(), moveDown(), moveLeft(), moveRight() to move the character
+ * Character.java class should not need to be updated anymore
+ * all logic on how to move the character will be written in the room class that the character is in
+ */
+
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 public class Character {
     /** Stores the character image */
@@ -97,9 +106,6 @@ public class Character {
 
     /** Stores the character's width (sizeX) and height (sizeY) */
     private final int sizeX, sizeY;
-
-    /** stores the stage that the character is on. Passed by reference */
-    private final Stage stage;
 
     /** stores the root of the scene that the character is on. Passed by reference */
     private final Group root;
@@ -109,9 +115,6 @@ public class Character {
 
     /** stores how fast the character moves (in pixels) */
     private final int speed = 5;
-
-    /** stores which keys are being pressed */
-    private boolean[] keyPressed;
 
     /**
      * stores the current x and y coordinates of the character
@@ -124,72 +127,18 @@ public class Character {
      */
     private final int footOffsetY;
 
-    /** stores the textbox that is being displayed, if any */
-    private int textBoxOpen = 0;
-
-    /**
-     * stores a grid of the map that the character is on (for collision detection)
-     * false - no collision
-     * true - collision
-     *
-     * collision detection takes the highest value that the character is "standing" on
-     */
-    private boolean[][] collisionGrid;
-
-    /**
-     * stores a grid of the map that the character is on (for user prompting)
-     * 0 - no prompt
-     * positive value - prompt
-     *
-     * prompt creates a text box that will tell the user what to do
-     */
-    private int[][] promptGrid;
-
-    /**
-     * stores the textbox messages that will be displayed to the user
-     */
-    private TextBox[] textBoxes;
-
     /**
      * constructor for Character
-     * @param stage the stage that the character is on. Passed by reference
      * @param root the root of the scene that the character is on. Passed by reference
      * @param scene the scene that the character is on. Passed by reference
      * @param sizeY the size of the character (height)
-     * @param collisionGrid collision grid for character
-     * @param promptGrid prompt grid for character
-     * @param textBoxes textbox messages for character
      */
-    public Character(Stage stage, Group root, Scene scene, int sizeY, boolean[][] collisionGrid, int[][] promptGrid, TextBox[] textBoxes) {
-        this.stage = stage;
+    public Character(Group root, Scene scene, int sizeY) {
         this.sizeY = sizeY;
         this.root = root;
         this.scene = scene;
         footOffsetY = (int) (sizeY * 10 / 11.0);
         sizeX = (int) (sizeY * 3 / 7.0);
-        this.collisionGrid = collisionGrid;
-        this.promptGrid = promptGrid;
-        this.textBoxes = textBoxes;
-        keyPressed = new boolean[300];
-    }
-
-    /**
-     * constructor for Character
-     * @param stage the stage that the character is on. Passed by reference
-     * @param root the root of the scene that the character is on. Passed by reference
-     * @param scene the scene that the character is on. Passed by reference
-     * @param sizeY the size of the character (height)
-     * @param posX the x coordinate of the character
-     * @param posY the y coordinate of the character
-     *             sets character position to (posX, posY)
-     * @param collisionGrid collision grid for character
-     * @param promptGrid prompt grid for character
-     * @param textBoxes textbox messages for character
-     */
-    public Character(Stage stage, Group root, Scene scene, int sizeY, int posX, int posY, boolean[][] collisionGrid, int[][] promptGrid, TextBox[] textBoxes) {
-        this(stage, root, scene, sizeY, collisionGrid, promptGrid, textBoxes);
-        this.posX = posX;
-        this.posY = posY;
     }
 
     /**
@@ -206,7 +155,6 @@ public class Character {
         character.setY(posY);
         root.getChildren().add(character);
 
-        setupCharacterMovement();
 
         // tester code to get coordinates
         scene.onMouseClickedProperty().set(new EventHandler<javafx.scene.input.MouseEvent>() {
@@ -214,106 +162,64 @@ public class Character {
              public void handle(javafx.scene.input.MouseEvent event) {
                  System.out.println("Mouse clicked at: " + event.getX() + ", " + event.getY());
             }
-       });
-    }
-
-    /**
-     * sets up the character's movement
-     */
-    private void setupCharacterMovement() {
-        scene.setOnKeyPressed(event -> { // when a key is pressed
-            if (event.getText().length() == 1) { // if the key is displayable
-                keyPressed[event.getText().charAt(0)] = true; // set the key to true
-            }
-            switch (event.getCode()) { // for non-displayable keys
-            }
         });
-
-        scene.setOnKeyReleased(event -> { // when a key is released
-            if (event.getText().length() == 1) { // if the key is displayable
-                keyPressed[event.getText().charAt(0)] = false; // set the key to false
-            }
-            switch (event.getCode()) { // for non-displayable keys
-            }
-        });
-
-        AnimationTimer timer = new AnimationTimer() { // timer for character movement
-            @Override
-            public void handle(long now) {
-                // handle movement
-                if (keyPressed['w']) {
-                    posY -= speed;
-                    // error trap so character doesn't walk on a nonzero grid space
-                    if (isColliding()) posY += speed;
-                    else changeCharacterDirection("Up");
-                }
-                if (keyPressed['s']) {
-                    posY += speed;
-                    if (isColliding()) posY -= speed;
-                    else changeCharacterDirection("Down");
-                }
-                if (keyPressed['a']) {
-                    posX -= speed;
-                    if (isColliding()) posX += speed;
-                    else changeCharacterDirection("Left");
-                }
-                if (keyPressed['d']) {
-                    posX += speed;
-                    if (isColliding()) posX -= speed;
-                    else changeCharacterDirection("Right");
-                }
-                character.setX(posX);
-                character.setY(posY);
-
-                // handle prompt
-                int prompt = getPrompt();
-
-                // toggle textbox visibility
-                if (prompt != 0) {
-                    textBoxOpen = prompt; // toggle on if not already
-                    textBoxes[textBoxOpen].toggleOn();
-
-                    if (keyPressed['e']) { // if the user presses e
-                        keyPressed['e'] = false; // set the key to false
-                        stop(); // stop the timer
-                        ChangeScene.changeToDeficiencyRoom(stage); // change to deficiency room
-                    }
-                } else if (textBoxOpen != 0) {
-                    textBoxes[textBoxOpen].toggleOff();
-                    textBoxOpen = 0;
-                }
-            }
-        };
-
-        timer.start();
-
     }
 
     /**
-     * returns if the character collides with the GUI
-     * @return true if the character collides with the GUI
+     * gets the border coordinates of the character's current foot position
+     * @return an array of the character's current foot coordinates
      */
-    public boolean isColliding() {
-        for (int i = posX; i < posX + sizeX; i++) {
-            for (int j = posY + footOffsetY; j < posY + sizeY; j++) {
-                if (collisionGrid[i][j]) return true;
-            }
-        }
-        return false;
+    public int[] getFootCoordinates() {
+        int[] coordinates = new int[4];
+        coordinates[0] = posX;
+        coordinates[1] = posX + sizeX;
+        coordinates[2] = posY + footOffsetY;
+        coordinates[3] = posY + sizeY;
+        return coordinates;
     }
 
     /**
-     * loops through the prompt grid and returns the highest value that the character is "standing" on
-     * @return the prompt (if any) to display
+     * moves the character up
+     * @param changeDirection whether or not to change the direction the character is facing
      */
-    public int getPrompt() {
-        int maxDetect = 0;
-        for (int i = posX; i < posX + sizeX; i++) {
-            for (int j = posY + footOffsetY; j < posY + sizeY; j++) {
-                maxDetect = Math.max(maxDetect, promptGrid[i][j]);
-            }
-        }
-        return maxDetect;
+    public void moveUp(boolean changeDirection) {
+        posY -= speed;
+        if (changeDirection) changeCharacterDirection("Up");
+        character.setX(posX);
+        character.setY(posY);
+    }
+
+    /**
+     * moves the character down
+     * @param changeDirection whether or not to change the direction the character is facing
+     */
+    public void moveDown(boolean changeDirection) {
+        posY += speed;
+        if (changeDirection) changeCharacterDirection("Down");
+        character.setX(posX);
+        character.setY(posY);
+    }
+
+    /**
+     * moves the character left
+     * @param changeDirection whether or not to change the direction the character is facing
+     */
+    public void moveLeft(boolean changeDirection) {
+        posX -= speed;
+        if (changeDirection) changeCharacterDirection("Left");
+        character.setX(posX);
+        character.setY(posY);
+    }
+
+    /**
+     * moves the character right
+     * @param changeDirection whether or not to change the direction the character is facing
+     */
+    public void moveRight(boolean changeDirection) {
+        posX += speed;
+        if (changeDirection) changeCharacterDirection("Right");
+        character.setX(posX);
+        character.setY(posY);
     }
 
     /**

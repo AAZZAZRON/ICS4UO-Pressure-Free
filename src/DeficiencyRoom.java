@@ -74,7 +74,7 @@ public class DeficiencyRoom extends Room {
      * @param path The path to the image
      */
     public ImageView displayLesson (String path) {
-        ImageView image = new ImageView("Assets/School/Lessons/" +path+".png");
+        ImageView image = new ImageView("Assets/Scenes/Lessons/" + path + ".png");
         image.setPreserveRatio(true);
         image.setFitWidth(786);
 

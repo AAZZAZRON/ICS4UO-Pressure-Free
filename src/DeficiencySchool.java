@@ -92,6 +92,12 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class DeficiencySchool extends CollisionRoom {
+
+    /**
+     * stores the next room to enter to view a lesson
+     */
+    private static int roomNumber = 1;
+
     /**
      * constructor for Deficiencies School
      * @param stage the primary stage for this application
@@ -125,12 +131,12 @@ public class DeficiencySchool extends CollisionRoom {
 
         // door entrances
         fillPromptGrid(200, 216, 264, 232, 1); // room 1
-        fillPromptGrid(472, 216, 536, 232, 2); // washroom 1
-        fillPromptGrid(704, 216, 768, 232, 3); // washroom 2
-        fillPromptGrid(296, 320, 312, 384, 4); // room 2
-        fillPromptGrid(296, 496, 312, 560, 5); // library
-        fillPromptGrid(488, 504, 552, 520, 6); // room 3
-        fillPromptGrid(688, 504, 752, 520, 7); // room 4
+        fillPromptGrid(296, 320, 312, 384, 2); // room 2
+        fillPromptGrid(488, 504, 552, 520, 3); // room 3
+        fillPromptGrid(688, 504, 752, 520, 4); // room 4
+        fillPromptGrid(472, 216, 536, 232, 5); // washroom 1
+        fillPromptGrid(704, 216, 768, 232, 6); // washroom 2
+        fillPromptGrid(296, 496, 312, 560, 7); // library
         fillPromptGrid(0, 88, 24, 184, 8); // exit
 
         // textbox messages
@@ -144,13 +150,10 @@ public class DeficiencySchool extends CollisionRoom {
 //        textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school");
 
         // textbox messages
-        textBoxes[1] = new TextBox(stage, root, scene, "Press e to enter the room and learn about peer pressure", "Green");
-        textBoxes[2] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
-        textBoxes[3] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
-        textBoxes[4] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
-        textBoxes[5] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
-        textBoxes[6] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
-        textBoxes[7] = new TextBox(stage, root, scene, "Go to room 101 to learn about peer pressure", "Red");
+        for (int i = 1; i <= 7; i++) {
+            textBoxes[i] = new TextBox(stage, root, scene, "Go to room " + (roomNumber + 100) + " to learn about peer pressure", "Red");
+        }
+        textBoxes[roomNumber] = new TextBox(stage, root, scene, "Press e to enter the room and learn about peer pressure", "Green");
         textBoxes[8] = new TextBox(stage, root, scene, "You cannot leave the school yet! Please finish watching all the lessons", "Red");
 
 
@@ -194,9 +197,10 @@ public class DeficiencySchool extends CollisionRoom {
                     textBoxOpen = prompt; // toggle on if not already
                     textBoxes[textBoxOpen].toggleOn();
 
-                    if (keyPressed['e']) { // if the user presses e
+                    if (keyPressed['e'] && prompt == roomNumber) { // if the user presses e
                         keyPressed['e'] = false; // set the key to false
                         stop(); // stop the timer
+                        roomNumber += 1; // increment room number
                         ChangeScene.changeToDeficiencyRoom(stage); // change to deficiency room
                     }
                 } else if (textBoxOpen != 0) {

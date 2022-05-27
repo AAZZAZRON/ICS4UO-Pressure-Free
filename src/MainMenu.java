@@ -78,7 +78,8 @@ public class MainMenu {
             // loads deficiency room
            // DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
 
-            ChangeScene.changeToSchool(stage, 0);
+            ChangeScene.changeToPanicRoom(stage);
+            //ChangeScene.changeToSchool(stage, 0);
         });
 
         insBtn.setOnMouseClicked(e -> {

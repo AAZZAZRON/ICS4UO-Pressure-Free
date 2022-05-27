@@ -73,10 +73,10 @@ public class DeficiencyRoom extends Room {
      * @return ImageView of the selected image
      * @param path The path to the image
      */
-    public ImageView displayLesson (String path) {
+    public ImageView displayScene (String path) {
         ImageView image = new ImageView("Assets/Scenes/Lessons/" + path + ".png");
         image.setPreserveRatio(true);
-        image.setFitWidth(786);
+        image.setFitWidth(800);
 
         // Fade animation
         fade.setDuration(Duration.millis(500));
@@ -98,7 +98,7 @@ public class DeficiencyRoom extends Room {
         // add background
         root.getChildren().add(bg);
         // add Lesson
-        root.getChildren().add(displayLesson("Lesson " + counter));
+        root.getChildren().add(displayScene("Lesson " + counter));
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
@@ -119,6 +119,5 @@ public class DeficiencyRoom extends Room {
                 ChangeScene.changeToSchool(stage, 0);
             });
         }
-
     }
 }

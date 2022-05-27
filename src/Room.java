@@ -21,6 +21,7 @@
  * abstract class for rooms
  */
 
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
@@ -34,7 +35,6 @@ public abstract class Room {
     public Room(Stage stage) {
         this.stage = stage;
     }
-
 
     abstract void exit();
 }

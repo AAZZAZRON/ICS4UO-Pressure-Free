@@ -19,6 +19,14 @@
  * Moved scene changing to ChangeScene.java
  */
 
+/**
+ * @author Sion Gang
+ * May 26th, 2022
+ * @version 2.0
+ * Time: 5 minutes
+ * Added changeToPanicRoom() method
+ */
+
 import javafx.stage.Stage;
 
 public class ChangeScene {
@@ -31,6 +39,18 @@ public class ChangeScene {
         System.out.println(3);
         deficiencyRoom.deficiencyRoom();
     }
+
+    /**
+     * Change to panic room
+     * @param stage The primary stage for this application. Passed by reference.
+     */
+
+    public static void changeToPanicRoom (Stage stage) {
+        PanicRoom panicRoom = new PanicRoom(stage); // display deficiencies room
+        System.out.println(5);
+        panicRoom.panicRoom();
+    }
+
 
     /**
      * Change to school

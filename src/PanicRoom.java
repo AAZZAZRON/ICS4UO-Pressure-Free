@@ -162,7 +162,7 @@ public class PanicRoom extends Room{
                     counter++;
                     System.out.println(score);
                     panicRoom();
-                } else ChangeScene.changeToSchool(stage, 0);
+                } else ChangeScene.changeToDeficiencySchool(stage);
             } else {
                 System.out.println("Please solve the question");
             }

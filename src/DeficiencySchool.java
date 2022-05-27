@@ -85,6 +85,14 @@
  * - implement the animation timer
  */
 
+/**
+ * @author Aaron Zhu
+ * May 27th, 2022
+ * @version 2.0
+ * Time: 15 minutes
+ * allow user to exit school after watching lessons
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -97,6 +105,11 @@ public class DeficiencySchool extends CollisionRoom {
      * stores the next room to enter to view a lesson
      */
     private static int roomNumber = 1;
+
+    /**
+     * stores the total number of lessons in the deficiency room
+     */
+    private final int NUMBER_OF_LESSONS = 4;
 
     /**
      * constructor for Deficiencies School
@@ -150,12 +163,18 @@ public class DeficiencySchool extends CollisionRoom {
 //        textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school");
 
         // textbox messages
-        for (int i = 1; i <= 7; i++) {
-            textBoxes[i] = new TextBox(stage, root, scene, "Go to room " + (roomNumber + 100) + " to learn about peer pressure", "Red");
+        if (roomNumber <= NUMBER_OF_LESSONS) { // if net room to enter is a lesson
+            for (int i = 1; i <= 7; i++) {
+                textBoxes[i] = new TextBox(stage, root, scene, "Go to room " + (roomNumber + 100) + " to learn about peer pressure", "Red");
+            }
+            textBoxes[8] = new TextBox(stage, root, scene, "You cannot leave the school yet! Please finish watching all the lessons", "Red");
+            textBoxes[roomNumber] = new TextBox(stage, root, scene, "Press e to enter the room and learn about peer pressure", "Green");
+        } else { // if user should exit school
+            for (int i = 1; i <= 7; i++) {
+                textBoxes[i] = new TextBox(stage, root, scene, "You have viewed all the lessons! Exit the school to enter the panic room and test your knowledge on peer pressure.", "Red");
+            }
+            textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school", "Green");
         }
-        textBoxes[roomNumber] = new TextBox(stage, root, scene, "Press e to enter the room and learn about peer pressure", "Green");
-        textBoxes[8] = new TextBox(stage, root, scene, "You cannot leave the school yet! Please finish watching all the lessons", "Red");
-
 
         // create character
         character = new Character(root, scene, 100);
@@ -197,11 +216,15 @@ public class DeficiencySchool extends CollisionRoom {
                     textBoxOpen = prompt; // toggle on if not already
                     textBoxes[textBoxOpen].toggleOn();
 
-                    if (keyPressed['e'] && prompt == roomNumber) { // if the user presses e
+                    if (keyPressed['e'] && prompt == roomNumber) { // if the user presses e to enter correct deficiency room
                         keyPressed['e'] = false; // set the key to false
                         stop(); // stop the timer
                         roomNumber += 1; // increment room number
                         ChangeScene.changeToDeficiencyRoom(stage); // change to deficiency room
+                    } else if (keyPressed['e'] && prompt == NUMBER_OF_LESSONS + 1) { // if the user presses e to exit school
+                        keyPressed['e'] = false; // set the key to false
+                        stop(); // stop the timer
+                        ChangeScene.changeToPanicRoom(stage); // change to panic room
                     }
                 } else if (textBoxOpen != 0) {
                     textBoxes[textBoxOpen].toggleOff();

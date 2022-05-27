@@ -60,7 +60,9 @@ public class MainMenu {
      * sets up main menu logic flow
      */
     public void mainMenu() {
-        ImageView image = Tools.createBackgroundImage("MainMenu/MainMenu.png");
+        ImageView image = Tools.createBackgroundImage("MainMenu/MainMenuBackground.png");
+        image.setOpacity(0.5);
+
 
         // set scene
         Group root = new Group(image);
@@ -75,11 +77,9 @@ public class MainMenu {
         // add onclick
         playBtn.setOnMouseClicked(e -> {
             System.out.println("Play");
-            // loads deficiency room
-           // DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage);
 
-            ChangeScene.changeToPanicRoom(stage);
-            //ChangeScene.changeToSchool(stage, 0);
+            ChangeScene.changeToDeficiencySchool(stage);
+            // ChangeScene.changeToPanicRoom(stage);
         });
 
         insBtn.setOnMouseClicked(e -> {

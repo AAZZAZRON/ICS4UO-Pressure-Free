@@ -35,8 +35,11 @@
  * @author Aaron Zhu
  * May 28th, 2022
  * @version 3.0
- * Time: 10 minutes
+ * Time: 1 hour
  * createButton() and createBackgroundImage() now require the Assets/ in the path
+ * displayIntermissionText()
+ * - displays text on the screen
+ * - returns the imageview of the button that the user can click on to continue
  */
 
 import javafx.animation.PauseTransition;

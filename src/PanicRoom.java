@@ -142,29 +142,34 @@ public class PanicRoom extends Room {
         ImageView backButton = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 650, 170, 40);
 
         // button conditions
-        if (attempt == false) {
-            System.out.println("Button");
-            q1.setOnMouseClicked(e -> {
+
+        System.out.println("Button");
+        q1.setOnMouseClicked(e -> {
+            if (attempt == false) {
                 guess[0] = 1;
                 attempt = true;
                 System.out.println(guess[0] + " " + answers[counter]);
-            });
-            q2.setOnMouseClicked(e -> {
+            }
+        });
+        q2.setOnMouseClicked(e -> {
+            if (attempt == false) {
                 guess[0] = 2;
                 attempt = true;
                 System.out.println(guess[0] + " " + answers[counter]);
-            });
-            q3.setOnMouseClicked(e -> {
+            }
+        });
+        q3.setOnMouseClicked(e -> {
+            if (attempt == false) {
                 guess[0] = 3;
                 attempt = true;
                 System.out.println(guess[0] + " " + answers[counter]);
-            });
+            }
+        });
 
-        }
+
 
         // if next button is clicked
         backButton.setOnMouseClicked(e -> {
-
             if (attempt) {
                 System.out.println("Guess"+guess[0]+"Answer "+answers[counter]);
 

@@ -13,6 +13,14 @@
  * Version 1 (Sion)
  * - set up collision detection for the rooms and border (not for doors)
  * - build character using collision grid
+ *
+ * Version 2 (Aaron)
+ * - added textboxes when character interacts with door
+ * - user can only enter one room (based on which lesson is playing)
+ * - extended and implemented CollisionRoom abstract methods
+ *
+ * Version 2 (Sion)
+ * - built the pixel collision grids for each door and prompt
  */
 
 /**
@@ -53,25 +61,18 @@
  * - fill the collision grid with true
  * fillPromptGrid()
  * - fill the prompt grid with integers
+ * buildDeficienciesRoom()
+ * - create textBoxes
  *
  * moved the door collision into promptGrid
  */
 
 /**
- * @author Aaron Zhu
+ * @author Sion Gang
  * May 21st, 2022
  * @version 2.0
  * Time: 30 minutes
  * build all the doors for deficiencies room in buildDeficienciesRoom()
- */
-
-/**
- * @author Aaron Zhu
- * May 21st, 2022
- * @version 2.0
- * Time: 5 minutes
- * buildDeficienciesRoom()
- * - create textBoxes
  */
 
 /**
@@ -224,6 +225,7 @@ public class DeficiencySchool extends CollisionRoom {
                     } else if (keyPressed['e'] && prompt == NUMBER_OF_LESSONS + 1) { // if the user presses e to exit school
                         keyPressed['e'] = false; // set the key to false
                         stop(); // stop the timer
+                        roomNumber = 1; // reset room number
                         ChangeScene.changeToPanicRoom(stage); // change to panic room
                     }
                 } else if (textBoxOpen != 0) {

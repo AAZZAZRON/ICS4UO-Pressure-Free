@@ -11,6 +11,10 @@
  * - create the character on the screen (size, position, image)
  * - set up character movement
  * - set up character collision detection
+ *
+ * Version 2 (Aaron)
+ * - moved character collision detection and prompt to CollisionRoom.java
+ * - character only handles movement (up, down, left, right) and changing directions
  */
 
 /**

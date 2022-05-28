@@ -6,6 +6,10 @@
  *
  * @version 1.0
  * @author Aaron Zhu, Sion Gang
+ *
+ * Version 2 (Aaron)
+ * - set up abstract class for rooms where collision detection is required
+ * - moved collision detection and prompt detection from Character.java to CollisionRoom.java
  */
 
 /**
@@ -61,6 +65,10 @@ public abstract class CollisionRoom {
     /** stores the reference of the character in the scene */
     public Character character;
 
+    /**
+     * Constructor for CollisionRoom.
+     * @param stage the primary stage for this application. Passed by reference.
+     */
     public CollisionRoom(Stage stage) {
         this.stage = stage;
         collisionGrid = new boolean[800][600];

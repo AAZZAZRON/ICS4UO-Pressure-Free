@@ -176,18 +176,20 @@ public class DeficiencySchool extends CollisionRoom {
 
         // textbox messages
         if (roomNumber <= NUM_OF_ROOMS) { // if net room to enter is a lesson
-            for (int i = 1; i <= 7; i++) {
+            for (int i = 1; i <= 8; i++) {
                 textBoxes[i] = new TextBox(stage, root, scene, "Go to room " + (roomNumber + 100) + " to learn about peer pressure", "Red");
             }
-            textBoxes[8] = new TextBox(stage, root, scene, "You cannot leave the school yet! Please finish watching all the lessons", "Red");
             textBoxes[roomNumber] = new TextBox(stage, root, scene, "Press e to enter the room and learn about peer pressure", "Green");
         } else { // if user should exit school
             for (int i = 1; i <= 7; i++) {
                 textBoxes[i] = new TextBox(stage, root, scene, "You have viewed all the lessons! Exit the school to enter the panic room and test your knowledge on peer pressure.", "Red");
             }
             textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school", "Green");
-
         }
+
+        // warning textbox
+        warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
+        warningShown = false;
 
         // create character
         character = new Character(root, scene, 100);
@@ -225,20 +227,25 @@ public class DeficiencySchool extends CollisionRoom {
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility
-                if (prompt != 0) {
+                if (!warningShown && prompt != 0) { // warning > prompts
                     textBoxOpen = prompt; // toggle on if not already
                     textBoxes[textBoxOpen].toggleOn();
 
-                    if (keyPressed['e'] && prompt == roomNumber) { // if the user presses e to enter correct deficiency room
-                        keyPressed['e'] = false; // set the key to false
-                        stop(); // stop the timer
-                        roomNumber += 1; // increment room number
-                        ChangeScene.changeToDeficiencyRoom(stage); // change to deficiency room
-                    } else if (keyPressed['e'] && prompt == NUMBER_OF_LESSONS + 1) { // if the user presses e to exit school
-                        keyPressed['e'] = false; // set the key to false
-                        stop(); // stop the timer
-                        roomNumber = 1; // reset room number
-                        ChangeScene.changeToPanicRoom(stage); // change to panic room
+                    if (keyPressed['e']) { // if the user presses e to enter room
+                        if (roomNumber == prompt) { // if room is next lesson
+                            keyPressed['e'] = false; // set the key to false
+                            stop(); // stop the timer
+                            roomNumber += 1; // increment room number
+                            ChangeScene.changeToDeficiencyRoom(stage); // change to deficiency room
+                        } else if (roomNumber == NUMBER_OF_LESSONS + 1) { // if user is attempting to exit school
+                            keyPressed['e'] = false; // set the key to false
+                            stop(); // stop the timer
+                            roomNumber = 1; // reset room number
+                            ChangeScene.changeToPanicRoom(stage); // change to panic room
+                        } else { // if the user presses e to enter incorrect deficiency room
+                            if (prompt == 8) setWarning("You cannot leave the school yet! Please finish watching all the lessons. Go to room " + (roomNumber + 100) + " to learn about peer pressure", 3);
+                            else setWarning("You cannot enter this room! Go to room " + (roomNumber + 100) + " to learn about peer pressure"); // set warning
+                        }
                     }
                 } else if (textBoxOpen != 0) {
                     textBoxes[textBoxOpen].toggleOff();

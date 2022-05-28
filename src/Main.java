@@ -28,6 +28,14 @@
  * Call screenSetup()
  */
 
+/**
+ * @author Aaron Zhu
+ * May 28th, 2022
+ * @version 3.0
+ * Time: 1 hour
+ * Splash screen does not loop (using PauseTransition)
+ */
+
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -52,13 +60,14 @@ public class Main extends Application {
         // set up screen
         Tools.screenSetup(stage);
         stage.show();
+        ChangeScene.changeToMainMenu(stage);
 
-        // show splash screen once
-        ChangeScene.changeToSplashScreen(stage);
-
-        PauseTransition delay = new PauseTransition(Duration.seconds(4)); // allow splash screen to play
-        delay.setOnFinished(e -> ChangeScene.changeToMainMenu(stage));
-        delay.play();
-        // show main menu (rest of logic in main menu)
+//        // show splash screen once
+//        ChangeScene.changeToSplashScreen(stage);
+//
+//        PauseTransition delay = new PauseTransition(Duration.seconds(4)); // allow splash screen to play
+//        delay.setOnFinished(e -> ChangeScene.changeToMainMenu(stage));
+//        delay.play();
+//        // show main menu (rest of logic in main menu)
     }
 }

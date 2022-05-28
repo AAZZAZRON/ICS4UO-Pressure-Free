@@ -27,6 +27,14 @@
  * Added changeToPanicRoom() method
  */
 
+/**
+ * @author Aaron Zhu
+ * May 28th, 2022
+ * @version 3.0
+ * Time: 5 minutes
+ * Added changeToSplashScreen() method
+ */
+
 import javafx.stage.Stage;
 
 public class ChangeScene {

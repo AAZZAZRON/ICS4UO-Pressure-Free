@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 1.0
+ * @version 2.0
  * @author Aaron Zhu, Sion Gang
  *
  * Version 1 (Sion)

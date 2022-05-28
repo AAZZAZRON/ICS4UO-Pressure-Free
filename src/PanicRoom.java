@@ -103,7 +103,7 @@ public class PanicRoom extends Room {
      * sets up panic room logic flow
      */
     public void panicRoom() {
-        ImageView bg =  Tools.createBackgroundImage("School/Rooms/ClassBg.png");
+        ImageView bg =  Tools.createBackgroundImage("Assets/School/Rooms/ClassBg.png");
         // set scene
         root = new Group();
         // add background
@@ -132,14 +132,14 @@ public class PanicRoom extends Room {
     public void userInput() {
         System.out.println("input");
         // buttons for multiple choice
-        ImageView q1 = Tools.createButton(root, "MainMenu/Buttons/", "x", 90, 236, 20);
-        ImageView q2 = Tools.createButton(root, "MainMenu/Buttons/", "x", 90, 299, 20);
-        ImageView q3 = Tools.createButton(root, "MainMenu/Buttons/", "x", 90, 362, 20);
+        ImageView q1 = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 90, 236, 20);
+        ImageView q2 = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 90, 299, 20);
+        ImageView q3 = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 90, 362, 20);
 
         final int[] guess = new int[1];
 
         // next button
-        ImageView backButton = Tools.createButton(root, "MainMenu/Buttons/", "x", 650, 170, 40);
+        ImageView backButton = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 650, 170, 40);
 
         // button conditions
         if (attempt == false) {
@@ -178,7 +178,7 @@ public class PanicRoom extends Room {
                     counter++;
                     System.out.println(score);
                     panicRoom();
-                } else ChangeScene.changeToDeficiencySchool(stage);
+                } else ChangeScene.changeToDeficiencyRoom(stage);
             } else {
                 System.out.println("Please solve the question");
             }

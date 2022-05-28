@@ -39,11 +39,11 @@ import javafx.stage.Stage;
 
 public class ChangeScene {
     /**
-     * Change to deficiency room
+     * Change to deficiency lesson
      * @param stage The primary stage for this application. Passed by reference.
      */
-    public static void changeToDeficiencyRoom(Stage stage) {
-        DeficiencyRoom deficiencyRoom = new DeficiencyRoom(stage); // display deficiencies room
+    public static void changeToDeficiencyLesson(Stage stage) {
+        DeficiencyLesson deficiencyRoom = new DeficiencyLesson(stage); // display deficiencies room
         System.out.println(3);
         deficiencyRoom.deficiencyRoom();
     }
@@ -61,11 +61,11 @@ public class ChangeScene {
 
 
     /**
-     * Change to school
+     * Change to deficiency room
      * @param stage The primary stage for this application. Passed by reference.
      */
-    public static void changeToDeficiencySchool(Stage stage) {
-        DeficiencySchool school = new DeficiencySchool(stage);
+    public static void changeToDeficiencyRoom(Stage stage) {
+        DeficiencyRoom school = new DeficiencyRoom(stage);
         school.buildRoom(); // deficiency room
     }
 

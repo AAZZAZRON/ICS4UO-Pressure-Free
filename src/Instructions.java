@@ -50,13 +50,13 @@ public class Instructions {
      * sets up the GUI for the instructions` screen.
      */
     public void instructions() {
-        ImageView image = Tools.createBackgroundImage("MainMenu/Instructions.png");
+        ImageView image = Tools.createBackgroundImage("Assets/MainMenu/Instructions.png");
 
         Group root = new Group(image);
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
-        ImageView backButton = Tools.createButton(root, "MainMenu/Buttons/", "x", 650, 170, 40);
+        ImageView backButton = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 650, 170, 40);
 
         backButton.setOnMouseClicked(e -> {
             ChangeScene.changeToMainMenu(stage);

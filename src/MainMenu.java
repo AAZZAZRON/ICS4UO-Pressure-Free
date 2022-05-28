@@ -59,7 +59,7 @@ public class MainMenu {
      * sets up main menu logic flow
      */
     public void mainMenu() {
-        ImageView image = Tools.createBackgroundImage("MainMenu/MainMenuBackground.png");
+        ImageView image = Tools.createBackgroundImage("Assets/MainMenu/MainMenuBackground.png");
         image.setOpacity(0.5);
 
 
@@ -69,15 +69,15 @@ public class MainMenu {
         stage.setScene(scene);
 
         // add buttons
-        ImageView playBtn = Tools.createButton(root, "MainMenu/Buttons/", "play", 150, 150, 500);
-        ImageView insBtn = Tools.createButton(root, "MainMenu/Buttons/", "ins", 150, 275, 500);
-        ImageView exitBtn = Tools.createButton(root, "MainMenu/Buttons/", "exit", 150, 400, 500);
+        ImageView playBtn = Tools.createButton(root, "Assets/MainMenu/Buttons/", "play", 150, 150, 500);
+        ImageView insBtn = Tools.createButton(root, "Assets/MainMenu/Buttons/", "ins", 150, 275, 500);
+        ImageView exitBtn = Tools.createButton(root, "Assets/MainMenu/Buttons/", "exit", 150, 400, 500);
 
         // add onclick
         playBtn.setOnMouseClicked(e -> {
             System.out.println("Play");
 
-            ChangeScene.changeToDeficiencySchool(stage);
+            ChangeScene.changeToDeficiencyRoom(stage);
             // ChangeScene.changeToPanicRoom(stage);
         });
 

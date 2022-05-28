@@ -31,6 +31,14 @@
  * - creates a background image for the scene (with the correct size)
  */
 
+/**
+ * @author Aaron Zhu
+ * May 28th, 2022
+ * @version 3.0
+ * Time: 10 minutes
+ * createButton() and createBackgroundImage() now require the Assets/ in the path
+ */
+
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -65,8 +73,8 @@ public class Tools {
      */
     public static ImageView createButton(Group root, String path, String fileName, int x, int y, int sz) {
         // get images
-        Image buttonImg = new Image("Assets/" + path + fileName + "Button.png");
-        Image buttonImgHover = new Image("Assets/" + path + fileName + "ButtonHover.png");
+        Image buttonImg = new Image(path + fileName + "Button.png");
+        Image buttonImgHover = new Image(path + fileName + "ButtonHover.png");
 
         ImageView btn = new ImageView(buttonImg);
         btn.setPreserveRatio(true);
@@ -95,7 +103,7 @@ public class Tools {
      * @return The background image object.
      */
     public static ImageView createBackgroundImage(String path) {
-        ImageView image = new ImageView("Assets/" + path);
+        ImageView image = new ImageView(path);
         //image.setPreserveRatio(true);
         image.setFitWidth(800);
         image.setFitHeight(600);

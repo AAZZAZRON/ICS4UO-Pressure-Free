@@ -40,6 +40,7 @@ public class Tools {
     /**
      * Sets up the screen for the game.
      * Screen dimensions, logo, title, etc.
+     * @param stage the primary stage for this application
      */
     public static void screenSetup(Stage stage) {
         stage.setTitle("Parallel Studios - Pressure-Free");

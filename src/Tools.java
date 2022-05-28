@@ -39,10 +39,18 @@
  * createButton() and createBackgroundImage() now require the Assets/ in the path
  */
 
+import javafx.animation.PauseTransition;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Tools {
     /**
@@ -109,4 +117,24 @@ public class Tools {
         image.setFitHeight(600);
         return image;
     }
+
+    public static ImageView displayIntermissionText(Stage stage, String text) {
+        Group root = new Group();
+        Scene scene = new Scene(root);
+        Text message = new Text(text);
+        message.setTextAlignment(TextAlignment.CENTER);
+        message.setWrappingWidth(700);
+
+        message.setX((800 - message.getLayoutBounds().getWidth()) / 2);
+        message.setY((600 - message.getLayoutBounds().getHeight()) / 2);
+        System.out.println(message.getX() + " " + message.getY() + " " + message.getLayoutBounds().getWidth() + " " + message.getLayoutBounds().getHeight());
+        message.setFill(Color.BLACK);
+        message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        root.getChildren().add(message);
+        stage.setScene(scene);
+
+        ImageView next = createButton(root, "Assets/MainMenu/Buttons/", "x", 50, 50, 50);
+        return next;
+    }
 }
+

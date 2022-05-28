@@ -121,12 +121,12 @@ public class DeficiencyRoom extends CollisionRoom {
     /**
      * stores the next room to enter to view a lesson
      */
-    private static int roomNumber = 1;
+    private static int roomNumber = 5;
 
     /**
      * stores the total number of lessons in the deficiency room
      */
-    private final int NUMBER_OF_LESSONS = 7;
+    private final int NUMBER_OF_LESSONS = 4;
 
     /**
      * stores the total number of rooms in the deficiency room
@@ -241,6 +241,7 @@ public class DeficiencyRoom extends CollisionRoom {
                     textBoxes[textBoxOpen].toggleOn();
 
                     if (keyPressed['e']) { // if the user presses e to enter room
+                        System.out.println(roomNumber + " " + prompt + " " + NUMBER_OF_LESSONS);
                         if (roomNumber == prompt) { // if room is next lesson
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer

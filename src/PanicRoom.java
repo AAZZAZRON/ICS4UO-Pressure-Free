@@ -183,8 +183,6 @@ public class PanicRoom extends Room {
                 System.out.println("Please solve the question");
             }
         });
-
-
     }
 
     /** displays message for each quiz result */

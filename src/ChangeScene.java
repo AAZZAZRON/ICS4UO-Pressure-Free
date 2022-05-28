@@ -35,6 +35,8 @@
  * Added changeToSplashScreen() method
  */
 
+import javafx.animation.PauseTransition;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class ChangeScene {
@@ -54,9 +56,12 @@ public class ChangeScene {
      */
 
     public static void changeToPanicRoom (Stage stage) {
-        PanicRoom panicRoom = new PanicRoom(stage); // display deficiencies room
-        System.out.println(5);
-        panicRoom.panicRoom();
+        ImageView next = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning amount peer pressure! Now, you will enter the PANIC ROOM, where your knowledge will be put to the test. Can you accurately recognize peer pressure in these scenarios?");
+        next.onMouseClickedProperty().set(e -> {
+            PanicRoom panicRoom = new PanicRoom(stage); // display panic room
+            System.out.println(5);
+            panicRoom.panicRoom();
+        });
     }
 
 

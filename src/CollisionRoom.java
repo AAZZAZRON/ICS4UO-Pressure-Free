@@ -79,6 +79,10 @@ public abstract class CollisionRoom {
 
     /**
      * fills the collision grid with true between ${x1} and ${x2} and ${y1} and ${y2}
+     * @param x1 the starting x coordinate
+     * @param y1 the starting y coordinate
+     * @param x2 the ending x coordinate
+     * @param y2 the ending y coordinate
      */
     public void fillCollisionGrid(int x1, int y1, int x2, int y2) {
         for (int i = x1; i < x2; i++) {
@@ -90,6 +94,11 @@ public abstract class CollisionRoom {
 
     /**
      * fills the prompt grid with ${val} between ${x1} and ${x2} and ${y1} and ${y2}
+     * @param x1 the starting x coordinate
+     * @param y1 the starting y coordinate
+     * @param x2 the ending x coordinate
+     * @param y2 the ending y coordinate
+     * @param val the value to fill the grid with
      */
     public void fillPromptGrid(int x1, int y1, int x2, int y2, int val) {
         for (int i = x1; i < x2; i++) {

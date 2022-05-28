@@ -101,6 +101,15 @@
  * Time: 15 minutes
  * modified code that allows user to exit school to take into consideration of the addition of lessons.
  */
+
+/**
+ * @author Aaron Zhu
+ * May 28th, 2022
+ * @version 3.0
+ * Time: 1 hour
+ * - custom warning message is displayed when user tries to move into a room that is not allowed
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;

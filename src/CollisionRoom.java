@@ -21,6 +21,17 @@
  * Moved helper methods for character movement + create template for character movement
  */
 
+/**
+ * @author Aaron Zhu
+ * May 28th, 2022
+ * @version 3.0
+ * Time: 1 hour
+ * - add warning helper functions
+ * setWarning()
+ * - set the warning message
+ * - displays warning message for some time (default 2 seconds)
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
 import javafx.scene.Scene;

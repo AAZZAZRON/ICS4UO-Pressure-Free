@@ -94,6 +94,13 @@
  * allow user to exit school after watching lessons
  */
 
+/**
+ * @author Sion Gang
+ * May 27th, 2022
+ * @version 2.0
+ * Time: 15 minutes
+ * modified code that allows user to exit school to take into consideration of the addition of lessons.
+ */
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -110,8 +117,12 @@ public class DeficiencySchool extends CollisionRoom {
     /**
      * stores the total number of lessons in the deficiency room
      */
-    private final int NUMBER_OF_LESSONS = 4;
+    private final int NUMBER_OF_LESSONS = 7;
 
+    /**
+     * stores the total number of rooms in the deficiency room
+     */
+    private final int NUM_OF_ROOMS = 4;
     /**
      * constructor for Deficiencies School
      * @param stage the primary stage for this application
@@ -164,7 +175,7 @@ public class DeficiencySchool extends CollisionRoom {
 //        textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school");
 
         // textbox messages
-        if (roomNumber <= NUMBER_OF_LESSONS) { // if net room to enter is a lesson
+        if (roomNumber <= NUM_OF_ROOMS) { // if net room to enter is a lesson
             for (int i = 1; i <= 7; i++) {
                 textBoxes[i] = new TextBox(stage, root, scene, "Go to room " + (roomNumber + 100) + " to learn about peer pressure", "Red");
             }
@@ -175,6 +186,7 @@ public class DeficiencySchool extends CollisionRoom {
                 textBoxes[i] = new TextBox(stage, root, scene, "You have viewed all the lessons! Exit the school to enter the panic room and test your knowledge on peer pressure.", "Red");
             }
             textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school", "Green");
+
         }
 
         // create character

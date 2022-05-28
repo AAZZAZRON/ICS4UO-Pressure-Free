@@ -1,5 +1,29 @@
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+/**
+ * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
+ * PanicRoom.java
+ * <h2>Course Info:</h2>
+ * ICS4U0 with Krasteva, V.
+ *
+ * @version 1.0
+ * @author Aaron Zhu, Sion Gang
+ *
+ * Version 1 (Sion)
+ * - framework of Panic Room
+ * - implement quiz and user input
+ */
+
+/**
+ * @author Sion Gang
+ * May 26th, 2022
+ * @version 2.0
+ * Time: 5 hours
+ * - create PanicRoom.java
+ * - fade Animations
+ * - buttons for multiple choice
+ * - buttons for next question
+ * - taking user input
+ */
+
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -9,14 +33,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.animation.FadeTransition;
-
-/**
- * @author Sion Gang
- * May 26th, 2022
- * @version 2.0
- * Time: 4 hours
- * Create PanicRoom.java
- */
 
 
 public class PanicRoom extends Room{
@@ -106,8 +122,6 @@ public class PanicRoom extends Room{
 
         attempt = false;
         userInput();
-
-
     }
 
     /**

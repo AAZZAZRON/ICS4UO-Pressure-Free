@@ -36,6 +36,16 @@
  *
  * deficiencyRoom()
  * - implement multiple slide lesson
+ * - implement [next button] to go to next slide
+ */
+/**
+ * @author Sion Gang
+ * May 27th, 2022
+ * @version 2.0
+ * Time: 30 minutes
+ *
+ * deficiencyRoom()
+ * - implement addition slides
  */
 
 import javafx.scene.Group;
@@ -54,7 +64,7 @@ public class DeficiencyRoom extends Room {
     private static int counter = 1;
 
     /** Stores array of deficiency rooms */
-    private Room[] defRooms = new DeficiencyRoom[4];
+    private Room[] defRooms = new DeficiencyRoom[7];
 
     /**
      * Constructor for DeficiencyRoom.
@@ -74,6 +84,7 @@ public class DeficiencyRoom extends Room {
      * @param path The path to the image
      */
     public ImageView displayScene (String path) {
+        System.out.println("Assets/Scenes/Lessons/" + path + ".png");
         ImageView image = new ImageView("Assets/Scenes/Lessons/" + path + ".png");
         image.setPreserveRatio(true);
         image.setFitWidth(800);
@@ -102,7 +113,7 @@ public class DeficiencyRoom extends Room {
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
-        if (counter == 4) { //
+        if (counter == 2 || counter == 4 || counter == 6) { //
             ImageView nextButton = Tools.createButton(root, "MainMenu/Buttons/", "x", 650, 300, 40);
             nextButton.setOnMouseClicked(e -> {
                 counter += 1;
@@ -113,9 +124,8 @@ public class DeficiencyRoom extends Room {
             ImageView backButton = Tools.createButton(root, "MainMenu/Buttons/", "x", 650, 170, 40);
             backButton.setOnMouseClicked(e -> {
                 // increments counter for the different rooms
-                if (counter < defRooms.length + 1) counter++;
+                if (counter < defRooms.length +1) counter++;
                 else counter = 1;
-                System.out.println(counter);
                 ChangeScene.changeToDeficiencySchool(stage);
             });
         }

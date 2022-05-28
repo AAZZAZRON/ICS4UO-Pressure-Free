@@ -34,8 +34,24 @@
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class Tools {
+    /**
+     * Sets up the screen for the game.
+     * Screen dimensions, logo, title, etc.
+     */
+    public static void screenSetup(Stage stage) {
+        stage.setTitle("Parallel Studios - Pressure-Free");
+        stage.setHeight(636);
+        stage.setWidth(814);
+        stage.setResizable(false);
+
+        // add logo
+        Image logo = new Image("Assets/logo.png");
+        stage.getIcons().add(logo);
+    }
+
     /**
      * Template to create a hoverable button.
      * @param root The root of the scene.

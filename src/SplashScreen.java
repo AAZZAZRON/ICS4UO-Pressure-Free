@@ -1,3 +1,8 @@
+import javafx.animation.Animation;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -37,6 +42,16 @@ public class SplashScreen {
      * sets up the GUI for the splash screen.
      */
     public void splashScreen() {
+        ImageView logo = new ImageView(new Image("Assets/LogoAnimated.gif"));
+        logo.setPreserveRatio(true);
+        logo.setFitWidth(400);
+        logo.setX(200);
+        logo.setY(100);
 
+        // set scene
+        Group root = new Group();
+        Scene scene = new Scene(root);
+        root.getChildren().add(logo);
+        stage.setScene(scene);
     }
 }

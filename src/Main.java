@@ -47,12 +47,15 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage stage) {
-        GameSetup game = new GameSetup(stage);
-        SplashScreen splash = new SplashScreen(stage);
+        // set up screen
+        Tools.screenSetup(stage);
         stage.show();
-        game.screenSetup();
+
+        // show splash screen once
+        SplashScreen splash = new SplashScreen(stage);
         splash.splashScreen();
 
+        // show main menu (rest of logic in main menu)
         ChangeScene.changeToMainMenu(stage);
     }
 }

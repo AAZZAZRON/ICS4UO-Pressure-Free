@@ -35,7 +35,7 @@ import javafx.util.Duration;
 import javafx.animation.FadeTransition;
 
 
-public class PanicRoom extends Room{
+public class PanicRoom extends Room {
 
     private FadeTransition fade = new FadeTransition();
 

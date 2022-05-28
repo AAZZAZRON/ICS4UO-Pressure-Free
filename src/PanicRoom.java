@@ -25,7 +25,16 @@
  * - buttons for next question
  * - taking user input
  */
-
+/**
+ * @author Sion Gang
+ * May 28th, 2022
+ * @version 2.0
+ * Time: 2 hours
+ * - graphics for next button
+ * - implement next button
+ * - implement text messages for warnings and right/wrong answers
+ *
+ */
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -53,11 +62,25 @@ public class PanicRoom extends Room {
     /** Player's score*/
     private static int score;
 
+    /** The Scene of the Panic Room*/
+    private Scene scene;
+
     /** The root of the room*/
     private Group root;
 
     /** Boolean that dictates if user finished the question*/
     private boolean attempt;
+
+    /** Boolean that stores if the user answered the quiz correctly */
+    private boolean correct;
+
+    /** Textbox of message that is displayed at the end of every question */
+    private TextBox message;
+  //  private TextBox[] wrongAnswers;
+  //  private TextBox[] rightAnswers;
+ //   private TextBox[] error;
+
+
 
     /**
      * constructor for Room
@@ -110,7 +133,7 @@ public class PanicRoom extends Room {
         root.getChildren().add(bg);
         // add Lesson
         root.getChildren().add(displayScene());
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         stage.setScene(scene);
 
 
@@ -123,6 +146,7 @@ public class PanicRoom extends Room {
         });
 
         attempt = false;
+        correct = false;
         userInput();
     }
 
@@ -139,49 +163,50 @@ public class PanicRoom extends Room {
         final int[] guess = new int[1];
 
         // next button
-        ImageView backButton = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 650, 170, 40);
+        ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
 
         // button conditions
 
         System.out.println("Button");
         q1.setOnMouseClicked(e -> {
-            if (attempt == false) {
+            if (attempt)
+                displayMessage();
+            else {
                 guess[0] = 1;
+                checkInput(guess);
+                displayMessage();
                 attempt = true;
-                System.out.println(guess[0] + " " + answers[counter]);
             }
         });
         q2.setOnMouseClicked(e -> {
-            if (attempt == false) {
+            if (attempt)
+                displayMessage();
+            else {
                 guess[0] = 2;
+                checkInput(guess);
+                displayMessage();
                 attempt = true;
-                System.out.println(guess[0] + " " + answers[counter]);
             }
         });
         q3.setOnMouseClicked(e -> {
-            if (attempt == false) {
+            if (attempt)
+                displayMessage();
+            else {
                 guess[0] = 3;
+                checkInput(guess);
+                displayMessage();
                 attempt = true;
-                System.out.println(guess[0] + " " + answers[counter]);
             }
         });
-
-
 
         // if next button is clicked
         backButton.setOnMouseClicked(e -> {
             if (attempt) {
                 System.out.println("Guess"+guess[0]+"Answer "+answers[counter]);
-
-                if (guess[0] == answers[counter]) {
-                    score++;
-                    System.out.println("RIGHT");
-                }
-                else displayMessage();
-
                 if (counter < answers.length-1) {
                     counter++;
                     System.out.println(score);
+                    message.toggleOff();
                     panicRoom();
                 } else ChangeScene.changeToDeficiencyRoom(stage);
             } else {
@@ -190,9 +215,30 @@ public class PanicRoom extends Room {
         });
     }
 
+    public void checkInput (int guess[]) {
+        if (guess[0] == answers[counter]) {
+            score++;
+            correct = true;
+        }
+    }
+
     /** displays message for each quiz result */
     public void displayMessage () {
-        System.out.println("Wrong Answer.");
+
+
+        if (attempt) {
+            message.toggleOff();
+            message = new TextBox(stage, root, scene, "You have already chosen your answer", "Red");
+
+        }  else if (correct) {
+            message = new TextBox(stage, root, scene, "You selected the correct answer!", "Green");
+
+        } else
+            message = new TextBox(stage, root, scene, "You selected the wrong answer." +
+                    "\nThe answer was option " + answers[counter], "Blue");
+
+        message.toggleOn();
+
     }
 
 }

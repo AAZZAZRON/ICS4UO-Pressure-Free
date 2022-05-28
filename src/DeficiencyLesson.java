@@ -118,14 +118,14 @@ public class DeficiencyLesson extends Room {
         stage.setScene(scene);
 
         if (counter == 2 || counter == 4 || counter == 6) { //
-            ImageView nextButton = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 650, 300, 40);
+            ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
             nextButton.setOnMouseClicked(e -> {
                 counter += 1;
                 ChangeScene.changeToDeficiencyLesson(stage);
             });
         } else {
             // add button
-            ImageView backButton = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 650, 170, 40);
+            ImageView backButton = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 600, 170, 40);
             backButton.setOnMouseClicked(e -> {
                 // increments counter for the different rooms
                 if (counter < defRooms.length +1) counter++;

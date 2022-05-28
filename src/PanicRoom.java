@@ -76,11 +76,6 @@ public class PanicRoom extends Room {
 
     /** Textbox of message that is displayed at the end of every question */
     private TextBox message;
-  //  private TextBox[] wrongAnswers;
-  //  private TextBox[] rightAnswers;
- //   private TextBox[] error;
-
-
 
     /**
      * constructor for Room
@@ -166,8 +161,6 @@ public class PanicRoom extends Room {
         ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
 
         // button conditions
-
-        System.out.println("Button");
         q1.setOnMouseClicked(e -> {
             if (attempt)
                 displayMessage();
@@ -215,6 +208,10 @@ public class PanicRoom extends Room {
         });
     }
 
+    /**
+     * Checks user input for mutliple choice quiz
+     * @param guess the user's guess
+     */
     public void checkInput (int guess[]) {
         if (guess[0] == answers[counter]) {
             score++;
@@ -222,23 +219,18 @@ public class PanicRoom extends Room {
         }
     }
 
-    /** displays message for each quiz result */
+    /**
+     * displays message for each quiz result
+     */
     public void displayMessage () {
-
-
         if (attempt) {
             message.toggleOff();
             message = new TextBox(stage, root, scene, "You have already chosen your answer", "Red");
-
         }  else if (correct) {
             message = new TextBox(stage, root, scene, "You selected the correct answer!", "Green");
-
         } else
             message = new TextBox(stage, root, scene, "You selected the wrong answer." +
                     "\nThe answer was option " + answers[counter], "Blue");
-
         message.toggleOn();
-
     }
-
 }

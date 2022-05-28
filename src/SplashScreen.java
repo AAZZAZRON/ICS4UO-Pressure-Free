@@ -1,9 +1,11 @@
 import javafx.animation.Animation;
+import javafx.animation.PauseTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure

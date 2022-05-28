@@ -28,8 +28,10 @@
  * Call screenSetup()
  */
 
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Main extends Application {
     /**
@@ -52,10 +54,11 @@ public class Main extends Application {
         stage.show();
 
         // show splash screen once
-        SplashScreen splash = new SplashScreen(stage);
-        splash.splashScreen();
+        ChangeScene.changeToSplashScreen(stage);
 
+        PauseTransition delay = new PauseTransition(Duration.seconds(4)); // allow splash screen to play
+        delay.setOnFinished(e -> ChangeScene.changeToMainMenu(stage));
+        delay.play();
         // show main menu (rest of logic in main menu)
-        ChangeScene.changeToMainMenu(stage);
     }
 }

@@ -78,4 +78,13 @@ public class ChangeScene {
         MainMenu mainMenu = new MainMenu(stage);
         mainMenu.mainMenu();
     }
+
+    /**
+     * Change to splash screen
+     * @param stage The primary stage for this application. Passed by reference.
+     */
+    public static void changeToSplashScreen(Stage stage) {
+        SplashScreen splashScreen = new SplashScreen(stage);
+        splashScreen.splashScreen();
+    }
 }

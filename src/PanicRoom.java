@@ -9,7 +9,9 @@
  *
  * Version 2 (Sion)
  * - framework of Panic Room
- * - implement quiz and user input
+ * - create graphics and quizes
+ * - implement user input using buttons
+ * - implement transitions between quizes
  */
 
 /**

@@ -12,6 +12,12 @@
  * - create classroom background and deficiency room lessons (pixel art)
  * - fade in lessons
  * - mostly framework at this point
+ *
+ * Version 2 (Sion)
+ * - finalizing Deficiency Room
+ * - further implementation to DeficiencySchool
+ * - implement multiple slide lessons
+ * - implmenet better fade transition
  */
 
 /**
@@ -85,10 +91,8 @@ public class DeficiencyRoom extends Room {
      */
     public ImageView displayScene (String path) {
         System.out.println("Assets/Scenes/Lessons/" + path + ".png");
-        ImageView image = new ImageView("Assets/Scenes/Lessons/" + path + ".png");
-        image.setPreserveRatio(true);
-        image.setFitWidth(800);
 
+        ImageView image = Tools.createBackgroundImage("Scenes/Lessons/"+path+".png");
         // Fade animation
         fade.setDuration(Duration.millis(500));
         fade.setFromValue(0);

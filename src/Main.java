@@ -63,6 +63,6 @@ public class Main extends Application {
         ChangeScene.changeToMainMenu(stage);
 
         // show splash screen once
-        ChangeScene.changeToSplashScreen(stage);
+        // ChangeScene.changeToSplashScreen(stage);
     }
 }

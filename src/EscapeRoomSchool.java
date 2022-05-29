@@ -46,7 +46,6 @@ public class EscapeRoomSchool extends CollisionRoom {
         // set scene
         Group root = new Group(image);
         scene = new Scene(root);
-        // stage.setScene(scene);
 
         // room collisions
         fillCollisionGrid(160, 0, 800, 216);
@@ -123,7 +122,7 @@ public class EscapeRoomSchool extends CollisionRoom {
                         if (prompt != 8) { // if room is next lesson
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
-                            ChangeScene.changeToEscapeRoomRoom(stage); // change to escape room room
+                            ChangeScene.changeToEscapeRoomLibrary(stage); // change to escape room room
                         } else if (canLeave) { // if the user can leave the school
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer

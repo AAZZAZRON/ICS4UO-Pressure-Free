@@ -97,7 +97,7 @@ public class ChangeScene {
      * @param stage The primary stage for this application. Passed by reference.
      */
     public static void changeToDeficiencyRoom(Stage stage) {
-        deficiencyRoom.restart();
+        deficiencyRoom.startScene();
     }
 
     /**
@@ -131,7 +131,7 @@ public class ChangeScene {
      * change to escape room school
      */
     public static void changeToEscapeRoomSchool() {
-        escapeRoomSchool.restart();
+        escapeRoomSchool.startScene();
     }
 
     /**
@@ -141,5 +141,16 @@ public class ChangeScene {
     public static void changeToEscapeRoomRoom(Stage stage) {
         EscapeClassroom escapeRoom = new EscapeClassroom(stage);
         escapeRoom.buildRoom();
+        escapeRoom.startScene();
+    }
+
+    /**
+     * change to escape room library
+     * @param stage The primary stage for this application. Passed by reference.
+     */
+    public static void changeToEscapeRoomLibrary(Stage stage) {
+        EscapeLibrary escapeRoom = new EscapeLibrary(stage);
+        escapeRoom.buildRoom();
+        escapeRoom.startScene();
     }
 }

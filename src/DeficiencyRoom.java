@@ -243,7 +243,7 @@ public class DeficiencyRoom extends CollisionRoom {
      * override restart method to increment room number
      */
     @Override
-    public void restart() {
+    public void startScene() {
         roomNumber += 1;
         setTextBoxMessages();
         collisionTimer.start();

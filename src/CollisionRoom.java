@@ -244,13 +244,12 @@ public abstract class CollisionRoom {
         character.build();
         setUpUserInput();
         setUpAnimationTimer();
-        collisionTimer.start();
     }
 
     /**
      * restarts a scene
      */
-    public void restart() {
+    public void startScene() {
         collisionTimer.start();
         stage.setScene(scene);
     }

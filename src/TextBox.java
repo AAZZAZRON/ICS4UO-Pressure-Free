@@ -72,12 +72,21 @@ public class TextBox {
      * Initialize the textbox
      */
     private void initialize(String colour) {
+        // initialize textbox
         textBox = new ImageView("Assets/School/Textboxes/Textbox" + colour + ".png");
         textBox.setPreserveRatio(true);
         textBox.setFitWidth(750);
         textBox.setX(25);
         textBox.setY(30);
         textBox.setOpacity(0.75);
+
+        // initialize message
+        message = new Text();
+        message.setX(50);
+        message.setY(70);
+        message.setWrappingWidth(700);
+        message.setFill(Color.BLACK);
+        message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
     }
 
     /**
@@ -121,12 +130,7 @@ public class TextBox {
      * @param text the message to be displayed
      */
     public void setMessage(String text) {
-        message = new Text(text);
-        message.setX(50);
-        message.setY(70);
-        message.setWrappingWidth(700);
-        message.setFill(Color.BLACK);
-        message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        message.setText(text);
     }
 
     public void setTextboxColour(String colour) {

@@ -32,8 +32,18 @@
  * - displays warning message for some time (default 2 seconds)
  */
 
+/**
+ * @author Aaron Zhu
+ * May 29th, 2022
+ * @version 3.0
+ * Time: 1 hour
+ * added a restart method for collision rooms so they don't need to be recreated
+ * - allows character to stay in the same spot when the scene is unloaded
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -220,4 +230,27 @@ public abstract class CollisionRoom {
      * aka all the movement, collision detection, and scene changing logic
      */
     public abstract void setUpAnimationTimer();
+
+    /**
+     * create character in the room
+     * @param root the root of the scene
+     * @param size the size of the character
+     * @param x the x coordinate of the character
+     * @param y the y coordinate of the character
+     */
+    public void buildCharacter(Group root, int size, int x, int y) {
+        // create character
+        character = new Character(root, scene, size, x, y);
+        character.build();
+        setUpUserInput();
+        setUpAnimationTimer();
+    }
+
+    /**
+     * restarts a scene
+     */
+    public void restart() {
+        collisionTimer.start();
+        stage.setScene(scene);
+    }
 }

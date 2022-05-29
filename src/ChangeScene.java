@@ -35,11 +35,38 @@
  * Added changeToSplashScreen() method
  */
 
-import javafx.animation.PauseTransition;
+/**
+ * @author Aaron Zhu
+ * May 29th, 2022
+ * @version 3.0
+ * Time: 30 minutes
+ * change scenes without creating a new scene
+ */
+
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class ChangeScene {
+    /** reference to the escape room school. Required so we don't reload the school and lose data */
+    public static EscapeRoomSchool escapeRoomSchool;
+
+    /** reference to the deficiency room school. Required so we don't reload the room and lose data */
+    public static DeficiencyRoom deficiencyRoom;
+
+    /**
+     * reinitializes the escape room and deficiency room for a new game
+     * @param stage the primary stage for this application
+     */
+    public static void reinitialize(Stage stage) {
+        // build the escape room school
+        escapeRoomSchool = new EscapeRoomSchool(stage);
+        escapeRoomSchool.buildRoom();
+
+        // build the deficiency room (school)
+        deficiencyRoom = new DeficiencyRoom(stage);
+        deficiencyRoom.buildRoom();
+    }
+
     /**
      * Change to deficiency lesson
      * @param stage The primary stage for this application. Passed by reference.
@@ -70,8 +97,7 @@ public class ChangeScene {
      * @param stage The primary stage for this application. Passed by reference.
      */
     public static void changeToDeficiencyRoom(Stage stage) {
-        DeficiencyRoom school = new DeficiencyRoom(stage);
-        school.buildRoom(); // deficiency room
+        deficiencyRoom.restart();
     }
 
     /**
@@ -99,5 +125,21 @@ public class ChangeScene {
     public static void changeToSplashScreen(Stage stage) {
         SplashScreen splashScreen = new SplashScreen(stage);
         splashScreen.splashScreen();
+    }
+
+    /**
+     * change to escape room school
+     */
+    public static void changeToEscapeRoomSchool() {
+        escapeRoomSchool.restart();
+    }
+
+    /**
+     * change to escape room room
+     * @param stage The primary stage for this application. Passed by reference.
+     */
+    public static void changeToEscapeRoomRoom(Stage stage) {
+        EscapeClassroom escapeRoom = new EscapeClassroom(stage);
+        escapeRoom.buildRoom();
     }
 }

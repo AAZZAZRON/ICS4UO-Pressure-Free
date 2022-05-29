@@ -124,7 +124,7 @@ public class Character {
      * stores the current x and y coordinates of the character
      * coordinate is stored as the top left corner of the character
      */
-    private static int posX = 60, posY = 60;
+    private int posX, posY;
 
     /**
      * stores the offset of the character's foot (Y) from the top of the character
@@ -132,12 +132,16 @@ public class Character {
     private final int footOffsetY;
 
     /**
-     * constructor for Character
+     * constructor for Character with a specified position
      * @param root the root of the scene that the character is on. Passed by reference
      * @param scene the scene that the character is on. Passed by reference
      * @param sizeY the size of the character (height)
+     * @param posX the x coordinate of the character
+     * @param posY the y coordinate of the character
      */
-    public Character(Group root, Scene scene, int sizeY) {
+    public Character(Group root, Scene scene, int sizeY, int posX, int posY) {
+        this.posX = posX;
+        this.posY = posY;
         this.sizeY = sizeY;
         this.root = root;
         this.scene = scene;

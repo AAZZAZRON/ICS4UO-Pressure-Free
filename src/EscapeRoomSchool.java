@@ -79,6 +79,10 @@ public class EscapeRoomSchool extends CollisionRoom {
         textBoxes[7] = new TextBox(stage, root, scene, "Press e to enter the library", "Green");
         textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school", "Green");
 
+        // warning textbox
+        warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
+        warningShown = false;
+
         buildCharacter(root, 100, 60, 60);
     }
 

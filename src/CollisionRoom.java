@@ -244,6 +244,7 @@ public abstract class CollisionRoom {
         character.build();
         setUpUserInput();
         setUpAnimationTimer();
+        collisionTimer.start();
     }
 
     /**

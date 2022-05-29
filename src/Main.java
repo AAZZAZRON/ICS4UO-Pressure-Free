@@ -62,12 +62,7 @@ public class Main extends Application {
         stage.show();
         ChangeScene.changeToMainMenu(stage);
 
-//        // show splash screen once
-//        ChangeScene.changeToSplashScreen(stage);
-//
-//        PauseTransition delay = new PauseTransition(Duration.seconds(4)); // allow splash screen to play
-//        delay.setOnFinished(e -> ChangeScene.changeToMainMenu(stage));
-//        delay.play();
-//        // show main menu (rest of logic in main menu)
+        // show splash screen once
+        ChangeScene.changeToSplashScreen(stage);
     }
 }

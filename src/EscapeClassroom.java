@@ -44,7 +44,28 @@ public class EscapeClassroom extends CollisionRoom {
         scene = new Scene(root);
         stage.setScene(scene);
 
-        buildCharacter(root, 100, 60, 60);
+        // room collisions
+        fillCollisionGrid(360, 203, 490, 315);
+        fillCollisionGrid(590, 203, 720, 315);
+        fillCollisionGrid(105, 477, 234, 585);
+        fillCollisionGrid(348, 477, 477, 585);
+        fillCollisionGrid(53, 196, 230, 305); // teacher
+        fillCollisionGrid(222, 203, 230, 308);
+        fillCollisionGrid(53, 203, 60, 308);
+        fillCollisionGrid(108, 160, 175, 200); // chair
+        fillCollisionGrid(743, 343, 800, 483); // door
+
+        // borders collisions
+        fillCollisionGrid(0, 0, 800, 160);
+        fillCollisionGrid(0, 0, 1, 600);
+        fillCollisionGrid(0, 599, 800, 600);
+        fillCollisionGrid(799, 0, 800, 600);
+
+        // warning textbox
+        warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
+        warningShown = false;
+
+        buildCharacter(root, 100, 750, 395);
     }
 
     /**

@@ -41,6 +41,14 @@
  * - allows character to stay in the same spot when the scene is unloaded
  */
 
+/**
+ * @author Aaron Zhu
+ * May 30th, 2022
+ * @version 3.0
+ * Time: 1 hour
+ * moved warning message stuff to Textbox.java (better organization)
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.animation.PauseTransition;
 import javafx.scene.Group;

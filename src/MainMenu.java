@@ -35,6 +35,14 @@
  * - use ImageView instead of Button
  */
 
+/**
+ * @author Aaron Zhu
+ * May 30th, 2022
+ * @version 3.0
+ * Time: 15 minutes
+ * refactor assets to be more organized
+ */
+
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;

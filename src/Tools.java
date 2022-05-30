@@ -121,6 +121,12 @@ public class Tools {
         return image;
     }
 
+    /**
+     * Displays intermission text on screen (between lessons)
+     * @param stage The primary stage for this application
+     * @param text The text to display
+     * @return The imageview of the button that the user can click on to continue
+     */
     public static ImageView displayIntermissionText(Stage stage, String text) {
         Group root = new Group();
         Scene scene = new Scene(root);

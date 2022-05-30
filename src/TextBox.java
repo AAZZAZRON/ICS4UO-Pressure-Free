@@ -20,6 +20,14 @@
  * Set up TextBox framework + helper methods
  */
 
+/**
+ * @author Aaron Zhu
+ * May 30th, 2022
+ * @version 3.0
+ * Time: 30 minutes
+ * moved warning text boxes to Textbox.java
+ */
+
 import javafx.animation.PauseTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;

@@ -43,6 +43,15 @@
  * change scenes without creating a new scene
  */
 
+/**
+ * @author Aaron Zhu
+ * May 30th, 2022
+ * @version 3.0
+ * Time: 30 minutes
+ * front-load the rooms in the school for escape room
+ * change scenes in escape room using indexes in an array
+ */
+
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -53,6 +62,7 @@ public class ChangeScene {
     /** reference to the deficiency room school. Required so we don't reload the room and lose data */
     private static DeficiencyRoom deficiencyRoom;
 
+    /** rooms inside the school */
     private static ScenarioRoom[] escapeRooms;
 
     /**
@@ -156,10 +166,4 @@ public class ChangeScene {
     public static void changeToEscapeRoomRoom(int val) {
         escapeRooms[val].startScene();
     }
-    public static void changeToEscapeRoomWashroom(Stage stage) {
-        EscapeWashroom escapeRoom = new EscapeWashroom(stage);
-        escapeRoom.buildRoom();
-        escapeRoom.startScene();
-    }
-
 }

@@ -56,7 +56,7 @@ public class Instructions {
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
-        ImageView backButton = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 650, 170, 40);
+        ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 650, 170, 40);
 
         backButton.setOnMouseClicked(e -> {
             ChangeScene.changeToMainMenu(stage);

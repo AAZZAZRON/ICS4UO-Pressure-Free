@@ -123,7 +123,7 @@ public class DeficiencyLesson {
             });
         } else {
             // add button
-            ImageView backButton = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 600, 170, 40);
+            ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 600, 170, 40);
             backButton.setOnMouseClicked(e -> {
                 // increments counter for the different rooms
                 if (counter < defRooms.length +1) counter++;

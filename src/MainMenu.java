@@ -69,9 +69,9 @@ public class MainMenu {
         stage.setScene(scene);
 
         // add buttons
-        ImageView playBtn = Tools.createButton(root, "Assets/MainMenu/Buttons/", "play", 150, 150, 500);
-        ImageView insBtn = Tools.createButton(root, "Assets/MainMenu/Buttons/", "ins", 150, 275, 500);
-        ImageView exitBtn = Tools.createButton(root, "Assets/MainMenu/Buttons/", "exit", 150, 400, 500);
+        ImageView playBtn = Tools.createButton(root, "Assets/Buttons/MainMenu/", "play", 150, 150, 500);
+        ImageView insBtn = Tools.createButton(root, "Assets/Buttons/MainMenu/", "ins", 150, 275, 500);
+        ImageView exitBtn = Tools.createButton(root, "Assets/Buttons/MainMenu/", "exit", 150, 400, 500);
 
         // add onclick
         playBtn.setOnMouseClicked(e -> {

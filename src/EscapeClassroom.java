@@ -22,7 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class EscapeClassroom extends CollisionRoom {
+public class EscapeClassroom extends ScenarioRoom {
 
     /**
      * Constructor for EscapeClassroom.

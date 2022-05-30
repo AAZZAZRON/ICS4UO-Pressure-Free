@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class EscapeWashroom extends CollisionRoom {
+public class EscapeWashroom extends ScenarioRoom {
 
     /**
      * Constructor for EscapeWashroom.

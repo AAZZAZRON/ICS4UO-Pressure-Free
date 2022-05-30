@@ -122,7 +122,7 @@ public class EscapeRoomSchool extends CollisionRoom {
                         if (prompt != 8) { // if room is next lesson
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
-                            ChangeScene.changeToEscapeRoomLibrary(stage); // change to escape room room
+                            ChangeScene.changeToEscapeRoomRoom(prompt); // change to escape room room
                         } else if (canLeave) { // if the user can leave the school
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer

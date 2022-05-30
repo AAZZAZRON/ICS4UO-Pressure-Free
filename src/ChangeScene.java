@@ -48,10 +48,12 @@ import javafx.stage.Stage;
 
 public class ChangeScene {
     /** reference to the escape room school. Required so we don't reload the school and lose data */
-    public static EscapeRoomSchool escapeRoomSchool;
+    private static EscapeRoomSchool escapeRoomSchool;
 
     /** reference to the deficiency room school. Required so we don't reload the room and lose data */
-    public static DeficiencyRoom deficiencyRoom;
+    private static DeficiencyRoom deficiencyRoom;
+
+    private static ScenarioRoom[] escapeRooms;
 
     /**
      * reinitializes the escape room and deficiency room for a new game
@@ -65,6 +67,22 @@ public class ChangeScene {
         // build the deficiency room (school)
         deficiencyRoom = new DeficiencyRoom(stage);
         deficiencyRoom.buildRoom();
+
+        escapeRooms = new ScenarioRoom[10];
+        escapeRooms[1] = new EscapeClassroom(stage);
+        escapeRooms[1].buildRoom();
+        escapeRooms[2] = new EscapeClassroom(stage);
+        escapeRooms[2].buildRoom();
+        escapeRooms[3] = new EscapeClassroom(stage);
+        escapeRooms[3].buildRoom();
+        escapeRooms[4] = new EscapeClassroom(stage);
+        escapeRooms[4].buildRoom();
+        escapeRooms[5] = new EscapeWashroom(stage);
+        escapeRooms[5].buildRoom();
+        escapeRooms[6] = new EscapeWashroom(stage);
+        escapeRooms[6].buildRoom();
+        escapeRooms[7] = new EscapeLibrary(stage);
+        escapeRooms[7].buildRoom();
     }
 
     /**
@@ -134,23 +152,8 @@ public class ChangeScene {
         escapeRoomSchool.startScene();
     }
 
-    /**
-     * change to escape room room
-     * @param stage The primary stage for this application. Passed by reference.
-     */
-    public static void changeToEscapeRoomRoom(Stage stage) {
-        EscapeClassroom escapeRoom = new EscapeClassroom(stage);
-        escapeRoom.buildRoom();
-        escapeRoom.startScene();
-    }
-
-    /**
-     * change to escape room library
-     * @param stage The primary stage for this application. Passed by reference.
-     */
-    public static void changeToEscapeRoomLibrary(Stage stage) {
-        EscapeLibrary escapeRoom = new EscapeLibrary(stage);
-        escapeRoom.buildRoom();
-        escapeRoom.startScene();
+    
+    public static void changeToEscapeRoomRoom(int val) {
+        escapeRooms[val].startScene();
     }
 }

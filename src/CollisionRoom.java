@@ -48,6 +48,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.Locale;
+
 public abstract class CollisionRoom {
     /** The primary stage for this application. Passed by reference. */
     public final Stage stage;
@@ -210,7 +212,7 @@ public abstract class CollisionRoom {
     public void setUpUserInput() {
         scene.setOnKeyPressed(event -> { // when a key is pressed
             if (event.getText().length() == 1) { // if the key is displayable
-                keyPressed[event.getText().charAt(0)] = true; // set the key to true
+                keyPressed[event.getText().toLowerCase().charAt(0)] = true; // set the key to true
             }
             switch (event.getCode()) { // for non-displayable keys
             }
@@ -218,7 +220,7 @@ public abstract class CollisionRoom {
 
         scene.setOnKeyReleased(event -> { // when a key is released
             if (event.getText().length() == 1) { // if the key is displayable
-                keyPressed[event.getText().charAt(0)] = false; // set the key to false
+                keyPressed[event.getText().toLowerCase().charAt(0)] = false; // set the key to false
             }
             switch (event.getCode()) { // for non-displayable keys
             }

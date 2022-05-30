@@ -200,6 +200,7 @@ public class DeficiencyRoom extends CollisionRoom {
         collisionTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                System.out.println("deficiency room");
                 // handle movement
                 if (keyPressed['w'] && !isColliding()) {
                     character.moveUp(true);

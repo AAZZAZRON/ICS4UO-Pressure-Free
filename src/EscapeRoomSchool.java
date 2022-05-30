@@ -93,6 +93,7 @@ public class EscapeRoomSchool extends CollisionRoom {
         collisionTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                System.out.println("escape room school");
                 // handle movement
                 if (keyPressed['w'] && !isColliding()) {
                     character.moveUp(true);

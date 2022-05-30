@@ -61,7 +61,10 @@ import javafx.stage.Stage;
 import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 
-public class DeficiencyLesson extends Room {
+public class DeficiencyLesson {
+
+    /** The primary stage for this application. Passed by reference. */
+    private Stage stage;
 
     /** Stores transition */
     private FadeTransition fade = new FadeTransition();
@@ -70,19 +73,14 @@ public class DeficiencyLesson extends Room {
     private static int counter = 1;
 
     /** Stores array of deficiency rooms */
-    private Room[] defRooms = new DeficiencyLesson[7];
+    private DeficiencyLesson[] defRooms = new DeficiencyLesson[7];
 
     /**
      * Constructor for DeficiencyRoom.
      * @param stage The primary stage for this application. Passed by reference.
      */
     public DeficiencyLesson(Stage stage) {
-        super(stage);
-    }
-
-    @Override
-    void exit() {
-
+        this.stage = stage;
     }
 
     /**

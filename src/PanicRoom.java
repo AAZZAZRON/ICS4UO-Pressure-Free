@@ -56,9 +56,12 @@ import javafx.util.Duration;
 import javafx.animation.FadeTransition;
 
 
-public class PanicRoom extends Room {
+public class PanicRoom {
 
     private FadeTransition fade = new FadeTransition();
+
+    /** stage for the application */
+    private Stage stage;
 
     /** Stores counter for the quiz */
     private static int counter = 1;
@@ -93,17 +96,12 @@ public class PanicRoom extends Room {
      * @param stage the stage of the room
      */
     public PanicRoom(Stage stage) {
-        super(stage);
+        this.stage = stage;
         answers = new int[]{2, 3, 1, 2, 2,  1, 2, 2, 2, 3};
         quizes = new ImageView [answers.length];
         for (int i = 1; i <= answers.length; i++)
           quizes [i-1] = new ImageView("Assets/Scenes/Quizes/PanicRoom " + i + ".png");
         attempt = false;
-
-    }
-
-    @Override
-    void exit() {
 
     }
 

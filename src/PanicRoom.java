@@ -41,8 +41,9 @@
  * May 29th, 2022
  * @version 2.0
  * Time: 2 hours
- * - Further implementation of Panic Room
- * - Updated textbox system - more efficient & organized
+ * - further implementation of Panic Room
+ * - updated textbox system - more efficient & organized
+ * - configuring buttons
  *
  */
 

@@ -156,4 +156,10 @@ public class ChangeScene {
     public static void changeToEscapeRoomRoom(int val) {
         escapeRooms[val].startScene();
     }
+    public static void changeToEscapeRoomWashroom(Stage stage) {
+        EscapeWashroom escapeRoom = new EscapeWashroom(stage);
+        escapeRoom.buildRoom();
+        escapeRoom.startScene();
+    }
+
 }

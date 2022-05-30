@@ -1,3 +1,7 @@
+
+
+
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -28,6 +32,15 @@ public class EscapeLibrary extends ScenarioRoom {
         fillCollisionGrid(0, 0, 1, 600);
         fillCollisionGrid(0, 599, 800, 600);
         fillCollisionGrid(799, 0, 800, 600);
+
+        fillCollisionGrid(0, 0, 39, 373);
+        fillCollisionGrid(39, 373, 230, 486);
+
+        fillCollisionGrid(369, 301, 604, 368);
+        fillCollisionGrid(369, 445, 604, 515);
+
+       fillCollisionGrid(734, 347, 800, 481);
+
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");

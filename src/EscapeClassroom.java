@@ -12,8 +12,8 @@
  * @author Aaron Zhu
  * May 29th, 2022
  * @version 3.0
- * Time: 15 minutes
- * build the room (no collision)
+ * Time: 30 minutes
+ * build the room with collision
  */
 
 import javafx.animation.AnimationTimer;

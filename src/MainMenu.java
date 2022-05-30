@@ -81,7 +81,6 @@ public class MainMenu {
             // ChangeScene.changeToDeficiencyRoom(stage);
             // ChangeScene.changeToPanicRoom(stage);
             ChangeScene.changeToEscapeRoomSchool();
-            // ChangeScene.changeToEscapeRoomWashroom();
         });
 
         insBtn.setOnMouseClicked(e -> {

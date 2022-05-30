@@ -16,7 +16,7 @@ public class EscapeWashroom extends ScenarioRoom {
 
     @Override
     public void buildRoom() {
-        ImageView image = Tools.createBackgroundImage("Assets/School/Rooms/BoysWashroomBg.png");
+        ImageView image = Tools.createBackgroundImage("Assets/School/Rooms/WashroomBg.png");
 
         // set scene
         Group root = new Group(image);

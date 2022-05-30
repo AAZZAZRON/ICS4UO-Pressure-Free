@@ -110,6 +110,15 @@
  * - custom warning message is displayed when user tries to move into a room that is not allowed
  */
 
+/**
+ * @author Aaron Zhu
+ * May 29th, 2022
+ * @version 3.0
+ * Time: 1 hour
+ * - added a restart method for collision rooms so they don't need to be recreated
+ * setTextBoxMessages() to change textbox messages on reload
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;

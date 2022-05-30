@@ -12,7 +12,7 @@
  * @author Aaron Zhu
  * May 29th, 2022
  * @version 3.0
- * Time: 15 minutes
+ * Time: 30 minutes
  * build the room with collision
  */
 

@@ -39,7 +39,7 @@ public class EscapeLibrary extends ScenarioRoom {
         fillCollisionGrid(369, 301, 604, 368);
         fillCollisionGrid(369, 445, 604, 515);
 
-       fillCollisionGrid(734, 347, 800, 481);
+        fillCollisionGrid(734, 347, 800, 481);
 
 
         // warning textbox

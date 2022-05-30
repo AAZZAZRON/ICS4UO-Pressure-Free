@@ -3,6 +3,12 @@ import javafx.stage.Stage;
 
 public abstract class ScenarioRoom extends CollisionRoom {
 
+    /** warning textbox if user tries to do a move that is not allowed */
+    public TextBox warning;
+
+    /** stores if the warning textbox that is being displayed, if any */
+    public boolean warningShown;
+
     /**
      * Constructor for CollisionRoom.
      *

@@ -81,12 +81,6 @@ public abstract class CollisionRoom {
     /** stores the textbox that is being displayed, if any */
     public int textBoxOpen;
 
-    /** warning textbox if user tries to do a move that is not allowed */
-    public TextBox warning;
-
-    /** stores if the warning textbox that is being displayed, if any */
-    public boolean warningShown;
-
     /** stores which keys are being pressed */
     public boolean[] keyPressed;
 
@@ -166,39 +160,6 @@ public abstract class CollisionRoom {
             }
         }
         return maxDetect;
-    }
-
-    /**
-     * creates a warning textbox if user makes mistake
-     * @param message the message to display
-     */
-    public void setWarning(String message) {
-        warning.setMessage(message);
-        warning.toggleOn();
-        warningShown = true;
-        PauseTransition pause = new PauseTransition(Duration.seconds(2));
-        pause.setOnFinished(e -> {
-            warning.toggleOff();
-            warningShown = false;
-        });
-        pause.play();
-    }
-
-    /**
-     * creates a warning textbox if user makes mistake
-     * @param message the message to display
-     * @param seconds the amount of time to display the warning
-     */
-    public void setWarning(String message, int seconds) {
-        warning.setMessage(message);
-        warning.toggleOn();
-        warningShown = true;
-        PauseTransition pause = new PauseTransition(Duration.seconds(seconds));
-        pause.setOnFinished(e -> {
-            warning.toggleOff();
-            warningShown = false;
-        });
-        pause.play();
     }
 
     /**

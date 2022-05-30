@@ -20,6 +20,7 @@
  * Set up TextBox framework + helper methods
  */
 
+import javafx.animation.PauseTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -30,6 +31,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class TextBox {
     /** The primary stage for this application. Passed by reference. */
@@ -135,5 +137,18 @@ public class TextBox {
 
     public void setTextboxColour(String colour) {
         textBox.setImage(new Image("Assets/School/Textboxes/Textbox" + colour + ".png"));
+    }
+
+    /**
+     * creates a warning textbox if user makes mistake
+     * @param seconds the amount of time to display the warning
+     */
+    public void setWarning(int seconds) {
+        toggleOn();
+        PauseTransition pause = new PauseTransition(Duration.seconds(seconds));
+        pause.setOnFinished(e -> {
+            toggleOff();
+        });
+        pause.play();
     }
 }

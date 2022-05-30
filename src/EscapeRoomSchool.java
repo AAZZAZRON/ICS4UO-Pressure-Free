@@ -24,6 +24,12 @@ import javafx.stage.Stage;
 
 public class EscapeRoomSchool extends CollisionRoom {
 
+    /** warning textbox if user tries to do a move that is not allowed */
+    private TextBox warning;
+
+    /** stores if the warning textbox that is being displayed, if any */
+    private boolean warningShown;
+
     /** if the character can leave the school */
     public static boolean canLeave = false;
 
@@ -129,7 +135,8 @@ public class EscapeRoomSchool extends CollisionRoom {
                             stop(); // stop the timer
                             ChangeScene.changeToMainMenu(stage); // change to main menu
                         } else { // if the user cannot leave the school
-                            setWarning("You can't leave the school yet! Please find all the necessary materials for your assignment before trying again", 3);
+                            warning.setMessage("You can't leave the school yet! Please find all the necessary materials for your assignment before trying again");
+                            warning.setWarning(3);
                         }
                     }
                 } else if (textBoxOpen != 0) {

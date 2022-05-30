@@ -137,6 +137,12 @@ public class DeficiencyRoom extends CollisionRoom {
      */
     private final int NUMBER_OF_LESSONS = 4;
 
+    /** warning textbox if user tries to do a move that is not allowed */
+    private TextBox warning;
+
+    /** stores if the warning textbox that is being displayed, if any */
+    private boolean warningShown;
+
     /**
      * stores the total number of rooms in the deficiency room
      */
@@ -237,8 +243,14 @@ public class DeficiencyRoom extends CollisionRoom {
                             stop(); // stop the timer
                             ChangeScene.changeToPanicRoom(stage); // change to panic room
                         } else { // if the user presses e to enter incorrect deficiency room
-                            if (prompt == 8) setWarning("You cannot leave the school yet! Please finish watching all the lessons. Go to room " + (roomNumber + 100) + " to learn about peer pressure", 3);
-                            else setWarning("You cannot enter this room! Go to room " + (roomNumber + 100) + " to learn about peer pressure"); // set warning
+                            if (prompt == 8) {
+                                warning.setMessage("You cannot leave the school yet! Please finish watching all the lessons. Go to room " + (roomNumber + 100) + " to learn about peer pressure");
+                                warning.setWarning(3);
+                            }
+                            else {
+                                warning.setMessage("You cannot enter this room! Go to room " + (roomNumber + 100) + " to learn about peer pressure");
+                                warning.setWarning(2);
+                            }
                         }
                     }
                 } else if (textBoxOpen != 0) {

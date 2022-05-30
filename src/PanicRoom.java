@@ -36,6 +36,16 @@
  *
  */
 
+/**
+ * @author Sion Gang
+ * May 29th, 2022
+ * @version 2.0
+ * Time: 2 hours
+ * - Further implementation of Panic Room
+ * - Updated textbox system - more efficient & organized
+ *
+ */
+
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -143,6 +153,7 @@ public class PanicRoom extends Room {
         attempt = false;
         correct = false;
         userInput();
+
     }
 
     /**
@@ -162,48 +173,36 @@ public class PanicRoom extends Room {
 
         // button conditions
         q1.setOnMouseClicked(e -> {
-            if (attempt)
-                displayMessage();
-            else {
-                guess[0] = 1;
-                checkInput(guess);
-                displayMessage();
-                attempt = true;
-            }
+            guess[0] = 1;
+            checkInput(guess);
+            displayMessage(2);
+            attempt = true;
+
         });
         q2.setOnMouseClicked(e -> {
-            if (attempt)
-                displayMessage();
-            else {
-                guess[0] = 2;
-                checkInput(guess);
-                displayMessage();
-                attempt = true;
-            }
+            guess[0] = 2;
+            checkInput(guess);
+            displayMessage(2);
+            attempt = true;
+
         });
         q3.setOnMouseClicked(e -> {
-            if (attempt)
-                displayMessage();
-            else {
-                guess[0] = 3;
-                checkInput(guess);
-                displayMessage();
-                attempt = true;
-            }
+            guess[0] = 3;
+            checkInput(guess);
+            displayMessage(2);
+            attempt = true;
         });
 
         // if next button is clicked
         backButton.setOnMouseClicked(e -> {
+            displayMessage(1);
             if (attempt) {
-                System.out.println("Guess"+guess[0]+"Answer "+answers[counter]);
                 if (counter < answers.length-1) {
                     counter++;
                     System.out.println(score);
                     message.toggleOff();
                     panicRoom();
                 } else ChangeScene.changeToDeficiencyRoom(stage);
-            } else {
-                System.out.println("Please solve the question");
             }
         });
     }
@@ -221,16 +220,28 @@ public class PanicRoom extends Room {
 
     /**
      * displays message for each quiz result
+     *
+     * @param choice condition concerning which type of textbox to show
      */
-    public void displayMessage () {
-        if (attempt) {
-            message.toggleOff();
-            message = new TextBox(stage, root, scene, "You have already chosen your answer", "Red");
-        }  else if (correct) {
-            message = new TextBox(stage, root, scene, "You selected the correct answer!", "Green");
-        } else
-            message = new TextBox(stage, root, scene, "You selected the wrong answer." +
-                    "\nThe answer was option " + answers[counter], "Blue");
-        message.toggleOn();
+    public void displayMessage (int choice) {
+
+         if (choice == 1) {
+             if (message != null) // deletes any previous instances of message
+                 message.toggleOff();
+            if (!attempt) // if user did not select an answer
+                message = new TextBox(stage, root, scene, "Select an answer", "Red");
+        }
+        if (choice == 2) {
+            if (attempt) { // if user selected answer
+                message.toggleOff();
+                message = new TextBox(stage, root, scene, "You have already chosen your answer", "Red");
+            } else if (correct) // if user answered correctly
+                message = new TextBox(stage, root, scene, "You selected the correct answer!", "Green");
+            else
+                message = new TextBox(stage, root, scene, "You selected the wrong answer." +
+                        "\nThe answer was option " + answers[counter], "Blue");
+           }
+        message.toggleOn(); // show message
+
     }
 }

@@ -44,7 +44,6 @@ public class EscapeLibrary extends ScenarioRoom {
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
-        warningShown = false;
 
         buildCharacter(root, 100, 750, 395);
     }

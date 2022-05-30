@@ -27,9 +27,6 @@ public class EscapeRoomSchool extends CollisionRoom {
     /** warning textbox if user tries to do a move that is not allowed */
     private TextBox warning;
 
-    /** stores if the warning textbox that is being displayed, if any */
-    private boolean warningShown;
-
     /** if the character can leave the school */
     public static boolean canLeave = false;
 
@@ -86,7 +83,6 @@ public class EscapeRoomSchool extends CollisionRoom {
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
-        warningShown = false;
 
         buildCharacter(root, 100, 60, 60);
     }
@@ -121,7 +117,7 @@ public class EscapeRoomSchool extends CollisionRoom {
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility
-                if (!warningShown && prompt != 0) { // warning > prompts
+                if (!warning.isVisible() && prompt != 0) { // warning > prompts
                     textBoxOpen = prompt; // toggle on if not already
                     textBoxes[textBoxOpen].toggleOn();
 

@@ -6,9 +6,6 @@ public abstract class ScenarioRoom extends CollisionRoom {
     /** warning textbox if user tries to do a move that is not allowed */
     public TextBox warning;
 
-    /** stores if the warning textbox that is being displayed, if any */
-    public boolean warningShown;
-
     /**
      * Constructor for CollisionRoom.
      *
@@ -44,7 +41,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility
-                if (true || (!warningShown && prompt != 0)) { // warning > prompts
+                if (true || (!warning.isVisible() && prompt != 0)) { // warning > prompts
                     textBoxOpen = prompt; // toggle on if not already
                     //textBoxes[textBoxOpen].toggleOn();
 

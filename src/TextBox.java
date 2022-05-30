@@ -151,4 +151,12 @@ public class TextBox {
         });
         pause.play();
     }
+
+    /**
+     * is the textbox open
+     * @return is the textbox open
+     */
+    public boolean isVisible() {
+        return isVisible;
+    }
 }

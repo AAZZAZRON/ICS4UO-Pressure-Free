@@ -162,6 +162,7 @@ public class Character {
      * constructor for Character with a specified position
      * @param root the root of the scene that the character is on. Passed by reference
      * @param scene the scene that the character is on. Passed by reference
+     * @param room the room the character is in, for collision
      * @param sizeY the size of the character (height)
      * @param posX the x coordinate of the character
      * @param posY the y coordinate of the character

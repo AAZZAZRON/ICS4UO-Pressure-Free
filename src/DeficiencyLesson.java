@@ -54,6 +54,15 @@
  * - implement addition slides
  */
 
+/**
+ * @author Sion Gang
+ * May 31th, 2022
+ * @version 3.0
+ * Time: 5 minutes
+ * Implement the usage of Tools.fadeImage() to transition
+ *
+ */
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -111,7 +120,7 @@ public class DeficiencyLesson {
         // add background
         root.getChildren().add(bg);
         // add Lesson
-        root.getChildren().add(displayScene("Lesson " + counter));
+        root.getChildren().add(Tools.fadeImage(new ImageView("Assets/School/Rooms/Lesson " + counter)));
         Scene scene = new Scene(root);
         stage.setScene(scene);
 

@@ -42,6 +42,7 @@
  * - returns the imageview of the button that the user can click on to continue
  */
 
+import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -145,5 +146,21 @@ public class Tools {
         ImageView next = createButton(root, "Assets/MainMenu/Buttons/", "x", 50, 50, 50);
         return next;
     }
+
+    public static ImageView fadeImage (ImageView image) {
+
+        /** Stores transition */
+        FadeTransition fade = new FadeTransition();
+        // Fade animation
+        fade.setDuration(Duration.millis(500));
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.setNode(image);
+        fade.play();
+        return image;
+
+
+    }
+
 }
 

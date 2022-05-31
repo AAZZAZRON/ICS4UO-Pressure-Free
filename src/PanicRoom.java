@@ -47,6 +47,15 @@
  *
  */
 
+/**
+ * @author Sion Gang
+ * May 31th, 2022
+ * @version 3.0
+ * Time: 5 minutes
+ * Implement the usage of Tools.fadeImage() to transition
+ *
+ */
+
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -106,23 +115,7 @@ public class PanicRoom {
 
     }
 
-    /**
-     * @return ImageView of the selected image
-     */
-    public ImageView displayScene () {
-        ImageView image = quizes[counter];
-        image.setPreserveRatio(true);
-        image.setFitWidth(800);
 
-        // Fade animation
-        fade.setDuration(Duration.millis(500));
-        fade.setFromValue(0);
-        fade.setToValue(1);
-        fade.setNode(image);
-        fade.play();
-
-        return image;
-    }
 
 
     /**
@@ -136,7 +129,7 @@ public class PanicRoom {
         // add background
         root.getChildren().add(bg);
         // add Lesson
-        root.getChildren().add(displayScene());
+        root.getChildren().add(Tools.fadeImage(quizes[counter]));
         scene = new Scene(root);
         stage.setScene(scene);
 

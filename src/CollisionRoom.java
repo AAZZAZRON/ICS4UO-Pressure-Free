@@ -57,6 +57,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 public abstract class CollisionRoom {
@@ -226,6 +227,9 @@ public abstract class CollisionRoom {
      * restarts a scene
      */
     public void startScene() {
+        // reset keypress
+        Arrays.fill(keyPressed, false);
+
         character.startMovement();
         collisionTimer.start();
         stage.setScene(scene);

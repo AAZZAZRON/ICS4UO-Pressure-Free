@@ -125,6 +125,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.util.Arrays;
+
 public class DeficiencyRoom extends CollisionRoom {
 
     /**
@@ -246,6 +248,9 @@ public class DeficiencyRoom extends CollisionRoom {
      */
     @Override
     public void startScene() {
+        // reset keypress
+        Arrays.fill(keyPressed, false);
+
         roomNumber += 1;
         setTextBoxMessages();
         collisionTimer.start();

@@ -21,8 +21,18 @@
  * - ability to pick up items from the rooms
  */
 
+/**
+ * @author Aaron Zhu
+ * May 31st, 2022
+ * @version 3.0
+ * Time: 30 minutes
+ * Make character restart at room entrance on load
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.stage.Stage;
+
+import java.util.Arrays;
 
 public abstract class ScenarioRoom extends CollisionRoom {
 
@@ -49,9 +59,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 if (true || (!warning.isVisible() && prompt != 0)) { // warning > prompts
                     textBoxOpen = prompt; // toggle on if not already
                     //textBoxes[textBoxOpen].toggleOn();
-
                     if (keyPressed['e']) { // if the user presses e to enter room
-                        keyPressed['e'] = false; // set the key to false
                         stop(); // stop the timer
                         character.stopMovement(); // stop the character's movement
                         ChangeScene.changeToEscapeRoomSchool(); // change to escape room school (exit room)
@@ -62,5 +70,20 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 }
             }
         };
+    }
+
+    /**
+     * restarts a scene
+     */
+    @Override
+    public void startScene() {
+        // reset keypress
+        Arrays.fill(keyPressed, false);
+
+        character.setPosition(750, 395);
+
+        character.startMovement();
+        collisionTimer.start();
+        stage.setScene(scene);
     }
 }

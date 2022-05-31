@@ -106,7 +106,6 @@
  * moved character movement animation timer to Character.java
  * animate character left/right movement
  * startMovement() and endMovement() start and stop animation timer respectively
- *
  */
 
 import javafx.animation.AnimationTimer;
@@ -311,5 +310,20 @@ public class Character {
      */
     public void stopMovement() {
         characterMovement.stop();
+    }
+
+    /**
+     * resets character's position to a certain spot
+     * @param x the x coordinate of the character
+     * @param y the y coordinate of the character
+     */
+    public void setPosition(int x, int y) {
+        posX = x;
+        posY = y;
+        character.setX(posX);
+        character.setY(posY);
+        counter = 0;
+        previousDirection = 'q';
+        changeCharacterDirection("Down");
     }
 }

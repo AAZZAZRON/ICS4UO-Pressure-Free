@@ -47,6 +47,7 @@
  * @version 3.0
  * Time: 1 hour
  * moved warning message stuff to Textbox.java (better organization)
+ * added isKeyPressed() for character movement
  */
 
 import javafx.animation.AnimationTimer;
@@ -196,6 +197,10 @@ public abstract class CollisionRoom {
         });
     }
 
+    public boolean isKeyPressed(char c) {
+        return keyPressed[c];
+    }
+
     /**
      * abstract method to set up AnimationTimer for the character in the room
      * aka all the movement, collision detection, and scene changing logic
@@ -211,7 +216,7 @@ public abstract class CollisionRoom {
      */
     public void buildCharacter(Group root, int size, int x, int y) {
         // create character
-        character = new Character(root, scene, size, x, y);
+        character = new Character(root, scene, this, size, x, y);
         character.build();
         setUpUserInput();
         setUpAnimationTimer();
@@ -221,6 +226,7 @@ public abstract class CollisionRoom {
      * restarts a scene
      */
     public void startScene() {
+        character.startMovement();
         collisionTimer.start();
         stage.setScene(scene);
     }

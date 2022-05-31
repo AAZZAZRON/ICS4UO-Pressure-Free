@@ -195,7 +195,7 @@ public class DeficiencyRoom extends CollisionRoom {
     }
 
     /**
-     * sets up the animation timer for the character in the room
+     * sets up the animation timer for the character's actions other than movement
      */
     @Override
     public void setUpAnimationTimer() {
@@ -203,24 +203,6 @@ public class DeficiencyRoom extends CollisionRoom {
             @Override
             public void handle(long now) {
                 System.out.println("deficiency room");
-                // handle movement
-                if (keyPressed['w'] && !isColliding()) {
-                    character.moveUp(true);
-                    if (isColliding()) character.moveDown(false); // if character is colliding, revert movement
-                }
-                if (keyPressed['s'] && !isColliding()) {
-                    character.moveDown(true);
-                    if (isColliding()) character.moveUp(false);
-                }
-                if (keyPressed['a'] && !isColliding()) {
-                    character.moveLeft(true);
-                    if (isColliding()) character.moveRight(false);
-                }
-                if (keyPressed['d'] && !isColliding()) {
-                    character.moveRight(true);
-                    if (isColliding()) character.moveLeft(false);
-                }
-
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility
@@ -233,10 +215,12 @@ public class DeficiencyRoom extends CollisionRoom {
                         if (roomNumber == prompt) { // if room is next lesson
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
+                            character.stopMovement(); // stop the character's movement
                             ChangeScene.changeToDeficiencyLesson(stage); // change to deficiency room
                         } else if (roomNumber == NUMBER_OF_LESSONS + 1) { // if user is attempting to exit school
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
+                            character.stopMovement(); // stop the character's movement
                             ChangeScene.changeToPanicRoom(stage); // change to panic room
                         } else { // if the user presses e to enter incorrect deficiency room
                             if (prompt == 8) {
@@ -265,6 +249,7 @@ public class DeficiencyRoom extends CollisionRoom {
         roomNumber += 1;
         setTextBoxMessages();
         collisionTimer.start();
+        character.startMovement();
         stage.setScene(scene);
     }
 

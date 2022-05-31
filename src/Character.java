@@ -98,6 +98,18 @@
  * all logic on how to move the character will be written in the room class that the character is in
  */
 
+/**
+ * @author Aaron Zhu
+ * May 30th, 2022
+ * @version 3.0
+ * Time: 2 hours
+ * moved character movement animation timer to Character.java
+ * animate character left/right movement
+ * startMovement() and endMovement() start and stop animation timer respectively
+ *
+ */
+
+import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -118,13 +130,28 @@ public class Character {
     private final Scene scene;
 
     /** stores how fast the character moves (in pixels) */
-    private final int speed = 5;
+    private final int SPEED = 4;
+
+    /** moves the character in four directions */
+    private AnimationTimer characterMovement;
+
+    /** room the character is in, for collision */
+    private CollisionRoom room;
 
     /**
      * stores the current x and y coordinates of the character
      * coordinate is stored as the top left corner of the character
      */
     private int posX, posY;
+
+    /** how fast to move the character's arms/legs */
+    private final int GRAPHIC_SPEED = 20;
+
+    /** counter used to animate the character's arms/legs */
+    private int counter = 0;
+
+    /** stores the character's previous direction */
+    private char previousDirection = 'q';
 
     /**
      * stores the offset of the character's foot (Y) from the top of the character
@@ -139,12 +166,13 @@ public class Character {
      * @param posX the x coordinate of the character
      * @param posY the y coordinate of the character
      */
-    public Character(Group root, Scene scene, int sizeY, int posX, int posY) {
+    public Character(Group root, Scene scene, CollisionRoom room, int sizeY, int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
         this.sizeY = sizeY;
         this.root = root;
         this.scene = scene;
+        this.room = room;
         footOffsetY = (int) (sizeY * 10 / 11.0);
         sizeX = (int) (sizeY * 3 / 7.0);
     }
@@ -156,12 +184,52 @@ public class Character {
      * - sets the size of the character
      */
     public void build() {
-        character = new ImageView("Assets/Character/characterDown.png");
+        character = new ImageView("Assets/Character/Down1.png");
         character.setPreserveRatio(true);
         character.setFitHeight(sizeY);
         character.setX(posX);
         character.setY(posY);
         root.getChildren().add(character);
+
+
+        characterMovement = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                char newDirection = 'q';
+                if (room.isKeyPressed('w') && !room.isColliding()) {
+                    moveUp();
+                    if (room.isColliding()) moveDown(); // if character is colliding, revert movement
+                    else newDirection = 'w';
+                }
+                if (room.isKeyPressed('s') && !room.isColliding()) {
+                    moveDown();
+                    if (room.isColliding()) moveUp();
+                    else newDirection = 's';
+                }
+                if (room.isKeyPressed('a') && !room.isColliding()) {
+                    moveLeft();
+                    if (room.isColliding()) moveRight();
+                    else newDirection = 'a';
+                }
+                if (room.isKeyPressed('d') && !room.isColliding()) {
+                    moveRight();
+                    if (room.isColliding()) moveLeft();
+                    else newDirection = 'd';
+                }
+                if (newDirection == 'q') counter = 0;
+                else {
+                    if (newDirection != previousDirection) {
+                        counter = 0;
+                        previousDirection = newDirection;
+                    }
+                    else counter++;
+                }
+                if (previousDirection == 'w') changeCharacterDirection("Up");
+                else if (previousDirection == 's') changeCharacterDirection("Down");
+                else if (previousDirection == 'a') changeCharacterDirection("Left");
+                else if (previousDirection == 'd') changeCharacterDirection("Right");
+            }
+        };
 
 
         // tester code to get coordinates
@@ -188,44 +256,36 @@ public class Character {
 
     /**
      * moves the character up
-     * @param changeDirection whether or not to change the direction the character is facing
      */
-    public void moveUp(boolean changeDirection) {
-        posY -= speed;
-        if (changeDirection) changeCharacterDirection("Up");
+    private void moveUp() {
+        posY -= SPEED;
         character.setX(posX);
         character.setY(posY);
     }
 
     /**
      * moves the character down
-     * @param changeDirection whether or not to change the direction the character is facing
      */
-    public void moveDown(boolean changeDirection) {
-        posY += speed;
-        if (changeDirection) changeCharacterDirection("Down");
+    private void moveDown() {
+        posY += SPEED;
         character.setX(posX);
         character.setY(posY);
     }
 
     /**
      * moves the character left
-     * @param changeDirection whether or not to change the direction the character is facing
      */
-    public void moveLeft(boolean changeDirection) {
-        posX -= speed;
-        if (changeDirection) changeCharacterDirection("Left");
+    private void moveLeft() {
+        posX -= SPEED;
         character.setX(posX);
         character.setY(posY);
     }
 
     /**
      * moves the character right
-     * @param changeDirection whether or not to change the direction the character is facing
      */
-    public void moveRight(boolean changeDirection) {
-        posX += speed;
-        if (changeDirection) changeCharacterDirection("Right");
+    private void moveRight() {
+        posX += SPEED;
         character.setX(posX);
         character.setY(posY);
     }
@@ -235,6 +295,20 @@ public class Character {
      * @param direction the direction that the character is facing
      */
     private void changeCharacterDirection(String direction) {
-        character.setImage(new Image("Assets/Character/character" + direction + ".png"));
+        character.setImage(new Image("Assets/Character/" + direction + ((counter / GRAPHIC_SPEED) % 4 + 1) + ".png"));
+    }
+
+    /**
+     * starts the character's movement
+     */
+    public void startMovement() {
+        characterMovement.start();
+    }
+
+    /**
+     * stops the character's movement
+     */
+    public void stopMovement() {
+        characterMovement.stop();
     }
 }

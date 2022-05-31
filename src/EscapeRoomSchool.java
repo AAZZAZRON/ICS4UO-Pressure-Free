@@ -96,23 +96,6 @@ public class EscapeRoomSchool extends CollisionRoom {
             @Override
             public void handle(long now) {
                 System.out.println("escape room school");
-                // handle movement
-                if (keyPressed['w'] && !isColliding()) {
-                    character.moveUp(true);
-                    if (isColliding()) character.moveDown(false); // if character is colliding, revert movement
-                }
-                if (keyPressed['s'] && !isColliding()) {
-                    character.moveDown(true);
-                    if (isColliding()) character.moveUp(false);
-                }
-                if (keyPressed['a'] && !isColliding()) {
-                    character.moveLeft(true);
-                    if (isColliding()) character.moveRight(false);
-                }
-                if (keyPressed['d'] && !isColliding()) {
-                    character.moveRight(true);
-                    if (isColliding()) character.moveLeft(false);
-                }
 
                 // handle prompt
                 int prompt = getPrompt();
@@ -125,10 +108,12 @@ public class EscapeRoomSchool extends CollisionRoom {
                         if (prompt != 8) { // if room is next lesson
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
+                            character.stopMovement(); // stop the character's movement
                             ChangeScene.changeToEscapeRoomRoom(prompt); // change to escape room room
                         } else if (canLeave) { // if the user can leave the school
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
+                            character.stopMovement(); // stop the character's movement
                             ChangeScene.changeToMainMenu(stage); // change to main menu
                         } else { // if the user cannot leave the school
                             warning.setMessage("You can't leave the school yet! Please find all the necessary materials for your assignment before trying again");

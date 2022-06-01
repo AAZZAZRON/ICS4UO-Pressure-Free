@@ -106,6 +106,7 @@
  * moved character movement animation timer to Character.java
  * animate character left/right movement
  * startMovement() and endMovement() start and stop animation timer respectively
+ * setPosition() sets the character's position (resets movement animation variables)
  */
 
 import javafx.animation.AnimationTimer;
@@ -155,6 +156,7 @@ public class Character {
     /**
      * stores the offset of the character's foot (Y) from the top of the character
      */
+
     private final int footOffsetY;
 
     /**

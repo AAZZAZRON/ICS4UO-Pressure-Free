@@ -220,10 +220,9 @@ public class PanicRoom {
      * @param choice condition concerning which type of textbox to show
      */
     public void displayMessage (int choice) {
-
+        if (message != null) // deletes any previous instances of message
+            message.toggleOff();
          if (choice == 1) {
-             if (message != null) // deletes any previous instances of message
-                 message.toggleOff();
             if (!attempt) // if user did not select an answer
                 message = new TextBox(stage, root, scene, "Select an answer", "Red");
         }
@@ -237,7 +236,7 @@ public class PanicRoom {
                 message = new TextBox(stage, root, scene, "You selected the wrong answer." +
                         "\nThe answer was option " + answers[counter], "Blue");
            }
-        message.toggleOn(); // show message
+        message.setWarning(4); // show message
 
     }
 }

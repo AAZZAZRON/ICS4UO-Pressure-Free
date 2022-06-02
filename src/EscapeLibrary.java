@@ -1,5 +1,11 @@
 
-
+/**
+ * @author Sion Gang
+ * May 20th, 2022
+ * @version 3.0
+ * Time: 15 minutes
+ * implement Collision detection
+ */
 
 
 import javafx.animation.AnimationTimer;

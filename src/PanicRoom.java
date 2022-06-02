@@ -122,7 +122,7 @@ public class PanicRoom {
      * sets up panic room logic flow
      */
     public void panicRoom() {
-        ImageView bg =  Tools.createBackgroundImage("Assets/School/Rooms/ClassBg.png");
+        ImageView bg =  Tools.createBackgroundImage("Assets/School/Rooms/FadedClassBg.png");
         // set scene
         root = new Group();
         // add background

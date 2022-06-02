@@ -16,7 +16,6 @@
  * build the room with collision
  */
 
-import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -55,10 +54,10 @@ public class EscapeClassroom extends ScenarioRoom {
         fillCollisionGrid(743, 343, 800, 483); // door
 
         // borders collisions
-        fillCollisionGrid(0, 0, 800, 160);
-        fillCollisionGrid(0, 0, 1, 600);
-        fillCollisionGrid(0, 599, 800, 600);
-        fillCollisionGrid(799, 0, 800, 600);
+        fillCollisionGrid(0, 0, 800, 100);
+        fillCollisionGrid(0, 0, 8, 600);
+        fillCollisionGrid(0, 592, 800, 600);
+        fillCollisionGrid(792, 0, 800, 600);
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");

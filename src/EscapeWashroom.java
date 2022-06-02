@@ -19,9 +19,10 @@ public class EscapeWashroom extends ScenarioRoom {
     /**
      * Constructor for EscapeWashroom.
      * @param stage the primary stage for this application. Passed by reference.
+     * @param backpack the backpack of the character. Passed by reference.
      */
-    public EscapeWashroom(Stage stage) {
-        super(stage);
+    public EscapeWashroom(Stage stage, Backpack backpack) {
+        super(stage, backpack);
     }
 
     @Override
@@ -47,6 +48,8 @@ public class EscapeWashroom extends ScenarioRoom {
         fillCollisionGrid(427, 467, 522, 600); // bottom furthest right stall
 
         fillCollisionGrid(734, 347, 800, 481);
+
+        backpack.buildBackpack(root);
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");

@@ -23,6 +23,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.util.Arrays;
+
 public class EscapeRoomSchool extends CollisionRoom {
 
     /** warning textbox if user tries to do a move that is not allowed */
@@ -89,7 +91,6 @@ public class EscapeRoomSchool extends CollisionRoom {
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
 
-        backpack.changeRoom(this);
         backpack.buildBackpack(root);
 
         buildCharacter(root, 100, 60, 60);
@@ -130,5 +131,19 @@ public class EscapeRoomSchool extends CollisionRoom {
                 }
             }
         };
+    }
+
+    /**
+     * restarts a scene
+     */
+    @Override
+    public void startScene() {
+        // reset keypress
+        Arrays.fill(keyPressed, false);
+
+        backpack.changeRoom(this);
+        character.startMovement();
+        collisionTimer.start();
+        stage.setScene(scene);
     }
 }

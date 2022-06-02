@@ -39,7 +39,7 @@ public class Backpack {
 //        stage.setScene(scene);
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(e -> {
-            root.getChildren().add(0, root.getChildren().remove(2));
+            root.getChildren().add(0, root.getChildren().remove(root.getChildren().size() - 1));
             room.startScene();
         });
         pause.play();

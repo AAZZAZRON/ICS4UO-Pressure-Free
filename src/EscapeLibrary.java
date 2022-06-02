@@ -19,9 +19,10 @@ public class EscapeLibrary extends ScenarioRoom {
     /**
      * Constructor for EscapeLibrary.
      * @param stage the primary stage for this application. Passed by reference.
+     * @param backpack the backpack of the character. Passed by reference.
      */
-    public EscapeLibrary(Stage stage) {
-        super(stage);
+    public EscapeLibrary(Stage stage, Backpack backpack) {
+        super(stage, backpack);
     }
 
     @Override
@@ -47,6 +48,7 @@ public class EscapeLibrary extends ScenarioRoom {
 
         fillCollisionGrid(734, 347, 800, 481);
 
+        backpack.buildBackpack(root);
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");

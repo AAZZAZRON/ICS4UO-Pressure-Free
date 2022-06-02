@@ -39,13 +39,17 @@ public abstract class ScenarioRoom extends CollisionRoom {
     /** warning textbox if user tries to do a move that is not allowed */
     public TextBox warning;
 
+    /** backpack of the character */
+    public Backpack backpack;
+
     /**
      * Constructor for ScenarioRoom.
      *
      * @param stage the primary stage for this application. Passed by reference.
      */
-    public ScenarioRoom(Stage stage) {
+    public ScenarioRoom(Stage stage, Backpack backpack) {
         super(stage);
+        this.backpack = backpack;
     }
 
     @Override
@@ -61,6 +65,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
                     //textBoxes[textBoxOpen].toggleOn();
                     if (keyPressed['e']) { // if the user presses e to enter room
                         stop(); // stop the timer
+                        character.setPosition(750, 395);
                         character.stopMovement(); // stop the character's movement
                         ChangeScene.changeToEscapeRoomSchool(); // change to escape room school (exit room)
                     }
@@ -80,7 +85,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
         // reset keypress
         Arrays.fill(keyPressed, false);
 
-        character.setPosition(750, 395);
+        backpack.changeRoom(this);
 
         character.startMovement();
         collisionTimer.start();

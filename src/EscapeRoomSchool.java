@@ -16,7 +16,6 @@
  * build the room with collision
  */
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;

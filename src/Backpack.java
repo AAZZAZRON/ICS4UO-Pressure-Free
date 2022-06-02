@@ -20,7 +20,7 @@ public class Backpack {
     }
 
     public void buildBackpack(Group root) {
-        ImageView backpack = Tools.createButton(root, "Assets/School/Items/", "Backpack", 680, 20, 100);
+        ImageView backpack = Tools.createButton(root, "Assets/School/Items/", "Backpack", 10, 500, 80);
 
         backpack.setOnMouseClicked(e -> {
             room.collisionTimer.stop();

@@ -67,7 +67,7 @@ public class ChangeScene {
     private static ScenarioRoom[] escapeRooms;
 
 
-    
+
     /**
      * reinitializes the escape room and deficiency room for a new game
      * @param stage the primary stage for this application

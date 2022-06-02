@@ -62,7 +62,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.animation.FadeTransition;
 
 
@@ -129,7 +128,7 @@ public class PanicRoom {
         // add background
         root.getChildren().add(bg);
         // add Lesson
-        root.getChildren().add(Tools.fadeImage(quizes[counter]));
+        root.getChildren().add(Tools.addFade(quizes[counter]));
         scene = new Scene(root);
         stage.setScene(scene);
 
@@ -154,14 +153,19 @@ public class PanicRoom {
     public void userInput() {
         System.out.println("input");
         // buttons for multiple choice
-        ImageView q1 = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 90, 236, 20);
-        ImageView q2 = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 90, 299, 20);
-        ImageView q3 = Tools.createButton(root, "Assets/MainMenu/Buttons/", "x", 90, 362, 20);
+        ImageView q1 = Tools.createButton(root, "Assets/Buttons/", "x", 90, 236, 20);
+        ImageView q2 = Tools.createButton(root, "Assets/Buttons/", "x", 90, 299, 20);
+        ImageView q3 = Tools.createButton(root, "Assets/Buttons/", "x", 90, 362, 20);
 
         final int[] guess = new int[1];
 
         // next button
         ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
+
+        Tools.addFade(q1);
+        Tools.addFade(q2);
+        Tools.addFade(q3);
+        Tools.addFade(backButton);
 
         // button conditions
         q1.setOnMouseClicked(e -> {
@@ -194,7 +198,7 @@ public class PanicRoom {
                     System.out.println(score);
                     message.toggleOff();
                     panicRoom();
-                } else ChangeScene.changeToDeficiencyRoom(stage);
+                } else ChangeScene.changeToEscapeRoom(stage);
             }
         });
     }
@@ -203,7 +207,7 @@ public class PanicRoom {
      * Checks user input for mutliple choice quiz
      * @param guess the user's guess
      */
-    public void checkInput (int guess[]) {
+    public void checkInput (int[] guess) {
         if (guess[0] == answers[counter]) {
             score++;
             correct = true;

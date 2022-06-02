@@ -143,10 +143,6 @@ public class DeficiencyRoom extends CollisionRoom {
     private TextBox warning;
 
     /**
-     * stores the total number of rooms in the deficiency room
-     */
-    private final int NUM_OF_ROOMS = 4;
-    /**
      * constructor for Deficiencies School
      * @param stage the primary stage for this application
      */
@@ -218,7 +214,7 @@ public class DeficiencyRoom extends CollisionRoom {
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
                             character.stopMovement(); // stop the character's movement
-                            ChangeScene.changeToDeficiencyLesson(stage); // change to deficiency room
+                            ChangeScene.changeToDeficiencyLesson(stage, roomNumber); // change to deficiency room
                         } else if (roomNumber == NUMBER_OF_LESSONS + 1) { // if user is attempting to exit school
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
@@ -263,7 +259,7 @@ public class DeficiencyRoom extends CollisionRoom {
      */
     private void setTextBoxMessages() {
         // textbox messages
-        if (roomNumber <= NUM_OF_ROOMS) { // if net room to enter is a lesson
+        if (roomNumber <= NUMBER_OF_LESSONS) { // if net room to enter is a lesson
             for (int i = 1; i <= 8; i++) {
                 textBoxes[i].setMessage("Go to room " + (roomNumber + 100) + " to learn about peer pressure");
                 textBoxes[i].setTextboxColour("Red");

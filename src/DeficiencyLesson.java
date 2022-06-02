@@ -60,84 +60,86 @@
  * @version 3.0
  * Time: 5 minutes
  * Implement the usage of Tools.fadeImage() to transition
- *
+ */
+
+/**
+ * @author Aaron Zhu
+ * June 1st, 2022
+ * @version 3.0
+ * Time: 30 minutes
+ * change lesson format from Lesson"slideNum" to Lesson "LessonNum"-"SlideNum"
+ * - easier to read and understand for other programmers
+ * getSlideNum() returns the ImageView of the slide to display
  */
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.animation.FadeTransition;
-import javafx.util.Duration;
 
 public class DeficiencyLesson {
 
     /** The primary stage for this application. Passed by reference. */
     private Stage stage;
 
-    /** Stores transition */
-    private FadeTransition fade = new FadeTransition();
+    /** current lesson to display */
+    private final int lessonNum;
 
-    /** Stores counter for the lesson */
-    private static int counter = 1;
+    /** current slide to display */
+    private int slideNum = 1;
 
-    /** Stores array of deficiency rooms */
-    private DeficiencyLesson[] defRooms = new DeficiencyLesson[7];
+    /** how many slides the ith lesson has */
+    private final int[] slideCount = {0, 1, 2, 2, 2};
 
     /**
      * Constructor for DeficiencyRoom.
      * @param stage The primary stage for this application. Passed by reference.
+     * @param lessonNum The lesson to display.
      */
-    public DeficiencyLesson(Stage stage) {
+    public DeficiencyLesson(Stage stage, int lessonNum) {
         this.stage = stage;
+        this.lessonNum = lessonNum;
     }
 
     /**
+     * gets the slide to display
+     * @param num The slide # (of lesson ${lessonNum}) to display
      * @return ImageView of the selected image
-     * @param path The path to the image
      */
-    public ImageView displayScene (String path) {
-        System.out.println("Assets/Scenes/Lessons/" + path + ".png");
-
-        ImageView image = Tools.createBackgroundImage("Assets/Scenes/Lessons/"+path+".png");
-        // Fade animation
-        fade.setDuration(Duration.millis(500));
-        fade.setFromValue(0);
-        fade.setToValue(1);
-        fade.setNode(image);
-        fade.play();
-        return image;
+    public ImageView getSlideNum(int num) {
+        return Tools.createBackgroundImage("Assets/Scenes/Lessons/Lesson " + lessonNum + "-" + num + ".png");
     }
 
     /**
      * sets up the GUI for deficiency room
      * sets up deficiency room logic flow
      */
-    public void deficiencyRoom () {
+    public void deficiencyRoom() {
         ImageView bg = Tools.createBackgroundImage("Assets/School/Rooms/ClassBg.png");
-        // set scene
-        Group root = new Group();
-        // add background
-        root.getChildren().add(bg);
-        // add Lesson
-        root.getChildren().add(Tools.fadeImage(new ImageView("Assets/School/Rooms/Lesson " + counter)));
+
+        Group root = new Group(bg);
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
-        if (counter == 2 || counter == 4 || counter == 6) { //
+        ImageView slide = getSlideNum(slideNum);
+        Tools.addFade(slide);
+        root.getChildren().add(slide);
+
+        if (slideNum < slideCount[lessonNum]) { //
             ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
+            Tools.addFade(nextButton);
             nextButton.setOnMouseClicked(e -> {
-                counter += 1;
-                ChangeScene.changeToDeficiencyLesson(stage);
+                slideNum += 1;
+                root.getChildren().remove(slide);
+                root.getChildren().remove(nextButton);
+                deficiencyRoom(); // recurse for the next slide
             });
         } else {
             // add button
             ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 600, 170, 40);
+            Tools.addFade(backButton);
             backButton.setOnMouseClicked(e -> {
-                // increments counter for the different rooms
-                if (counter < defRooms.length +1) counter++;
-                else counter = 1;
-                ChangeScene.changeToDeficiencyRoom(stage);
+                ChangeScene.changeToDeficiencyRoom();
             });
         }
     }

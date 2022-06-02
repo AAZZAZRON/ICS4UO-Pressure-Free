@@ -42,15 +42,21 @@
  * - returns the imageview of the button that the user can click on to continue
  */
 
+/**
+ * @author Sion Gang
+ * May 31th, 2022
+ * @version 3.0
+ * Time: 10 minutes
+ * addFade() method to fade in nodes
+ * - added overloaded method for different fade lengths
+ */
+
 import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.stage.Stage;
@@ -143,24 +149,43 @@ public class Tools {
         root.getChildren().add(message);
         stage.setScene(scene);
 
-        ImageView next = createButton(root, "Assets/MainMenu/Buttons/", "x", 50, 50, 50);
+        ImageView next = createButton(root, "Assets/Buttons/", "x", 50, 50, 50);
+        Tools.addFade(next);
+        Tools.addFade(message);
         return next;
     }
 
-    public static ImageView fadeImage (ImageView image) {
-
+    /**
+     * Adds a fade transition to a node.
+     * @param item The node to add the fade transition to.
+     */
+    public static Node addFade(Node item) {
         /** Stores transition */
         FadeTransition fade = new FadeTransition();
         // Fade animation
         fade.setDuration(Duration.millis(500));
         fade.setFromValue(0);
         fade.setToValue(1);
-        fade.setNode(image);
+        fade.setNode(item);
         fade.play();
-        return image;
-
-
+        return item;
     }
 
+    /**
+     * Adds a fade transition to a node.
+     * @param item The node to add the fade transition to.
+     * @param ms The duration of the fade transition in milliseconds.
+     */
+    public static Node addFade(Node item, int ms) {
+        /** Stores transition */
+        FadeTransition fade = new FadeTransition();
+        // Fade animation
+        fade.setDuration(Duration.millis(ms));
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.setNode(item);
+        fade.play();
+        return item;
+    }
 }
 

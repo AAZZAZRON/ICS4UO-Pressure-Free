@@ -50,6 +50,7 @@
  * Time: 30 minutes
  * front-load the rooms in the school for escape room
  * change scenes in escape room using indexes in an array
+ * reorder methods for organization
  */
 
 import javafx.scene.image.ImageView;
@@ -65,6 +66,8 @@ public class ChangeScene {
     /** rooms inside the school */
     private static ScenarioRoom[] escapeRooms;
 
+
+    
     /**
      * reinitializes the escape room and deficiency room for a new game
      * @param stage the primary stage for this application
@@ -95,21 +98,31 @@ public class ChangeScene {
         escapeRooms[7].buildRoom();
     }
 
+
+
+    /**
+     * Change to deficiency room
+     */
+    public static void changeToDeficiencyRoom() {
+        deficiencyRoom.startScene();
+    }
+
     /**
      * Change to deficiency lesson
      * @param stage The primary stage for this application. Passed by reference.
+     * @param lessonNum the lesson to display
      */
-    public static void changeToDeficiencyLesson(Stage stage) {
-        DeficiencyLesson deficiencyRoom = new DeficiencyLesson(stage); // display deficiencies room
-        System.out.println(3);
+    public static void changeToDeficiencyLesson(Stage stage, int lessonNum) {
+        DeficiencyLesson deficiencyRoom = new DeficiencyLesson(stage, lessonNum); // display deficiencies room
         deficiencyRoom.deficiencyRoom();
     }
+
+
 
     /**
      * Change to panic room
      * @param stage The primary stage for this application. Passed by reference.
      */
-
     public static void changeToPanicRoom (Stage stage) {
         ImageView next = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning amount peer pressure! Now, you will enter the PANIC ROOM, where your knowledge will be put to the test. Can you accurately recognize peer pressure in these scenarios?");
         next.onMouseClickedProperty().set(e -> {
@@ -120,21 +133,41 @@ public class ChangeScene {
     }
 
 
+
     /**
-     * Change to deficiency room
-     * @param stage The primary stage for this application. Passed by reference.
+     * Change to escape room
      */
-    public static void changeToDeficiencyRoom(Stage stage) {
-        deficiencyRoom.startScene();
+    public static void changeToEscapeRoom(Stage stage) {
+        ImageView next = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning amount peer pressure! Now, you will enter the PANIC ROOM, where your knowledge will be put to the test. Can you accurately recognize peer pressure in these scenarios?");
+        next.onMouseClickedProperty().set(e -> {
+            changeToEscapeRoomSchool();
+        });
     }
 
     /**
-     * Change to instructions page
+     * change to escape room school
+     */
+    public static void changeToEscapeRoomSchool() {
+        escapeRoomSchool.startScene();
+    }
+
+    /**
+     * change to room in escape room school
+     * @param val the room index to display
+     */
+    public static void changeToEscapeRoomRoom(int val) {
+        escapeRooms[val].startScene();
+    }
+
+
+
+    /**
+     * Change to splash screen
      * @param stage The primary stage for this application. Passed by reference.
      */
-    public static void changeToInstructions(Stage stage) {
-        Instructions instructions = new Instructions(stage);
-        instructions.instructions();
+    public static void changeToSplashScreen(Stage stage) {
+        SplashScreen splashScreen = new SplashScreen(stage);
+        splashScreen.splashScreen();
     }
 
     /**
@@ -147,23 +180,11 @@ public class ChangeScene {
     }
 
     /**
-     * Change to splash screen
+     * Change to instructions page
      * @param stage The primary stage for this application. Passed by reference.
      */
-    public static void changeToSplashScreen(Stage stage) {
-        SplashScreen splashScreen = new SplashScreen(stage);
-        splashScreen.splashScreen();
-    }
-
-    /**
-     * change to escape room school
-     */
-    public static void changeToEscapeRoomSchool() {
-        escapeRoomSchool.startScene();
-    }
-
-    
-    public static void changeToEscapeRoomRoom(int val) {
-        escapeRooms[val].startScene();
+    public static void changeToInstructions(Stage stage) {
+        Instructions instructions = new Instructions(stage);
+        instructions.instructions();
     }
 }

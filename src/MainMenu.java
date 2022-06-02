@@ -70,7 +70,6 @@ public class MainMenu {
         ImageView image = Tools.createBackgroundImage("Assets/MainMenu/MainMenuBackground.png");
         image.setOpacity(0.5);
 
-
         // set scene
         Group root = new Group(image);
         Scene scene = new Scene(root);
@@ -86,9 +85,9 @@ public class MainMenu {
             System.out.println("Play");
             ChangeScene.reinitialize(stage);
 
-            // ChangeScene.changeToDeficiencyRoom(stage);
+            ChangeScene.changeToDeficiencyRoom();
             // ChangeScene.changeToPanicRoom(stage);
-            ChangeScene.changeToEscapeRoomSchool();
+            // ChangeScene.changeToEscapeRoom(stage);
         });
 
         insBtn.setOnMouseClicked(e -> {
@@ -100,11 +99,5 @@ public class MainMenu {
             System.out.println("Exit");
             Platform.exit();
         });
-
-
-
-
-//        Character character = new Character(stage, 100, new int[600][800]);
-//        character.build(root, scene);
     }
 }

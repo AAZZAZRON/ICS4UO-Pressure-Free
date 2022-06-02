@@ -200,7 +200,6 @@ public class DeficiencyRoom extends CollisionRoom {
         collisionTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                System.out.println("deficiency room");
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility

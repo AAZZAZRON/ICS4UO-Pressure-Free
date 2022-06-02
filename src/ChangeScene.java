@@ -66,21 +66,25 @@ public class ChangeScene {
     /** rooms inside the school */
     private static ScenarioRoom[] escapeRooms;
 
-
+    private static Backpack backpack;
 
     /**
      * reinitializes the escape room and deficiency room for a new game
      * @param stage the primary stage for this application
      */
     public static void reinitialize(Stage stage) {
-        // build the escape room school
-        escapeRoomSchool = new EscapeRoomSchool(stage);
-        escapeRoomSchool.buildRoom();
-
         // build the deficiency room (school)
         deficiencyRoom = new DeficiencyRoom(stage);
         deficiencyRoom.buildRoom();
 
+        // build backpack
+        backpack = new Backpack(stage);
+
+        // build the escape room school
+        escapeRoomSchool = new EscapeRoomSchool(stage, backpack);
+        escapeRoomSchool.buildRoom();
+
+        // build escape room rooms
         escapeRooms = new ScenarioRoom[10];
         escapeRooms[1] = new EscapeClassroom(stage);
         escapeRooms[1].buildRoom();

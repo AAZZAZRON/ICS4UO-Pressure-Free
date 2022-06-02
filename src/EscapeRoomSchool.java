@@ -16,6 +16,7 @@
  * build the room with collision
  */
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -30,13 +31,17 @@ public class EscapeRoomSchool extends CollisionRoom {
     /** if the character can leave the school */
     public static boolean canLeave = false;
 
+    private Backpack backpack;
+
     /**
      * Constructor for EscapeRoomSchool.
      * @param stage the primary stage for this application. Passed by reference.
+     * @param backpack the backpack of the character. Passed by reference.
      */
-    public EscapeRoomSchool(Stage stage) {
+    public EscapeRoomSchool(Stage stage, Backpack backpack) {
         super(stage);
         textBoxes = new TextBox[10];
+        this.backpack = backpack;
     }
 
     /**
@@ -84,6 +89,9 @@ public class EscapeRoomSchool extends CollisionRoom {
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
 
+        backpack.changeRoom(this);
+        backpack.buildBackpack(root);
+
         buildCharacter(root, 100, 60, 60);
     }
 
@@ -95,8 +103,6 @@ public class EscapeRoomSchool extends CollisionRoom {
         collisionTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                System.out.println("escape room school");
-
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility

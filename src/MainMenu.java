@@ -84,10 +84,9 @@ public class MainMenu {
         playBtn.setOnMouseClicked(e -> {
             System.out.println("Play");
             ChangeScene.reinitialize(stage);
-            Backpack backpack = new Backpack(stage);
-           // ChangeScene.changeToDeficiencyRoom();
-             ChangeScene.changeToPanicRoom(stage);
-            // ChangeScene.changeToEscapeRoom(stage);
+            // ChangeScene.changeToDeficiencyRoom();
+            // ChangeScene.changeToPanicRoom(stage);
+            ChangeScene.changeToEscapeRoom(stage);
         });
 
         insBtn.setOnMouseClicked(e -> {

@@ -1,34 +1,47 @@
+import javafx.animation.PauseTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
+import javafx.util.Duration;
 
 
 public class Backpack {
 
-    private static Stage stage;
-    //private static Group root;
+    private Stage stage;
+    private CollisionRoom room;
+
     public Backpack(Stage stage) {
         this.stage = stage;
     }
 
-    public static void buildBackpack(Group root) {
-        ImageView backpack = Tools.createButton(root, "Assets/School/Items/", "Backpack", 590, 220, 120);
+    public void changeRoom(CollisionRoom room) {
+        this.room = room;
+    }
+
+    public void buildBackpack(Group root) {
+        ImageView backpack = Tools.createButton(root, "Assets/School/Items/", "Backpack", 680, 20, 100);
 
         backpack.setOnMouseClicked(e -> {
-            contents();
-
+            room.collisionTimer.stop();
+            room.character.stopMovement();
+            root.getChildren().add(root.getChildren().remove(0));
+            contents(root);
         });
-
-
     }
 
-    public static void contents() {
-        ImageView bg = Tools.createBackgroundImage("Assets/School/Rooms/SchoolBg.png");
-        Group root = new Group(bg);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-    }
+    public void contents(Group root) {
+        System.out.println("contents");
 
+//        ImageView bg = Tools.createBackgroundImage("Assets/School/Rooms/SchoolBg.png");
+//        Group root = new Group(bg);
+//        Scene scene = new Scene(root);
+//        stage.setScene(scene);
+        PauseTransition pause = new PauseTransition(Duration.seconds(1));
+        pause.setOnFinished(e -> {
+            root.getChildren().add(0, root.getChildren().remove(2));
+            room.startScene();
+        });
+        pause.play();
+    }
 }

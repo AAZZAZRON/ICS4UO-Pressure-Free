@@ -130,7 +130,6 @@ public class PanicRoom {
         // add Lesson
         root.getChildren().add(Tools.addFade(quizes[counter]));
         scene = new Scene(root);
-        Backpack.buildBackpack(root);
         stage.setScene(scene);
 
 

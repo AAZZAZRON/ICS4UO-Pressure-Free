@@ -96,6 +96,7 @@ public class ChangeScene {
         escapeRooms[6].buildRoom();
         escapeRooms[7] = new EscapeLibrary(stage);
         escapeRooms[7].buildRoom();
+
     }
 
 

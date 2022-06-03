@@ -4,8 +4,11 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 2.0
+ * @version 3.0
  * @author Aaron Zhu, Sion Gang
+ *
+ * Version 3 (Sion)
+ * - build room with collision detection
  */
 
 /**

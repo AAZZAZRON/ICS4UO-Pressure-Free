@@ -1,15 +1,18 @@
 /**
  * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
- * Character.java
+ * TextBox.java
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 2.0
+ * @version 3.0
  * @author Aaron Zhu, Sion Gang
  *
  * Version 2 (Aaron)
  * - initialize textBox + message
  * - display and hide textBox
+ *
+ * Version 3 (Aaron)
+ * - moved warning textboxes to TextBox.java
  */
 
 /**

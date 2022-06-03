@@ -1,3 +1,35 @@
+/**
+ * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
+ * SplashScreen.java
+ * <h2>Course Info:</h2>
+ * ICS4U0 with Krasteva, V.
+ *
+ * @version 3.0
+ * @author Aaron Zhu, Sion Gang
+ *
+ * Version 1 (Sion)
+ * - does nothing
+ *
+ * Version 3 (Aaron)
+ * - splash screen displays for 5 seconds
+ */
+
+/**
+ * @author Sion Gang
+ * May 16th, 2022
+ * @version 1.0
+ * Time: 10 minutes
+ * Create template for splash screen
+ */
+
+/**
+ * @author Aaron Zhu
+ * May 30th, 2022
+ * @version 3.0
+ * Time: 30 minutes
+ * - play a gif of the splash screen for some amount of time
+ */
+
 import javafx.animation.Animation;
 import javafx.animation.PauseTransition;
 import javafx.scene.Group;
@@ -8,27 +40,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-/**
- * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
- * SplashScreen.java
- * <h2>Course Info:</h2>
- * ICS4U0 with Krasteva, V.
- *
- * @version 2.0
- * @author Aaron Zhu, Sion Gang
- *
- * Version 1 (Sion)
- * - does nothing
- */
-
-/**
- * @author Sion Gang
- * May 16th, 2022
- * @version 1.0
- * Time: 10 minutes
- * Create template for splash screen
- */
 
 public class SplashScreen {
     /** The primary stage for this application. Passed by reference. */

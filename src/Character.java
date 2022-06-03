@@ -4,7 +4,7 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 2.0
+ * @version 3.0
  * @author Aaron Zhu, Sion Gang
  *
  * Version 1 (Aaron)
@@ -15,6 +15,11 @@
  * Version 2 (Aaron)
  * - moved character collision detection and prompt to CollisionRoom.java
  * - character only handles movement (up, down, left, right) and changing directions
+ *
+ * Version 3 (Aaron)
+ * - animated the character's movement
+ * - moved character's animation timer to one centralized one in Character.java
+ * - ability to start/end character's animation timer using startMovement() and endMovement()
  */
 
 /**

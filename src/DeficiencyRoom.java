@@ -1,10 +1,10 @@
 /**
  * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
- * DeficiencySchool.java
+ * DeficiencyRoom.java
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 2.0
+ * @version 3.0
  * @author Aaron Zhu, Sion Gang
  *
  * Version 1 (Aaron)
@@ -21,6 +21,10 @@
  *
  * Version 2 (Sion)
  * - built the pixel collision grids for each door and prompt
+ *
+ * Version 3 (Aaron)
+ * - add warning textboxes when user tries to enter a room they cannot
+ * - allow room to be reloaded
  */
 
 /**

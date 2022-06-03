@@ -1,10 +1,10 @@
 /**
  * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
- * DeficiencyRoom.java
+ * DeficiencyLesson.java
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 2.0
+ * @version 3.0
  * @author Aaron Zhu, Sion Gang
  *
  * Version 1 (Sion)
@@ -18,6 +18,13 @@
  * - further implementation to DeficiencySchool
  * - implement multiple slide lessons
  * - implmenet better fade transition
+ *
+ * Version 3 (Sion)
+ * - move fade transition to Tools.java
+ * - change lesson naming scheme
+ *
+ * Version 3 (Aaron)
+ * - change lesson naming scheme
  */
 
 /**
@@ -63,7 +70,7 @@
  */
 
 /**
- * @author Aaron Zhu
+ * @author Sion Gang, Aaron Zhu
  * June 1st, 2022
  * @version 3.0
  * Time: 30 minutes

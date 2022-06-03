@@ -4,8 +4,12 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 2.0
+ * @version 3.0
  * @author Aaron Zhu, Sion Gang
+ *
+ * Version 3 (Aaron)
+ * - extended CollisionRoom to create an abstract class for rooms in the school (escape level)
+ * - adds items to the scene & allows them to be picked up
  */
 
 /**

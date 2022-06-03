@@ -4,8 +4,12 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 2.0
+ * @version 3.0
  * @author Aaron Zhu, Sion Gang
+ *
+ * Version 3 (Aaron)
+ * - build school with collision detection
+ * - allow character to move between rooms in school without losing progress
  */
 
 /**
@@ -14,6 +18,14 @@
  * @version 3.0
  * Time: 30 minutes
  * build the room with collision
+ */
+
+/**
+ * @author Aaron Zhu
+ * June 3rd, 2022
+ * @version 3.0
+ * Time: 15 minutes
+ * small escape room bugs (textbox shouldn't appear when user exits a room)
  */
 
 import javafx.animation.AnimationTimer;
@@ -32,10 +44,13 @@ public class EscapeRoomSchool extends CollisionRoom {
     /** if the character can leave the school */
     public static boolean canLeave = false;
 
+    /** backpack of the character */
     private Backpack backpack;
 
+    /** if the character has moved from where they initially spawned */
     private boolean firstTimeAtDoor = true;
 
+    /** the door they spawned at */
     private int firstDoor = 0;
 
     /**

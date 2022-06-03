@@ -4,12 +4,18 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 2.0
+ * @version 3.0
  * @author Aaron Zhu, Sion Gang
  *
  * Version 1 (Aaron)
  * - added template to create hoverable button
  * - added template to create background image
+ *
+ * Version 3 (Aaron)
+ * - displayIntermissionText() to transition between levels
+ *
+ * Version 3 (Sion)
+ * - addFade() to fade in components of a scene
  */
 
 /**

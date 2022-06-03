@@ -4,8 +4,13 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 2.0
+ * @version 3.0
  * @author Aaron Zhu, Sion Gang
+ *
+ * Version 3 (Sion):
+ * - backpack tracks items that are found/still need to be found
+ * - on backpack click, displays contents of backpack to CLI (will make it a GUI later)
+ * - one backpack is used, and is passed into each room for simplicity's sake
  */
 
 import javafx.animation.PauseTransition;

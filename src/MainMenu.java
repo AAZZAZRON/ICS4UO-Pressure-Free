@@ -4,7 +4,7 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 2.0
+ * @version 3.0
  * @author Aaron Zhu, Sion Gang
  *
  * Version 1 (Aaron)
@@ -14,6 +14,9 @@
  *
  * Version 1 (Sion)
  * - set up play button onClick event
+ *
+ * Version 3 (Aaron, Sion)
+ * - organize assets
  */
 
 /**
@@ -36,7 +39,7 @@
  */
 
 /**
- * @author Aaron Zhu
+ * @author Aaron Zhu, Sion Gang
  * May 30th, 2022
  * @version 3.0
  * Time: 15 minutes

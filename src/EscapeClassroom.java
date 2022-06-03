@@ -23,6 +23,8 @@ import javafx.stage.Stage;
 
 public class EscapeClassroom extends ScenarioRoom {
 
+    private final Coord[] itemCoords = new Coord[]{new Coord(360, 215)};
+
     /**
      * Constructor for EscapeClassroom.
      * @param stage the primary stage for this application. Passed by reference.
@@ -44,18 +46,22 @@ public class EscapeClassroom extends ScenarioRoom {
         scene = new Scene(root);
 
         // room collisions
-        fillCollisionGrid(360, 203, 490, 315);
-        fillCollisionGrid(590, 203, 720, 315);
-        fillCollisionGrid(105, 477, 234, 585);
-        fillCollisionGrid(348, 477, 477, 585);
+        fillCollisionGrid(356, 212, 484, 320);
+        fillCollisionGrid(585, 212, 712, 320);
+        fillCollisionGrid(105, 480, 232, 580);
+        fillCollisionGrid(344, 480, 472, 580);
         fillCollisionGrid(53, 196, 230, 305); // teacher
         fillCollisionGrid(222, 203, 230, 308);
         fillCollisionGrid(53, 203, 60, 308);
         fillCollisionGrid(108, 160, 175, 200); // chair
         fillCollisionGrid(743, 343, 800, 483); // door
 
+        // items
+        addItem(root, "Assets/School/Items/scissors.png", itemCoords[0].getX(), itemCoords[0].getY(), 1);
+        textBoxes[1] = new TextBox(stage, root, scene, "tmp", "Red");
+
         // borders collisions
-        fillCollisionGrid(0, 0, 800, 100);
+        fillCollisionGrid(0, 0, 800, 168);
         fillCollisionGrid(0, 0, 8, 600);
         fillCollisionGrid(0, 592, 800, 600);
         fillCollisionGrid(792, 0, 800, 600);

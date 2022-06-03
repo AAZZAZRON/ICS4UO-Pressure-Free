@@ -220,10 +220,7 @@ public class Character {
                 }
                 if (newDirection == 'q') counter = 0;
                 else {
-                    if (newDirection != previousDirection) {
-                        counter = 0;
-                        previousDirection = newDirection;
-                    }
+                    if (newDirection != previousDirection) previousDirection = newDirection;
                     else counter++;
                 }
                 if (previousDirection == 'w') changeCharacterDirection("Up");

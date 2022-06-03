@@ -83,7 +83,7 @@ public class TextBox {
      */
     private void initialize(String colour) {
         // initialize textbox
-        textBox = new ImageView("Assets/School/Textboxes/Textbox" + colour + ".png");
+        textBox = new ImageView("Assets/Textboxes/Textbox" + colour + ".png");
         textBox.setPreserveRatio(true);
         textBox.setFitWidth(750);
         textBox.setX(25);
@@ -144,7 +144,7 @@ public class TextBox {
     }
 
     public void setTextboxColour(String colour) {
-        textBox.setImage(new Image("Assets/School/Textboxes/Textbox" + colour + ".png"));
+        textBox.setImage(new Image("Assets/Textboxes/Textbox" + colour + ".png"));
     }
 
     /**

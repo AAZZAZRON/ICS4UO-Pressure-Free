@@ -30,6 +30,8 @@
  */
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.Group;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.util.Arrays;
@@ -50,6 +52,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
     public ScenarioRoom(Stage stage, Backpack backpack) {
         super(stage);
         this.backpack = backpack;
+        this.textBoxes = new TextBox[10];
     }
 
     @Override
@@ -60,17 +63,18 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility
-                if (true || (!warning.isVisible() && prompt != 0)) { // warning > prompts
+                if ((!warning.isVisible() && prompt != 0)) { // warning > prompts
                     textBoxOpen = prompt; // toggle on if not already
-                    //textBoxes[textBoxOpen].toggleOn();
+                    textBoxes[textBoxOpen].toggleOn();
                     if (keyPressed['e']) { // if the user presses e to enter room
+                        textBoxes[textBoxOpen].toggleOff();
                         stop(); // stop the timer
                         character.setPosition(750, 395);
                         character.stopMovement(); // stop the character's movement
                         ChangeScene.changeToEscapeRoomSchool(); // change to escape room school (exit room)
                     }
                 } else if (textBoxOpen != 0) {
-                    //textBoxes[textBoxOpen].toggleOff();
+                    textBoxes[textBoxOpen].toggleOff();
                     textBoxOpen = 0;
                 }
             }
@@ -90,5 +94,33 @@ public abstract class ScenarioRoom extends CollisionRoom {
         character.startMovement();
         collisionTimer.start();
         stage.setScene(scene);
+    }
+
+    public void addItem(Group root, String path, int x, int y, int val) {
+        ImageView item = new ImageView(path);
+        item.preserveRatioProperty().set(true);
+        item.setX(x);
+        item.setY(y);
+        item.setFitWidth(50);
+        fillCollisionGrid(x, y, x + 50, y + 50);
+        fillPromptGrid(x - 20, y - 20, x + 70, y + 70, val);
+        root.getChildren().add(item);
+    }
+
+    static class Coord {
+        int x;
+        int y;
+        Coord(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
     }
 }

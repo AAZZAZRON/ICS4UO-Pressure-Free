@@ -1,3 +1,12 @@
+/**
+ * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
+ * EscapeWashroom.java
+ * <h2>Course Info:</h2>
+ * ICS4U0 with Krasteva, V.
+ *
+ * @version 2.0
+ * @author Aaron Zhu, Sion Gang
+ */
 
 /**
  * @author Sion Gang
@@ -30,7 +39,7 @@ public class EscapeWashroom extends ScenarioRoom {
         ImageView image = Tools.createBackgroundImage("Assets/School/Rooms/WashroomBg.png");
 
         // set scene
-        Group root = new Group(image);
+        root = new Group(image);
         scene = new Scene(root);
 
 
@@ -49,11 +58,14 @@ public class EscapeWashroom extends ScenarioRoom {
 
         fillCollisionGrid(734, 347, 800, 481);
 
+        textBoxes[1] = new TextBox(stage, root, scene, "Press e to leave the washroom.", "Green");
+        fillPromptGrid(730, 330, 800, 500, 1);
+
         backpack.buildBackpack(root);
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
 
-        buildCharacter(root, 100, 750, 395);
+        buildCharacter(100, 750, 395);
     }
 }

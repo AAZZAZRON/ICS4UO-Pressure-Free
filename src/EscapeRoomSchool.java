@@ -34,6 +34,10 @@ public class EscapeRoomSchool extends CollisionRoom {
 
     private Backpack backpack;
 
+    private boolean firstTimeAtDoor = true;
+
+    private int firstDoor = 0;
+
     /**
      * Constructor for EscapeRoomSchool.
      * @param stage the primary stage for this application. Passed by reference.
@@ -53,7 +57,7 @@ public class EscapeRoomSchool extends CollisionRoom {
         ImageView image = Tools.createBackgroundImage("Assets/School/Rooms/SchoolBg.png");
 
         // set scene
-        Group root = new Group(image);
+        root = new Group(image);
         scene = new Scene(root);
 
         // room collisions
@@ -92,7 +96,7 @@ public class EscapeRoomSchool extends CollisionRoom {
 
         backpack.buildBackpack(root);
 
-        buildCharacter(root, 100, 60, 60);
+        buildCharacter(100, 60, 60);
     }
 
     /**
@@ -106,12 +110,17 @@ public class EscapeRoomSchool extends CollisionRoom {
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility
-                if (!warning.isVisible() && prompt != 0) { // warning > prompts
+                if (prompt != firstDoor && firstTimeAtDoor) {
+                    firstTimeAtDoor = false;
+                }
+                if (!firstTimeAtDoor && !warning.isVisible() && prompt != 0) { // warning > prompts
                     textBoxOpen = prompt; // toggle on if not already
                     textBoxes[textBoxOpen].toggleOn();
 
                     if (keyPressed['e']) { // if the user presses e to enter room
                         if (prompt != 8) { // if room is next lesson
+                            textBoxes[textBoxOpen].toggleOff();
+                            firstDoor = prompt;
                             stop(); // stop the timer
                             character.stopMovement(); // stop the character's movement
                             ChangeScene.changeToEscapeRoomRoom(prompt); // change to escape room room
@@ -140,6 +149,7 @@ public class EscapeRoomSchool extends CollisionRoom {
         // reset keypress
         Arrays.fill(keyPressed, false);
 
+        firstTimeAtDoor = true;
         backpack.changeRoom(this);
         character.startMovement();
         collisionTimer.start();

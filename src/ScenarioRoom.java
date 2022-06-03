@@ -29,11 +29,23 @@
  * Make character restart at room entrance on load
  */
 
+/**
+ * @author Aaron Zhu
+ * June 3rd, 2022
+ * @version 3.0
+ * Time: 1 hour
+ * adding items for user to pick up
+ * addItem() adds the item
+ * removeItem() removes the item
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class ScenarioRoom extends CollisionRoom {
@@ -44,6 +56,15 @@ public abstract class ScenarioRoom extends CollisionRoom {
     /** backpack of the character */
     public Backpack backpack;
 
+    /** each index points to an item, used to remove items */
+    public ArrayList<ImageView> items;
+
+    /** stores where items can be placed */
+    public ArrayList<Point> itemCoords;
+
+    /** if the character has not left the door */
+    private boolean firstTimeAtDoor = true;
+
     /**
      * Constructor for ScenarioRoom.
      *
@@ -53,8 +74,13 @@ public abstract class ScenarioRoom extends CollisionRoom {
         super(stage);
         this.backpack = backpack;
         this.textBoxes = new TextBox[10];
+        this.items = new ArrayList<>();
+        this.itemCoords = new ArrayList<>();
     }
 
+    /**
+     * sets up the animation timer for scenario rooms
+     */
     @Override
     public void setUpAnimationTimer() {
         collisionTimer = new AnimationTimer() {
@@ -63,15 +89,21 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility
-                if ((!warning.isVisible() && prompt != 0)) { // warning > prompts
+                if (prompt != 1 && firstTimeAtDoor) {
+                    firstTimeAtDoor = false;
+                }
+                if (!firstTimeAtDoor && !warning.isVisible() && prompt != 0) { // warning > prompts
                     textBoxOpen = prompt; // toggle on if not already
                     textBoxes[textBoxOpen].toggleOn();
-                    if (keyPressed['e']) { // if the user presses e to enter room
+                    if (keyPressed['e'] && prompt == 1) { // if the user presses e
                         textBoxes[textBoxOpen].toggleOff();
                         stop(); // stop the timer
                         character.setPosition(750, 395);
                         character.stopMovement(); // stop the character's movement
                         ChangeScene.changeToEscapeRoomSchool(); // change to escape room school (exit room)
+                    } else if (keyPressed['p'] && prompt != 1) {
+                        textBoxes[textBoxOpen].toggleOff();
+                        removeItem(prompt - 2);
                     }
                 } else if (textBoxOpen != 0) {
                     textBoxes[textBoxOpen].toggleOff();
@@ -96,31 +128,35 @@ public abstract class ScenarioRoom extends CollisionRoom {
         stage.setScene(scene);
     }
 
-    public void addItem(Group root, String path, int x, int y, int val) {
+    /**
+     * adds an item to the room
+     * @param path the path to the image of the item
+     * @param id the id of the item
+     * @param x the x coordinate of the item
+     * @param y the y coordinate of the item
+     * @param size the size of the item
+     * @param rad the radius of the item's hitbox (prompt box)
+     * @param val what value to use in fillPromptGrid()
+     */
+    public void addItem(String path, String id, int x, int y, int size, int rad, int val) {
         ImageView item = new ImageView(path);
         item.preserveRatioProperty().set(true);
         item.setX(x);
         item.setY(y);
-        item.setFitWidth(50);
-        fillCollisionGrid(x, y, x + 50, y + 50);
-        fillPromptGrid(x - 20, y - 20, x + 70, y + 70, val);
+        item.setFitWidth(size);
+        item.setId(id);
+        fillPromptGrid(x - rad, y - rad, x + size + rad, y + size + rad, val);
         root.getChildren().add(item);
+        items.add(item);
     }
 
-    static class Coord {
-        int x;
-        int y;
-        Coord(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public int getX() {
-            return x;
-        }
-
-        public int getY() {
-            return y;
-        }
+    /**
+     * removes an item from the room
+     * @param index the index of the item (in items) to remove
+     */
+    public void removeItem(int index) {
+        fillPromptGrid(itemCoords.get(index).x - 20, itemCoords.get(index).y - 20, itemCoords.get(index).x + 70, itemCoords.get(index).y + 70, 0);
+        backpack.foundItem(items.get(index).getId());
+        root.getChildren().remove(items.get(index));;
     }
 }

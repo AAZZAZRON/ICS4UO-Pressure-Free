@@ -16,15 +16,22 @@
  * build the room with collision
  */
 
+/**
+ * @author Aaron Zhu
+ * June 3rd, 2022
+ * @version 3.0
+ * Time: 15 minutes
+ * add items for user to pick up
+ */
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.awt.*;
+
 public class EscapeClassroom extends ScenarioRoom {
-
-    private final Coord[] itemCoords = new Coord[]{new Coord(360, 215)};
-
     /**
      * Constructor for EscapeClassroom.
      * @param stage the primary stage for this application. Passed by reference.
@@ -32,6 +39,10 @@ public class EscapeClassroom extends ScenarioRoom {
      */
     public EscapeClassroom(Stage stage, Backpack backpack) {
         super(stage, backpack);
+        itemCoords.add(new Point(360, 215)); // scissors
+        itemCoords.add(new Point(660, 215)); // scissors
+        itemCoords.add(new Point(105, 480)); // scissors
+        itemCoords.add(new Point(420, 480)); // scissors
     }
 
     /**
@@ -42,7 +53,7 @@ public class EscapeClassroom extends ScenarioRoom {
         ImageView image = Tools.createBackgroundImage("Assets/School/Rooms/ClassBg.png");
 
         // set scene
-        Group root = new Group(image);
+        root = new Group(image);
         scene = new Scene(root);
 
         // room collisions
@@ -56,9 +67,14 @@ public class EscapeClassroom extends ScenarioRoom {
         fillCollisionGrid(108, 160, 175, 200); // chair
         fillCollisionGrid(743, 343, 800, 483); // door
 
+        textBoxes[1] = new TextBox(stage, root, scene, "Press e to leave the classroom.", "Green");
+        fillPromptGrid(730, 330, 800, 500, 1);
+
         // items
-        addItem(root, "Assets/School/Items/scissors.png", itemCoords[0].getX(), itemCoords[0].getY(), 1);
-        textBoxes[1] = new TextBox(stage, root, scene, "tmp", "Red");
+        for (int i = 0; i < itemCoords.size(); i++) {
+            addItem("Assets/School/Items/scissors.png", "Scissors", itemCoords.get(i).x, itemCoords.get(i).y, 50, 20, i + 2);
+            textBoxes[i + 2] = new TextBox(stage, root, scene, "Press p to pick up the scissors", "Red");
+        }
 
         // borders collisions
         fillCollisionGrid(0, 0, 800, 168);
@@ -71,6 +87,6 @@ public class EscapeClassroom extends ScenarioRoom {
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
 
-        buildCharacter(root, 100, 750, 395);
+        buildCharacter(100, 750, 395);
     }
 }

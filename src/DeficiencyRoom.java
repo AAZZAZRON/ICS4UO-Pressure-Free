@@ -158,7 +158,7 @@ public class DeficiencyRoom extends CollisionRoom {
         ImageView image = Tools.createBackgroundImage("Assets/School/Rooms/SchoolBg.png");
 
         // set scene
-        Group root = new Group(image);
+        root = new Group(image);
         scene = new Scene(root);
         // stage.setScene(scene);
 
@@ -189,7 +189,7 @@ public class DeficiencyRoom extends CollisionRoom {
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
 
-        buildCharacter(root, 100, 60, 60);
+        buildCharacter(100, 60, 60);
     }
 
     /**

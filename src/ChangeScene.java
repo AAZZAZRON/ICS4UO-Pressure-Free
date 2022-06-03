@@ -53,6 +53,14 @@
  * reorder methods for organization
  */
 
+/**
+ * @author Sion Gang
+ * June 2nd, 2022
+ * @version 3.0
+ * Time: 30 minutes
+ * pass the backpack by reference to the rooms
+ */
+
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 

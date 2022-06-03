@@ -64,6 +64,8 @@ public abstract class CollisionRoom {
     /** The primary stage for this application. Passed by reference. */
     public final Stage stage;
 
+    public Group root;
+
     /** The scene for this application. */
     public Scene scene;
 
@@ -210,12 +212,11 @@ public abstract class CollisionRoom {
 
     /**
      * create character in the room
-     * @param root the root of the scene
      * @param size the size of the character
      * @param x the x coordinate of the character
      * @param y the y coordinate of the character
      */
-    public void buildCharacter(Group root, int size, int x, int y) {
+    public void buildCharacter(int size, int x, int y) {
         // create character
         character = new Character(root, scene, this, size, x, y);
         character.build();

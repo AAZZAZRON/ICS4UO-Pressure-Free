@@ -73,6 +73,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
      * Constructor for ScenarioRoom.
      *
      * @param stage the primary stage for this application. Passed by reference.
+     * @param backpack the backpack of the character. Passed by reference.
      */
     public ScenarioRoom(Stage stage, Backpack backpack) {
         super(stage);

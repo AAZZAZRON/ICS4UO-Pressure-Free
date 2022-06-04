@@ -164,6 +164,7 @@ public class Tools {
     /**
      * Adds a fade transition to a node.
      * @param item The node to add the fade transition to.
+     * @return The fade transition object.
      */
     public static Node addFade(Node item) {
         /** Stores transition */
@@ -181,6 +182,7 @@ public class Tools {
      * Adds a fade transition to a node.
      * @param item The node to add the fade transition to.
      * @param ms The duration of the fade transition in milliseconds.
+     * @return The node with the fade transition.
      */
     public static Node addFade(Node item, int ms) {
         /** Stores transition */

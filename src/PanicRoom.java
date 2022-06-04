@@ -29,6 +29,7 @@
  * - buttons for next question
  * - taking user input
  */
+
 /**
  * @author Sion Gang
  * May 28th, 2022
@@ -66,13 +67,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.animation.FadeTransition;
 
 
 public class PanicRoom {
-
-    private FadeTransition fade = new FadeTransition();
-
     /** stage for the application */
     private Stage stage;
 

@@ -154,6 +154,7 @@ public class ChangeScene {
 
     /**
      * Change to escape room
+     * @param stage The primary stage for this application. Passed by reference.
      */
     public static void changeToEscapeRoom(Stage stage) {
         ImageView next = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning amount peer pressure! Now, you will enter the PANIC ROOM, where your knowledge will be put to the test. Can you accurately recognize peer pressure in these scenarios?");

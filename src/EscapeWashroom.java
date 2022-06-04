@@ -66,7 +66,7 @@ public class EscapeWashroom extends ScenarioRoom {
 
         buildCharacter(100, 750, 395);
 
-        backpack.buildBackpack(root);
+        addBackpack();
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");

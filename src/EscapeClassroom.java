@@ -87,7 +87,7 @@ public class EscapeClassroom extends ScenarioRoom {
         fillCollisionGrid(0, 592, 800, 600);
         fillCollisionGrid(792, 0, 800, 600);
 
-        backpack.buildBackpack(root);
+        addBackpack();
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");

@@ -87,7 +87,7 @@ public class EscapeLibrary extends ScenarioRoom {
         parseItemData();
 
 
-        backpack.buildBackpack(root);
+        addBackpack();
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");

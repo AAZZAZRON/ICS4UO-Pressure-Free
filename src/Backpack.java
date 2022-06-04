@@ -94,7 +94,7 @@ public class Backpack {
      * @param root the root of the scene
      */
     public void buildBackpack(Group root) {
-        ImageView backpack = Tools.createButton(root, "Assets/School/Items/", "Backpack", 10, 500, 80);
+        ImageView backpack = Tools.createButton(root, "Assets/School/Items/", "Backpack", 8, 510, 75);
 
         backpack.setOnMouseClicked(e -> {
             room.collisionTimer.stop();

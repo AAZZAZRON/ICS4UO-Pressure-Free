@@ -121,9 +121,9 @@ public abstract class ScenarioRoom extends CollisionRoom {
                         character.setPosition(750, 395);
                         character.stopMovement(); // stop the character's movement
                         ChangeScene.changeToEscapeRoomSchool(); // change to escape room school (exit room)
-                    } else if (keyPressed['p'] && prompt != 1) {
+                    } else if (keyPressed['p'] && prompt != 1 && prompt != 2) {
                         textBoxes[textBoxOpen].toggleOff();
-                        removeItem(prompt - 2);
+                        removeItem(prompt - 3);
                     }
                 } else if (textBoxOpen != 0) {
                     textBoxes[textBoxOpen].toggleOff();
@@ -149,13 +149,23 @@ public abstract class ScenarioRoom extends CollisionRoom {
     }
 
     /**
+     * adds the backpack to the scene
+     */
+    public void addBackpack() {
+        fillCollisionGrid(8, 510, 83, 585);
+        fillPromptGrid(0, 490, 103, 600, 2);
+        textBoxes[2] = new TextBox(stage, root, scene, "Press on the backpack to see which items you have collected and which items you still need to collect!", "Blue");
+        backpack.buildBackpack(root);
+    }
+
+    /**
      * reads file to add items to the room
      */
     public void parseItemData() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("Data/" +  roomName + ".txt"));
             String line;
-            int ct = 2;
+            int ct = 3;
             while (!(line = br.readLine()).equals("END")) {
                 String[] split = line.split(", ");
                 String name = split[0];

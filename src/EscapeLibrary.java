@@ -31,7 +31,6 @@
  */
 
 
-import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -45,16 +44,10 @@ public class EscapeLibrary extends ScenarioRoom {
      * Constructor for EscapeLibrary.
      * @param stage the primary stage for this application. Passed by reference.
      * @param backpack the backpack of the character. Passed by reference.
+     * @param roomName the name of the room.
      */
-    public EscapeLibrary(Stage stage, Backpack backpack) {
-        super(stage, backpack);
-        itemCoords.add(new Point(373, 300));
-        itemCoords.add(new Point(400, 448));
-        itemCoords.add(new Point(537, 302));
-        itemCoords.add(new Point(545, 448));
-
-        itemCoords.add(new Point(148, 160)); // book points
-        itemCoords.add(new Point(182, 440));
+    public EscapeLibrary(Stage stage, Backpack backpack, String roomName) {
+        super(stage, backpack, roomName);
     }
 
     @Override
@@ -68,9 +61,9 @@ public class EscapeLibrary extends ScenarioRoom {
 
         // borders collisions
         fillCollisionGrid(0, 0, 800, 210);
-        fillCollisionGrid(0, 0, 1, 600);
-        fillCollisionGrid(0, 599, 800, 600);
-        fillCollisionGrid(799, 0, 800, 600);
+        fillCollisionGrid(0, 0, 8, 600);
+        fillCollisionGrid(0, 592, 800, 600);
+        fillCollisionGrid(792, 0, 800, 600);
 
         fillCollisionGrid(0, 0, 39, 373);
         fillCollisionGrid(39, 373, 230, 486);
@@ -83,16 +76,7 @@ public class EscapeLibrary extends ScenarioRoom {
         textBoxes[1] = new TextBox(stage, root, scene, "Press e to leave the library.", "Green");
         fillPromptGrid(730, 330, 800, 500, 1);
 
-        // items
-        for (int i = 0; i < itemCoords.size() - 2; i++) {
-            addItem("Assets/School/Items/scissors.png", "Scissors", itemCoords.get(i).x, itemCoords.get(i).y, 30, 20, i + 2);
-            textBoxes[i + 2] = new TextBox(stage, root, scene, "Press p to pick up the scissors", "Red");
-        }
-
-        for (int i = itemCoords.size() - 2; i < itemCoords.size(); i++) {
-            addItem("Assets/School/Items/book.png", "Books", itemCoords.get(i).x, itemCoords.get(i).y, 14, 50, i + 2);
-            textBoxes[i + 2] = new TextBox(stage, root, scene, "Press p to pick up the book", "Red");
-        }
+        parseItemData();
 
 
         backpack.buildBackpack(root);

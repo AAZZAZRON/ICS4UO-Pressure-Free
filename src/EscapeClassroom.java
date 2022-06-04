@@ -40,13 +40,10 @@ public class EscapeClassroom extends ScenarioRoom {
      * Constructor for EscapeClassroom.
      * @param stage the primary stage for this application. Passed by reference.
      * @param backpack the backpack of the character. Passed by reference.
+     * @param roomName the name of the room.
      */
-    public EscapeClassroom(Stage stage, Backpack backpack) {
-        super(stage, backpack);
-        itemCoords.add(new Point(360, 215)); // scissors
-        itemCoords.add(new Point(660, 215)); // scissors
-        itemCoords.add(new Point(105, 480)); // scissors
-        itemCoords.add(new Point(420, 480)); // scissors
+    public EscapeClassroom(Stage stage, Backpack backpack, String roomName) {
+        super(stage, backpack, roomName);
     }
 
     /**
@@ -71,14 +68,12 @@ public class EscapeClassroom extends ScenarioRoom {
         fillCollisionGrid(108, 160, 175, 200); // chair
         fillCollisionGrid(743, 343, 800, 483); // door
 
+        buildCharacter(100, 750, 395);
+
         textBoxes[1] = new TextBox(stage, root, scene, "Press e to leave the classroom.", "Green");
         fillPromptGrid(730, 330, 800, 500, 1);
 
-        // items
-        for (int i = 0; i < itemCoords.size(); i++) {
-            addItem("Assets/School/Items/scissors.png", "Scissors", itemCoords.get(i).x, itemCoords.get(i).y, 50, 20, i + 2);
-            textBoxes[i + 2] = new TextBox(stage, root, scene, "Press p to pick up the scissors", "Red");
-        }
+        parseItemData();
 
         // borders collisions
         fillCollisionGrid(0, 0, 800, 168);
@@ -90,7 +85,5 @@ public class EscapeClassroom extends ScenarioRoom {
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
-
-        buildCharacter(100, 750, 395);
     }
 }

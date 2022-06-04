@@ -49,8 +49,12 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public abstract class ScenarioRoom extends CollisionRoom {
 
@@ -63,24 +67,25 @@ public abstract class ScenarioRoom extends CollisionRoom {
     /** each index points to an item, used to remove items */
     public ArrayList<ImageView> items;
 
-    /** stores where items can be placed */
-    public ArrayList<Point> itemCoords;
-
     /** if the character has not left the door */
     private boolean firstTimeAtDoor = true;
+
+    /** room name of the room */
+    private final String roomName;
 
     /**
      * Constructor for ScenarioRoom.
      *
      * @param stage the primary stage for this application. Passed by reference.
      * @param backpack the backpack of the character. Passed by reference.
+     * @param roomName the name of the room.
      */
-    public ScenarioRoom(Stage stage, Backpack backpack) {
+    public ScenarioRoom(Stage stage, Backpack backpack, String roomName) {
         super(stage);
         this.backpack = backpack;
         this.textBoxes = new TextBox[10];
         this.items = new ArrayList<>();
-        this.itemCoords = new ArrayList<>();
+        this.roomName = roomName;
     }
 
     /**
@@ -134,6 +139,33 @@ public abstract class ScenarioRoom extends CollisionRoom {
     }
 
     /**
+     * reads file to add items to the room
+     */
+    public void parseItemData() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Data/" +  roomName + ".txt"));
+            String line;
+            int ct = 2;
+            while (!(line = br.readLine()).equals("END")) {
+                String[] split = line.split(", ");
+                String name = split[0];
+                String id = split[1];
+                int x = Integer.parseInt(split[2]);
+                int y = Integer.parseInt(split[3]);
+                int size = Integer.parseInt(split[4]);
+                int rad = Integer.parseInt(split[5]);
+                int val = ct++;
+                String message = split[6];
+                addItem("Assets/School/Items/" + name + ".png", id, x, y, size, rad, val);
+                textBoxes[val] = new TextBox(stage, root, scene, message, "Blue");
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * adds an item to the room
      * @param path the path to the image of the item
      * @param id the id of the item
@@ -160,7 +192,9 @@ public abstract class ScenarioRoom extends CollisionRoom {
      * @param index the index of the item (in items) to remove
      */
     public void removeItem(int index) {
-        fillPromptGrid(itemCoords.get(index).x - 20, itemCoords.get(index).y - 20, itemCoords.get(index).x + 70, itemCoords.get(index).y + 70, 0);
+        int x = (int) items.get(index).getX();
+        int y = (int) items.get(index).getY();
+        fillPromptGrid(x - 20, y - 20, x + 70, y + 70, 0);
         backpack.foundItem(items.get(index).getId());
         root.getChildren().remove(items.get(index));;
     }

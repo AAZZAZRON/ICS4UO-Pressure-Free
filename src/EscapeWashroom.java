@@ -20,7 +20,6 @@
  */
 
 
-import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -32,9 +31,10 @@ public class EscapeWashroom extends ScenarioRoom {
      * Constructor for EscapeWashroom.
      * @param stage the primary stage for this application. Passed by reference.
      * @param backpack the backpack of the character. Passed by reference.
+     * @param roomName the name of the room.
      */
-    public EscapeWashroom(Stage stage, Backpack backpack) {
-        super(stage, backpack);
+    public EscapeWashroom(Stage stage, Backpack backpack, String roomName) {
+        super(stage, backpack, roomName);
     }
 
     @Override
@@ -48,9 +48,9 @@ public class EscapeWashroom extends ScenarioRoom {
 
         // borders collisions
         fillCollisionGrid(0, 0, 800, 170);
-        fillCollisionGrid(0, 0, 1, 600);
-        fillCollisionGrid(0, 599, 800, 600);
-        fillCollisionGrid(799, 0, 800, 600);
+        fillCollisionGrid(0, 0, 8, 600);
+        fillCollisionGrid(0, 592, 800, 600);
+        fillCollisionGrid(792, 0, 800, 600);
 
         fillCollisionGrid(0, 0, 523, 262); // top stalls
 
@@ -64,11 +64,12 @@ public class EscapeWashroom extends ScenarioRoom {
         textBoxes[1] = new TextBox(stage, root, scene, "Press e to leave the washroom.", "Green");
         fillPromptGrid(730, 330, 800, 500, 1);
 
+        buildCharacter(100, 750, 395);
+
         backpack.buildBackpack(root);
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
 
-        buildCharacter(100, 750, 395);
     }
 }

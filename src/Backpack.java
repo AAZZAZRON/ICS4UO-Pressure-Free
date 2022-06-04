@@ -41,10 +41,24 @@ public class Backpack {
         this.stage = stage;
         itemsFound = new HashMap<>();
         itemsNeeded = new HashMap<>();
-        itemsNeeded.put("Scissors", 5);
-        itemsNeeded.put("Books", 2);
+
+        itemsNeeded.put("Book", 5);
+        itemsNeeded.put("Pencil Case", 1);
+        itemsNeeded.put("Markers", 1);
+        itemsNeeded.put("Pencil Crayons", 1);
+        itemsNeeded.put("Scissors", 1);
+        itemsNeeded.put("Laptop", 1);
+        itemsNeeded.put("Glue Stick", 1);
+        itemsNeeded.put("Clipboard", 1);
+
+        itemsFound.put("Book", 0);
+        itemsFound.put("Pencil Case", 0);
+        itemsFound.put("Markers", 0);
+        itemsFound.put("Pencil Crayons", 0);
         itemsFound.put("Scissors", 0);
-        itemsFound.put("Books", 0);
+        itemsFound.put("Laptop", 0);
+        itemsFound.put("Glue Stick", 0);
+        itemsFound.put("Clipboard", 0);
     }
 
     /**
@@ -75,6 +89,7 @@ public class Backpack {
      * @param name name of the item
      */
     public void foundItem(String name) {
+        System.out.println(name);
         itemsFound.put(name, itemsFound.get(name) + 1);
         itemsNeeded.put(name, itemsNeeded.get(name) - 1);
     }

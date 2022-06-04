@@ -214,7 +214,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
     public void removeItem(int index) {
         int x = (int) items.get(index).getX();
         int y = (int) items.get(index).getY();
-        fillPromptGrid(x - 20, y - 20, x + 70, y + 70, 0);
+        fillPromptGrid(x - 25, y - 25, x + 75, y + 75, 0);
         backpack.foundItem(items.get(index).getId());
         root.getChildren().remove(items.get(index));;
     }

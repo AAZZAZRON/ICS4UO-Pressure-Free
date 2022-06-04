@@ -43,6 +43,15 @@
  * removeItem() removes the item
  */
 
+/**
+ * @author Aaron Zhu
+ * June 4th, 2022
+ * @version 4.0
+ * parseItemData()
+ * - reads the item data from the file
+ * - adds items to scene accordingly
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;

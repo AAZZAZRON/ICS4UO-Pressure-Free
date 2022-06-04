@@ -13,6 +13,14 @@
  * - one backpack is used, and is passed into each room for simplicity's sake
  */
 
+/**
+ * @author Sion Gang
+ * June 4th, 2022
+ * @version 4.0
+ * Time: 30 minutes
+ * Change backpack contents accordingly
+ */
+
 import javafx.animation.PauseTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;

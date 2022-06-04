@@ -30,6 +30,13 @@
  * add items for user to pick up
  */
 
+/**
+ * @author Aaron Zhu
+ * June 4th, 2022
+ * @version 4.0
+ * Move item placing to files
+ */
+
 
 import javafx.scene.Group;
 import javafx.scene.Scene;

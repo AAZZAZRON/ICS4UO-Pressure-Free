@@ -66,6 +66,13 @@
  * pass the backpack by reference to the rooms
  */
 
+/**
+ * @author Aaron Zhu
+ * June 4th, 2022
+ * @version 4.0
+ * Add room name to escape rooms in reinitialize()
+ */
+
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 

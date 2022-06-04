@@ -12,6 +12,10 @@
  * - create graphics and quizes
  * - implement user input using buttons
  * - implement transitions between quizes
+ *
+ * Version 3 (Sion)
+ * - Implemented better graphics + transitions
+ * - Update textbox system - more efficient and organized
  */
 
 /**
@@ -39,7 +43,7 @@
 /**
  * @author Sion Gang
  * May 29th, 2022
- * @version 2.0
+ * @version 3.0
  * Time: 2 hours
  * - further implementation of Panic Room
  * - updated textbox system - more efficient & organized

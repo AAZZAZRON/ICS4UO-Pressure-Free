@@ -128,7 +128,7 @@ public class Backpack {
         int xCoord;
         int yCoord;
         int counter = 0; // counter that keep tracks of contents
-
+        int countFound = 0; // if user found all items
 
         System.out.println("contents"); // temporary
         Text header1 = new Text("ITEMS FOUND");
@@ -150,6 +150,7 @@ public class Backpack {
             }
             System.out.println(item + ": " + itemsFound.get(item));
             if (itemsFound.get(item) != 0) {
+                countFound++;
                 Text message = new Text(item + ": " + itemsFound.get(item));
              //   message.setWrappingWidth(400);
                 message.setX(xCoord);
@@ -189,10 +190,21 @@ public class Backpack {
                 message.setFill(Color.BLACK);
                 message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
                 text.getChildren().add(message);
+
             }
             yCoord += 30;
         }
 
+
+        if (countFound == itemsNeeded.size()) {
+            text.getChildren().removeAll();
+           Text message = new Text("You have found all items.");
+           message.setX(325);
+           message.setY(300);
+            message.setFill(Color.BLACK);
+            message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
+            text.getChildren().add(message);
+        }
 
         root.getChildren().add(text);
         exit.setOnMouseClicked(e -> {

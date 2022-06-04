@@ -198,17 +198,16 @@ public class Backpack {
 
 
         if (countFound == itemsNeeded.size()) {
-
-            text.getChildren().removeAll();
+            text.getChildren().clear();
             Text message = new Text("You have found all items.");
             message.setX(325);
             message.setY(300);
             message.setFill(Color.BLACK);
-            message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
-            text.getChildren().add(message);
-        }
+            message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 30));
 
-        root.getChildren().add(text);
+        }
+            root.getChildren().add(text);
+
         exit.setOnMouseClicked(e -> {
             root.getChildren().remove(image1);
             root.getChildren().remove(exit);

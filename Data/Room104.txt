@@ -1,4 +1,4 @@
 OpenBook, Book, 360, 215, 50, 20, Press p to pick up the book
-Crayola, Pencil Crayons, 390, 460, 40, 20, Press p to pick up the pencil crayons
+Crayola, Pencil Crayons, 350, 485, 40, 20, Press p to pick up the pencil crayons
 END
 NAME X Y SIZE RAD MSG

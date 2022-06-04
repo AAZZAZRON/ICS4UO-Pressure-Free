@@ -75,8 +75,6 @@ public class EscapeClassroom extends ScenarioRoom {
         fillCollisionGrid(108, 160, 175, 200); // chair
         fillCollisionGrid(743, 343, 800, 483); // door
 
-        buildCharacter(100, 750, 395);
-
         textBoxes[1] = new TextBox(stage, root, scene, "Press e to leave the classroom.", "Green");
         fillPromptGrid(730, 330, 800, 500, 1);
 
@@ -92,5 +90,7 @@ public class EscapeClassroom extends ScenarioRoom {
 
         // warning textbox
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
+
+        buildCharacter(100, 750, 395);
     }
 }

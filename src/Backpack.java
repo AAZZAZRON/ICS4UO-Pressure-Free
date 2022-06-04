@@ -28,6 +28,7 @@
  * Time: 2 hours
  * - backpack graphics implementation
  * - dynamic text display
+ * - messge if user found all items
  *  */
 
 import javafx.animation.PauseTransition;

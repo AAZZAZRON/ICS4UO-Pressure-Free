@@ -70,6 +70,7 @@
  * @author Aaron Zhu
  * June 4th, 2022
  * @version 4.0
+ * Time: 30 minutes
  * Add room name to escape rooms in reinitialize()
  */
 

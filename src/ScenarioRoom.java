@@ -47,6 +47,7 @@
  * @author Aaron Zhu
  * June 4th, 2022
  * @version 4.0
+ * Time: 2 hours
  * parseItemData()
  * - reads the item data from the file
  * - adds items to scene accordingly

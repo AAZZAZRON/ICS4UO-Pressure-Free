@@ -41,9 +41,6 @@ public class EscapeRoomSchool extends CollisionRoom {
     /** warning textbox if user tries to do a move that is not allowed */
     private TextBox warning;
 
-    /** if the character can leave the school */
-    public static boolean canLeave = false;
-
     /** backpack of the character */
     private Backpack backpack;
 
@@ -139,7 +136,7 @@ public class EscapeRoomSchool extends CollisionRoom {
                             stop(); // stop the timer
                             character.stopMovement(); // stop the character's movement
                             ChangeScene.changeToEscapeRoomRoom(prompt); // change to escape room room
-                        } else if (canLeave) { // if the user can leave the school
+                        } else if (backpack.foundAllItems()) { // if the user can leave the school
                             stop(); // stop the timer
                             character.stopMovement(); // stop the character's movement
                             ChangeScene.changeToMainMenu(stage); // change to main menu

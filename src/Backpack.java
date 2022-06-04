@@ -53,7 +53,6 @@ public class Backpack {
     /** hashmaps containing number of items found/need to be found */
     private HashMap<String, Integer> itemsFound, itemsNeeded;
 
-    private Text message;
     /**
      * Constructor for Backpack
      * @param stage the stage of the game
@@ -132,13 +131,13 @@ public class Backpack {
 
 
         System.out.println("contents"); // temporary
-        message = new Text("ITEMS FOUND");
+        Text header1 = new Text("ITEMS FOUND");
         System.out.println("ITEMS FOUND");
-        message.setX(325);
-        message.setX(137);
-        message.setFill(Color.BLACK);
-        message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
-        text.getChildren().add(message);
+        header1.setX(325);
+        header1.setY(137);
+        header1.setFill(Color.BLACK);
+        header1.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
+        text.getChildren().add(header1);
 
         xCoord = 325;
         yCoord = 200;
@@ -151,7 +150,7 @@ public class Backpack {
             }
             System.out.println(item + ": " + itemsFound.get(item));
             if (itemsFound.get(item) != 0) {
-                message = new Text(item + ": " + itemsFound.get(item));
+                Text message = new Text(item + ": " + itemsFound.get(item));
              //   message.setWrappingWidth(400);
                 message.setX(xCoord);
                 message.setY(yCoord);
@@ -163,12 +162,12 @@ public class Backpack {
         }
 
         System.out.println("ITEMS NEEDED");
-        message = new Text("ITEMS NEEDED");
-        message.setX(325);
-        message.setX(329);
-        message.setFill(Color.BLACK);
-        message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
-        text.getChildren().add(message);
+        Text header2 = new Text("ITEMS NEEDED");
+        header2.setX(325);
+        header2.setY(329);
+        header2.setFill(Color.BLACK);
+        header2.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
+        text.getChildren().add(header2);
 
         yCoord = 359;
         xCoord = 325;
@@ -183,8 +182,7 @@ public class Backpack {
 
             System.out.println(item + ": " + itemsNeeded.get(item));
             if (itemsNeeded.get(item) != 0) {
-                new Text(item + ": " + itemsNeeded.get(item));
-                message = new Text(item + ": " + itemsNeeded.get(item));
+                Text message = new Text(item + ": " + itemsNeeded.get(item));
                // message.setWrappingWidth(400);
                 message.setX(xCoord);
                 message.setY(yCoord);
@@ -205,5 +203,18 @@ public class Backpack {
             room.startScene();
 
         });
+    }
+
+    /**
+     * checks if the backpack is full
+     * @return true if full, false if not
+     */
+    public boolean foundAllItems() {
+        for (String item : itemsNeeded.keySet()) {
+            if (itemsNeeded.get(item) != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

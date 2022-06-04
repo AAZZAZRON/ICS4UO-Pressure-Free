@@ -21,12 +21,24 @@
  * Change backpack contents accordingly
  */
 
+/**
+ * @author Sion Gang
+ * June 6th, 2022
+ * @version 4.0
+ * Time: 2 hours
+ * - backpack graphics implementation
+ * - dynamic text display
+ *  */
+
 import javafx.animation.PauseTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+import javafx.scene.text.*;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -41,6 +53,7 @@ public class Backpack {
     /** hashmaps containing number of items found/need to be found */
     private HashMap<String, Integer> itemsFound, itemsNeeded;
 
+    private Text message;
     /**
      * Constructor for Backpack
      * @param stage the stage of the game
@@ -107,21 +120,90 @@ public class Backpack {
      * @param root the root of the scene
      */
     public void contents(Group root) {
+        ImageView image1 = Tools.createBackgroundImage("Assets/School/Items/BackpackBg.png");
+        root.getChildren().add(image1);
+        ImageView exit = Tools.createButton(root, "Assets/Buttons/", "x",690, 81, 50 );
+
+        Group text = new Group(); // new group for texts
+
+        int xCoord;
+        int yCoord;
+        int counter = 0; // counter that keep tracks of contents
+
+
         System.out.println("contents"); // temporary
+        message = new Text("ITEMS FOUND");
         System.out.println("ITEMS FOUND");
+        message.setX(325);
+        message.setX(137);
+        message.setFill(Color.BLACK);
+        message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
+        text.getChildren().add(message);
+
+        xCoord = 325;
+        yCoord = 200;
+
         for (String item : itemsFound.keySet()) {
+            counter++;
+            if (counter == 5) { // displays contents in two columns
+                yCoord = 200;
+                xCoord = 500;
+            }
             System.out.println(item + ": " + itemsFound.get(item));
-        }
-        System.out.println("ITEMS NEEDED");
-        for (String item : itemsNeeded.keySet()) {
-            System.out.println(item + ": " + itemsNeeded.get(item));
+            if (itemsFound.get(item) != 0) {
+                message = new Text(item + ": " + itemsFound.get(item));
+             //   message.setWrappingWidth(400);
+                message.setX(xCoord);
+                message.setY(yCoord);
+                message.setFill(Color.BLACK);
+                message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+                text.getChildren().add(message);
+            }
+            yCoord += 30;
         }
 
-        PauseTransition pause = new PauseTransition(Duration.seconds(1));
-        pause.setOnFinished(e -> {
-            root.getChildren().add(0, root.getChildren().remove(root.getChildren().size() - 1));
+        System.out.println("ITEMS NEEDED");
+        message = new Text("ITEMS NEEDED");
+        message.setX(325);
+        message.setX(329);
+        message.setFill(Color.BLACK);
+        message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 40));
+        text.getChildren().add(message);
+
+        yCoord = 359;
+        xCoord = 325;
+        counter = 0;
+
+        for (String item : itemsNeeded.keySet()) {
+            counter++;
+            if (counter == 5) { // splits contents to two column table
+                yCoord = 359;
+                xCoord = 500;
+            }
+
+            System.out.println(item + ": " + itemsNeeded.get(item));
+            if (itemsNeeded.get(item) != 0) {
+                new Text(item + ": " + itemsNeeded.get(item));
+                message = new Text(item + ": " + itemsNeeded.get(item));
+               // message.setWrappingWidth(400);
+                message.setX(xCoord);
+                message.setY(yCoord);
+                message.setFill(Color.BLACK);
+                message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+                text.getChildren().add(message);
+            }
+            yCoord += 30;
+        }
+
+
+        root.getChildren().add(text);
+        exit.setOnMouseClicked(e -> {
+            root.getChildren().remove(image1);
+            root.getChildren().remove(exit);
+            root.getChildren().remove(text);
+            root.getChildren().add(0, root.getChildren().remove(root.getChildren().size() -1));
             room.startScene();
+
         });
-        pause.play();
     }
 }

@@ -72,4 +72,12 @@ public class EscapeWashroom extends ScenarioRoom {
         warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
 
     }
+
+
+    public void scenario () {
+
+
+
+    }
+
 }

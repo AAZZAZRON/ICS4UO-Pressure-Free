@@ -197,7 +197,7 @@ public class Backpack {
         }
 
 
-        if (countFound == itemsNeeded.size()) {
+        if (countFound == 8) {
             text.getChildren().clear();
             Text message = new Text("You have found all items.");
             message.setX(325);

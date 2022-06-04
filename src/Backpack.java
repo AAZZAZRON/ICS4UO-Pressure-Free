@@ -25,7 +25,7 @@
  * @author Sion Gang
  * June 6th, 2022
  * @version 4.0
- * Time: 2 hours
+ * Time: 3 hours
  * - backpack graphics implementation
  * - dynamic text display
  * - messge if user found all items

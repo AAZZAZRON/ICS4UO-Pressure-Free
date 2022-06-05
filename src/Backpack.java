@@ -197,14 +197,15 @@ public class Backpack {
         }
 
 
-        if (countFound == 8) {
+        if (countFound==8) {
             text.getChildren().clear();
             Text message = new Text("You have found all items.");
-            message.setX(325);
+            System.out.println("YOU HAVE FOUND EVERYTHING");
+            message.setX(305);
             message.setY(300);
             message.setFill(Color.BLACK);
             message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 30));
-
+            text.getChildren().add(message);
         }
             root.getChildren().add(text);
 

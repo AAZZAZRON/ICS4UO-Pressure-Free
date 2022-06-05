@@ -49,9 +49,11 @@ public class EscapeClassroom extends ScenarioRoom {
      * @param stage the primary stage for this application. Passed by reference.
      * @param backpack the backpack of the character. Passed by reference.
      * @param roomName the name of the room.
+     * @param scenarioNum the scenario number.
      */
-    public EscapeClassroom(Stage stage, Backpack backpack, String roomName) {
-        super(stage, backpack, roomName);
+    public EscapeClassroom(Stage stage, Backpack backpack, String roomName, int scenarioNum) {
+        super(stage, backpack, roomName, scenarioNum);
+        this.bg = "ClassBg";
     }
 
     /**

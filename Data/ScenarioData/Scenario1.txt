@@ -1,0 +1,8 @@
+3
+This is my message
+This is my message x2
+This is my message x3
+What do you do?
+do nothing do nothing do nothing do nothing do nothing do nothing do nothing do nothing do nothing do nothing; FAIL; You failed because you're bad
+do something; MID; This is okay, but you should have picked x.
+do everything; SUCCESS; Good job :)

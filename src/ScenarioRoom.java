@@ -53,14 +53,39 @@
  * - adds items to scene accordingly
  */
 
+/**
+ * @author Aaron Zhu
+ * June 5th, 2022
+ * @version 4.0
+ * Time: 2 hours
+ * Dynamically render scenarios
+ * - reads from text file
+ * loadScenarios() loads the scenarios
+ * playScenarios() plays the scenarios
+ * createOptionText() --> helper method to create text for options
+ * handleOptionOutcome() --> handles button presses based on status (read from text file)
+ */
+
 import javafx.animation.AnimationTimer;
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,19 +108,35 @@ public abstract class ScenarioRoom extends CollisionRoom {
     /** room name of the room */
     private final String roomName;
 
+    /** which scenario to play */
+    private final int scenarioNum;
+
+    /** if the scenario is complete */
+    private boolean scenarioComplete = false;
+
+    /** arraylist of scenes to iterate through for scenario */
+    private ArrayList<Scene> scenes;
+
+    /** name of bg image */
+    public String bg;
+
     /**
      * Constructor for ScenarioRoom.
      *
      * @param stage the primary stage for this application. Passed by reference.
      * @param backpack the backpack of the character. Passed by reference.
      * @param roomName the name of the room.
+     * @param scenarioNum the scenario number.
      */
-    public ScenarioRoom(Stage stage, Backpack backpack, String roomName) {
+    public ScenarioRoom(Stage stage, Backpack backpack, String roomName, int scenarioNum) {
         super(stage);
         this.backpack = backpack;
         this.textBoxes = new TextBox[10];
         this.items = new ArrayList<>();
+        this.scenes = new ArrayList<>();
         this.roomName = roomName;
+        this.scenarioNum = scenarioNum;
+        if (this.scenarioNum == -1) this.scenarioComplete = true;
     }
 
     /**
@@ -141,6 +182,18 @@ public abstract class ScenarioRoom extends CollisionRoom {
         // reset keypress
         Arrays.fill(keyPressed, false);
 
+        if (!scenarioComplete) { // starts the scenario
+            loadScenarios();
+            playScenarios();
+            scenarioComplete = true;
+        } else startRoom();
+
+    }
+
+    /**
+     * starts the room
+     */
+    private void startRoom() {
         backpack.changeRoom(this);
 
         character.startMovement();
@@ -163,7 +216,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
      */
     public void parseItemData() {
         try {
-            BufferedReader br = new BufferedReader(new FileReader("Data/" +  roomName + ".txt"));
+            BufferedReader br = new BufferedReader(new FileReader("Data/ItemData/" +  roomName + ".txt"));
             String line;
             int ct = 3;
             while (!(line = br.readLine()).equals("END")) {
@@ -217,5 +270,128 @@ public abstract class ScenarioRoom extends CollisionRoom {
         fillPromptGrid(x - 25, y - 25, x + 75, y + 75, 0);
         backpack.foundItem(items.get(index).getId());
         root.getChildren().remove(items.get(index));;
+    }
+
+    /**
+     * loads the scenarios for the room
+     */
+    private void loadScenarios() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("Data/ScenarioData/Scenario" + scenarioNum + ".txt"));
+            int numSlides = Integer.parseInt(br.readLine());
+            for (int i = 1; i <= numSlides; i += 1) { // slides
+                System.out.println("Slide " + i);
+                String message = br.readLine();
+
+                ImageView slide = new ImageView("Assets/School/Scenarios/Scenario" + scenarioNum + "-" + i + ".png");
+                Group root = new Group(slide);
+                Scene scene = new Scene(root);
+
+                TextBox textBox = new TextBox(stage, root, scene, message, "Blue");
+                textBox.toggleOn();
+
+                ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
+                int finalI = i;
+                nextButton.setOnMouseClicked(e -> {
+                    stage.setScene(scenes.get(finalI));
+                });
+                scenes.add(scene);
+            }
+
+
+            // what to do
+            Group root = new Group(new ImageView("Assets/School/Rooms/" + bg + ".png"));
+            Scene scene = new Scene(root);
+
+            ImageView template = Tools.createBackgroundImage("Assets/School/Scenarios/ScenarioOptions.png");
+            template.setOpacity(0.8);
+            root.getChildren().add(template);
+
+            String caption = br.readLine();
+            TextBox textBox = new TextBox(stage, root, scene, caption, "Blue");
+            textBox.toggleOn();
+
+            ImageView optionA = Tools.createButton(root, "Assets/Buttons/", "x", 60, 200, 40);
+            String[] splitA = br.readLine().split("; ");
+            Text textBoxA = createOptionText(splitA[0],110, 227);
+            optionA.onMouseClickedProperty().set(e -> {
+                handleOptionOutcome(splitA[1], splitA[2]);
+            });
+            root.getChildren().add(textBoxA);
+
+            ImageView optionB = Tools.createButton(root, "Assets/Buttons/", "x", 60, 320, 40);
+            String[] splitB = br.readLine().split("; ");
+            Text textBoxB = createOptionText(splitB[0],110, 347);
+            optionB.onMouseClickedProperty().set(e -> {
+                handleOptionOutcome(splitB[1], splitB[2]);
+            });
+            root.getChildren().add(textBoxB);
+
+            ImageView optionC = Tools.createButton(root, "Assets/Buttons/", "x", 60, 440, 40);
+            String[] splitC = br.readLine().split("; ");
+            Text textBoxC = createOptionText(splitC[0],110, 467);
+            optionC.onMouseClickedProperty().set(e -> {
+                handleOptionOutcome(splitC[1], splitC[2]);
+            });
+            root.getChildren().add(textBoxC);
+
+            scenes.add(scene);
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * plays the scenario
+     */
+    private void playScenarios() {
+        stage.setScene(scenes.get(0));
+    }
+
+    /**
+     * creates the text for each option
+     * @param text the text to display
+     * @param x the x coordinate of the text
+     * @param y the y coordinate of the text
+     * @return the Text object
+     */
+    private Text createOptionText(String text, int x, int y) {
+        Text option = new Text(text);
+        option.setX(x);
+        option.setY(y);
+        option.setWrappingWidth(650);
+        option.setFill(Color.BLACK);
+        option.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 25));
+        return option;
+    }
+
+    /**
+     * handles the outcome of an option
+     * @param option the option to handle
+     * @param message the message to display
+     */
+    private void handleOptionOutcome(String option, String message) {
+        Group root = new Group(new ImageView("Assets/School/Rooms/" + bg + ".png"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        TextBox textBox = new TextBox(stage, root, scene, message, "Blue");
+        switch (option) {
+            case "SUCCESS":
+                textBox.setTextboxColour("Green");
+                break;
+            case "MID":
+                textBox.setTextboxColour("Blue");
+                break;
+            case "FAIL":
+                textBox.setTextboxColour("Red");
+                break;
+        }
+        textBox.toggleOn();
+        ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
+        nextButton.setOnMouseClicked(e -> {
+            if (!option.equals("FAIL")) startRoom();
+            else ChangeScene.changeToMainMenu(stage);
+        });
     }
 }

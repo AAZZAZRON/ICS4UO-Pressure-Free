@@ -91,7 +91,7 @@ public class TextBox {
         textBox.setFitWidth(750);
         textBox.setX(25);
         textBox.setY(30);
-        textBox.setOpacity(0.8);
+        textBox.setOpacity(0.9);
 
         // initialize message
         message = new Text();

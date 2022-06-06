@@ -283,14 +283,14 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 System.out.println("Slide " + i);
                 String message = br.readLine();
 
-                ImageView slide = new ImageView("Assets/School/Scenarios/Scenario" + scenarioNum + "-" + i + ".png");
+                ImageView slide = Tools.createBackgroundImage("Assets/School/Scenarios/Scenario" + scenarioNum + "-" + i + ".png");
                 Group root = new Group(slide);
                 Scene scene = new Scene(root);
 
                 TextBox textBox = new TextBox(stage, root, scene, message, "Blue");
                 textBox.toggleOn();
 
-                ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
+                ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 520, 180);
                 int finalI = i;
                 nextButton.setOnMouseClicked(e -> {
                     stage.setScene(scenes.get(finalI));
@@ -300,11 +300,11 @@ public abstract class ScenarioRoom extends CollisionRoom {
 
 
             // what to do
-            Group root = new Group(new ImageView("Assets/School/Rooms/Scenario" + bg + ".png"));
+            Group root = new Group(Tools.createBackgroundImage("Assets/School/Scenarios/Scenario" + scenarioNum + "-" + numSlides + ".png"));
             Scene scene = new Scene(root);
 
             ImageView template = Tools.createBackgroundImage("Assets/School/Scenarios/ScenarioOptions.png");
-            template.setOpacity(0.8);
+            template.setOpacity(0.9);
             root.getChildren().add(template);
 
             String caption = br.readLine();
@@ -388,7 +388,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 break;
         }
         textBox.toggleOn();
-        ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
+        ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 520, 180);
         nextButton.setOnMouseClicked(e -> {
             if (!option.equals("FAIL")) startRoom();
             else ChangeScene.changeToMainMenu(stage);

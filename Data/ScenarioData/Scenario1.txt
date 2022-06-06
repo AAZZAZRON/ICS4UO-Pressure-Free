@@ -1,8 +1,8 @@
 3
-This is my message
-This is my message x2
-This is my message x3
+Dylan, where are we going today after school?
+There's a new boba shop in promenade mall!
+Too bad <> isn't here...
 What do you do?
-do nothing do nothing do nothing do nothing do nothing do nothing do nothing do nothing do nothing do nothing; FAIL; You failed because you're bad
-do something; MID; This is okay, but you should have picked x.
-do everything; SUCCESS; Good job :)
+Tell them that you are here and follow them to the mall.; FAIL; You failed because you succumbed to indirect peer pressure
+Approach them and tell them that you will join soon; MID; This is okay, but you should have ignored them.
+Ignore them and focus on you task; SUCCESS; Good job :)

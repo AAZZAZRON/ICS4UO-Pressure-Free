@@ -300,7 +300,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
 
 
             // what to do
-            Group root = new Group(new ImageView("Assets/School/Rooms/" + bg + ".png"));
+            Group root = new Group(new ImageView("Assets/School/Rooms/Scenario" + bg + ".png"));
             Scene scene = new Scene(root);
 
             ImageView template = Tools.createBackgroundImage("Assets/School/Scenarios/ScenarioOptions.png");

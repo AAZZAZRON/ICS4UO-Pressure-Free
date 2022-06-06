@@ -61,11 +61,24 @@
  *
  */
 
+/**
+ * @author Sion Gang
+ * May 31th, 2022
+ * @version 3.0
+ * Time: 15 minutes
+ * Implement counter for quizes and general update for panic room
+ *
+ */
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -74,7 +87,7 @@ public class PanicRoom {
     private Stage stage;
 
     /** Stores counter for the quiz */
-    private static int counter = 1;
+    private static int counter = 0;
 
     /** Stores answers*/
     private int [] answers;
@@ -124,12 +137,24 @@ public class PanicRoom {
      */
     public void panicRoom() {
         ImageView bg =  Tools.createBackgroundImage("Assets/School/Rooms/FadedClassBg.png");
+
+        Text roomCount = new Text(counter+1+"/10");
+        roomCount.setX(648);
+        roomCount.setY(168);
+        roomCount.setFill(Color.WHITE);
+        roomCount.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 25));
+
         // set scene
         root = new Group();
         // add background
         root.getChildren().add(bg);
         // add Lesson
         root.getChildren().add(Tools.addFade(quizes[counter]));
+        // add quiz counter text
+        root.getChildren().add(roomCount);
+
+        System.out.println("BUILD");
+
         scene = new Scene(root);
         stage.setScene(scene);
 

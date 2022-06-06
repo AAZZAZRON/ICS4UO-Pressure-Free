@@ -1,8 +1,8 @@
 3
 Dylan, where are we going today after school?
-There's a new boba shop in promenade mall!
-Too bad <> isn't here...
-What do you do?
-Tell them that you are here and follow them to the mall.; FAIL; You failed because you succumbed to indirect peer pressure
-Approach them and tell them that you will join soon; MID; This is okay, but you should have ignored them.
+There's a new boba shop in Promenade Mall!
+Too bad Scott isn't here...
+What do you do? Remember, you have an assignment to finish!
+Tell them that you are here and follow them to the mall.; FAIL; Finishing your assignment is more important than being with your friends. Don't succumb to the peer pressure.
+Approach them and tell them that you will join soon; MID; This is okay, but don't let your friends change your mind. You have an assignment to do!
 Ignore them and focus on you task; SUCCESS; Good job :)

@@ -346,7 +346,10 @@ public abstract class ScenarioRoom extends CollisionRoom {
      * plays the scenario
      */
     private void playScenarios() {
-        stage.setScene(scenes.get(0));
+        ImageView next = Tools.displayIntermissionText(stage, "SCENARIO TIME!");
+        next.onMouseClickedProperty().set(e -> {
+            stage.setScene(scenes.get(0));
+        });
     }
 
     /**
@@ -390,7 +393,12 @@ public abstract class ScenarioRoom extends CollisionRoom {
         textBox.toggleOn();
         ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 520, 180);
         nextButton.setOnMouseClicked(e -> {
-            if (!option.equals("FAIL")) startRoom();
+            if (!option.equals("FAIL")) {
+                startRoom();
+                warning.setMessage("Back to the game...");
+                warning.setTextboxColour("Blue");
+                warning.setWarning(2);
+            }
             else ChangeScene.changeToMainMenu(stage);
         });
     }

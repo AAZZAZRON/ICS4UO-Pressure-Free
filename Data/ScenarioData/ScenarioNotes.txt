@@ -4,3 +4,8 @@ caption
 option A, status, response
 option B, status, response
 option C, status, response
+
+
+Scenario1 --> boba
+Scenario2 --> vaping
+Scenario3 --> gaming (library)

@@ -141,7 +141,10 @@ public class Tools {
      * @return The imageview of the button that the user can click on to continue
      */
     public static ImageView displayIntermissionText(Stage stage, String text) {
-        Group root = new Group();
+        ImageView image = Tools.createBackgroundImage("Assets/MainMenu/MainMenuBackground.png");
+        image.setOpacity(0.1);
+
+        Group root = new Group(image);
         Scene scene = new Scene(root);
         Text message = new Text(text);
         message.setTextAlignment(TextAlignment.CENTER);

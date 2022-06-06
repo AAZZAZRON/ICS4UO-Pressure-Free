@@ -133,7 +133,7 @@ public class DeficiencyLesson {
         root.getChildren().add(slide);
 
         if (slideNum < slideCount[lessonNum]) { //
-            ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
+            ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 420, 180);
             Tools.addFadeOn(nextButton);
             nextButton.setOnMouseClicked(e -> {
                 slideNum += 1;
@@ -143,7 +143,7 @@ public class DeficiencyLesson {
             });
         } else {
             // add button
-            ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 600, 170, 40);
+            ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 690, 140, 40);
             Tools.addFadeOn(backButton);
             backButton.setOnMouseClicked(e -> {
                 ChangeScene.changeToDeficiencyRoom();

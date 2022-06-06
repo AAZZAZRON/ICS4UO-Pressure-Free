@@ -93,7 +93,7 @@ public class PanicRoom {
     private int [] answers;
 
     /** Stores Quizes*/
-    private ImageView [] quizes;
+    private ImageView [] quizzes;
 
     /** Player's score*/
     private static int score;
@@ -121,9 +121,9 @@ public class PanicRoom {
     public PanicRoom(Stage stage) {
         this.stage = stage;
         answers = new int[]{2, 3, 1, 2, 2,  1, 2, 2, 2, 3};
-        quizes = new ImageView [answers.length];
+        quizzes = new ImageView [answers.length];
         for (int i = 1; i <= answers.length; i++)
-          quizes [i-1] = new ImageView("Assets/Scenes/Quizes/PanicRoom " + i + ".png");
+          quizzes[i-1] = new ImageView("Assets/Scenes/Quizzes/PanicRoom " + i + ".png");
         attempt = false;
 
     }
@@ -138,8 +138,8 @@ public class PanicRoom {
     public void panicRoom() {
         ImageView bg =  Tools.createBackgroundImage("Assets/School/Rooms/FadedClassBg.png");
 
-        Text roomCount = new Text(counter+1+"/10");
-        roomCount.setX(648);
+        Text roomCount = new Text("Q " + (counter+1) +"/10");
+        roomCount.setX(628);
         roomCount.setY(168);
         roomCount.setFill(Color.WHITE);
         roomCount.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 25));
@@ -149,7 +149,7 @@ public class PanicRoom {
         // add background
         root.getChildren().add(bg);
         // add Lesson
-        root.getChildren().add(Tools.addFadeOn(quizes[counter]));
+        root.getChildren().add(Tools.addFadeOn(quizzes[counter]));
         // add quiz counter text
         root.getChildren().add(roomCount);
 
@@ -186,7 +186,7 @@ public class PanicRoom {
         final int[] guess = new int[1];
 
         // next button
-        ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
+        ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 420, 180);
 
         Tools.addFadeOn(q1);
         Tools.addFadeOn(q2);
@@ -263,6 +263,5 @@ public class PanicRoom {
                         "\nThe answer was option " + answers[counter], "Blue");
            }
         message.setWarning(4); // show message
-
     }
 }

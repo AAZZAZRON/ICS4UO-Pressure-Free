@@ -1,0 +1,9 @@
+4
+Yo you got the new jordan sneakers?
+Yeah man, I got them yesterday!
+*Those jordans are the new trendy sneakers!*
+Nice. I'll buy mine today after school.
+What do you do? Remember, you have an assignment to finish!
+Join them and buy the sneakers .; FAIL; Finishing your assignment is more important than being with your friends. Don't succumb to the peer pressure.
+Buy the sneakers later; MID; This is okay, but don't let your friends influence you against your will. You have an assignment to do!
+Ignore them and focus on you task; SUCCESS; Good job :)

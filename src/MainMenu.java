@@ -87,9 +87,9 @@ public class MainMenu {
         playBtn.setOnMouseClicked(e -> {
             System.out.println("Play");
             ChangeScene.reinitialize(stage);
-            // ChangeScene.changeToDeficiencyRoom();
+             ChangeScene.changeToDeficiencyRoom();
             // ChangeScene.changeToPanicRoom(stage);
-            ChangeScene.changeToEscapeRoom(stage);
+            // ChangeScene.changeToEscapeRoom(stage);
         });
 
         insBtn.setOnMouseClicked(e -> {

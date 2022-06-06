@@ -218,7 +218,7 @@ public class DeficiencyRoom extends CollisionRoom {
                             stop(); // stop the timer
                             character.stopMovement(); // stop the character's movement
                             ChangeScene.changeToDeficiencyLesson(stage, roomNumber); // change to deficiency room
-                        } else if (roomNumber == NUMBER_OF_LESSONS + 1) { // if user is attempting to exit school
+                        } else if (roomNumber == NUMBER_OF_LESSONS + 1 && prompt == 8) { // if user is attempting to exit school
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
                             character.stopMovement(); // stop the character's movement
@@ -228,8 +228,11 @@ public class DeficiencyRoom extends CollisionRoom {
                                 warning.setMessage("You cannot leave the school yet! Please finish watching all the lessons. Go to room " + (roomNumber + 100) + " to learn about peer pressure");
                                 warning.setWarning(3);
                             }
-                            else {
+                            else if (roomNumber != NUMBER_OF_LESSONS + 1) {
                                 warning.setMessage("You cannot enter this room! Go to room " + (roomNumber + 100) + " to learn about peer pressure");
+                                warning.setWarning(2);
+                            } else {
+                                warning.setMessage("You have watched all the lessons! Please exit the school.");
                                 warning.setWarning(2);
                             }
                         }

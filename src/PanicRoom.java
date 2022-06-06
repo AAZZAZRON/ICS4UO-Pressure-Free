@@ -149,7 +149,7 @@ public class PanicRoom {
         // add background
         root.getChildren().add(bg);
         // add Lesson
-        root.getChildren().add(Tools.addFade(quizes[counter]));
+        root.getChildren().add(Tools.addFadeOn(quizes[counter]));
         // add quiz counter text
         root.getChildren().add(roomCount);
 
@@ -188,10 +188,10 @@ public class PanicRoom {
         // next button
         ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
 
-        Tools.addFade(q1);
-        Tools.addFade(q2);
-        Tools.addFade(q3);
-        Tools.addFade(backButton);
+        Tools.addFadeOn(q1);
+        Tools.addFadeOn(q2);
+        Tools.addFadeOn(q3);
+        Tools.addFadeOn(backButton);
 
         // button conditions
         q1.setOnMouseClicked(e -> {

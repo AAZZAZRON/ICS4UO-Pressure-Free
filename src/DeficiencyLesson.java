@@ -129,12 +129,12 @@ public class DeficiencyLesson {
         stage.setScene(scene);
 
         ImageView slide = getSlideNum(slideNum);
-        Tools.addFade(slide);
+        Tools.addFadeOn(slide);
         root.getChildren().add(slide);
 
         if (slideNum < slideCount[lessonNum]) { //
             ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 430, 180);
-            Tools.addFade(nextButton);
+            Tools.addFadeOn(nextButton);
             nextButton.setOnMouseClicked(e -> {
                 slideNum += 1;
                 root.getChildren().remove(slide);
@@ -144,7 +144,7 @@ public class DeficiencyLesson {
         } else {
             // add button
             ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 600, 170, 40);
-            Tools.addFade(backButton);
+            Tools.addFadeOn(backButton);
             backButton.setOnMouseClicked(e -> {
                 ChangeScene.changeToDeficiencyRoom();
             });

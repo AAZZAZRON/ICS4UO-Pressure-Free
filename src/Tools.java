@@ -156,17 +156,17 @@ public class Tools {
         stage.setScene(scene);
 
         ImageView next = createButton(root, "Assets/Buttons/", "x", 50, 50, 50);
-        Tools.addFade(next);
-        Tools.addFade(message);
+        Tools.addFadeOn(next);
+        Tools.addFadeOn(message);
         return next;
     }
 
     /**
-     * Adds a fade transition to a node.
+     * Adds a fade-on transition to a node.
      * @param item The node to add the fade transition to.
      * @return The fade transition object.
      */
-    public static Node addFade(Node item) {
+    public static Node addFadeOn(Node item) {
         /** Stores transition */
         FadeTransition fade = new FadeTransition();
         // Fade animation
@@ -179,12 +179,29 @@ public class Tools {
     }
 
     /**
+     * Adds a fade-off transition to a node.
+     * @param item The node to add the fade transition to.
+     * @return The fade transition object.
+     */
+    public static Node addFadeOff(Node item) {
+        /** Stores transition */
+        FadeTransition fade = new FadeTransition();
+        // Fade animation
+        fade.setDuration(Duration.millis(500));
+        fade.setFromValue(1);
+        fade.setToValue(0);
+        fade.setNode(item);
+        fade.play();
+        return item;
+    }
+
+    /**
      * Adds a fade transition to a node.
      * @param item The node to add the fade transition to.
      * @param ms The duration of the fade transition in milliseconds.
      * @return The node with the fade transition.
      */
-    public static Node addFade(Node item, int ms) {
+    public static Node addFadeOn(Node item, int ms) {
         /** Stores transition */
         FadeTransition fade = new FadeTransition();
         // Fade animation

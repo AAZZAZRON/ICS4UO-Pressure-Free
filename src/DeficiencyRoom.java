@@ -207,13 +207,14 @@ public class DeficiencyRoom extends CollisionRoom {
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility
+                System.out.println(roomNumber + " " + prompt);
                 if (!warning.isVisible() && prompt != 0) { // warning > prompts
                     textBoxOpen = prompt; // toggle on if not already
                     textBoxes[textBoxOpen].toggleOn();
 
                     if (keyPressed['e']) { // if the user presses e to enter room
                         System.out.println(roomNumber + " " + prompt + " " + NUMBER_OF_LESSONS);
-                        if (roomNumber == prompt) { // if room is next lesson
+                        if (roomNumber == prompt && prompt <= NUMBER_OF_LESSONS) { // if room is next lesson
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
                             character.stopMovement(); // stop the character's movement

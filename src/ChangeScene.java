@@ -109,11 +109,11 @@ public class ChangeScene {
         escapeRooms = new ScenarioRoom[10];
         escapeRooms[1] = new EscapeClassroom(stage, backpack, "Room101", 1);
         escapeRooms[1].buildRoom();
-        escapeRooms[2] = new EscapeClassroom(stage, backpack, "Room102", 4);
+        escapeRooms[2] = new EscapeClassroom(stage, backpack, "Room102", 1);
         escapeRooms[2].buildRoom();
         escapeRooms[3] = new EscapeClassroom(stage, backpack, "Room103", -1);
         escapeRooms[3].buildRoom();
-        escapeRooms[4] = new EscapeClassroom(stage, backpack, "Room104", 5);
+        escapeRooms[4] = new EscapeClassroom(stage, backpack, "Room104", 1);
         escapeRooms[4].buildRoom();
         escapeRooms[5] = new EscapeWashroom(stage, backpack, "Washroom1", 2);
         escapeRooms[5].buildRoom();
@@ -164,9 +164,14 @@ public class ChangeScene {
      * @param stage The primary stage for this application. Passed by reference.
      */
     public static void changeToEscapeRoom(Stage stage) {
-        ImageView next = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning amount peer pressure! Now, you will enter the PANIC ROOM, where your knowledge will be put to the test. Can you accurately recognize peer pressure in these scenarios?");
-        next.onMouseClickedProperty().set(e -> {
-            changeToEscapeRoomSchool();
+        ImageView next1 = Tools.displayIntermissionText(stage, "LEVEL THREE: Escape Room\nSchool is over and you are going to your friends house to complete an assignment. But, you must first acquire some resources to complete the assignment. Items you need to collect are listed in your backpack.");
+        ImageView next2 = Tools.displayIntermissionText(stage, "LEVEL THREE: Escape Room\nBeware of peer pressure as you are collecting resources. Do not let your friends influence your decisions!");
+        stage.setScene(next1.getScene());
+        next1.onMouseClickedProperty().set(e -> {
+            stage.setScene(next2.getScene());
+        });
+        next2.onMouseClickedProperty().set(e -> {
+            escapeRoomSchool.startScene();
         });
     }
 

@@ -267,7 +267,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
     public void removeItem(int index) {
         int x = (int) items.get(index).getX();
         int y = (int) items.get(index).getY();
-        fillPromptGrid(x - 25, y - 25, x + 75, y + 75, 0);
+        fillPromptGrid(x - 75, y - 75, x + 75, y + 75, 0);
         backpack.foundItem(items.get(index).getId());
         root.getChildren().remove(items.get(index));;
     }
@@ -311,29 +311,33 @@ public abstract class ScenarioRoom extends CollisionRoom {
             TextBox textBox = new TextBox(stage, root, scene, caption, "Blue");
             textBox.toggleOn();
 
-            ImageView optionA = Tools.createButton(root, "Assets/Buttons/", "x", 60, 200, 40);
+            ImageView optionA = Tools.createButton(root, "Assets/Buttons/ChoiceButtons/", "a", 60, 200, 40);
             String[] splitA = br.readLine().split("; ");
             Text textBoxA = createOptionText(splitA[0],110, 227);
-            optionA.onMouseClickedProperty().set(e -> {
-                handleOptionOutcome(splitA[1], splitA[2]);
-            });
             root.getChildren().add(textBoxA);
 
-            ImageView optionB = Tools.createButton(root, "Assets/Buttons/", "x", 60, 320, 40);
+            ImageView optionB = Tools.createButton(root, "Assets/Buttons/ChoiceButtons/", "b", 60, 320, 40);
             String[] splitB = br.readLine().split("; ");
             Text textBoxB = createOptionText(splitB[0],110, 347);
-            optionB.onMouseClickedProperty().set(e -> {
-                handleOptionOutcome(splitB[1], splitB[2]);
-            });
             root.getChildren().add(textBoxB);
 
-            ImageView optionC = Tools.createButton(root, "Assets/Buttons/", "x", 60, 440, 40);
+            ImageView optionC = Tools.createButton(root, "Assets/Buttons/ChoiceButtons/", "c", 60, 440, 40);
             String[] splitC = br.readLine().split("; ");
             Text textBoxC = createOptionText(splitC[0],110, 467);
-            optionC.onMouseClickedProperty().set(e -> {
-                handleOptionOutcome(splitC[1], splitC[2]);
-            });
             root.getChildren().add(textBoxC);
+
+            optionA.onMouseClickedProperty().set(e -> {
+                showAnswers(root, optionA, optionB, optionC, splitA[1], splitB[1], splitC[1]);
+                handleOptionOutcome(root, splitA[1], splitA[2]);
+            });
+            optionB.onMouseClickedProperty().set(e -> {
+                showAnswers(root, optionA, optionB, optionC, splitA[1], splitB[1], splitC[1]);
+                handleOptionOutcome(root, splitB[1], splitB[2]);
+            });
+            optionC.onMouseClickedProperty().set(e -> {
+                showAnswers(root, optionA, optionB, optionC, splitA[1], splitB[1], splitC[1]);
+                handleOptionOutcome(root, splitC[1], splitC[2]);
+            });
 
             scenes.add(scene);
             br.close();
@@ -374,10 +378,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
      * @param option the option to handle
      * @param message the message to display
      */
-    private void handleOptionOutcome(String option, String message) {
-        Group root = new Group(new ImageView("Assets/School/Rooms/" + bg + ".png"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+    private void handleOptionOutcome(Group root, String option, String message) {
         TextBox textBox = new TextBox(stage, root, scene, message, "Blue");
         switch (option) {
             case "SUCCESS":
@@ -401,5 +402,27 @@ public abstract class ScenarioRoom extends CollisionRoom {
             }
             else ChangeScene.changeToMainMenu(stage);
         });
+    }
+
+    /**
+     * display the answer to the question
+     * @param q1 the first answer
+     * @param q2 the second answer
+     * @param q3 the third answer
+     */
+    private void showAnswers(Group root, ImageView q1, ImageView q2, ImageView q3, String optionA, String optionB, String optionC) {
+        root.getChildren().removeAll(q1, q2, q3);
+
+        if (optionA.equals("SUCCESS")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/aButtonRight.png", 60, 200, 40);
+        else if (optionA.equals("MID")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/aButtonMid.png", 60, 200, 40);
+        else if (optionA.equals("FAIL")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/aButtonWrong.png", 60, 200, 40);
+
+        if (optionB.equals("SUCCESS")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/bButtonRight.png", 60, 320, 40);
+        else if (optionB.equals("MID")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/bButtonMid.png", 60, 320, 40);
+        else if (optionB.equals("FAIL")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/bButtonWrong.png", 60, 320, 40);
+
+        if (optionC.equals("SUCCESS")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/cButtonRight.png", 60, 440, 40);
+        else if (optionC.equals("MID")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/cButtonMid.png", 60, 440, 40);
+        else if (optionC.equals("FAIL")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/cButtonWrong.png", 60, 440, 40);
     }
 }

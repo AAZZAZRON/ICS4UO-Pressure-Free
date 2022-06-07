@@ -38,7 +38,6 @@
  * - graphics for next button
  * - implement next button
  * - implement text messages for warnings and right/wrong answers
- *
  */
 
 /**
@@ -49,7 +48,6 @@
  * - further implementation of Panic Room
  * - updated textbox system - more efficient & organized
  * - configuring buttons
- *
  */
 
 /**
@@ -58,7 +56,6 @@
  * @version 3.0
  * Time: 5 minutes
  * Implement the usage of Tools.fadeImage() to transition
- *
  */
 
 /**
@@ -67,8 +64,18 @@
  * @version 3.0
  * Time: 15 minutes
  * Implement counter for quizes and general update for panic room
- *
  */
+
+/**
+ * Aaron Zhu
+ * June 7th, 2022
+ * @version 4.0
+ * Time: 30 minutes
+ * Changed panic room buttons
+ * - created hover buttons ABC and right/wrong
+ * Implemented the buttons into panic room
+ */
+
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -179,14 +186,15 @@ public class PanicRoom {
     public void userInput() {
         System.out.println("input");
         // buttons for multiple choice
-        ImageView q1 = Tools.createButton(root, "Assets/Buttons/", "x", 90, 236, 20);
-        ImageView q2 = Tools.createButton(root, "Assets/Buttons/", "x", 90, 299, 20);
-        ImageView q3 = Tools.createButton(root, "Assets/Buttons/", "x", 90, 362, 20);
+        ImageView q1 = Tools.createButton(root, "Assets/Buttons/ChoiceButtons/", "a", 90, 236, 20);
+        ImageView q2 = Tools.createButton(root, "Assets/Buttons/ChoiceButtons/", "b", 90, 299, 20);
+        ImageView q3 = Tools.createButton(root, "Assets/Buttons/ChoiceButtons/", "c", 90, 362, 20);
 
         final int[] guess = new int[1];
 
         // next button
         ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 420, 180);
+        root.getChildren().remove(backButton);
 
         Tools.addFadeOn(q1);
         Tools.addFadeOn(q2);
@@ -199,20 +207,26 @@ public class PanicRoom {
             checkInput(guess);
             displayMessage(2);
             attempt = true;
-
+            showAnswers(q1, q2, q3);
+            root.getChildren().add(backButton);
         });
+
         q2.setOnMouseClicked(e -> {
             guess[0] = 2;
             checkInput(guess);
             displayMessage(2);
             attempt = true;
-
+            showAnswers(q1, q2, q3);
+            root.getChildren().add(backButton);
         });
+
         q3.setOnMouseClicked(e -> {
             guess[0] = 3;
             checkInput(guess);
             displayMessage(2);
             attempt = true;
+            showAnswers(q1, q2, q3);
+            root.getChildren().add(backButton);
         });
 
         // if next button is clicked
@@ -233,7 +247,7 @@ public class PanicRoom {
      * Checks user input for mutliple choice quiz
      * @param guess the user's guess
      */
-    public void checkInput (int[] guess) {
+    private void checkInput (int[] guess) {
         if (guess[0] == answers[counter]) {
             score++;
             correct = true;
@@ -241,11 +255,30 @@ public class PanicRoom {
     }
 
     /**
+     * display the answer to the question
+     * @param q1 the first answer
+     * @param q2 the second answer
+     * @param q3 the third answer
+     */
+    private void showAnswers(ImageView q1, ImageView q2, ImageView q3) {
+        root.getChildren().removeAll(q1, q2, q3);
+
+        if (answers[counter] == 1) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/aButtonRight.png", 90, 236, 20);
+        else Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/aButtonWrong.png", 90, 236, 20);
+
+        if (answers[counter] == 2) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/bButtonRight.png", 90, 299, 20);
+        else Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/bButtonWrong.png", 90, 299, 20);
+
+        if (answers[counter] == 3) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/cButtonRight.png", 90, 362, 20);
+        else Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/cButtonWrong.png", 90, 362, 20);
+    }
+
+    /**
      * displays message for each quiz result
      *
      * @param choice condition concerning which type of textbox to show
      */
-    public void displayMessage (int choice) {
+    private void displayMessage (int choice) {
         if (message != null) // deletes any previous instances of message
             message.toggleOff();
          if (choice == 1) {

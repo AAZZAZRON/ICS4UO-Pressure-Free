@@ -86,6 +86,23 @@ public class Tools {
     }
 
     /**
+     * Create a static button (panic room) and add it to root
+     * @param root the root of the scene
+     * @param path the path to the image
+     * @param x the x coordinate of the button
+     * @param y the y coordinate of the button
+     * @param sz the size of the button
+     */
+    public static void createStaticButton(Group root, String path, int x, int y, int sz) {
+        ImageView image = new ImageView(path);
+        image.setFitWidth(sz);
+        image.setFitHeight(sz);
+        image.setX(x);
+        image.setY(y);
+        root.getChildren().add(image);
+    }
+
+    /**
      * Template to create a hoverable button.
      * @param root The root of the scene.
      * @param path The path to the normal and hover button images.

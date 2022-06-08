@@ -58,6 +58,7 @@
  */
 
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -159,9 +160,8 @@ public class Tools {
      * Displays intermission text on screen (between lessons)
      * @param stage The primary stage for this application
      * @param text The text to display
-     * @return The imageview of the button that the user can click on to continue
      */
-    public static ImageView displayIntermissionText(Stage stage, String text) {
+    public static Scene displayIntermissionText(Stage stage, String text) {
         ImageView image = Tools.createBackgroundImage("Assets/MainMenu/MainMenuBackground.png");
         image.setOpacity(0.1);
 
@@ -179,10 +179,18 @@ public class Tools {
         root.getChildren().add(message);
         stage.setScene(scene);
 
-        ImageView next = createButton(root, "Assets/Buttons/", "x", 50, 50, 50);
-        Tools.addFadeOn(next);
         Tools.addFadeOn(message);
-        return next;
+
+        Text continueText = new Text("Click anywhere to continue");
+        continueText.setX(700);
+        continueText.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        message.setFill(Color.BLACK);
+        continueText.setTextAlignment(TextAlignment.CENTER);
+
+        root.getChildren().add(continueText);
+        Tools.addFadeOn(continueText);
+
+        return scene;
     }
 
     /**

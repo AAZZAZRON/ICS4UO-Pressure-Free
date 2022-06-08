@@ -354,7 +354,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
      * plays the scenario
      */
     private void playScenarios() {
-        ImageView next = Tools.displayIntermissionText(stage, "SCENARIO TIME!");
+        Scene next = Tools.displayIntermissionText(stage, "SCENARIO TIME!");
         next.onMouseClickedProperty().set(e -> {
             stage.setScene(scenes.get(0));
         });

@@ -78,6 +78,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class ChangeScene {
+    /** The current stage */
+    private static Stage stage;
+
     /** reference to the escape room school. Required so we don't reload the school and lose data */
     private static EscapeRoomSchool escapeRoomSchool;
 
@@ -87,19 +90,19 @@ public class ChangeScene {
     /** rooms inside the school */
     private static ScenarioRoom[] escapeRooms;
 
-    private static Backpack backpack;
-
     /**
      * reinitializes the escape room and deficiency room for a new game
      * @param stage the primary stage for this application
      */
     public static void reinitialize(Stage stage) {
+        ChangeScene.stage = stage;
+
         // build the deficiency room (school)
         deficiencyRoom = new DeficiencyRoom(stage);
         deficiencyRoom.buildRoom();
 
         // build backpack
-        backpack = new Backpack(stage);
+        Backpack backpack = new Backpack(stage);
 
         // build the escape room school
         escapeRoomSchool = new EscapeRoomSchool(stage, backpack);
@@ -129,15 +132,17 @@ public class ChangeScene {
      * Change to deficiency room
      */
     public static void changeToDeficiencyRoom() {
-        deficiencyRoom.startScene();
+        ImageView next = Tools.displayIntermissionText(stage, "LEVEL ONE: DEFICIENCY ROOM\n\nLearn about the different types of peer pressure!");
+        next.onMouseClickedProperty().set(e -> {
+            deficiencyRoom.startScene();
+        });
     }
 
     /**
      * Change to deficiency lesson
-     * @param stage The primary stage for this application. Passed by reference.
      * @param lessonNum the lesson to display
      */
-    public static void changeToDeficiencyLesson(Stage stage, int lessonNum) {
+    public static void changeToDeficiencyLesson(int lessonNum) {
         DeficiencyLesson deficiencyRoom = new DeficiencyLesson(stage, lessonNum); // display deficiencies room
         deficiencyRoom.deficiencyRoom();
     }
@@ -146,11 +151,14 @@ public class ChangeScene {
 
     /**
      * Change to panic room
-     * @param stage The primary stage for this application. Passed by reference.
      */
-    public static void changeToPanicRoom (Stage stage) {
-        ImageView next = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning amount peer pressure! Now, you will enter the PANIC ROOM, where your knowledge will be put to the test. Can you accurately recognize peer pressure in these scenarios?");
-        next.onMouseClickedProperty().set(e -> {
+    public static void changeToPanicRoom () {
+        ImageView next1 = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning amount peer pressure!");
+        ImageView next2 = Tools.displayIntermissionText(stage, "LEVEL TWO: PANIC ROOM\n\nTest your knowledge through a quiz. Can you accurately recognize peer pressure in these scenarios?");
+        next1.onMouseClickedProperty().set(e -> {
+            stage.setScene(next2.getScene());
+        });
+        next2.onMouseClickedProperty().set(e -> {
             PanicRoom panicRoom = new PanicRoom(stage); // display panic room
             System.out.println(5);
             panicRoom.panicRoom();
@@ -161,18 +169,39 @@ public class ChangeScene {
 
     /**
      * Change to escape room
-     * @param stage The primary stage for this application. Passed by reference.
      */
-    public static void changeToEscapeRoom(Stage stage) {
-        ImageView next1 = Tools.displayIntermissionText(stage, "LEVEL THREE: Escape Room\nSchool is over and you are going to your friends house to complete an assignment. But, you must first acquire some resources to complete the assignment. Items you need to collect are listed in your backpack.");
-        ImageView next2 = Tools.displayIntermissionText(stage, "LEVEL THREE: Escape Room\nBeware of peer pressure as you are collecting resources. Do not let your friends influence your decisions!");
-        stage.setScene(next1.getScene());
-        next1.onMouseClickedProperty().set(e -> {
-            stage.setScene(next2.getScene());
-        });
-        next2.onMouseClickedProperty().set(e -> {
-            escapeRoomSchool.startScene();
-        });
+    public static void changeToEscapeRoom(int score) {
+        if (score >= 5) {
+            ImageView next1 = Tools.displayIntermissionText(stage, "CONGRATULATIONS on completing the quiz!\n\nYou scored " + score + " out of 10.");
+            ImageView next2 = Tools.displayIntermissionText(stage, "LEVEL THREE: Escape Room\n\nSchool is over and you are going to your friends house to complete an assignment. But, you must first acquire some resources to complete the assignment. Items you need to collect are listed in your backpack.");
+            ImageView next3 = Tools.displayIntermissionText(stage, "LEVEL THREE: Escape Room\n\nBeware of peer pressure as you are collecting resources. Do not let your friends influence your decisions!");
+            stage.setScene(next1.getScene());
+
+            next1.onMouseClickedProperty().set(e -> {
+                stage.setScene(next2.getScene());
+            });
+
+            next2.onMouseClickedProperty().set(e -> {
+                stage.setScene(next3.getScene());
+            });
+
+            next3.onMouseClickedProperty().set(e -> {
+                escapeRoomSchool.startScene();
+            });
+        } else {
+            ImageView next1 = Tools.displayIntermissionText(stage, "UNFORTUNATE\n\nYou scored " + score + " out of 10.");
+            ImageView next2 = Tools.displayIntermissionText(stage, "Please play again. Better luck next time!");
+
+            stage.setScene(next1.getScene());
+
+            next1.onMouseClickedProperty().set(e -> {
+                stage.setScene(next2.getScene());
+            });
+
+            next2.onMouseClickedProperty().set(e -> {
+                ChangeScene.changeToMainMenu(stage);
+            });
+        }
     }
 
     /**

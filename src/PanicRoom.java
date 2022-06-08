@@ -241,7 +241,7 @@ public class PanicRoom {
                     System.out.println(score);
                     message.toggleOff();
                     panicRoom();
-                } else ChangeScene.changeToEscapeRoom(stage);
+                } else ChangeScene.changeToEscapeRoom(score);
             }
         });
     }

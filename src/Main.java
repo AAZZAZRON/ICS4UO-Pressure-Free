@@ -60,9 +60,9 @@ public class Main extends Application {
         // set up screen
         Tools.screenSetup(stage);
         stage.show();
-        ChangeScene.changeToMainMenu(stage);
+        // ChangeScene.changeToMainMenu(stage);
 
         // show splash screen once
-        // ChangeScene.changeToSplashScreen(stage);
+        ChangeScene.changeToSplashScreen(stage);
     }
 }

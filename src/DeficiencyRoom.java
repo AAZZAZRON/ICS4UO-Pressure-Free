@@ -218,12 +218,12 @@ public class DeficiencyRoom extends CollisionRoom {
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
                             character.stopMovement(); // stop the character's movement
-                            ChangeScene.changeToDeficiencyLesson(stage, roomNumber); // change to deficiency room
+                            ChangeScene.changeToDeficiencyLesson(roomNumber); // change to deficiency room
                         } else if (roomNumber == NUMBER_OF_LESSONS + 1 && prompt == 8) { // if user is attempting to exit school
                             keyPressed['e'] = false; // set the key to false
                             stop(); // stop the timer
                             character.stopMovement(); // stop the character's movement
-                            ChangeScene.changeToPanicRoom(stage); // change to panic room
+                            ChangeScene.changeToPanicRoom(); // change to panic room
                         } else { // if the user presses e to enter incorrect deficiency room
                             if (prompt == 8) {
                                 warning.setMessage("You cannot leave the school yet! Please finish watching all the lessons. Go to room " + (roomNumber + 100) + " to learn about peer pressure");

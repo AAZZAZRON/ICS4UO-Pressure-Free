@@ -172,7 +172,7 @@ public class Tools {
         message.setWrappingWidth(700);
 
         message.setX((800 - message.getLayoutBounds().getWidth()) / 2);
-        message.setY((600 - message.getLayoutBounds().getHeight()) / 2);
+        message.setY((500 - message.getLayoutBounds().getHeight()) / 2);
         System.out.println(message.getX() + " " + message.getY() + " " + message.getLayoutBounds().getWidth() + " " + message.getLayoutBounds().getHeight());
         message.setFill(Color.BLACK);
         message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));

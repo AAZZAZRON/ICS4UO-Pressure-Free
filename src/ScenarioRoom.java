@@ -66,30 +66,31 @@
  * handleOptionOutcome() --> handles button presses based on status (read from text file)
  */
 
+/**
+ * Aaron Zhu
+ * June 7th, 2022
+ * @version 4.0
+ * Time: 30 minutes
+ * Changed panic room buttons
+ * - created hover buttons ABC and right/wrong
+ * Implemented the buttons into escape room scenarios
+ */
+
 import javafx.animation.AnimationTimer;
-import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import java.awt.*;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
 public abstract class ScenarioRoom extends CollisionRoom {
 
@@ -329,14 +330,17 @@ public abstract class ScenarioRoom extends CollisionRoom {
             optionA.onMouseClickedProperty().set(e -> {
                 showAnswers(root, optionA, optionB, optionC, splitA[1], splitB[1], splitC[1]);
                 handleOptionOutcome(root, splitA[1], splitA[2]);
+                Tools.createStaticImage(root, "Assets/pointer.png", 65, 170, 30);
             });
             optionB.onMouseClickedProperty().set(e -> {
                 showAnswers(root, optionA, optionB, optionC, splitA[1], splitB[1], splitC[1]);
                 handleOptionOutcome(root, splitB[1], splitB[2]);
+                Tools.createStaticImage(root, "Assets/pointer.png", 65, 290, 30);
             });
             optionC.onMouseClickedProperty().set(e -> {
                 showAnswers(root, optionA, optionB, optionC, splitA[1], splitB[1], splitC[1]);
                 handleOptionOutcome(root, splitC[1], splitC[2]);
+                Tools.createStaticImage(root, "Assets/pointer.png", 65, 410, 30);
             });
 
             scenes.add(scene);
@@ -413,16 +417,16 @@ public abstract class ScenarioRoom extends CollisionRoom {
     private void showAnswers(Group root, ImageView q1, ImageView q2, ImageView q3, String optionA, String optionB, String optionC) {
         root.getChildren().removeAll(q1, q2, q3);
 
-        if (optionA.equals("SUCCESS")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/aButtonRight.png", 60, 200, 40);
-        else if (optionA.equals("MID")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/aButtonMid.png", 60, 200, 40);
-        else if (optionA.equals("FAIL")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/aButtonWrong.png", 60, 200, 40);
+        if (optionA.equals("SUCCESS")) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/aButtonRight.png", 60, 200, 40);
+        else if (optionA.equals("MID")) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/aButtonMid.png", 60, 200, 40);
+        else if (optionA.equals("FAIL")) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/aButtonWrong.png", 60, 200, 40);
 
-        if (optionB.equals("SUCCESS")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/bButtonRight.png", 60, 320, 40);
-        else if (optionB.equals("MID")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/bButtonMid.png", 60, 320, 40);
-        else if (optionB.equals("FAIL")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/bButtonWrong.png", 60, 320, 40);
+        if (optionB.equals("SUCCESS")) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/bButtonRight.png", 60, 320, 40);
+        else if (optionB.equals("MID")) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/bButtonMid.png", 60, 320, 40);
+        else if (optionB.equals("FAIL")) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/bButtonWrong.png", 60, 320, 40);
 
-        if (optionC.equals("SUCCESS")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/cButtonRight.png", 60, 440, 40);
-        else if (optionC.equals("MID")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/cButtonMid.png", 60, 440, 40);
-        else if (optionC.equals("FAIL")) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/cButtonWrong.png", 60, 440, 40);
+        if (optionC.equals("SUCCESS")) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/cButtonRight.png", 60, 440, 40);
+        else if (optionC.equals("MID")) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/cButtonMid.png", 60, 440, 40);
+        else if (optionC.equals("FAIL")) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/cButtonWrong.png", 60, 440, 40);
     }
 }

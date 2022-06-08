@@ -209,6 +209,7 @@ public class PanicRoom {
             attempt = true;
             showAnswers(q1, q2, q3);
             root.getChildren().add(backButton);
+            Tools.createStaticImage(root, "Assets/pointer.png", 90, 216, 20);
         });
 
         q2.setOnMouseClicked(e -> {
@@ -218,6 +219,7 @@ public class PanicRoom {
             attempt = true;
             showAnswers(q1, q2, q3);
             root.getChildren().add(backButton);
+            Tools.createStaticImage(root, "Assets/pointer.png", 90, 279, 20);
         });
 
         q3.setOnMouseClicked(e -> {
@@ -227,6 +229,7 @@ public class PanicRoom {
             attempt = true;
             showAnswers(q1, q2, q3);
             root.getChildren().add(backButton);
+            Tools.createStaticImage(root, "Assets/pointer.png", 90, 342, 20);
         });
 
         // if next button is clicked
@@ -263,14 +266,14 @@ public class PanicRoom {
     private void showAnswers(ImageView q1, ImageView q2, ImageView q3) {
         root.getChildren().removeAll(q1, q2, q3);
 
-        if (answers[counter] == 1) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/aButtonRight.png", 90, 236, 20);
-        else Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/aButtonWrong.png", 90, 236, 20);
+        if (answers[counter] == 1) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/aButtonRight.png", 90, 236, 20);
+        else Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/aButtonWrong.png", 90, 236, 20);
 
-        if (answers[counter] == 2) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/bButtonRight.png", 90, 299, 20);
-        else Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/bButtonWrong.png", 90, 299, 20);
+        if (answers[counter] == 2) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/bButtonRight.png", 90, 299, 20);
+        else Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/bButtonWrong.png", 90, 299, 20);
 
-        if (answers[counter] == 3) Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/cButtonRight.png", 90, 362, 20);
-        else Tools.createStaticButton(root, "Assets/Buttons/ChoiceButtons/cButtonWrong.png", 90, 362, 20);
+        if (answers[counter] == 3) Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/cButtonRight.png", 90, 362, 20);
+        else Tools.createStaticImage(root, "Assets/Buttons/ChoiceButtons/cButtonWrong.png", 90, 362, 20);
     }
 
     /**

@@ -63,10 +63,14 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.awt.*;
 
 public class Tools {
     /**
@@ -93,7 +97,7 @@ public class Tools {
      * @param y the y coordinate of the button
      * @param sz the size of the button
      */
-    public static void createStaticButton(Group root, String path, int x, int y, int sz) {
+    public static void createStaticImage(Group root, String path, int x, int y, int sz) {
         ImageView image = new ImageView(path);
         image.setFitWidth(sz);
         image.setFitHeight(sz);
@@ -116,8 +120,8 @@ public class Tools {
         // get images
         Image buttonImg = new Image(path + fileName + "Button.png");
         Image buttonImgHover = new Image(path + fileName + "ButtonHover.png");
-
         ImageView btn = new ImageView(buttonImg);
+
         btn.setPreserveRatio(true);
         btn.setFitWidth(sz);
 

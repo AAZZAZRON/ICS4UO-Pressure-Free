@@ -133,6 +133,13 @@ public class ChangeScene {
      * Change to deficiency room
      */
     public static void changeToDeficiencyRoom() {
+        deficiencyRoom.startScene();
+    }
+
+    /**
+     * Change to deficiency room
+     */
+    public static void changeToDeficiencyRoom(boolean tmp) {
         Scene next = Tools.displayIntermissionText(stage, "LEVEL ONE: DEFICIENCY ROOM\n\nLearn about the different types of peer pressure!");
         next.onMouseClickedProperty().set(e -> {
             deficiencyRoom.startScene();

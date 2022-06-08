@@ -177,18 +177,22 @@ public class Tools {
         message.setFill(Color.BLACK);
         message.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
         root.getChildren().add(message);
-        stage.setScene(scene);
 
         Tools.addFadeOn(message);
 
         Text continueText = new Text("Click anywhere to continue");
-        continueText.setX(700);
+        continueText.setX(100);
+        continueText.setY(500);
+        continueText.setWrappingWidth(600);
         continueText.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
         message.setFill(Color.BLACK);
         continueText.setTextAlignment(TextAlignment.CENTER);
 
         root.getChildren().add(continueText);
         Tools.addFadeOn(continueText);
+
+        stage.setScene(scene);
+
 
         return scene;
     }

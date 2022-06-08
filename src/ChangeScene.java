@@ -112,7 +112,7 @@ public class ChangeScene {
         escapeRooms = new ScenarioRoom[10];
         escapeRooms[1] = new EscapeClassroom(stage, backpack, "Room101", 1);
         escapeRooms[1].buildRoom();
-        escapeRooms[2] = new EscapeClassroom(stage, backpack, "Room102", 1);
+        escapeRooms[2] = new EscapeClassroom(stage, backpack, "Room102", 6);
         escapeRooms[2].buildRoom();
         escapeRooms[3] = new EscapeClassroom(stage, backpack, "Room103", 5);
         escapeRooms[3].buildRoom();

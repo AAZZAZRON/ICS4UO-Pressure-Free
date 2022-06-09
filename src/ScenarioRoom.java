@@ -195,7 +195,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
         if (!scenarioComplete) { // starts the scenario
             loadScenarios();
             playScenarios();
-            // scenarioComplete = true;
+            scenarioComplete = true;
         } else startRoom();
 
     }

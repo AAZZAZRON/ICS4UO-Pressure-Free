@@ -136,7 +136,7 @@ public class DeficiencyRoom extends CollisionRoom {
     /**
      * stores the next room to enter to view a lesson
      */
-    private int roomNumber = 4;
+    private int roomNumber = 0;
 
     /**
      * stores the total number of lessons in the deficiency room

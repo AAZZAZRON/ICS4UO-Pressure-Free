@@ -139,7 +139,10 @@ public class EscapeRoomSchool extends CollisionRoom {
                         } else if (backpack.foundAllItems()) { // if the user can leave the school
                             stop(); // stop the timer
                             character.stopMovement(); // stop the character's movement
-                            ChangeScene.changeToMainMenu(); // change to main menu
+                            Scene congrats = Tools.displayIntermissionText(stage, "CONGRATULATIONS! YOU HAVE ESCAPED THE SCHOOL!\n\nYou have successfully learned about peer pressure and how to overcome it.\n\nThank you for playing!");
+                            congrats.onMouseClickedProperty().set(event -> {
+                                ChangeScene.changeToMainMenu(); // change to main menu
+                            });
                         } else { // if the user cannot leave the school
                             warning.setMessage("You can't leave the school yet! Please find all the necessary materials for your assignment before trying again");
                             warning.setWarning(3);

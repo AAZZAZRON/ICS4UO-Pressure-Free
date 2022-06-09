@@ -51,6 +51,10 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainMenu {
@@ -77,6 +81,14 @@ public class MainMenu {
         Group root = new Group(image);
         Scene scene = new Scene(root);
         stage.setScene(scene);
+
+        Text title = new Text("Pressure-Free");
+        title.setY(100);
+        title.setX(50);
+        title.setFont(Font.font("Rockwell", FontWeight.BOLD, FontPosture.REGULAR, 70));
+        title.setWrappingWidth(700);
+        title.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        root.getChildren().add(title);
 
         // add buttons
         ImageView playBtn = Tools.createButton(root, "Assets/Buttons/MainMenu/", "play", 150, 150, 500);

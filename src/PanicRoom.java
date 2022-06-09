@@ -76,6 +76,14 @@
  * Implemented the buttons into panic room
  */
 
+/**
+ * @author Aaron Zhu
+ * June 8th, 2022
+ * @version 4.0
+ * Time: 30 minutes
+ * Added triangles on answer pressed
+ */
+
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;

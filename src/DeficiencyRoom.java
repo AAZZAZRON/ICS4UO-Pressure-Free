@@ -136,7 +136,7 @@ public class DeficiencyRoom extends CollisionRoom {
     /**
      * stores the next room to enter to view a lesson
      */
-    private int roomNumber = 0;
+    private int roomNumber = 4;
 
     /**
      * stores the total number of lessons in the deficiency room
@@ -257,6 +257,13 @@ public class DeficiencyRoom extends CollisionRoom {
         collisionTimer.start();
         character.startMovement();
         stage.setScene(scene);
+
+        if (roomNumber == NUMBER_OF_LESSONS + 1) {
+            warning.setTextboxColour("Green");
+            warning.setMessage("You have viewed all the lessons! Please exit the school.");
+            warning.setWarning(2);
+            Tools.createStaticImage(root, "Assets/ArrowLeft.png", 20, 110, 50);
+        }
     }
 
     /**

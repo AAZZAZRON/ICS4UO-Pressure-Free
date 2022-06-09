@@ -67,13 +67,22 @@
  */
 
 /**
- * Aaron Zhu
+ * @author Aaron Zhu
  * June 7th, 2022
  * @version 4.0
  * Time: 30 minutes
  * Changed panic room buttons
  * - created hover buttons ABC and right/wrong
  * Implemented the buttons into escape room scenarios
+ */
+
+/**
+ * @author Aaron Zhu
+ * June 8th, 2022
+ * @version 4.0
+ * Time: 30 minutes
+ * Added triangles on answer pressed
+ * Use new textbox colours
  */
 
 import javafx.animation.AnimationTimer;

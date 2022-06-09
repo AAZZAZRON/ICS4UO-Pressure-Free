@@ -166,5 +166,12 @@ public class EscapeRoomSchool extends CollisionRoom {
         character.startMovement();
         collisionTimer.start();
         stage.setScene(scene);
+
+        if (backpack.foundAllItems()) {
+            warning.setTextboxColour("Green");
+            warning.setMessage("You found all the necessary materials for your assignment! You can now leave the school!");
+            warning.setWarning(2);
+            Tools.createStaticImage(root, "Assets/ArrowLeft.png", 20, 110, 50);
+        }
     }
 }

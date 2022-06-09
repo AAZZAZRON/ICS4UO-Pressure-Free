@@ -28,6 +28,15 @@
  * Design and integrate X button to exit instructions page
  */
 
+/**
+ * @author Sion Gang
+ * Jun 9th, 2022
+ * @version 5.0
+ * Time: 1 hour
+ * - redesign introduction graphics
+ * - redesign buttons
+ */
+
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -78,14 +87,14 @@ public class Instructions {
         stage.setScene(scene);
 
         if (counter < 2) {
-            ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 500, 490, 180);
+            ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 515, 515, 145);
             nextButton.setOnMouseClicked(e -> {
                 counter++;
                 instructions();
             });
 
         } else {
-            ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 650, 170, 40);
+            ImageView backButton = Tools.createButton(root, "Assets/Buttons/MainMenu/", "toMainMenu", 515, 515, 145);
             backButton.setOnMouseClicked(e -> {
                 ChangeScene.changeToMainMenu();
             });

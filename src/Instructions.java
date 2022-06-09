@@ -31,35 +31,64 @@
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Instructions {
     /** The primary stage for this application. Passed by reference. */
     private final Stage stage;
 
+    /** Counter for the instruction slides */
+    private static int counter;
     /**
      * Constructor for MainMenu.
      * @param stage The primary stage for this application. Passed by reference.
      */
     public Instructions(Stage stage) {
         this.stage = stage;
+        counter = 1;
     }
 
     /**
      * sets up the GUI for the instructions` screen.
      */
     public void instructions() {
-        ImageView image = Tools.createBackgroundImage("Assets/MainMenu/Instructions.png");
+        ImageView image = Tools.createBackgroundImage("Assets/MainMenu/MainMenuBackground.png");
+        image.setOpacity(0.3);
+        ImageView instructions = Tools.createBackgroundImage("Assets/Instructions/Instructions"+counter+".png");
 
         Group root = new Group(image);
+        Text title = new Text("Instructions");
+        title.setY(100);
+        title.setX(50);
+        title.setFont(Font.font("Rockwell", FontWeight.BOLD, FontPosture.REGULAR, 70));
+        title.setWrappingWidth(700);
+        title.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+
+        root.getChildren().add(instructions);
+        root.getChildren().add(title);
+
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
-        ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 650, 170, 40);
+        if (counter < 2) {
+            ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 500, 490, 180);
+            nextButton.setOnMouseClicked(e -> {
+                counter++;
+                instructions();
+            });
 
-        backButton.setOnMouseClicked(e -> {
-            ChangeScene.changeToMainMenu();
-        });
+        } else {
+            ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 650, 170, 40);
+            backButton.setOnMouseClicked(e -> {
+                ChangeScene.changeToMainMenu();
+            });
+        }
     }
 }

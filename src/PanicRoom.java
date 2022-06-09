@@ -160,19 +160,8 @@ public class PanicRoom {
         // add quiz counter text
         root.getChildren().add(roomCount);
 
-        System.out.println("BUILD");
-
         scene = new Scene(root);
         stage.setScene(scene);
-
-
-        // tester code to get coordinates
-        scene.onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                System.out.println("Mouse clicked at: " + event.getX() + ", " + event.getY());
-            }
-        });
 
         attempt = false;
         correct = false;
@@ -184,7 +173,6 @@ public class PanicRoom {
      * gets user input for multiple choice questions
      */
     public void userInput() {
-        System.out.println("input");
         // buttons for multiple choice
         ImageView q1 = Tools.createButton(root, "Assets/Buttons/ChoiceButtons/", "a", 90, 236, 20);
         ImageView q2 = Tools.createButton(root, "Assets/Buttons/ChoiceButtons/", "b", 90, 299, 20);
@@ -238,7 +226,6 @@ public class PanicRoom {
             if (attempt) {
                 if (counter < answers.length-1) {
                     counter++;
-                    System.out.println(score);
                     message.toggleOff();
                     panicRoom();
                 } else ChangeScene.changeToEscapeRoom(score);

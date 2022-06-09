@@ -234,15 +234,6 @@ public class Character {
                 else if (previousDirection == 'd') changeCharacterDirection("Right");
             }
         };
-
-
-        // tester code to get coordinates
-        scene.onMouseClickedProperty().set(new EventHandler<javafx.scene.input.MouseEvent>() {
-            @Override
-             public void handle(javafx.scene.input.MouseEvent event) {
-                 System.out.println("Mouse clicked at: " + event.getX() + ", " + event.getY());
-            }
-        });
     }
 
     /**

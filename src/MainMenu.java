@@ -85,7 +85,6 @@ public class MainMenu {
 
         // add onclick
         playBtn.setOnMouseClicked(e -> {
-            System.out.println("Play");
             ChangeScene.reinitialize();
             ChangeScene.changeToDeficiencyRoom(true);
             ChangeScene.changeToPanicRoom();
@@ -93,13 +92,15 @@ public class MainMenu {
         });
 
         insBtn.setOnMouseClicked(e -> {
-            System.out.println("Instructions");
             ChangeScene.changeToInstructions();
         });
 
         exitBtn.setOnMouseClicked(e -> {
-            System.out.println("Exit");
-            Platform.exit();
+            Scene next = Tools.displayIntermissionText(stage, "Thank you for playing Pressure-Free!");
+            next.onMouseClickedProperty().set(e2 -> {
+                Platform.exit();
+                System.exit(0);
+            });
         });
     }
 }

@@ -51,8 +51,11 @@ public class Backpack {
     /** current room character is in */
     private CollisionRoom room;
 
-    /** hashmaps containing number of items found/need to be found */
-    private HashMap<String, Integer> itemsFound, itemsNeeded;
+    /** hashmaps containing number of items found to be found */
+    private final HashMap<String, Integer> itemsFound;
+
+    /** hashmaps containing number of items still to be found */
+    private final HashMap<String, Integer> itemsNeeded;
 
     /**
      * Constructor for Backpack
@@ -110,7 +113,6 @@ public class Backpack {
      * @param name name of the item
      */
     public void foundItem(String name) {
-        System.out.println(name);
         itemsFound.put(name, itemsFound.get(name) + 1);
         itemsNeeded.put(name, itemsNeeded.get(name) - 1);
     }
@@ -131,9 +133,7 @@ public class Backpack {
         int counter = 0; // counter that keep tracks of contents
         int countFound = 0; // if user found all items
 
-        System.out.println("contents"); // temporary
         Text header1 = new Text("ITEMS FOUND");
-        System.out.println("ITEMS FOUND");
         header1.setX(325);
         header1.setY(137);
         header1.setFill(Color.BLACK);
@@ -149,7 +149,6 @@ public class Backpack {
                 yCoord = 200;
                 xCoord = 500;
             }
-            System.out.println(item + ": " + itemsFound.get(item));
             if (itemsFound.get(item) != 0) {
                 countFound++;
                 Text message = new Text(item + ": " + itemsFound.get(item));
@@ -163,7 +162,6 @@ public class Backpack {
             yCoord += 30;
         }
 
-        System.out.println("ITEMS NEEDED");
         Text header2 = new Text("ITEMS NEEDED");
         header2.setX(325);
         header2.setY(329);
@@ -182,7 +180,6 @@ public class Backpack {
                 xCoord = 500;
             }
 
-            System.out.println(item + ": " + itemsNeeded.get(item));
             if (itemsNeeded.get(item) != 0) {
                 Text message = new Text(item + ": " + itemsNeeded.get(item));
                // message.setWrappingWidth(400);
@@ -200,7 +197,6 @@ public class Backpack {
         if (countFound==8) {
             text.getChildren().clear();
             Text message = new Text("You have found all items.");
-            System.out.println("YOU HAVE FOUND EVERYTHING");
             message.setX(305);
             message.setY(300);
             message.setFill(Color.BLACK);

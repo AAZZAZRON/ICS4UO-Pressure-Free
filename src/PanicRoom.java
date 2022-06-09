@@ -84,6 +84,14 @@
  * Added triangles on answer pressed
  */
 
+/**
+ * @author Sion Gang
+ * June 8th, 2022
+ * @version 4.0
+ * Time: 5 minutes
+ * Fix counter bug that did not reset after quitting panic room
+ */
+
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -140,6 +148,8 @@ public class PanicRoom {
         for (int i = 1; i <= answers.length; i++)
           quizzes[i-1] = new ImageView("Assets/Scenes/Quizzes/PanicRoom " + i + ".png");
         attempt = false;
+        score = 0;
+        counter = 0;
 
     }
 

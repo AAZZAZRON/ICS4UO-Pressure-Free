@@ -150,7 +150,6 @@ public class PanicRoom {
         attempt = false;
         score = 0;
         counter = 0;
-
     }
 
 
@@ -181,6 +180,11 @@ public class PanicRoom {
         scene = new Scene(root);
         stage.setScene(scene);
 
+        if (counter == 0) {
+            message = new TextBox(stage, root, scene, "Click on the options with your mouse to answer the question!", "Blue");
+            message.setWarning(3);
+        } else message = new TextBox(stage, root, scene, "tmp", "Blue");
+
         attempt = false;
         correct = false;
         userInput();
@@ -209,6 +213,7 @@ public class PanicRoom {
 
         // button conditions
         q1.setOnMouseClicked(e -> {
+            if (counter == 0) message.toggleOff();
             guess[0] = 1;
             checkInput(guess);
             displayMessage(2);
@@ -219,6 +224,7 @@ public class PanicRoom {
         });
 
         q2.setOnMouseClicked(e -> {
+            if (counter == 0) message.toggleOff();
             guess[0] = 2;
             checkInput(guess);
             displayMessage(2);
@@ -229,6 +235,7 @@ public class PanicRoom {
         });
 
         q3.setOnMouseClicked(e -> {
+            if (counter == 0) message.toggleOff();
             guess[0] = 3;
             checkInput(guess);
             displayMessage(2);

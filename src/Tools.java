@@ -88,6 +88,8 @@ public class Tools {
         // add logo
         Image logo = new Image("Assets/logo.png");
         stage.getIcons().add(logo);
+
+        ChangeScene.stage = stage;
     }
 
     /**

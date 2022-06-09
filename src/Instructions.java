@@ -59,7 +59,7 @@ public class Instructions {
         ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 650, 170, 40);
 
         backButton.setOnMouseClicked(e -> {
-            ChangeScene.changeToMainMenu(stage);
+            ChangeScene.changeToMainMenu();
         });
     }
 }

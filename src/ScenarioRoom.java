@@ -404,7 +404,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 warning.setTextboxColour("Blue");
                 warning.setWarning(2);
             }
-            else ChangeScene.changeToMainMenu(stage);
+            else ChangeScene.changeToMainMenu();
         });
     }
 

@@ -80,7 +80,7 @@ import javafx.stage.Stage;
 
 public class ChangeScene {
     /** The current stage */
-    private static Stage stage;
+    public static Stage stage;
 
     /** reference to the escape room school. Required so we don't reload the school and lose data */
     private static EscapeRoomSchool escapeRoomSchool;
@@ -93,11 +93,8 @@ public class ChangeScene {
 
     /**
      * reinitializes the escape room and deficiency room for a new game
-     * @param stage the primary stage for this application
      */
-    public static void reinitialize(Stage stage) {
-        ChangeScene.stage = stage;
-
+    public static void reinitialize() {
         // build the deficiency room (school)
         deficiencyRoom = new DeficiencyRoom(stage);
         deficiencyRoom.buildRoom();
@@ -139,9 +136,17 @@ public class ChangeScene {
     /**
      * Change to deficiency room
      */
-    public static void changeToDeficiencyRoom(boolean tmp) {
-        Scene next = Tools.displayIntermissionText(stage, "LEVEL ONE: DEFICIENCY ROOM\n\nLearn about the different types of peer pressure!");
-        next.onMouseClickedProperty().set(e -> {
+    public static void changeToDeficiencyRoom(boolean firstTime) {
+        Scene next1 = Tools.displayIntermissionText(stage, "LEVEL ONE: DEFICIENCY ROOM\n\nWalk through the school and enter different rooms to learn about peer pressure!");
+        Scene next2 = Tools.displayIntermissionText(stage, "Remember to control the character using WASD.");
+
+        stage.setScene(next1);
+
+        next1.onMouseClickedProperty().set(e -> {
+            stage.setScene(next2);
+        });
+
+        next2.onMouseClickedProperty().set(e -> {
             deficiencyRoom.startScene();
         });
     }
@@ -161,8 +166,8 @@ public class ChangeScene {
      * Change to panic room
      */
     public static void changeToPanicRoom () {
-        Scene next1 = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning amount peer pressure!");
-        Scene next2 = Tools.displayIntermissionText(stage, "LEVEL TWO: PANIC ROOM\n\nTest your knowledge through a quiz. Can you accurately recognize peer pressure in these scenarios?");
+        Scene next1 = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning about peer pressure!");
+        Scene next2 = Tools.displayIntermissionText(stage, "LEVEL TWO: PANIC ROOM\n\nTest your knowledge through a quiz. Can you accurately answer the questions?");
 
         stage.setScene(next1);
 
@@ -184,8 +189,9 @@ public class ChangeScene {
     public static void changeToEscapeRoom(int score) {
         if (score >= 5) {
             Scene next1 = Tools.displayIntermissionText(stage, "CONGRATULATIONS on completing the quiz!\n\nYou scored " + score + " out of 10.");
-            Scene next2 = Tools.displayIntermissionText(stage, "LEVEL THREE: Escape Room\n\nSchool is over and you are going to your friends house to complete an assignment. But, you must first acquire some resources to complete the assignment. Items you need to collect are listed in your backpack.");
-            Scene next3 = Tools.displayIntermissionText(stage, "LEVEL THREE: Escape Room\n\nBeware of peer pressure as you are collecting resources. Do not let your friends influence your decisions!");
+            Scene next2 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nSchool is over and you are going to your friends house to complete an assignment. But, you must first acquire some resources to complete the assignment. Items you need to collect are listed in your backpack.");
+            Scene next3 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nRemember to control the character using WASD. Also, click on the backpack icon to view its contents.");
+            Scene next4 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nBeware of peer pressure as you are collecting resources. Do not let your friends influence your decisions!");
             stage.setScene(next1);
 
             next1.onMouseClickedProperty().set(e -> {
@@ -197,6 +203,10 @@ public class ChangeScene {
             });
 
             next3.onMouseClickedProperty().set(e -> {
+                stage.setScene(next4);
+            });
+
+            next4.onMouseClickedProperty().set(e -> {
                 escapeRoomSchool.startScene();
             });
         } else {
@@ -210,7 +220,7 @@ public class ChangeScene {
             });
 
             next2.onMouseClickedProperty().set(e -> {
-                ChangeScene.changeToMainMenu(stage);
+                ChangeScene.changeToMainMenu();
             });
         }
     }
@@ -234,27 +244,24 @@ public class ChangeScene {
 
     /**
      * Change to splash screen
-     * @param stage The primary stage for this application. Passed by reference.
      */
-    public static void changeToSplashScreen(Stage stage) {
+    public static void changeToSplashScreen() {
         SplashScreen splashScreen = new SplashScreen(stage);
         splashScreen.splashScreen();
     }
 
     /**
      * Change to main menu
-     * @param stage The primary stage for this application. Passed by reference.
      */
-    public static void changeToMainMenu(Stage stage) {
+    public static void changeToMainMenu() {
         MainMenu mainMenu = new MainMenu(stage);
         mainMenu.mainMenu();
     }
 
     /**
      * Change to instructions page
-     * @param stage The primary stage for this application. Passed by reference.
      */
-    public static void changeToInstructions(Stage stage) {
+    public static void changeToInstructions() {
         Instructions instructions = new Instructions(stage);
         instructions.instructions();
     }

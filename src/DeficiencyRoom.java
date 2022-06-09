@@ -207,7 +207,6 @@ public class DeficiencyRoom extends CollisionRoom {
                 // handle prompt
                 int prompt = getPrompt();
                 // toggle textbox visibility
-                System.out.println(roomNumber + " " + prompt);
                 if (!warning.isVisible() && prompt != 0) { // warning > prompts
                     textBoxOpen = prompt; // toggle on if not already
                     textBoxes[textBoxOpen].toggleOn();

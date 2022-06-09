@@ -86,15 +86,15 @@ public class MainMenu {
         // add onclick
         playBtn.setOnMouseClicked(e -> {
             System.out.println("Play");
-            ChangeScene.reinitialize(stage);
+            ChangeScene.reinitialize();
             ChangeScene.changeToDeficiencyRoom(true);
-            // ChangeScene.changeToPanicRoom();
-            // ChangeScene.changeToEscapeRoom(10);
+            ChangeScene.changeToPanicRoom();
+            ChangeScene.changeToEscapeRoom(10);
         });
 
         insBtn.setOnMouseClicked(e -> {
             System.out.println("Instructions");
-            ChangeScene.changeToInstructions(stage);
+            ChangeScene.changeToInstructions();
         });
 
         exitBtn.setOnMouseClicked(e -> {

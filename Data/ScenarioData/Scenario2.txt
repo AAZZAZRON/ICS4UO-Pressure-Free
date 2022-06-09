@@ -1,9 +1,9 @@
 4
-This vape is so nice. Blueberry blast flavour is definitely my favourite.
-Jerry, you're vaping too?
-Yeah Scott. All the cool kids are doing it.
-You should try some too.
+"This vape is so nice. Blueberry blast flavour is definitely my favourite."
+"Jerry, you're vaping too?"
+"Yeah Scott. All the cool kids are doing it."
+"You should try some too."
 What do you say?
 "No thanks. I’m in a rush to leave the school."; SUCCESS; You avoided direct peer pressure!
-"Sure. Just this one time, though."; FAIL; Vaping is unhealthy! Don't let your friends override your judgement.
 "Maybe another time..."; MID; You should have said "No thanks" because vaping is unhealthy.
+"Sure. Just this one time, though."; FAIL; Vaping is unhealthy! Don't let your friends override your judgement.

@@ -69,7 +69,7 @@ public class SplashScreen {
         root.getChildren().add(logo);
         stage.setScene(scene);
         PauseTransition delay = new PauseTransition(Duration.seconds(5)); // allow splash screen to play
-        delay.setOnFinished(e -> ChangeScene.changeToMainMenu(stage));
+        delay.setOnFinished(e -> ChangeScene.changeToMainMenu());
         delay.play();
     }
 }

@@ -31,7 +31,7 @@
 /**
  * @author Sion Gang
  * Jun 9th, 2022
- * @version 5.0
+ * @version 4.0
  * Time: 1 hour
  * - redesign introduction graphics
  * - redesign buttons

@@ -176,7 +176,6 @@ public class ChangeScene {
         });
         next2.onMouseClickedProperty().set(e -> {
             PanicRoom panicRoom = new PanicRoom(stage); // display panic room
-            System.out.println(5);
             panicRoom.panicRoom();
         });
     }

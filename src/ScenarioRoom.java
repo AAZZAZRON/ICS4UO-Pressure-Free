@@ -282,7 +282,6 @@ public abstract class ScenarioRoom extends CollisionRoom {
             BufferedReader br = new BufferedReader(new FileReader("Data/ScenarioData/Scenario" + scenarioNum + ".txt"));
             int numSlides = Integer.parseInt(br.readLine());
             for (int i = 1; i <= numSlides; i += 1) { // slides
-                System.out.println("Slide " + i);
                 String message = br.readLine();
 
                 ImageView slide = Tools.createBackgroundImage("Assets/School/Scenarios/Scenario" + scenarioNum + "-" + i + ".png");

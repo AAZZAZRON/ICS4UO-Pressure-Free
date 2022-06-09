@@ -308,7 +308,7 @@ public class PanicRoom {
                 message = new TextBox(stage, root, scene, "You selected the correct answer!", "Green");
             else
                 message = new TextBox(stage, root, scene, "You selected the wrong answer." +
-                        "\nThe answer was option " + answers[counter], "Blue");
+                        "\nThe answer was option " + (char)(answers[counter]+64), "Blue");
            }
         message.setWarning(4); // show message
     }

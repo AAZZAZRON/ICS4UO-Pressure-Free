@@ -186,7 +186,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
         if (!scenarioComplete) { // starts the scenario
             loadScenarios();
             playScenarios();
-            scenarioComplete = true;
+            // scenarioComplete = true;
         } else startRoom();
 
     }
@@ -278,6 +278,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
      */
     private void loadScenarios() {
         try {
+            scenes.clear();
             BufferedReader br = new BufferedReader(new FileReader("Data/ScenarioData/Scenario" + scenarioNum + ".txt"));
             int numSlides = Integer.parseInt(br.readLine());
             for (int i = 1; i <= numSlides; i += 1) { // slides
@@ -288,7 +289,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 Group root = new Group(slide);
                 Scene scene = new Scene(root);
 
-                TextBox textBox = new TextBox(stage, root, scene, message, "Blue");
+                TextBox textBox = new TextBox(stage, root, scene, message, "Purple");
                 textBox.toggleOn();
 
                 ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 520, 180);
@@ -309,7 +310,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
             root.getChildren().add(template);
 
             String caption = br.readLine();
-            TextBox textBox = new TextBox(stage, root, scene, caption, "Blue");
+            TextBox textBox = new TextBox(stage, root, scene, caption, "Purple");
             textBox.toggleOn();
 
             ImageView optionA = Tools.createButton(root, "Assets/Buttons/ChoiceButtons/", "a", 60, 200, 40);
@@ -331,16 +332,19 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 showAnswers(root, optionA, optionB, optionC, splitA[1], splitB[1], splitC[1]);
                 handleOptionOutcome(root, splitA[1], splitA[2]);
                 Tools.createStaticImage(root, "Assets/pointer.png", 65, 170, 30);
+                textBox.toggleOff();
             });
             optionB.onMouseClickedProperty().set(e -> {
                 showAnswers(root, optionA, optionB, optionC, splitA[1], splitB[1], splitC[1]);
                 handleOptionOutcome(root, splitB[1], splitB[2]);
                 Tools.createStaticImage(root, "Assets/pointer.png", 65, 290, 30);
+                textBox.toggleOff();
             });
             optionC.onMouseClickedProperty().set(e -> {
                 showAnswers(root, optionA, optionB, optionC, splitA[1], splitB[1], splitC[1]);
                 handleOptionOutcome(root, splitC[1], splitC[2]);
                 Tools.createStaticImage(root, "Assets/pointer.png", 65, 410, 30);
+                textBox.toggleOff();
             });
 
             scenes.add(scene);
@@ -371,7 +375,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
         Text option = new Text(text);
         option.setX(x);
         option.setY(y);
-        option.setWrappingWidth(650);
+        option.setWrappingWidth(600);
         option.setFill(Color.BLACK);
         option.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 25));
         return option;
@@ -389,7 +393,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 textBox.setTextboxColour("Green");
                 break;
             case "MID":
-                textBox.setTextboxColour("Blue");
+                textBox.setTextboxColour("Yellow");
                 break;
             case "FAIL":
                 textBox.setTextboxColour("Red");
@@ -402,7 +406,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 startRoom();
                 warning.setMessage("Back to the game...");
                 warning.setTextboxColour("Blue");
-                warning.setWarning(2);
+                warning.setWarning(1);
             }
             else ChangeScene.changeToMainMenu();
         });

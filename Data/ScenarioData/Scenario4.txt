@@ -5,5 +5,5 @@
 "Nice. I'll buy mine today after school."
 What do you do?
 Join them and buy the sneakers.; FAIL; Wrong. You don't need to buy a pair of Jordan sneakers in order to fit in! True friends won't care about your apparel.
-Buy the sneakers later; MID; This is okay, but don't let your friends negatively influence your decisions. Jordans may be cool, but they are just a brand!
+Buy the sneakers later; MID; This is okay, but don't let your friends impact your decisions. Jordans may be cool, but they are just a brand!
 Ignore them and focus on you task; SUCCESS; Nice! You recognized and avoided peer pressure.

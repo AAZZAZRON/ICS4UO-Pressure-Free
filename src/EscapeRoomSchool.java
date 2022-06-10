@@ -4,12 +4,18 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - build school with collision detection
  * - allow character to move between rooms in school without losing progress
+ *
+ * Version 4 (Aaron):
+ * - created and implemented scenarios into escape room
+ *
+ * Version 4 (Sion):
+ * - created and implemented scenarios into escape room
  */
 
 /**
@@ -26,6 +32,13 @@
  * @version 3.0
  * Time: 15 minutes
  * small escape room bugs (textbox shouldn't appear when user exits a room)
+ */
+
+/**
+ * @author Aaron Zhu, Sion Gang
+ * June 6th, 2022
+ * @version 4.0
+ * Implemented scenarios in Data
  */
 
 import javafx.animation.AnimationTimer;

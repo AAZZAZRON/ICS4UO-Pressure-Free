@@ -4,13 +4,13 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1 (Sion)
+ * Version 1 (Sion):
  * - does nothing
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - splash screen displays for 5 seconds
  */
 

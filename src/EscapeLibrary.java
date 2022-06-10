@@ -4,14 +4,17 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 3 (Sion)
+ * Version 3 (Sion):
  * - build room with collision detection
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - add items for user to pick up
+ *
+ * Version 4 (Aaron):
+ * - add items to room
  */
 
 /**
@@ -58,6 +61,9 @@ public class EscapeLibrary extends ScenarioRoom {
         this.bg = "LibraryBg";
     }
 
+    /**
+     * builds the escape room library
+     */
     @Override
     public void buildRoom() {
         ImageView image = Tools.createBackgroundImage("Assets/School/Rooms/LibraryBg.png");

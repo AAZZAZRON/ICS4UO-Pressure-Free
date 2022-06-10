@@ -4,12 +4,17 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - extended CollisionRoom to create an abstract class for rooms in the school (escape level)
  * - adds items to the scene & allows them to be picked up
+ *
+ * Version 4 (Aaron):
+ * - parse item data for scenarios
+ * - load and render scenarios
+ * - use colour-coded buttons for user choice
  */
 
 /**
@@ -102,7 +107,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class ScenarioRoom extends CollisionRoom {
-
     /** warning textbox if user tries to do a move that is not allowed */
     public TextBox warning;
 

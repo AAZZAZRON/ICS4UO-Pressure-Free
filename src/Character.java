@@ -4,19 +4,19 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1 (Aaron)
+ * Version 1 (Aaron):
  * - create the character on the screen (size, position, image)
  * - set up character movement
  * - set up character collision detection
  *
- * Version 2 (Aaron)
+ * Version 2 (Aaron):
  * - moved character collision detection and prompt to CollisionRoom.java
  * - character only handles movement (up, down, left, right) and changing directions
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - animated the character's movement
  * - moved character's animation timer to one centralized one in Character.java
  * - ability to start/end character's animation timer using startMovement() and endMovement()
@@ -156,7 +156,6 @@ public class Character {
     /**
      * stores the offset of the character's foot (Y) from the top of the character
      */
-
     private final int footOffsetY;
 
     /**

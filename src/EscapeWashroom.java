@@ -4,7 +4,7 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
  * Version 3 (Sion)
@@ -39,6 +39,9 @@ public class EscapeWashroom extends ScenarioRoom {
         this.bg = "WashroomBg";
     }
 
+    /**
+     * builds the escape room washroom
+     */
     @Override
     public void buildRoom() {
         ImageView image = Tools.createBackgroundImage("Assets/School/Rooms/WashroomBg.png");
@@ -72,14 +75,5 @@ public class EscapeWashroom extends ScenarioRoom {
 
         // warning textbox
         warning = new TextBox(root, "You cannot enter this room!", "Blue");
-
     }
-
-
-    public void scenario () {
-
-
-
-    }
-
 }

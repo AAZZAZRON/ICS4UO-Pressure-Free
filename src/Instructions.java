@@ -4,11 +4,14 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1 (Sion)
+ * Version 1 (Sion):
  * - Added incomplete instructions page
+ *
+ * Version 4 (Sion):
+ * - created and implemented instructions page
  */
 
 /**
@@ -30,7 +33,7 @@
 
 /**
  * @author Sion Gang
- * Jun 9th, 2022
+ * June 9th, 2022
  * @version 4.0
  * Time: 1 hour
  * - redesign introduction graphics
@@ -52,6 +55,7 @@ public class Instructions {
 
     /** Counter for the instruction slides */
     private static int counter;
+
     /**
      * Constructor for MainMenu.
      * @param stage The primary stage for this application. Passed by reference.

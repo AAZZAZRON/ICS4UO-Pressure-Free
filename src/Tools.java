@@ -4,18 +4,22 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1 (Aaron)
+ * Version 1 (Aaron):
  * - added template to create hoverable button
  * - added template to create background image
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - displayIntermissionText() to transition between levels
  *
- * Version 3 (Sion)
+ * Version 3 (Sion):
  * - addFade() to fade in components of a scene
+ * - add overloaded addFade()
+ *
+ * Version 4 (Sion):
+ * - removed unused methods
  */
 
 /**
@@ -57,21 +61,25 @@
  * - added overloaded method for different fade lengths
  */
 
+/**
+ * @author Sion Gang
+ * June 9th, 2022
+ * @version 4.0
+ * Time: 10 minutes
+ * removed unused methods
+ */
+
 import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.awt.*;
 
 public class Tools {
     /**
@@ -208,41 +216,6 @@ public class Tools {
         FadeTransition fade = new FadeTransition();
         // Fade animation
         fade.setDuration(Duration.millis(500));
-        fade.setFromValue(0);
-        fade.setToValue(1);
-        fade.setNode(item);
-        fade.play();
-        return item;
-    }
-
-    /**
-     * Adds a fade-off transition to a node.
-     * @param item The node to add the fade transition to.
-     * @return The fade transition object.
-     */
-    public static Node addFadeOff(Node item) {
-        /** Stores transition */
-        FadeTransition fade = new FadeTransition();
-        // Fade animation
-        fade.setDuration(Duration.millis(500));
-        fade.setFromValue(1);
-        fade.setToValue(0);
-        fade.setNode(item);
-        fade.play();
-        return item;
-    }
-
-    /**
-     * Adds a fade transition to a node.
-     * @param item The node to add the fade transition to.
-     * @param ms The duration of the fade transition in milliseconds.
-     * @return The node with the fade transition.
-     */
-    public static Node addFadeOn(Node item, int ms) {
-        /** Stores transition */
-        FadeTransition fade = new FadeTransition();
-        // Fade animation
-        fade.setDuration(Duration.millis(ms));
         fade.setFromValue(0);
         fade.setToValue(1);
         fade.setNode(item);

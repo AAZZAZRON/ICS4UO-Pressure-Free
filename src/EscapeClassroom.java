@@ -4,12 +4,15 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - build room with collision
  * - add items for user to pick up
+ *
+ * Version 4 (Aaron):
+ * - add items to room
  */
 
 /**

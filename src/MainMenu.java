@@ -4,18 +4,18 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1 (Aaron)
+ * Version 1 (Aaron):
  * - set up main menu with buttons
  * - set up incomplete background image
  * - set up button isntructions and exit onClick events
  *
- * Version 1 (Sion)
+ * Version 1 (Sion):
  * - set up play button onClick event
  *
- * Version 3 (Aaron, Sion)
+ * Version 3 (Aaron, Sion):
  * - organize assets
  */
 

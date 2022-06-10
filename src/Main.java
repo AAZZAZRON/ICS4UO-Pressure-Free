@@ -7,9 +7,12 @@
  * @version 3.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1 (Aaron)
+ * Version 1 (Aaron):
  * - Starts the game
  * - Maintains starting game logic (splash, main menu)
+ *
+ * Version 3 (Aaron):
+ * - make splash screen last one repeat
  */
 
 /**

@@ -6,4 +6,4 @@
 What do you say? Remember, you have an assignment to finish!
 "Sorry guys, I have an assignment to finish."; SUCCESS; Amazing! Don't let your friends negatively impact your academic life.
 "Sure! I heard the new Marvel movie was awesome!"; FAIL; You failed to recognize negative peer pressure. Don't let your friends negatively impact your academic life!
-"I don't want to skip class. Can we can watch the movie later?"; MID; This is okay. However, your assignment should be prioritized over hanging out with your friends!
+"I don't want to skip class. Can we can watch the movie later?"; SUCCESS; Good job, this is a clever answer!

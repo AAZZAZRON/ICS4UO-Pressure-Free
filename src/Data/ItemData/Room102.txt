@@ -1,0 +1,4 @@
+Crayola, Markers, 360, 220, 40, 20, Press p to pick up the markers
+Scissors, Scissors, 190, 490, 50, 20, Press p to pick up the scissors
+END
+NAME X Y SIZE RAD MSG

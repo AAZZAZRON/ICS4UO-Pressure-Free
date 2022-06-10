@@ -137,8 +137,9 @@ public class ChangeScene {
      * Change to deficiency room
      */
     public static void changeToDeficiencyRoom(boolean firstTime) {
-        Scene next1 = Tools.displayIntermissionText(stage, "LEVEL ONE: DEFICIENCY ROOM\n\nWalk through the school and enter different rooms to learn about peer pressure!");
-        Scene next2 = Tools.displayIntermissionText(stage, "Remember to control the character using WASD.");
+        Scene next1 = Tools.displayIntermissionText(stage, "Thank you for playing Pressure-Free, a game made to educate students on how to overcome peer pressure. We (the developers) hope you enjoy the game!");
+        Scene next2 = Tools.displayIntermissionText(stage, "LEVEL ONE: DEFICIENCY ROOM\n\nWalk through the school and enter different rooms to learn about peer pressure!");
+        Scene next3 = Tools.displayIntermissionText(stage, "Remember to control the character using WASD.");
 
         stage.setScene(next1);
 
@@ -147,6 +148,10 @@ public class ChangeScene {
         });
 
         next2.onMouseClickedProperty().set(e -> {
+            stage.setScene(next3);
+        });
+
+        next3.onMouseClickedProperty().set(e -> {
             deficiencyRoom.startScene();
         });
     }
@@ -167,7 +172,7 @@ public class ChangeScene {
      */
     public static void changeToPanicRoom () {
         Scene next1 = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning about peer pressure!");
-        Scene next2 = Tools.displayIntermissionText(stage, "LEVEL TWO: PANIC ROOM\n\nTest your knowledge through a quiz. Can you accurately answer the questions?");
+        Scene next2 = Tools.displayIntermissionText(stage, "LEVEL TWO: PANIC ROOM\n\nTest your knowledge through a quiz. To move on to level three, a score of 5/10 or above must be acquired. Can you accurately answer the questions?");
 
         stage.setScene(next1);
 

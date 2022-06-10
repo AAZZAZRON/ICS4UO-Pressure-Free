@@ -259,11 +259,14 @@ public class DeficiencyRoom extends CollisionRoom {
         stage.setScene(scene);
 
         if (roomNumber == NUMBER_OF_LESSONS + 1) {
+            Tools.createStaticImage(root, "Assets/ArrowLeft.png", 20, 110, 50);
+            root.getChildren().add(1, root.getChildren().remove(root.getChildren().size() - 1));
+
             warning.setTextboxColour("Green");
             warning.setMessage("You have viewed all the lessons! Please exit the school.");
             warning.setWarning(2);
-            Tools.createStaticImage(root, "Assets/ArrowLeft.png", 20, 110, 50);
         }
+        System.out.println(root);
     }
 
     /**

@@ -115,9 +115,7 @@
  */
 
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -131,9 +129,6 @@ public class Character {
     /** stores the root of the scene that the character is on. Passed by reference */
     private final Group root;
 
-    /** stores the scene that the character is on. Passed by reference */
-    private final Scene scene;
-
     /** stores how fast the character moves (in pixels) */
     private final int SPEED = 4;
 
@@ -141,7 +136,7 @@ public class Character {
     private AnimationTimer characterMovement;
 
     /** room the character is in, for collision */
-    private CollisionRoom room;
+    private final CollisionRoom room;
 
     /**
      * stores the current x and y coordinates of the character
@@ -167,18 +162,17 @@ public class Character {
     /**
      * constructor for Character with a specified position
      * @param root the root of the scene that the character is on. Passed by reference
-     * @param scene the scene that the character is on. Passed by reference
      * @param room the room the character is in, for collision
      * @param sizeY the size of the character (height)
      * @param posX the x coordinate of the character
      * @param posY the y coordinate of the character
      */
-    public Character(Group root, Scene scene, CollisionRoom room, int sizeY, int posX, int posY) {
+    public Character(Group root, CollisionRoom room, int sizeY, int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
         this.sizeY = sizeY;
         this.root = root;
-        this.scene = scene;
+        // stores the scene that the character is on. Passed by reference
         this.room = room;
         footOffsetY = (int) (sizeY * 10 / 11.0);
         sizeX = (int) (sizeY * 3 / 7.0);

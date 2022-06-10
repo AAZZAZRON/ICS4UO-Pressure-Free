@@ -39,8 +39,6 @@
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -95,9 +93,7 @@ public class Instructions {
 
         } else {
             ImageView backButton = Tools.createButton(root, "Assets/Buttons/MainMenu/", "toMainMenu", 515, 515, 145);
-            backButton.setOnMouseClicked(e -> {
-                ChangeScene.changeToMainMenu();
-            });
+            backButton.setOnMouseClicked(e -> ChangeScene.changeToMainMenu());
         }
     }
 }

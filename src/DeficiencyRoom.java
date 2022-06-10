@@ -188,10 +188,10 @@ public class DeficiencyRoom extends CollisionRoom {
         fillPromptGrid(0, 88, 24, 184, 8); // exit
 
         // initialize textboxes
-        for (int i = 0; i < textBoxes.length; i++) textBoxes[i] = new TextBox(stage, root, scene, "tmp", "Red");
+        for (int i = 0; i < textBoxes.length; i++) textBoxes[i] = new TextBox(root, "tmp", "Red");
 
         // warning textbox
-        warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
+        warning = new TextBox(root, "You cannot enter this room!", "Blue");
 
         buildCharacter(100, 60, 60);
     }
@@ -257,8 +257,12 @@ public class DeficiencyRoom extends CollisionRoom {
         collisionTimer.start();
         character.startMovement();
         stage.setScene(scene);
-
-        if (roomNumber == NUMBER_OF_LESSONS + 1) {
+        if (roomNumber == 1) {
+            warning.setTextboxColour("Blue");
+            warning.setMessage("Go to room " + (roomNumber + 100) + " to learn about peer pressure");
+            warning.setWarning(2);
+        }
+        else if (roomNumber == NUMBER_OF_LESSONS + 1) {
             Tools.createStaticImage(root, "Assets/ArrowLeft.png", 20, 110, 50);
             root.getChildren().add(1, root.getChildren().remove(root.getChildren().size() - 1));
 
@@ -266,7 +270,6 @@ public class DeficiencyRoom extends CollisionRoom {
             warning.setMessage("You have viewed all the lessons! Please exit the school.");
             warning.setWarning(2);
         }
-        System.out.println(root);
     }
 
     /**

@@ -87,7 +87,7 @@ import javafx.stage.Stage;
 public class DeficiencyLesson {
 
     /** The primary stage for this application. Passed by reference. */
-    private Stage stage;
+    private final Stage stage;
 
     /** current lesson to display */
     private final int lessonNum;
@@ -145,9 +145,7 @@ public class DeficiencyLesson {
             // add button
             ImageView backButton = Tools.createButton(root, "Assets/Buttons/", "x", 690, 140, 40);
             Tools.addFadeOn(backButton);
-            backButton.setOnMouseClicked(e -> {
-                ChangeScene.changeToDeficiencyRoom();
-            });
+            backButton.setOnMouseClicked(e -> ChangeScene.changeToDeficiencyRoom());
         }
     }
 }

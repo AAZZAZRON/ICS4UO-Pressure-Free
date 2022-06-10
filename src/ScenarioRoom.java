@@ -125,7 +125,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
     private boolean scenarioComplete = false;
 
     /** arraylist of scenes to iterate through for scenario */
-    private ArrayList<Scene> scenes;
+    private final ArrayList<Scene> scenes;
 
     /** name of bg image */
     public String bg;
@@ -217,7 +217,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
     public void addBackpack() {
         fillCollisionGrid(8, 510, 83, 585);
         fillPromptGrid(0, 490, 103, 600, 2);
-        textBoxes[2] = new TextBox(stage, root, scene, "Press on the backpack to see which items you have collected and which items you still need to collect!", "Blue");
+        textBoxes[2] = new TextBox(root, "Press on the backpack to see which items you have collected and which items you still need to collect!", "Blue");
         backpack.buildBackpack(root);
     }
 
@@ -240,7 +240,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 int val = ct++;
                 String message = split[6];
                 addItem("Assets/School/Items/" + name + ".png", id, x, y, size, rad, val);
-                textBoxes[val] = new TextBox(stage, root, scene, message, "Blue");
+                textBoxes[val] = new TextBox(root, message, "Blue");
             }
             br.close();
         } catch (Exception e) {
@@ -279,7 +279,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
         int y = (int) items.get(index).getY();
         fillPromptGrid(x - 75, y - 75, x + 75, y + 75, 0);
         backpack.foundItem(items.get(index).getId());
-        root.getChildren().remove(items.get(index));;
+        root.getChildren().remove(items.get(index));
     }
 
     /**
@@ -297,14 +297,12 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 Group root = new Group(slide);
                 Scene scene = new Scene(root);
 
-                TextBox textBox = new TextBox(stage, root, scene, message, "Purple");
+                TextBox textBox = new TextBox(root, message, "Purple");
                 textBox.toggleOn();
 
                 ImageView nextButton = Tools.createButton(root, "Assets/Buttons/", "next", 550, 520, 180);
                 int finalI = i;
-                nextButton.setOnMouseClicked(e -> {
-                    stage.setScene(scenes.get(finalI));
-                });
+                nextButton.setOnMouseClicked(e -> stage.setScene(scenes.get(finalI)));
                 scenes.add(scene);
             }
 
@@ -318,7 +316,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
             root.getChildren().add(template);
 
             String caption = br.readLine();
-            TextBox textBox = new TextBox(stage, root, scene, caption, "Purple");
+            TextBox textBox = new TextBox(root, caption, "Purple");
             textBox.toggleOn();
 
             ImageView optionA = Tools.createButton(root, "Assets/Buttons/ChoiceButtons/", "a", 60, 200, 40);
@@ -367,9 +365,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
      */
     private void playScenarios() {
         Scene next = Tools.displayIntermissionText(stage, "SCENARIO TIME!");
-        next.onMouseClickedProperty().set(e -> {
-            stage.setScene(scenes.get(0));
-        });
+        next.onMouseClickedProperty().set(e -> stage.setScene(scenes.get(0)));
     }
 
     /**
@@ -395,7 +391,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
      * @param message the message to display
      */
     private void handleOptionOutcome(Group root, String option, String message) {
-        TextBox textBox = new TextBox(stage, root, scene, message, "Blue");
+        TextBox textBox = new TextBox(root, message, "Blue");
         switch (option) {
             case "SUCCESS":
                 textBox.setTextboxColour("Green");

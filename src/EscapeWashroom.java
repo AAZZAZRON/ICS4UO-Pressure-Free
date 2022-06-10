@@ -63,7 +63,7 @@ public class EscapeWashroom extends ScenarioRoom {
 
         fillCollisionGrid(734, 347, 800, 481);
 
-        textBoxes[1] = new TextBox(stage, root, scene, "Press e to leave the washroom.", "Green");
+        textBoxes[1] = new TextBox(root, "Press e to leave the washroom.", "Green");
         fillPromptGrid(730, 330, 800, 500, 1);
 
         buildCharacter(100, 750, 395);
@@ -71,7 +71,7 @@ public class EscapeWashroom extends ScenarioRoom {
         addBackpack();
 
         // warning textbox
-        warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
+        warning = new TextBox(root, "You cannot enter this room!", "Blue");
 
     }
 

@@ -92,11 +92,9 @@
  * Fix counter bug that did not reset after quitting panic room
  */
 
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -107,16 +105,16 @@ import javafx.stage.Stage;
 
 public class PanicRoom {
     /** stage for the application */
-    private Stage stage;
+    private final Stage stage;
 
     /** Stores counter for the quiz */
     private static int counter = 0;
 
     /** Stores answers*/
-    private int [] answers;
+    private final int [] answers;
 
     /** Stores Quizes*/
-    private ImageView [] quizzes;
+    private final ImageView [] quizzes;
 
     /** Player's score*/
     private static int score;
@@ -181,9 +179,9 @@ public class PanicRoom {
         stage.setScene(scene);
 
         if (counter == 0) {
-            message = new TextBox(stage, root, scene, "Click on the options with your mouse to answer the question!", "Blue");
+            message = new TextBox(root, "Click on the options with your mouse to answer the question!", "Blue");
             message.setWarning(3);
-        } else message = new TextBox(stage, root, scene, "tmp", "Blue");
+        } else message = new TextBox(root, "tmp", "Blue");
 
         attempt = false;
         correct = false;
@@ -298,17 +296,17 @@ public class PanicRoom {
             message.toggleOff();
          if (choice == 1) {
             if (!attempt) // if user did not select an answer
-                message = new TextBox(stage, root, scene, "Select an answer", "Red");
+                message = new TextBox(root, "Select an answer", "Red");
         }
         if (choice == 2) {
             if (attempt) { // if user selected answer
                 message.toggleOff();
-                message = new TextBox(stage, root, scene, "You have already chosen your answer", "Red");
+                message = new TextBox(root, "You have already chosen your answer", "Red");
             } else if (correct) // if user answered correctly
-                message = new TextBox(stage, root, scene, "You selected the correct answer!", "Green");
+                message = new TextBox(root, "You selected the correct answer!", "Green");
             else
-                message = new TextBox(stage, root, scene, "You selected the wrong answer." +
-                        "\nThe answer was option " + (char)(answers[counter]+64), "Blue");
+                message = new TextBox(root, "You selected the wrong answer." +
+                        "\nThe answer was option " + (char)(answers[counter]+64), "Red");
            }
         message.setWarning(4); // show message
     }

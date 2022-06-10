@@ -55,14 +55,11 @@
  */
 
 import javafx.animation.AnimationTimer;
-import javafx.animation.PauseTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.util.Arrays;
-import java.util.Locale;
 
 public abstract class CollisionRoom {
     /** The primary stage for this application. Passed by reference. */
@@ -191,19 +188,20 @@ public abstract class CollisionRoom {
             if (event.getText().length() == 1) { // if the key is displayable
                 keyPressed[event.getText().toLowerCase().charAt(0)] = true; // set the key to true
             }
-            switch (event.getCode()) { // for non-displayable keys
-            }
         });
 
         scene.setOnKeyReleased(event -> { // when a key is released
             if (event.getText().length() == 1) { // if the key is displayable
                 keyPressed[event.getText().toLowerCase().charAt(0)] = false; // set the key to false
             }
-            switch (event.getCode()) { // for non-displayable keys
-            }
         });
     }
 
+    /**
+     * returns if the key is pressed
+     * @param c the key to check
+     * @return true if the key is pressed
+     */
     public boolean isKeyPressed(char c) {
         return keyPressed[c];
     }
@@ -222,7 +220,7 @@ public abstract class CollisionRoom {
      */
     public void buildCharacter(int size, int x, int y) {
         // create character
-        character = new Character(root, scene, this, size, x, y);
+        character = new Character(root, this, size, x, y);
         character.build();
         setUpUserInput();
         setUpAnimationTimer();

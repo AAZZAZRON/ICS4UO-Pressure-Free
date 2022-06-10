@@ -49,7 +49,6 @@
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -103,9 +102,7 @@ public class MainMenu {
             // ChangeScene.changeToEscapeRoom(10);
         });
 
-        insBtn.setOnMouseClicked(e -> {
-            ChangeScene.changeToInstructions();
-        });
+        insBtn.setOnMouseClicked(e -> ChangeScene.changeToInstructions());
 
         exitBtn.setOnMouseClicked(e -> {
             Scene next = Tools.displayIntermissionText(stage, "Thank you for playing Pressure-Free!");

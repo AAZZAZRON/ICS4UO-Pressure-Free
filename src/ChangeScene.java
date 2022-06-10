@@ -75,7 +75,6 @@
  */
 
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class ChangeScene {
@@ -100,7 +99,7 @@ public class ChangeScene {
         deficiencyRoom.buildRoom();
 
         // build backpack
-        Backpack backpack = new Backpack(stage);
+        Backpack backpack = new Backpack();
 
         // build the escape room school
         escapeRoomSchool = new EscapeRoomSchool(stage, backpack);
@@ -143,17 +142,11 @@ public class ChangeScene {
 
         stage.setScene(next1);
 
-        next1.onMouseClickedProperty().set(e -> {
-            stage.setScene(next2);
-        });
+        next1.onMouseClickedProperty().set(e -> stage.setScene(next2));
 
-        next2.onMouseClickedProperty().set(e -> {
-            stage.setScene(next3);
-        });
+        next2.onMouseClickedProperty().set(e -> stage.setScene(next3));
 
-        next3.onMouseClickedProperty().set(e -> {
-            deficiencyRoom.startScene();
-        });
+        next3.onMouseClickedProperty().set(e -> deficiencyRoom.startScene());
     }
 
     /**
@@ -172,13 +165,11 @@ public class ChangeScene {
      */
     public static void changeToPanicRoom () {
         Scene next1 = Tools.displayIntermissionText(stage, "CONGRATULATIONS on learning about peer pressure!");
-        Scene next2 = Tools.displayIntermissionText(stage, "LEVEL TWO: PANIC ROOM\n\nTest your knowledge through a quiz. To move on to level three, a score of 5/10 or above must be acquired. Can you accurately answer the questions?");
+        Scene next2 = Tools.displayIntermissionText(stage, "LEVEL TWO: PANIC ROOM\n\nTest your knowledge of peer pressure through a quiz! To move on to level three, a score of 5/10 or above must be acquired. Can you accurately answer the questions?");
 
         stage.setScene(next1);
 
-        next1.onMouseClickedProperty().set(e -> {
-            stage.setScene(next2);
-        });
+        next1.onMouseClickedProperty().set(e -> stage.setScene(next2));
         next2.onMouseClickedProperty().set(e -> {
             PanicRoom panicRoom = new PanicRoom(stage); // display panic room
             panicRoom.panicRoom();
@@ -194,38 +185,26 @@ public class ChangeScene {
         if (score >= 5) {
             Scene next1 = Tools.displayIntermissionText(stage, "CONGRATULATIONS on completing the quiz!\n\nYou scored " + score + " out of 10.");
             Scene next2 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nSchool is over and you are going to your friend's house to complete an assignment. But, you must first acquire some resources to complete the assignment. Items you need to collect are listed in your backpack.");
-            Scene next3 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nRemember to control the character using WASD. Also, click on the backpack icon to view its contents.");
-            Scene next4 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nBeware of peer pressure as you are collecting resources. Do not let your friends influence your decisions!");
+            Scene next3 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nRemember to control the character using WASD.\nAlso, click on the backpack icon (bottom left corner) to view its contents.");
+            Scene next4 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nBeware of peer pressure as you are collecting resources.\nDo not let your friends influence your decisions!");
             stage.setScene(next1);
 
-            next1.onMouseClickedProperty().set(e -> {
-                stage.setScene(next2);
-            });
+            next1.onMouseClickedProperty().set(e -> stage.setScene(next2));
 
-            next2.onMouseClickedProperty().set(e -> {
-                stage.setScene(next3);
-            });
+            next2.onMouseClickedProperty().set(e -> stage.setScene(next3));
 
-            next3.onMouseClickedProperty().set(e -> {
-                stage.setScene(next4);
-            });
+            next3.onMouseClickedProperty().set(e -> stage.setScene(next4));
 
-            next4.onMouseClickedProperty().set(e -> {
-                escapeRoomSchool.startScene();
-            });
+            next4.onMouseClickedProperty().set(e -> escapeRoomSchool.startScene());
         } else {
             Scene next1 = Tools.displayIntermissionText(stage, "UNFORTUNATE\n\nYou scored " + score + " out of 10.");
             Scene next2 = Tools.displayIntermissionText(stage, "Please play again. Better luck next time!");
 
             stage.setScene(next1);
 
-            next1.onMouseClickedProperty().set(e -> {
-                stage.setScene(next2);
-            });
+            next1.onMouseClickedProperty().set(e -> stage.setScene(next2));
 
-            next2.onMouseClickedProperty().set(e -> {
-                ChangeScene.changeToMainMenu();
-            });
+            next2.onMouseClickedProperty().set(e -> ChangeScene.changeToMainMenu());
         }
     }
 

@@ -33,7 +33,6 @@
 
 import javafx.animation.PauseTransition;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -41,18 +40,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class TextBox {
-    /** The primary stage for this application. Passed by reference. */
-    private final Stage stage;
-
     /** group for the textbox */
-    private Group root;
-
-    /** scene for the textbox */
-    private Scene scene;
+    private final Group root;
 
     /** message displayed in the textbox */
     private Text message;
@@ -65,16 +57,12 @@ public class TextBox {
 
     /**
      * Constructor for the TextBox class
-     * @param stage the primary stage for this application
      * @param root the group for the textbox
-     * @param scene the scene for the textbox
      * @param text the message displayed in the textbox
      * @param colour the colour of the textbox
      */
-    public TextBox(Stage stage, Group root, Scene scene, String text, String colour) {
-        this.stage = stage;
+    public TextBox(Group root, String text, String colour) {
         this.root = root;
-        this.scene = scene;
         isVisible = false;
 
         initialize(colour);
@@ -157,9 +145,7 @@ public class TextBox {
     public void setWarning(int seconds) {
         toggleOn();
         PauseTransition pause = new PauseTransition(Duration.seconds(seconds));
-        pause.setOnFinished(e -> {
-            toggleOff();
-        });
+        pause.setOnFinished(e -> toggleOff());
         pause.play();
     }
 

@@ -41,8 +41,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.awt.*;
-
 public class EscapeClassroom extends ScenarioRoom {
     /**
      * Constructor for EscapeClassroom.
@@ -78,7 +76,7 @@ public class EscapeClassroom extends ScenarioRoom {
         fillCollisionGrid(108, 160, 175, 200); // chair
         fillCollisionGrid(743, 343, 800, 483); // door
 
-        textBoxes[1] = new TextBox(stage, root, scene, "Press e to leave the classroom.", "Green");
+        textBoxes[1] = new TextBox(root, "Press e to leave the classroom.", "Green");
         fillPromptGrid(730, 330, 800, 500, 1);
 
         parseItemData();
@@ -92,7 +90,7 @@ public class EscapeClassroom extends ScenarioRoom {
         addBackpack();
 
         // warning textbox
-        warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
+        warning = new TextBox(root, "You cannot enter this room!", "Blue");
 
         buildCharacter(100, 750, 395);
     }

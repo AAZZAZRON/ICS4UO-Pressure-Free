@@ -44,8 +44,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.awt.*;
-
 public class EscapeLibrary extends ScenarioRoom {
 
     /**
@@ -83,7 +81,7 @@ public class EscapeLibrary extends ScenarioRoom {
 
         fillCollisionGrid(734, 347, 800, 481);
 
-        textBoxes[1] = new TextBox(stage, root, scene, "Press e to leave the library.", "Green");
+        textBoxes[1] = new TextBox(root, "Press e to leave the library.", "Green");
         fillPromptGrid(730, 330, 800, 500, 1);
 
         parseItemData();
@@ -92,7 +90,7 @@ public class EscapeLibrary extends ScenarioRoom {
         addBackpack();
 
         // warning textbox
-        warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
+        warning = new TextBox(root, "You cannot enter this room!", "Blue");
 
         buildCharacter(100, 750, 395);
     }

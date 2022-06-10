@@ -36,10 +36,8 @@
  * Splash screen does not loop (using PauseTransition)
  */
 
-import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class Main extends Application {
     /**

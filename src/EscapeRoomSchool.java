@@ -42,7 +42,7 @@ public class EscapeRoomSchool extends CollisionRoom {
     private TextBox warning;
 
     /** backpack of the character */
-    private Backpack backpack;
+    private final Backpack backpack;
 
     /** if the character has moved from where they initially spawned */
     private boolean firstTimeAtDoor = true;
@@ -94,17 +94,17 @@ public class EscapeRoomSchool extends CollisionRoom {
         fillPromptGrid(0, 88, 24, 184, 8); // exit
 
         // textbox messages
-        textBoxes[1] = new TextBox(stage, root, scene, "Press e to enter room 101", "Green");
-        textBoxes[2] = new TextBox(stage, root, scene, "Press e to enter room 102", "Green");
-        textBoxes[3] = new TextBox(stage, root, scene, "Press e to enter room 103", "Green");
-        textBoxes[4] = new TextBox(stage, root, scene, "Press e to enter room 104", "Green");
-        textBoxes[5] = new TextBox(stage, root, scene, "Press e to enter the washroom", "Green");
-        textBoxes[6] = new TextBox(stage, root, scene, "Press e to enter the washroom", "Green");
-        textBoxes[7] = new TextBox(stage, root, scene, "Press e to enter the library", "Green");
-        textBoxes[8] = new TextBox(stage, root, scene, "Press e to exit the school", "Green");
+        textBoxes[1] = new TextBox(root, "Press e to enter room 101", "Green");
+        textBoxes[2] = new TextBox(root, "Press e to enter room 102", "Green");
+        textBoxes[3] = new TextBox(root, "Press e to enter room 103", "Green");
+        textBoxes[4] = new TextBox(root, "Press e to enter room 104", "Green");
+        textBoxes[5] = new TextBox(root, "Press e to enter the washroom", "Green");
+        textBoxes[6] = new TextBox(root, "Press e to enter the washroom", "Green");
+        textBoxes[7] = new TextBox(root, "Press e to enter the library", "Green");
+        textBoxes[8] = new TextBox(root, "Press e to exit the school", "Green");
 
         // warning textbox
-        warning = new TextBox(stage, root, scene, "You cannot enter this room!", "Blue");
+        warning = new TextBox(root, "You cannot enter this room!", "Blue");
 
         backpack.buildBackpack(root);
 

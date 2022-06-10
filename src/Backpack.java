@@ -31,22 +31,14 @@
  * - messge if user found all items
  *  */
 
-import javafx.animation.PauseTransition;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import javafx.scene.text.*;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class Backpack {
-
-    /** stage of the game */
-    private Stage stage;
 
     /** current room character is in */
     private CollisionRoom room;
@@ -59,10 +51,8 @@ public class Backpack {
 
     /**
      * Constructor for Backpack
-     * @param stage the stage of the game
      */
-    public Backpack(Stage stage) {
-        this.stage = stage;
+    public Backpack() {
         itemsFound = new HashMap<>();
         itemsNeeded = new HashMap<>();
 

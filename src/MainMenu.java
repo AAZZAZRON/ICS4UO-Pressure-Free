@@ -74,7 +74,7 @@ public class MainMenu {
      */
     public void mainMenu() {
         ImageView image = Tools.createBackgroundImage("Assets/MainMenu/MainMenuBackground.png");
-        image.setOpacity(0.5);
+        image.setOpacity(0.3);
 
         // set scene
         Group root = new Group(image);

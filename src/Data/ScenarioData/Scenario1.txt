@@ -1,0 +1,8 @@
+3
+"Dylan, where are we going today after school?"
+"There's a new boba shop in Promenade Mall. Let's go there!"
+"Too bad Scott can't join us..."
+What do you do? Remember, you have an assignment to finish!
+Ignore them and focus on your task.; SUCCESS; Good job :)
+Approach them and tell them that you will join them soon.; MID; This is okay, but don't let your friends influence your choices. You have an assignment to do!
+Follow them to the mall. You can do your assignment tomorrow.; FAIL; You succumbed to peer pressure. You don't need to go to the mall with them in order to be accepted!

@@ -1,0 +1,14 @@
+CLASSROOM
+    itemCoords.add(new Point(360, 215)); // scissors
+    itemCoords.add(new Point(660, 215)); // scissors
+    itemCoords.add(new Point(105, 480)); // scissors
+    itemCoords.add(new Point(420, 480)); // scissors
+
+LIBRARY
+    itemCoords.add(new Point(373, 300));
+    itemCoords.add(new Point(400, 448));
+    itemCoords.add(new Point(537, 302));
+    itemCoords.add(new Point(545, 448));
+
+    itemCoords.add(new Point(148, 160)); // book points
+    itemCoords.add(new Point(182, 440));

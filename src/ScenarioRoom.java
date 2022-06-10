@@ -90,6 +90,15 @@
  * Use new textbox colours
  */
 
+/**
+ * @author Aaron Zhu
+ * June 10th, 2022
+ * @version 4.0
+ * Time: 10 minutes
+ * Implement fail message
+ */
+
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -416,7 +425,12 @@ public abstract class ScenarioRoom extends CollisionRoom {
                 warning.setTextboxColour("Blue");
                 warning.setWarning(1);
             }
-            else ChangeScene.changeToMainMenu();
+            else {
+                Scene fail = Tools.displayIntermissionText(stage, "Unfortunately, you have succumbed to peer pressure.\nTry again next time!");
+                fail.onMouseClickedProperty().set(event -> {
+                    ChangeScene.changeToMainMenu(); // change to main menu
+                });
+            }
         });
     }
 

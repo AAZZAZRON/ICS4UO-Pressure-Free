@@ -190,7 +190,7 @@ public class ChangeScene {
             Scene next1 = Tools.displayIntermissionText(stage, "CONGRATULATIONS on completing the quiz!\n\nYou scored " + score + " out of 10.");
             Scene next2 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nSchool is over and you are going to your friend's house to complete an assignment. But, you must first acquire some resources to complete the assignment. Items you need to collect are listed in your backpack.");
             Scene next3 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nRemember to control the character using WASD.\nAlso, click on the backpack icon (bottom left corner) to view its contents.");
-            Scene next4 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nBeware of peer pressure as you are collecting resources.\nDo not let your friends influence your decisions!");
+            Scene next4 = Tools.displayIntermissionText(stage, "LEVEL THREE: ESCAPE ROOM\n\nBeware of peer pressure as you are collecting resources.\nIf you succumb to peer pressure, you will lose!\nDo not let your friends influence your decisions!");
             stage.setScene(next1);
 
             next1.onMouseClickedProperty().set(e -> stage.setScene(next2));

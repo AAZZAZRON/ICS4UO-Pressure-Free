@@ -4,14 +4,14 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 2 (Aaron)
+ * Version 2 (Aaron):
  * - initialize textBox + message
  * - display and hide textBox
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - moved warning textboxes to TextBox.java
  */
 
@@ -134,6 +134,10 @@ public class TextBox {
         message.setText(text);
     }
 
+    /**
+     * sets the colour of the textbox
+     * @param colour the colour of the textbox
+     */
     public void setTextboxColour(String colour) {
         textBox.setImage(new Image("Assets/Textboxes/Textbox" + colour + ".png"));
     }

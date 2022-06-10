@@ -4,27 +4,30 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1 (Sion)
+ * Version 1 (Sion):
  * - Deficiency Room that displays the different lessons
  * - create classroom background and deficiency room lessons (pixel art)
  * - fade in lessons
  * - mostly framework at this point
  *
- * Version 2 (Sion)
+ * Version 2 (Sion):
  * - finalizing Deficiency Room
  * - further implementation to DeficiencySchool
  * - implement multiple slide lessons
  * - implmenet better fade transition
  *
- * Version 3 (Sion)
+ * Version 3 (Sion):
  * - move fade transition to Tools.java
  * - change lesson naming scheme
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - change lesson naming scheme
+ *
+ * Version 4 (Sion):
+ * - fix grammar mistakes in lesson
  */
 
 /**
@@ -77,6 +80,14 @@
  * change lesson format from Lesson"slideNum" to Lesson "LessonNum"-"SlideNum"
  * - easier to read and understand for other programmers
  * getSlideNum() returns the ImageView of the slide to display
+ */
+
+/**
+ * @author Sion Gang
+ * June 9th, 2022
+ * @version 4.0
+ * Time: 30 minutes
+ * Fixed grammar in deficiency room lessons
  */
 
 import javafx.scene.Group;

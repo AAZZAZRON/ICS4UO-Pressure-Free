@@ -4,14 +4,14 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 2 (Aaron)
+ * Version 2 (Aaron):
  * - set up abstract class for rooms where collision detection is required
  * - moved collision detection and prompt detection from Character.java to CollisionRoom.java
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - allow collision rooms to not be reinitialized
  * - move warning message stuff to Textbox.java for organization
  */
@@ -65,6 +65,7 @@ public abstract class CollisionRoom {
     /** The primary stage for this application. Passed by reference. */
     public final Stage stage;
 
+    /** The root of the scene graph. */
     public Group root;
 
     /** The scene for this application. */

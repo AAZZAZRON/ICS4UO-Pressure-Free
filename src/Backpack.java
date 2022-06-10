@@ -4,13 +4,18 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
  * Version 3 (Sion):
  * - backpack tracks items that are found/still need to be found
  * - on backpack click, displays contents of backpack to CLI (will make it a GUI later)
  * - one backpack is used, and is passed into each room for simplicity's sake
+ *
+ * Version 4 (Sion):
+ * - fully implemented backpack
+ * - onclick, displays items needed (dynamic)
+ * - alerts when user finds all items
  */
 
 /**
@@ -28,7 +33,7 @@
  * Time: 3 hours
  * - backpack graphics implementation
  * - dynamic text display
- * - messge if user found all items
+ * - message if user found all items
  *  */
 
 import javafx.scene.Group;

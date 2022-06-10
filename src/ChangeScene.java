@@ -1,19 +1,23 @@
 /**
  * Pressure-Free, a game by Parallel Studios to teach users to overcome peer pressure
- * Character.java
+ * ChangeScene.java
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 2 (Aaron)
+ * Version 2 (Aaron):
  * - centralized scene changer
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - front load deficiency room and escape room scenes
  * - use one scene for certain rooms so program does not need to use static variables/methods
  * - adds backpack to each escape room scene (room)
+ *
+ * Version 4 (Aaron):
+ * - reinitialize() adds names to each room
+ *       - used to differentiate between rooms of the same type
  */
 
 /**

@@ -4,18 +4,26 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 2 (Sion)
+ * Version 2 (Sion):
  * - framework of Panic Room
  * - create graphics and quizes
  * - implement user input using buttons
  * - implement transitions between quizes
  *
- * Version 3 (Sion)
+ * Version 3 (Sion):
  * - Implemented better graphics + transitions
  * - Update textbox system - more efficient and organized
+ *
+ * Version 4 (Aaron):
+ * - changed the x buttons to ABC
+ * - remove event listeners after user picks choice
+ *
+ * Version 4 (Sion):
+ * - fix grammar errors
+ * - fix static coutner bug
  */
 
 /**
@@ -88,8 +96,9 @@
  * @author Sion Gang
  * June 8th, 2022
  * @version 4.0
- * Time: 5 minutes
+ * Time: 30 minutes
  * Fix counter bug that did not reset after quitting panic room
+ * Fixed grammar mistakes
  */
 
 import javafx.scene.Group;
@@ -141,10 +150,9 @@ public class PanicRoom {
      */
     public PanicRoom(Stage stage) {
         this.stage = stage;
-        answers = new int[]{2, 3, 1, 2, 2,  1, 2, 2, 2, 3};
-        quizzes = new ImageView [answers.length];
-        for (int i = 1; i <= answers.length; i++)
-          quizzes[i-1] = new ImageView("Assets/Scenes/Quizzes/PanicRoom " + i + ".png");
+        answers = new int[] {2, 3, 1, 2, 2,  1, 2, 2, 2, 3};
+        quizzes = new ImageView[answers.length];
+        for (int i = 1; i <= answers.length; i++) quizzes[i-1] = new ImageView("Assets/Scenes/Quizzes/PanicRoom " + i + ".png");
         attempt = false;
         score = 0;
         counter = 0;

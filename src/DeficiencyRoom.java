@@ -4,25 +4,25 @@
  * <h2>Course Info:</h2>
  * ICS4U0 with Krasteva, V.
  *
- * @version 3.0
+ * @version 4.0
  * @author Aaron Zhu, Sion Gang
  *
- * Version 1 (Aaron)
+ * Version 1 (Aaron):
  * - set up 800 by 600 collision grid for the character + helper methods
  *
- * Version 1 (Sion)
+ * Version 1 (Sion):
  * - set up collision detection for the rooms and border (not for doors)
  * - build character using collision grid
  *
- * Version 2 (Aaron)
+ * Version 2 (Aaron):
  * - added textboxes when character interacts with door
  * - user can only enter one room (based on which lesson is playing)
  * - extended and implemented CollisionRoom abstract methods
  *
- * Version 2 (Sion)
+ * Version 2 (Sion):
  * - built the pixel collision grids for each door and prompt
  *
- * Version 3 (Aaron)
+ * Version 3 (Aaron):
  * - add warning textboxes when user tries to enter a room they cannot
  * - allow room to be reloaded
  */

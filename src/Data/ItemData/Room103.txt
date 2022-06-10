@@ -1,5 +1,0 @@
-Laptop, Laptop, 360, 215, 55, 20, Press p to pick up the laptop
-GlueStick, Glue Stick, 435, 485, 30, 20, Press p to pick up the glue stick
-OpenBook, Book, 150, 480, 50, 20, Press p to pick up the book
-END
-NAME X Y SIZE RAD MSG

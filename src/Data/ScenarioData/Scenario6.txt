@@ -1,9 +1,0 @@
-4
-"Let's go ask the principal if we can start a tutoring club!"
-"Should we get Scott to come as well?"
-"He can probably email the principal..."
-"That's a bit of a pain."
-What do you do? Remember, you have an assignment to finish!
-Go join them to tell the principal together.; FAIL; Finishing your assignment is more important. You can also email the principal.
-Go with them and continue your task together; MID; This is okay as it is positive peer pressure. However, do not let peer pressure interfere with your task.
-Ignore them and focus on your task; SUCCESS; This is a good choice. This is positive peer pressure.

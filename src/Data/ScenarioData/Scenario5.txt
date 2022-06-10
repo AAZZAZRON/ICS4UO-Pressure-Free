@@ -1,9 +1,0 @@
-4
-"I'm so bored..."
-"You wanna skip class and watch the new Marvel movie?"
-"Sure, oh wait look, it's Scott."
-"Yo, come watch the movie with us."
-What do you say? Remember, you have an assignment to finish!
-"Sorry guys, I have an assignment to finish."; SUCCESS; Amazing! Don't let your friends negatively impact your academic life.
-"Sure! I heard the new Marvel movie was awesome!"; FAIL; You failed to recognize negative peer pressure. Don't let your friends negatively impact your academic life!
-"I don't want to skip class, but maybe we can watch the movie later?"; MID; This is okay. However, your assignment should be prioritized over hanging out with your friends!

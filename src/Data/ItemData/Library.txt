@@ -1,5 +1,0 @@
-Clipboard, Clipboard, 373, 300, 30, 20, Press p to pick up the clipboard
-OpenBook, Book, 545, 448, 50, 20, Press p to pick up the book
-ShelfBook, Book, 148, 160, 14, 50, Press p to pick up the book
-END
-NAME X Y SIZE RAD MSG

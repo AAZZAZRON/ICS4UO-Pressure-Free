@@ -1,4 +1,0 @@
-OpenBook, Book, 660, 215, 50, 20, Press p to pick up the book
-PencilCase, Pencil Case, 150, 490, 50, 20, Press p to pick up the pencil case
-END
-NAME X Y SIZE RAD MSG

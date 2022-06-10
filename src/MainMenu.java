@@ -105,7 +105,7 @@ public class MainMenu {
         insBtn.setOnMouseClicked(e -> ChangeScene.changeToInstructions());
 
         exitBtn.setOnMouseClicked(e -> {
-            Scene next = Tools.displayIntermissionText(stage, "Thank you for playing Pressure-Free!");
+            Scene next = Tools.displayIntermissionText(stage, "Thank you for playing Pressure-Free!\n\nGame created by Parallel Studios\n\nDevelopers: Aaron Zhu and Sion Gang.");
             next.onMouseClickedProperty().set(e2 -> {
                 Platform.exit();
                 System.exit(0);

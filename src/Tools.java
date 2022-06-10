@@ -170,6 +170,7 @@ public class Tools {
      * Displays intermission text on screen (between lessons)
      * @param stage The primary stage for this application
      * @param text The text to display
+     * @return the scene
      */
     public static Scene displayIntermissionText(Stage stage, String text) {
         ImageView image = Tools.createBackgroundImage("Assets/MainMenu/MainMenuBackground.png");

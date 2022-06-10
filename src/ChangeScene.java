@@ -138,6 +138,7 @@ public class ChangeScene {
 
     /**
      * Change to deficiency room
+     * @param firstTime to overload methods
      */
     public static void changeToDeficiencyRoom(boolean firstTime) {
         Scene next1 = Tools.displayIntermissionText(stage, "Thank you for playing Pressure-Free, a game made to educate students on how to overcome peer pressure. We (the developers) hope you enjoy the game!");
@@ -184,6 +185,7 @@ public class ChangeScene {
 
     /**
      * Change to escape room
+     * @param score the score of the player
      */
     public static void changeToEscapeRoom(int score) {
         if (score >= 5) {

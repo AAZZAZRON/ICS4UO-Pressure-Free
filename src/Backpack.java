@@ -126,7 +126,6 @@ public class Backpack {
         int xCoord;
         int yCoord;
         int counter = 0; // counter that keep tracks of contents
-        int countFound = 0; // if user found all items
 
         Text header1 = new Text("ITEMS FOUND");
         header1.setX(325);
@@ -145,7 +144,6 @@ public class Backpack {
                 xCoord = 500;
             }
             if (itemsFound.get(item) != 0) {
-                countFound++;
                 Text message = new Text(item + ": " + itemsFound.get(item));
              //   message.setWrappingWidth(400);
                 message.setX(xCoord);
@@ -189,7 +187,7 @@ public class Backpack {
         }
 
 
-        if (countFound==8) {
+        if (foundAllItems()) {
             text.getChildren().clear();
             Text message = new Text("You have found all items.");
             message.setX(305);

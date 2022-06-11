@@ -135,7 +135,7 @@ public abstract class ScenarioRoom extends CollisionRoom {
     private final int scenarioNum;
 
     /** if the scenario is complete */
-    private boolean scenarioComplete = false;
+    private boolean scenarioComplete = true;
 
     /** arraylist of scenes to iterate through for scenario */
     private final ArrayList<Scene> scenes;
